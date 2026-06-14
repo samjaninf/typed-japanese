@@ -1,0 +1,182 @@
+/* ----------------------------------------------------------------------------
+   Typed Japanese Playground — global theme (sakura 🌸)
+   Shared design tokens + a small set of utility classes feature components reuse
+   so the five tabs look like one app.
+---------------------------------------------------------------------------- */
+
+:root {
+  --sakura-50: #fff5f8;
+  --sakura-100: #ffe4ec;
+  --sakura-200: #ffc8d9;
+  --sakura-300: #ff9fbd;
+  --sakura-400: #ff6f9c;
+  --sakura-500: #f5447a;
+  --sakura-600: #d62f63;
+
+  --ink-900: #1f1620;
+  --ink-700: #4a3f4a;
+  --ink-500: #7b6f7b;
+  --ink-300: #b3a8b3;
+
+  --paper: #fffafc;
+  --surface: #ffffff;
+  --surface-2: #fff0f5;
+  --border: #f3d6e1;
+  --border-strong: #e9b9cb;
+
+  --ok: #1a9d6b;
+  --err: #d83a52;
+  --accent: var(--sakura-500);
+
+  --radius: 14px;
+  --radius-sm: 9px;
+  --shadow-sm: 0 1px 2px rgba(31, 22, 32, 0.06);
+  --shadow-md: 0 8px 28px rgba(214, 47, 99, 0.12);
+
+  --font-jp: "Hiragino Kaku Gothic ProN", "Yu Gothic", "Noto Sans JP", sans-serif;
+  --font-ui: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --font-mono: "SF Mono", "JetBrains Mono", "Fira Code", ui-monospace, monospace;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  font-family: var(--font-ui);
+  color: var(--ink-900);
+  background:
+    radial-gradient(1200px 500px at 100% -10%, var(--sakura-100), transparent 60%),
+    radial-gradient(900px 500px at -10% 110%, var(--sakura-100), transparent 55%),
+    var(--paper);
+  -webkit-font-smoothing: antialiased;
+}
+
+:lang(ja),
+.jp {
+  font-family: var(--font-jp);
+}
+
+button {
+  font-family: inherit;
+}
+
+/* ----- shared utility classes ------------------------------------------- */
+
+.tj-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-sm);
+}
+
+.tj-panel-title {
+  margin: 0 0 4px;
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--ink-900);
+}
+
+.tj-subtle {
+  color: var(--ink-500);
+  font-size: 0.86rem;
+}
+
+.tj-label {
+  display: block;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--ink-500);
+  margin-bottom: 6px;
+}
+
+.tj-select,
+.tj-input {
+  width: 100%;
+  padding: 9px 12px;
+  font-size: 0.95rem;
+  font-family: inherit;
+  color: var(--ink-900);
+  background: var(--surface);
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius-sm);
+  outline: none;
+  transition: border-color 0.15s, box-shadow 0.15s;
+}
+
+.tj-select:focus,
+.tj-input:focus {
+  border-color: var(--sakura-400);
+  box-shadow: 0 0 0 3px var(--sakura-100);
+}
+
+.tj-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 14px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--ink-700);
+  background: var(--surface);
+  border: 1px solid var(--border-strong);
+  border-radius: 999px;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+
+.tj-btn:hover {
+  border-color: var(--sakura-400);
+  color: var(--sakura-600);
+}
+
+.tj-btn--primary {
+  color: #fff;
+  background: var(--sakura-500);
+  border-color: var(--sakura-500);
+}
+
+.tj-btn--primary:hover {
+  background: var(--sakura-600);
+  border-color: var(--sakura-600);
+  color: #fff;
+}
+
+.tj-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 10px;
+  font-size: 0.78rem;
+  font-weight: 600;
+  border-radius: 999px;
+  background: var(--surface-2);
+  color: var(--sakura-600);
+  border: 1px solid var(--border);
+}
+
+.tj-result {
+  font-family: var(--font-jp);
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: var(--sakura-600);
+}
+
+.tj-code {
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 2px 7px;
+  color: var(--ink-700);
+}
