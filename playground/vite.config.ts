@@ -7,9 +7,10 @@ import tailwindcss from "@tailwindcss/vite";
 // them as extra libs and type-check real Typed Japanese code in the browser.
 export default defineConfig({
   plugins: [react(), tailwindcss()],
-  // Deployed under a subpath on GitHub Pages; relative base keeps assets working
-  // both there and on StackBlitz / local preview.
-  base: "./",
+  // Absolute base (not "./") so prerendered pages in nested directories
+  // (e.g. /en/course/e01/) resolve hashed assets correctly. Override via
+  // VITE_BASE for a different mount point (e.g. the future /learn/japanese/).
+  base: process.env.VITE_BASE ?? "/typed-japanese/",
   server: {
     fs: {
       // Allow importing the .d.ts sources from the parent package.

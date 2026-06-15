@@ -1,6 +1,9 @@
-import { useState } from "react";
+import { lazy, Suspense, useState } from "react";
 import { SNIPPETS } from "../data/examples";
-import Analyzer from "./Analyzer";
+
+// Monaco (and the whole Analyzer) is client-only and heavy — load it lazily so
+// it is never pulled into the server prerender.
+const Analyzer = lazy(() => import("./Analyzer"));
 
 export default function Playground() {
   const [index, setIndex] = useState(0);
@@ -24,7 +27,11 @@ export default function Playground() {
         </div>
       </div>
 
-      <Analyzer code={active.code} gloss={active.en} />
+      <Suspense
+        fallback={<p className="tj-subtle">Loading the analyzer…</p>}
+      >
+        <Analyzer code={active.code} gloss={active.en} />
+      </Suspense>
 
       <p className="tj-subtle text-center m-0">
         Edit the code — the structure re-parses live. Click any node to highlight

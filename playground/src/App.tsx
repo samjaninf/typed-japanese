@@ -1,11 +1,14 @@
+import { lazy, Suspense, useEffect, useState } from "react";
 import Concepts from "./components/Concepts";
 import Tutorial from "./components/Tutorial";
 import Playground from "./components/Playground";
 import Glossary from "./components/Glossary";
-import FontLab from "./components/FontLab";
 import { useLang } from "./context/lang";
 import { useTheme } from "./context/theme";
 import { useRoute } from "./context/route";
+
+// Client-only floating font panel — kept out of the server prerender.
+const FontLab = lazy(() => import("./components/FontLab"));
 
 const TAB_BASE =
   "inline-flex items-center gap-[7px] px-[18px] py-[9px] border rounded-full cursor-pointer text-[0.9rem] font-bold transition-all duration-[140ms]";
@@ -26,6 +29,9 @@ export default function App() {
   const { theme, toggleTheme } = useTheme();
   const { route, navigate } = useRoute();
   const tab = route.tab;
+  // Mount the client-only font panel after hydration (never during prerender).
+  const [mounted, setMounted] = useState(false);
+  useEffect(() => setMounted(true), []);
 
   return (
     <div className="flex flex-col min-h-full max-w-[1280px] mx-auto px-5">
@@ -145,7 +151,11 @@ export default function App() {
         )}
       </footer>
 
-      <FontLab />
+      {mounted && (
+        <Suspense fallback={null}>
+          <FontLab />
+        </Suspense>
+      )}
     </div>
   );
 }

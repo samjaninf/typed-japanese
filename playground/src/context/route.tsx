@@ -1,16 +1,16 @@
 /**
- * Hash-based routing — the URL is the single source of truth for navigation, so
- * tab switches, cross-section jumps (Glossary → example, Foundations → chapter),
- * the selected chapter/article, and the UI language all work with the browser's
- * Back / Forward buttons and are shareable as links.
+ * Path-based routing (History API). The URL is the single source of truth, so
+ * every section, chapter/article, and the UI language is a real, crawlable URL
+ * with Back/Forward support — which is what lets the site be prerendered to
+ * static HTML per page for SEO.
  *
- * Hash shape:  #/<section>[/<sub>]?ex=<anchor>&lang=<en|zh>
- *   #/foundations            #/foundations/architecture
- *   #/course                 #/course/e01           #/course/e01?ex=ex-e01-e01-2-0
- *   #/glossary               #/playground
+ * URL shape:  <base>/<lang>/<section>[/<sub>][/?ex=<anchor>]
+ *   /en/course            /en/course/e01            /en/course/e01/?ex=ex-e01-…
+ *   /zh/foundations       /zh/foundations/architecture
+ *   /en/glossary          /en/playground
  *
- * Hash routing (not the History API) is deliberate: it needs no server rewrite,
- * so it works as-is on GitHub Pages.
+ * `<base>` is Vite's BASE_URL (e.g. "/typed-japanese/"). The provider accepts an
+ * `ssrPath` so the prerenderer can render any route on the server with no DOM.
  */
 import {
   createContext,
@@ -33,11 +33,10 @@ export interface Route {
   chapter?: string;
   /** Course: an example anchor to scroll to (from a Glossary "used in" link). */
   ex?: string;
-  /** UI language. Always present once normalized. */
+  /** UI language — also the first URL segment. */
   lang: Lang;
 }
 
-/** Patch passed to navigate() — every field optional, merged onto the current route. */
 export type RoutePatch = Partial<Route>;
 
 interface RouteCtx {
@@ -46,9 +45,8 @@ interface RouteCtx {
 }
 
 const Ctx = createContext<RouteCtx | null>(null);
-const LANG_KEY = "tj-lang";
+const BASE = import.meta.env.BASE_URL || "/";
 
-// tab <-> url segment (the URL says "course"/"foundations"; code says the tab id)
 const TAB_TO_SEG: Record<Tab, string> = {
   concepts: "foundations",
   tutorial: "course",
@@ -62,61 +60,76 @@ const SEG_TO_TAB: Record<string, Tab> = {
   playground: "playground",
 };
 
-function storedLang(): Lang {
-  if (typeof localStorage !== "undefined") {
-    const v = localStorage.getItem(LANG_KEY);
-    if (v === "en" || v === "zh") return v;
-  }
-  return "en";
-}
+export const LANGS: Lang[] = ["en", "zh"];
 
-function parseHash(hash: string): Route {
-  const raw = hash.replace(/^#\/?/, "");
-  const [path = "", qs] = raw.split("?");
-  const segs = path.split("/").filter(Boolean);
-  // Default landing is the Grammar Course; the first chapter points to Foundations.
-  const tab = SEG_TO_TAB[segs[0] ?? ""] ?? "tutorial";
-  const params = new URLSearchParams(qs ?? "");
-  const langParam = params.get("lang");
-  const lang: Lang =
-    langParam === "zh" || langParam === "en" ? langParam : storedLang();
+/**
+ * Parse a full href (pathname[?search]) into a Route. Pure and deterministic
+ * (no localStorage) so the server prerender and the client agree on hydration —
+ * the language lives in the URL. A path with no language segment defaults to en.
+ */
+export function parseHref(href: string): Route {
+  const [rawPath = "/", search = ""] = href.split("?");
+  let p = rawPath;
+  const baseNoSlash = BASE.replace(/\/$/, "");
+  if (baseNoSlash && p.startsWith(baseNoSlash)) p = p.slice(baseNoSlash.length);
+  const segs = p.split("/").filter(Boolean);
+
+  let i = 0;
+  let lang: Lang = "en";
+  if (segs[0] === "en" || segs[0] === "zh") {
+    lang = segs[0];
+    i = 1;
+  }
+  const tab = SEG_TO_TAB[segs[i] ?? ""] ?? "tutorial";
+  const sub = segs[i + 1];
 
   const route: Route = { tab, lang };
-  const sub = segs[1];
   if (tab === "concepts" && sub) route.article = decodeURIComponent(sub);
   if (tab === "tutorial" && sub) route.chapter = decodeURIComponent(sub);
-  const ex = params.get("ex");
+  const ex = new URLSearchParams(search).get("ex");
   if (ex && tab === "tutorial") route.ex = ex;
   return route;
 }
 
-function formatHash(r: Route): string {
-  const segs = [TAB_TO_SEG[r.tab]];
+/** Canonical URL (with base + trailing slash) for a route. */
+export function formatPath(r: Route): string {
+  const segs = [r.lang, TAB_TO_SEG[r.tab]];
   if (r.tab === "concepts" && r.article) segs.push(encodeURIComponent(r.article));
   if (r.tab === "tutorial" && r.chapter) segs.push(encodeURIComponent(r.chapter));
-  const params = new URLSearchParams();
-  if (r.tab === "tutorial" && r.ex) params.set("ex", r.ex);
-  if (r.lang) params.set("lang", r.lang);
-  const qs = params.toString();
-  return `#/${segs.join("/")}${qs ? `?${qs}` : ""}`;
+  const qs = r.tab === "tutorial" && r.ex ? `?ex=${encodeURIComponent(r.ex)}` : "";
+  return `${BASE}${segs.join("/")}/${qs}`;
 }
 
-export function RouteProvider({ children }: { children: ReactNode }) {
+export function RouteProvider({
+  children,
+  ssrPath,
+}: {
+  children: ReactNode;
+  /** Render-target path on the server; client reads location instead. */
+  ssrPath?: string;
+}) {
   const [route, setRoute] = useState<Route>(() =>
-    parseHash(typeof location !== "undefined" ? location.hash : "")
+    parseHref(
+      ssrPath ??
+        (typeof location !== "undefined"
+          ? location.pathname + location.search
+          : "/")
+    )
   );
   const ref = useRef(route);
   ref.current = route;
 
-  // Normalize the URL on first load so it always reflects the full state.
+  // Normalize the URL on first client load (e.g. "/" → "/en/course/") and keep
+  // state in sync with Back/Forward.
   useEffect(() => {
-    const normalized = formatHash(ref.current);
-    if (location.hash !== normalized) {
-      history.replaceState(null, "", normalized);
+    const canonical = formatPath(ref.current);
+    if (location.pathname + location.search !== canonical) {
+      history.replaceState(null, "", canonical);
     }
-    const onChange = () => setRoute(parseHash(location.hash));
-    window.addEventListener("hashchange", onChange);
-    return () => window.removeEventListener("hashchange", onChange);
+    const onPop = () =>
+      setRoute(parseHref(location.pathname + location.search));
+    window.addEventListener("popstate", onPop);
+    return () => window.removeEventListener("popstate", onPop);
   }, []);
 
   const navigate = useCallback(
@@ -124,23 +137,24 @@ export function RouteProvider({ children }: { children: ReactNode }) {
       const prev = ref.current;
       const tabChanged = patch.tab !== undefined && patch.tab !== prev.tab;
       const next: Route = { ...prev, ...patch };
-      // Switching section drops the other sections' sub-targets unless the patch
-      // explicitly sets them.
       if (tabChanged) {
         if (!("article" in patch)) next.article = undefined;
         if (!("chapter" in patch)) next.chapter = undefined;
         if (!("ex" in patch)) next.ex = undefined;
       }
-      const h = formatHash(next);
-      if (h === location.hash) {
-        setRoute(next); // hash identical (e.g. clearing ex) — sync state directly
-        return;
-      }
-      if (opts?.replace) {
-        history.replaceState(null, "", h);
-        setRoute(next);
+      const url = formatPath(next);
+      if (typeof window !== "undefined") {
+        if (url === location.pathname + location.search) {
+          setRoute(next);
+        } else if (opts?.replace) {
+          history.replaceState(null, "", url);
+          setRoute(next);
+        } else {
+          history.pushState(null, "", url);
+          setRoute(next);
+        }
       } else {
-        location.hash = h; // pushes a history entry; hashchange updates state
+        setRoute(next);
       }
     },
     []
