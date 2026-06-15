@@ -146,6 +146,10 @@ body {
     radial-gradient(1200px 500px at 100% -10%, var(--bg-glow-1), transparent 60%),
     radial-gradient(900px 500px at -10% 110%, var(--bg-glow-2), transparent 55%),
     var(--paper);
+  /* Anchor the glows to the viewport so they don't tile into a visible seam
+     every screen-height as the page scrolls. */
+  background-repeat: no-repeat;
+  background-attachment: fixed;
   -webkit-font-smoothing: antialiased;
   transition: background-color 0.2s ease, color 0.2s ease;
 }
