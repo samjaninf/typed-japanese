@@ -1,34 +1,50 @@
 /* ----------------------------------------------------------------------------
-   Typed Japanese Playground — global theme (sakura 🌸)
-   Shared design tokens + a small set of utility classes feature components reuse
-   so the five tabs look like one app.
+   Typed Japanese Playground — global theme · "Washi & Sumi" (和紙・墨) 🌸
+   Warm washi paper, near-black sumi ink, a single muted dusty-rose sakura accent.
+   Canonical design tokens (the source of truth is DESIGN.md) plus a small set of
+   utility classes the feature components share so the app reads as one piece.
+
+   Light tokens live in :root; dark overrides in :root[data-theme="dark"].
+   The active theme is set on <html data-theme> by the no-flash script in
+   index.html and toggled at runtime by src/context/theme.tsx.
 ---------------------------------------------------------------------------- */
 
 :root {
-  --sakura-50: #fff5f8;
-  --sakura-100: #ffe4ec;
-  --sakura-200: #ffc8d9;
-  --sakura-300: #ff9fbd;
-  --sakura-400: #ff6f9c;
-  --sakura-500: #f5447a;
-  --sakura-600: #d62f63;
+  color-scheme: light;
 
-  --ink-900: #1f1620;
-  --ink-700: #4a3f4a;
-  --ink-500: #7b6f7b;
-  --ink-300: #b3a8b3;
+  /* sakura — dusty rose, scaled from a faint wash (50) to a deep link (600) */
+  --sakura-50: #fdf2f5;
+  --sakura-100: #fbe3ea;
+  --sakura-200: #f4c6d4;
+  --sakura-300: #e8a7bc;
+  --sakura-400: #db7e9c;
+  --sakura-500: #c95b7a; /* accent — buttons, active state */
+  --sakura-600: #a8456a; /* deeper — links, hover, headings */
 
-  --paper: #fffafc;
-  --surface: #ffffff;
-  --surface-2: #fff0f5;
-  --border: #f3d6e1;
-  --border-strong: #e9b9cb;
+  /* sumi ink — primary text down to faint hairlines */
+  --ink-900: #211b1f;
+  --ink-700: #463c42;
+  --ink-500: #7a6f74;
+  --ink-300: #ab9fa4;
 
-  --ok: #1a9d6b;
-  --err: #d83a52;
+  /* washi surfaces */
+  --paper: #faf7f4;
+  --surface: #fffdfb;
+  --surface-2: #f7eef0;
+  --border: #efe2e6;
+  --border-strong: #e3cdd5;
+
+  /* semantic */
+  --ok: #1a8f63;
+  --err: #c4485a;
+  --ok-soft: #e8f7f0;
+  --err-soft: #fdeaed;
   --accent: var(--sakura-500);
+  --on-accent: #ffffff; /* text/icon on a sakura-filled surface */
+  --ring: var(--sakura-100); /* focus halo */
+  --code-bg: #fbf3f6; /* code / editor chrome backdrop */
 
-  /* grammar-category accent colors (used by the composition tree) */
+  /* grammar-category accents (composition tree) */
   --cat-phrase: #d62f63;
   --cat-conjugation: #b5179e;
   --cat-verb: #3a7bd5;
@@ -44,12 +60,72 @@
 
   --radius: 14px;
   --radius-sm: 9px;
-  --shadow-sm: 0 1px 2px rgba(31, 22, 32, 0.06);
-  --shadow-md: 0 8px 28px rgba(214, 47, 99, 0.12);
+  --shadow-sm: 0 1px 2px rgba(33, 27, 31, 0.06);
+  --shadow-md: 0 8px 28px rgba(201, 91, 122, 0.12);
+  --shadow-drawer: -12px 0 40px rgba(201, 91, 122, 0.14);
+  --scrim: rgba(31, 22, 32, 0.28);
+
+  /* page backdrop — soft rose glows drifting off two corners of the paper */
+  --bg-glow-1: rgba(251, 227, 234, 0.9);
+  --bg-glow-2: rgba(244, 198, 212, 0.55);
 
   --font-jp: "Hiragino Kaku Gothic ProN", "Yu Gothic", "Noto Sans JP", sans-serif;
   --font-ui: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
   --font-mono: "SF Mono", "JetBrains Mono", "Fira Code", ui-monospace, monospace;
+}
+
+:root[data-theme="dark"] {
+  color-scheme: dark;
+
+  /* sakura in dark — the scale inverts: 50 is the deepest fill, 600 the
+     brightest petal. 500 stays the accent, now light enough to read on sumi. */
+  --sakura-50: #1f1722;
+  --sakura-100: #322031;
+  --sakura-200: #5a3a48;
+  --sakura-300: #8a5870;
+  --sakura-400: #e98aa9;
+  --sakura-500: #ef93b1; /* accent */
+  --sakura-600: #f4a8c0; /* lighter hover / links / headings */
+
+  --ink-900: #f3ebee;
+  --ink-700: #d8cdd2;
+  --ink-500: #a99ca3;
+  --ink-300: #7c6f76;
+
+  --paper: #16121a; /* sumi night */
+  --surface: #1f1a22;
+  --surface-2: #2a232d;
+  --border: #322a35;
+  --border-strong: #45394a;
+
+  --ok: #4cc08c;
+  --err: #f0788a;
+  --ok-soft: #18302a;
+  --err-soft: #34201f;
+  --on-accent: #211b1f; /* dark sumi on a light-pink fill */
+  --ring: #5a3a48;
+  --code-bg: #1a151f;
+
+  /* category accents — lightened / desaturated to stay legible on #16121a */
+  --cat-phrase: #f08aa6;
+  --cat-conjugation: #d98fd0;
+  --cat-verb: #7aa9ec;
+  --cat-adjective: #5cc79a;
+  --cat-noun: #e0a857;
+  --cat-particle: #a48ce8;
+  --cat-form: #4fb5b5;
+  --cat-demonstrative: #a3bd6f;
+  --cat-interrogative: #ec9a6a;
+  --cat-literal: #a99ca3;
+  --cat-other: #a99ca3;
+
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.4);
+  --shadow-md: 0 8px 28px rgba(0, 0, 0, 0.45);
+  --shadow-drawer: -12px 0 40px rgba(0, 0, 0, 0.5);
+  --scrim: rgba(0, 0, 0, 0.55);
+
+  --bg-glow-1: rgba(239, 147, 177, 0.08);
+  --bg-glow-2: rgba(138, 88, 112, 0.1);
 }
 
 * {
@@ -67,10 +143,11 @@ body {
   font-family: var(--font-ui);
   color: var(--ink-900);
   background:
-    radial-gradient(1200px 500px at 100% -10%, var(--sakura-100), transparent 60%),
-    radial-gradient(900px 500px at -10% 110%, var(--sakura-100), transparent 55%),
+    radial-gradient(1200px 500px at 100% -10%, var(--bg-glow-1), transparent 60%),
+    radial-gradient(900px 500px at -10% 110%, var(--bg-glow-2), transparent 55%),
     var(--paper);
   -webkit-font-smoothing: antialiased;
+  transition: background-color 0.2s ease, color 0.2s ease;
 }
 
 :lang(ja),
@@ -130,7 +207,7 @@ button {
 .tj-select:focus,
 .tj-input:focus {
   border-color: var(--sakura-400);
-  box-shadow: 0 0 0 3px var(--sakura-100);
+  box-shadow: 0 0 0 3px var(--ring);
 }
 
 .tj-btn {
@@ -154,7 +231,7 @@ button {
 }
 
 .tj-btn--primary {
-  color: #fff;
+  color: var(--on-accent);
   background: var(--sakura-500);
   border-color: var(--sakura-500);
 }
@@ -162,7 +239,7 @@ button {
 .tj-btn--primary:hover {
   background: var(--sakura-600);
   border-color: var(--sakura-600);
-  color: #fff;
+  color: var(--on-accent);
 }
 
 .tj-chip {

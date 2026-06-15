@@ -29,7 +29,7 @@
 
 .filterActive {
   background: var(--sakura-500);
-  color: #fff;
+  color: var(--on-accent);
   border-color: var(--sakura-500);
 }
 
