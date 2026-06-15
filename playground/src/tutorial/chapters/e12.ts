@@ -32,7 +32,7 @@ type 寿司 = ProperNoun<"寿司">;
 type 食べる = IchidanVerb & { stem: "食べ"; ending: "る" };
 
 // 私 + は + 寿司 + を + 食べる(辞書形)
-type 私は寿司を食べる = \`\${PhraseWithParticle<私, "は">}\${PhraseWithParticle<寿司, "を">}\${ConjugateVerb<食べる, "辞書形">}\`;
+type 私は寿司を食べる = \`\${PhraseWithParticle<私, "は">}\${PhraseWithParticle<寿司, "を">}\${ConjugateVerb<食べる, "Dictionary">}\`;
 `,
         },
         {
@@ -47,7 +47,7 @@ type 本 = ProperNoun<"本">;
 type 読む = GodanVerb & { stem: "読"; ending: "む" };
 
 // 毎日 + 本 + を + 読む(辞書形)
-type 毎日本を読む = \`\${毎日}\${PhraseWithParticle<本, "を">}\${ConjugateVerb<読む, "辞書形">}\`;
+type 毎日本を読む = \`\${毎日}\${PhraseWithParticle<本, "を">}\${ConjugateVerb<読む, "Dictionary">}\`;
 `,
         },
       ],
@@ -72,7 +72,7 @@ type 泳ぐ = GodanVerb & { stem: "泳"; ending: "ぐ" };
 type 楽しい = IAdjective & { stem: "楽し"; ending: "い" };
 
 // 泳ぐ(辞書形) + こと + は + 楽しい(基本形)
-type 泳ぐことは楽しい = \`\${PhraseWithParticle<\`\${ConjugateVerb<泳ぐ, "辞書形">}こと\`, "は">}\${ConjugateAdjective<楽しい, "基本形">}\`;
+type 泳ぐことは楽しい = \`\${PhraseWithParticle<\`\${ConjugateVerb<泳ぐ, "Dictionary">}こと\`, "は">}\${ConjugateAdjective<楽しい, "Basic">}\`;
 `,
         },
         {
@@ -87,7 +87,7 @@ type 読む = GodanVerb & { stem: "読"; ending: "む" };
 type 好き = NaAdjective & { stem: "好き" };
 
 // 本を + 読むこと + が + 好きです(丁寧形)
-type 本を読むことが好きです = \`\${PhraseWithParticle<本, "を">}\${PhraseWithParticle<\`\${ConjugateVerb<読む, "辞書形">}こと\`, "が">}\${ConjugateAdjective<好き, "丁寧形">}\`;
+type 本を読むことが好きです = \`\${PhraseWithParticle<本, "を">}\${PhraseWithParticle<\`\${ConjugateVerb<読む, "Dictionary">}こと\`, "が">}\${ConjugateAdjective<好き, "Polite">}\`;
 `,
         },
       ],
@@ -115,7 +115,7 @@ type する = IrregularVerb & { dictionary: "する" };
 
 // できます = する の可能形(でき) + ます
 // 私は + 日本語を + 話すこと + が + できます
-type 私は日本語を話すことができます = \`\${PhraseWithParticle<私, "は">}\${PhraseWithParticle<日本語, "を">}\${PhraseWithParticle<\`\${ConjugateVerb<話す, "辞書形">}こと\`, "が">}\${ConjugateVerb<する, "可能形">}ます\`;
+type 私は日本語を話すことができます = \`\${PhraseWithParticle<私, "は">}\${PhraseWithParticle<日本語, "を">}\${PhraseWithParticle<\`\${ConjugateVerb<話す, "Dictionary">}こと\`, "が">}\${ConjugateVerb<する, "Potential">}ます\`;
 `,
         },
         {
@@ -131,7 +131,7 @@ type 弾く = GodanVerb & { stem: "弾"; ending: "く" };
 type する = IrregularVerb & { dictionary: "する" };
 
 // できる = する の可能形(でき) + る
-type 彼はピアノを弾くことができる = \`\${PhraseWithParticle<彼, "は">}\${PhraseWithParticle<ピアノ, "を">}\${PhraseWithParticle<\`\${ConjugateVerb<弾く, "辞書形">}こと\`, "が">}\${ConjugateVerb<する, "可能形">}る\`;
+type 彼はピアノを弾くことができる = \`\${PhraseWithParticle<彼, "は">}\${PhraseWithParticle<ピアノ, "を">}\${PhraseWithParticle<\`\${ConjugateVerb<弾く, "Dictionary">}こと\`, "が">}\${ConjugateVerb<する, "Potential">}る\`;
 `,
         },
       ],
@@ -158,7 +158,7 @@ type 好き = NaAdjective & { stem: "好き" };
 
 // 好きだ = 好き(な形容詞) + だ
 // 私は + 泳ぐこと + が + 好き + だ
-type 私は泳ぐことが好きだ = \`\${PhraseWithParticle<私, "は">}\${PhraseWithParticle<\`\${ConjugateVerb<泳ぐ, "辞書形">}こと\`, "が">}\${ConjugateCopula<好き["stem"], "断定形">}\`;
+type 私は泳ぐことが好きだ = \`\${PhraseWithParticle<私, "は">}\${PhraseWithParticle<\`\${ConjugateVerb<泳ぐ, "Dictionary">}こと\`, "が">}\${ConjugateCopula<好き["stem"], "Plain">}\`;
 `,
         },
         {
@@ -174,7 +174,7 @@ type する = IrregularVerb & { dictionary: "する" };
 type 好き = NaAdjective & { stem: "好き" };
 
 // 母は + 料理を + すること + が + 好きです(丁寧形)
-type 母は料理をすることが好きです = \`\${PhraseWithParticle<母, "は">}\${PhraseWithParticle<料理, "を">}\${PhraseWithParticle<\`\${ConjugateVerb<する, "辞書形">}こと\`, "が">}\${ConjugateAdjective<好き, "丁寧形">}\`;
+type 母は料理をすることが好きです = \`\${PhraseWithParticle<母, "は">}\${PhraseWithParticle<料理, "を">}\${PhraseWithParticle<\`\${ConjugateVerb<する, "Dictionary">}こと\`, "が">}\${ConjugateAdjective<好き, "Polite">}\`;
 `,
         },
       ],

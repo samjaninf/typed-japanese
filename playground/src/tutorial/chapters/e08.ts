@@ -31,7 +31,7 @@ type 高い = IAdjective & { stem: "高"; ending: "い" };
 type 山 = ProperNoun<"山">;
 
 // i-adjective in 基本形 sits directly before the noun
-type 高い山 = \`\${ConjugateAdjective<高い, "基本形">}\${山}\`;
+type 高い山 = \`\${ConjugateAdjective<高い, "Basic">}\${山}\`;
 `,
         },
         {
@@ -45,7 +45,7 @@ type 静か = NaAdjective & { stem: "静か" };
 type 部屋 = ProperNoun<"部屋">;
 
 // na-adjective 基本形 already carries the linking な
-type 静かな部屋 = \`\${ConjugateAdjective<静か, "基本形">}\${部屋}\`;
+type 静かな部屋 = \`\${ConjugateAdjective<静か, "Basic">}\${部屋}\`;
 `,
         },
         {
@@ -59,7 +59,7 @@ type きれい = NaAdjective & { stem: "きれい" };
 type 花 = ProperNoun<"花">;
 
 // 静かな部屋 pattern, then close with です
-type きれいな花です = \`\${ConjugateAdjective<きれい, "基本形">}\${ConjugateCopula<花, "丁寧形">}\`;
+type きれいな花です = \`\${ConjugateAdjective<きれい, "Basic">}\${ConjugateCopula<花, "Polite">}\`;
 `,
         },
       ],
@@ -84,7 +84,7 @@ type 今日 = ProperNoun<"今日">;
 type 暑い = IAdjective & { stem: "暑"; ending: "い" };
 
 // 丁寧形 of an i-adjective = stem + いです
-type 今日は暑いです = \`\${PhraseWithParticle<今日, "は">}\${ConjugateAdjective<暑い, "丁寧形">}\`;
+type 今日は暑いです = \`\${PhraseWithParticle<今日, "は">}\${ConjugateAdjective<暑い, "Polite">}\`;
 `,
         },
         {
@@ -98,7 +98,7 @@ type 父 = ProperNoun<"父">;
 type 元気 = NaAdjective & { stem: "元気" };
 
 // 丁寧形 of a na-adjective = stem + です (no な)
-type 父は元気です = \`\${PhraseWithParticle<父, "は">}\${ConjugateAdjective<元気, "丁寧形">}\`;
+type 父は元気です = \`\${PhraseWithParticle<父, "は">}\${ConjugateAdjective<元気, "Polite">}\`;
 `,
         },
       ],
@@ -123,7 +123,7 @@ type この本 = ProperNoun<"この本">;
 type 高い = IAdjective & { stem: "高"; ending: "い" };
 
 // 否定形 of an i-adjective = stem + くない
-type この本は高くない = \`\${PhraseWithParticle<この本, "は">}\${ConjugateAdjective<高い, "否定形">}\`;
+type この本は高くない = \`\${PhraseWithParticle<この本, "は">}\${ConjugateAdjective<高い, "Negative">}\`;
 `,
         },
         {
@@ -137,7 +137,7 @@ type この町 = ProperNoun<"この町">;
 type 静か = NaAdjective & { stem: "静か" };
 
 // 否定形 of a na-adjective = stem + ではない
-type この町は静かではない = \`\${PhraseWithParticle<この町, "は">}\${ConjugateAdjective<静か, "否定形">}\`;
+type この町は静かではない = \`\${PhraseWithParticle<この町, "は">}\${ConjugateAdjective<静か, "Negative">}\`;
 `,
         },
       ],
@@ -162,7 +162,7 @@ type 昨日 = ProperNoun<"昨日">;
 type 寒い = IAdjective & { stem: "寒"; ending: "い" };
 
 // 過去形 of an i-adjective = stem + かった
-type 昨日は寒かった = \`\${PhraseWithParticle<昨日, "は">}\${ConjugateAdjective<寒い, "過去形">}\`;
+type 昨日は寒かった = \`\${PhraseWithParticle<昨日, "は">}\${ConjugateAdjective<寒い, "Past">}\`;
 `,
         },
         {
@@ -175,7 +175,7 @@ type 昨日は寒かった = \`\${PhraseWithParticle<昨日, "は">}\${Conjugate
 type 旅行 = ProperNoun<"旅行">;
 type 楽しい = IAdjective & { stem: "楽し"; ending: "い" };
 
-type 旅行は楽しかった = \`\${PhraseWithParticle<旅行, "は">}\${ConjugateAdjective<楽しい, "過去形">}\`;
+type 旅行は楽しかった = \`\${PhraseWithParticle<旅行, "は">}\${ConjugateAdjective<楽しい, "Past">}\`;
 `,
         },
         {
@@ -189,7 +189,7 @@ type 公園 = ProperNoun<"公園">;
 type 静か = NaAdjective & { stem: "静か" };
 
 // 過去形 of a na-adjective = stem + でした
-type 公園は静かでした = \`\${PhraseWithParticle<公園, "は">}\${ConjugateAdjective<静か, "過去形">}\`;
+type 公園は静かでした = \`\${PhraseWithParticle<公園, "は">}\${ConjugateAdjective<静か, "Past">}\`;
 `,
         },
       ],
@@ -214,7 +214,7 @@ type 天気 = ProperNoun<"天気">;
 type いい = IAdjective & { stem: "い"; ending: "い"; irregular: true };
 
 // irregular: 過去形 becomes よかった, not いかった
-type 天気がよかった = \`\${PhraseWithParticle<天気, "が">}\${ConjugateAdjective<いい, "過去形">}\`;
+type 天気がよかった = \`\${PhraseWithParticle<天気, "が">}\${ConjugateAdjective<いい, "Past">}\`;
 `,
         },
         {
@@ -228,7 +228,7 @@ type 気分 = ProperNoun<"気分">;
 type いい = IAdjective & { stem: "い"; ending: "い"; irregular: true };
 
 // irregular: 否定形 becomes よくない, not いくない
-type 気分がよくない = \`\${PhraseWithParticle<気分, "が">}\${ConjugateAdjective<いい, "否定形">}\`;
+type 気分がよくない = \`\${PhraseWithParticle<気分, "が">}\${ConjugateAdjective<いい, "Negative">}\`;
 `,
         },
       ],

@@ -154,7 +154,7 @@ type 日本語 = ProperNoun<"日本語">;
 type 教える = IchidanVerb & { stem: "教え"; ending: "る" };
 
 // 私 は + 友達 に + 日本語 を + 教えて (て形) + あげる
-type 私は友達に日本語を教えてあげる = \`\${PhraseWithParticle<私, "は">}\${PhraseWithParticle<友達, "に">}\${PhraseWithParticle<日本語, "を">}\${ConjugateVerb<教える, "て形">}あげる\`;
+type 私は友達に日本語を教えてあげる = \`\${PhraseWithParticle<私, "は">}\${PhraseWithParticle<友達, "に">}\${PhraseWithParticle<日本語, "を">}\${ConjugateVerb<教える, "Te">}あげる\`;
 `,
         },
         {
@@ -168,7 +168,7 @@ type 友達 = ProperNoun<"友達">;
 type 手伝う = GodanVerb & { stem: "手伝"; ending: "う" };
 
 // 友達 が + 手伝って (て形) + くれる
-type 友達が手伝ってくれる = \`\${PhraseWithParticle<友達, "が">}\${ConjugateVerb<手伝う, "て形">}くれる\`;
+type 友達が手伝ってくれる = \`\${PhraseWithParticle<友達, "が">}\${ConjugateVerb<手伝う, "Te">}くれる\`;
 `,
         },
       ],
@@ -194,7 +194,7 @@ type 友達 = ProperNoun<"友達">;
 type 手伝う = GodanVerb & { stem: "手伝"; ending: "う" };
 
 // 私 は + 友達 に (doer) + 手伝って (て形) + もらう
-type 私は友達に手伝ってもらう = \`\${PhraseWithParticle<私, "は">}\${PhraseWithParticle<友達, "に">}\${ConjugateVerb<手伝う, "て形">}もらう\`;
+type 私は友達に手伝ってもらう = \`\${PhraseWithParticle<私, "は">}\${PhraseWithParticle<友達, "に">}\${ConjugateVerb<手伝う, "Te">}もらう\`;
 `,
         },
         {
@@ -210,7 +210,7 @@ type 本 = ProperNoun<"本">;
 type 貸す = GodanVerb & { stem: "貸"; ending: "す" };
 
 // 私 は + 先生 に + 本 を + 貸して (て形) + もらいました (polite past)
-type 私は先生に本を貸してもらいました = \`\${PhraseWithParticle<私, "は">}\${PhraseWithParticle<先生, "に">}\${PhraseWithParticle<本, "を">}\${ConjugateVerb<貸す, "て形">}もらいました\`;
+type 私は先生に本を貸してもらいました = \`\${PhraseWithParticle<私, "は">}\${PhraseWithParticle<先生, "に">}\${PhraseWithParticle<本, "を">}\${ConjugateVerb<貸す, "Te">}もらいました\`;
 `,
         },
       ],

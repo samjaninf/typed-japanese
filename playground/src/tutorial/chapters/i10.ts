@@ -31,7 +31,7 @@ type 彼 = ProperNoun<"彼">;
 type 来る = IrregularVerb & { dictionary: "来る" };
 
 // 彼 + は + 来る (辞書形) + はずです
-type 彼は来るはずです = \`\${PhraseWithParticle<彼, "は">}\${ConjugateVerb<来る, "辞書形">}はずです\`;
+type 彼は来るはずです = \`\${PhraseWithParticle<彼, "は">}\${ConjugateVerb<来る, "Dictionary">}はずです\`;
 `,
         },
         {
@@ -45,7 +45,7 @@ type この本 = ProperNoun<"この本">;
 type 高い = IAdjective & { stem: "高"; ending: "い" };
 
 // この本 + は + 高い (基本形) + はずだ
-type この本は高いはずだ = \`\${PhraseWithParticle<この本, "は">}\${ConjugateAdjective<高い, "基本形">}はずだ\`;
+type この本は高いはずだ = \`\${PhraseWithParticle<この本, "は">}\${ConjugateAdjective<高い, "Basic">}はずだ\`;
 `,
         },
         {
@@ -84,7 +84,7 @@ type 本当のこと = ProperNoun<"本当のこと">;
 type 言う = GodanVerb & { stem: "言"; ending: "う" };
 
 // 本当のこと + を + 言う (辞書形) + べきだ
-type 本当のことを言うべきだ = \`\${PhraseWithParticle<本当のこと, "を">}\${ConjugateVerb<言う, "辞書形">}べきだ\`;
+type 本当のことを言うべきだ = \`\${PhraseWithParticle<本当のこと, "を">}\${ConjugateVerb<言う, "Dictionary">}べきだ\`;
 `,
         },
         {
@@ -99,7 +99,7 @@ type 病院 = ProperNoun<"病院">;
 type 行く = GodanVerb & { stem: "行"; ending: "く" };
 
 // 今すぐ + 病院 + へ + 行く (辞書形) + べきです
-type 今すぐ病院へ行くべきです = \`\${今すぐ}\${PhraseWithParticle<病院, "へ">}\${ConjugateVerb<行く, "辞書形">}べきです\`;
+type 今すぐ病院へ行くべきです = \`\${今すぐ}\${PhraseWithParticle<病院, "へ">}\${ConjugateVerb<行く, "Dictionary">}べきです\`;
 `,
         },
         {
@@ -113,7 +113,7 @@ type そんなこと = ProperNoun<"そんなこと">;
 type 言う = GodanVerb & { stem: "言"; ending: "う" };
 
 // そんなこと + を + 言う (辞書形) + べきではない (negative)
-type そんなことを言うべきではない = \`\${PhraseWithParticle<そんなこと, "を">}\${ConjugateVerb<言う, "辞書形">}べきではない\`;
+type そんなことを言うべきではない = \`\${PhraseWithParticle<そんなこと, "を">}\${ConjugateVerb<言う, "Dictionary">}べきではない\`;
 `,
         },
       ],
@@ -137,7 +137,7 @@ type そんなことを言うべきではない = \`\${PhraseWithParticle<そん
 type 寒い = IAdjective & { stem: "寒"; ending: "い" };
 
 // 寒い (基本形) + わけだ
-type 寒いわけだ = \`\${ConjugateAdjective<寒い, "基本形">}わけだ\`;
+type 寒いわけだ = \`\${ConjugateAdjective<寒い, "Basic">}わけだ\`;
 `,
         },
         {
@@ -152,7 +152,7 @@ type 勉強 = ProperNoun<"勉強">;
 type する = IrregularVerb & { dictionary: "する" };
 
 // 毎日 + 勉強 + した (た形) + わけです
-type 毎日勉強したわけです = \`\${毎日}\${勉強}\${ConjugateVerb<する, "た形">}わけです\`;
+type 毎日勉強したわけです = \`\${毎日}\${勉強}\${ConjugateVerb<する, "Ta">}わけです\`;
 `,
         },
         {

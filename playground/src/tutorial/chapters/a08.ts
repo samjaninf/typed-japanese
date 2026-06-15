@@ -32,7 +32,7 @@ type 休む = GodanVerb & { stem: "休"; ending: "む" };
 type 働く = GodanVerb & { stem: "働"; ending: "く" };
 
 // 彼 + は + 休む(辞書形) + ことなく + 働く(辞書形)
-type 彼は休むことなく働く = \`\${PhraseWithParticle<彼, "は">}\${ConjugateVerb<休む, "辞書形">}ことなく\${ConjugateVerb<働く, "辞書形">}\`;
+type 彼は休むことなく働く = \`\${PhraseWithParticle<彼, "は">}\${ConjugateVerb<休む, "Dictionary">}ことなく\${ConjugateVerb<働く, "Dictionary">}\`;
 `,
         },
         {
@@ -47,7 +47,7 @@ type あきらめる = IchidanVerb & { stem: "あきらめ"; ending: "る" };
 type 続ける = IchidanVerb & { stem: "続け"; ending: "る" };
 
 // 彼女 + は + あきらめる(辞書形) + ことなく + 続けた(た形)
-type 彼女はあきらめることなく続けた = \`\${PhraseWithParticle<彼女, "は">}\${ConjugateVerb<あきらめる, "辞書形">}ことなく\${ConjugateVerb<続ける, "た形">}\`;
+type 彼女はあきらめることなく続けた = \`\${PhraseWithParticle<彼女, "は">}\${ConjugateVerb<あきらめる, "Dictionary">}ことなく\${ConjugateVerb<続ける, "Ta">}\`;
 `,
         },
       ],
@@ -73,7 +73,7 @@ type 言う = GodanVerb & { stem: "言"; ending: "う" };
 type 帰る = GodanVerb & { stem: "帰"; ending: "る" };
 
 // 何 + も + 言わ(ない形) + ずに + 帰った(た形)
-type 何も言わずに帰った = \`\${PhraseWithParticle<何, "も">}\${ConjugateVerb<言う, "ない形">}ずに\${ConjugateVerb<帰る, "た形">}\`;
+type 何も言わずに帰った = \`\${PhraseWithParticle<何, "も">}\${ConjugateVerb<言う, "Nai">}ずに\${ConjugateVerb<帰る, "Ta">}\`;
 `,
         },
         {
@@ -89,7 +89,7 @@ type 食べる = IchidanVerb & { stem: "食べ"; ending: "る" };
 type 行く = GodanVerb & { stem: "行"; ending: "く" };
 
 // 朝ご飯 + を + 食べ(ない形) + ずに + 学校 + へ + 行く(辞書形)
-type 朝ご飯を食べずに学校へ行く = \`\${PhraseWithParticle<朝ご飯, "を">}\${ConjugateVerb<食べる, "ない形">}ずに\${PhraseWithParticle<学校, "へ">}\${ConjugateVerb<行く, "辞書形">}\`;
+type 朝ご飯を食べずに学校へ行く = \`\${PhraseWithParticle<朝ご飯, "を">}\${ConjugateVerb<食べる, "Nai">}ずに\${PhraseWithParticle<学校, "へ">}\${ConjugateVerb<行く, "Dictionary">}\`;
 `,
         },
         {
@@ -103,7 +103,7 @@ type 予約 = ProperNoun<"予約">;
 type 来る = IrregularVerb & { dictionary: "来る" };
 
 // する is irregular here: する → せずに (せ is kana, kept literal); 来 + た形(来た)
-type 予約せずに来た = \`\${予約}せずに\${ConjugateVerb<来る, "た形">}\`;
+type 予約せずに来た = \`\${予約}せずに\${ConjugateVerb<来る, "Ta">}\`;
 `,
         },
       ],
@@ -145,7 +145,7 @@ type 抜き = ProperNoun<"抜き">;
 type 話す = GodanVerb & { stem: "話"; ending: "す" };
 
 // 冗談 + 抜き + で + 話そ(意向形) + う
-type 冗談抜きで話そう = \`\${冗談}\${抜き}で\${ConjugateVerb<話す, "意向形">}う\`;
+type 冗談抜きで話そう = \`\${冗談}\${抜き}で\${ConjugateVerb<話す, "Volitional">}う\`;
 `,
         },
       ],

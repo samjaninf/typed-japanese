@@ -31,7 +31,7 @@ type これ = ProperNoun<"これ">;
 type 値段 = ProperNoun<"300円">;
 
 // これ + は (topic) + 300円 + です
-type これは300円です = \`\${PhraseWithParticle<これ, "は">}\${ConjugateCopula<値段, "丁寧形">}\`;
+type これは300円です = \`\${PhraseWithParticle<これ, "は">}\${ConjugateCopula<値段, "Polite">}\`;
 `,
         },
         {
@@ -44,7 +44,7 @@ type これは300円です = \`\${PhraseWithParticle<これ, "は">}\${Conjugate
 type この本 = ProperNoun<"この本">;
 type 値段 = ProperNoun<"1500円">;
 
-type この本は1500円です = \`\${PhraseWithParticle<この本, "は">}\${ConjugateCopula<値段, "丁寧形">}\`;
+type この本は1500円です = \`\${PhraseWithParticle<この本, "は">}\${ConjugateCopula<値段, "Polite">}\`;
 `,
         },
       ],
@@ -69,7 +69,7 @@ type 今 = ProperNoun<"今">;
 type 時刻 = ProperNoun<"7時30分">;
 
 // 今 (now) + 7時30分 + です
-type 今7時30分です = \`\${今}\${ConjugateCopula<時刻, "丁寧形">}\`;
+type 今7時30分です = \`\${今}\${ConjugateCopula<時刻, "Polite">}\`;
 `,
         },
         {
@@ -83,7 +83,7 @@ type 会議 = ProperNoun<"会議">;
 type 午後3時 = ProperNoun<"午後3時">;
 
 // 会議 + は + 午後3時 + から + です
-type 会議は午後3時からです = \`\${PhraseWithParticle<会議, "は">}\${ConjugateCopula<PhraseWithParticle<午後3時, "から">, "丁寧形">}\`;
+type 会議は午後3時からです = \`\${PhraseWithParticle<会議, "は">}\${ConjugateCopula<PhraseWithParticle<午後3時, "から">, "Polite">}\`;
 `,
         },
       ],
@@ -121,7 +121,7 @@ type りんごを三つください = \`\${PhraseWithParticle<りんご, "を">}
 type 学生 = ProperNoun<"学生">;
 type 二人 = ProperNoun<"二人">;
 
-type 学生は二人です = \`\${PhraseWithParticle<学生, "は">}\${ConjugateCopula<二人, "丁寧形">}\`;
+type 学生は二人です = \`\${PhraseWithParticle<学生, "は">}\${ConjugateCopula<二人, "Polite">}\`;
 `,
         },
         {
@@ -136,7 +136,7 @@ type 二枚 = ProperNoun<"二枚">;
 type 買う = GodanVerb & { stem: "買"; ending: "う" };
 
 // 切符 + を + 二枚 + 買い (ます形) + ます
-type 切符を二枚買います = \`\${PhraseWithParticle<切符, "を">}\${二枚}\${ConjugateVerb<買う, "ます形">}ます\`;
+type 切符を二枚買います = \`\${PhraseWithParticle<切符, "を">}\${二枚}\${ConjugateVerb<買う, "Masu">}ます\`;
 `,
         },
       ],
@@ -176,7 +176,7 @@ type 九時 = ProperNoun<"9時">;
 type 五時 = ProperNoun<"5時">;
 
 // 店 + は + 9時 + から + 5時 + まで + です
-type 店は9時から5時までです = \`\${PhraseWithParticle<店, "は">}\${PhraseWithParticle<九時, "から">}\${ConjugateCopula<PhraseWithParticle<五時, "まで">, "丁寧形">}\`;
+type 店は9時から5時までです = \`\${PhraseWithParticle<店, "は">}\${PhraseWithParticle<九時, "から">}\${ConjugateCopula<PhraseWithParticle<五時, "まで">, "Polite">}\`;
 `,
         },
       ],

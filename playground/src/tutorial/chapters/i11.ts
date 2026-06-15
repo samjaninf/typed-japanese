@@ -33,7 +33,7 @@ type 聞く = GodanVerb & { stem: "聞"; ending: "く" };
 type する = IrregularVerb & { dictionary: "する" };
 
 // 音楽を + 聞き(ます-stem) + ながら + 勉強 + し(ます-stem) + ます
-type 音楽を聞きながら勉強します = \`\${音楽}を\${ConjugateVerb<聞く, "ます形">}ながら\${勉強}\${ConjugateVerb<する, "ます形">}ます\`;
+type 音楽を聞きながら勉強します = \`\${音楽}を\${ConjugateVerb<聞く, "Masu">}ながら\${勉強}\${ConjugateVerb<する, "Masu">}ます\`;
 `,
         },
         {
@@ -47,7 +47,7 @@ type 歩く = GodanVerb & { stem: "歩"; ending: "く" };
 type 話す = GodanVerb & { stem: "話"; ending: "す" };
 
 // 歩き(ます-stem) + ながら + 話し(ます-stem) + ましょう
-type 歩きながら話しましょう = \`\${ConjugateVerb<歩く, "ます形">}ながら\${ConjugateVerb<話す, "ます形">}ましょう\`;
+type 歩きながら話しましょう = \`\${ConjugateVerb<歩く, "Masu">}ながら\${ConjugateVerb<話す, "Masu">}ましょう\`;
 `,
         },
       ],
@@ -73,7 +73,7 @@ type 履く = GodanVerb & { stem: "履"; ending: "く" };
 type 入る = GodanVerb & { stem: "入"; ending: "る" };
 
 // 靴を + 履いた(た形) + まま + 入り(ます-stem) + ました
-type 靴を履いたまま入りました = \`\${靴}を\${ConjugateVerb<履く, "た形">}まま\${ConjugateVerb<入る, "ます形">}ました\`;
+type 靴を履いたまま入りました = \`\${靴}を\${ConjugateVerb<履く, "Ta">}まま\${ConjugateVerb<入る, "Masu">}ました\`;
 `,
         },
         {
@@ -88,7 +88,7 @@ type つける = IchidanVerb & { stem: "つけ"; ending: "る" };
 type 寝る = IchidanVerb & { stem: "寝"; ending: "る" };
 
 // 電気を + つけた(た形) + まま + 寝(ます-stem) + ました
-type 電気をつけたまま寝ました = \`\${電気}を\${ConjugateVerb<つける, "た形">}まま\${ConjugateVerb<寝る, "ます形">}ました\`;
+type 電気をつけたまま寝ました = \`\${電気}を\${ConjugateVerb<つける, "Ta">}まま\${ConjugateVerb<寝る, "Masu">}ました\`;
 `,
         },
       ],
@@ -114,7 +114,7 @@ type 考える = IchidanVerb & { stem: "考え"; ending: "る" };
 type 歩く = GodanVerb & { stem: "歩"; ending: "く" };
 
 // 未来を + 考え(ます-stem) + つつ + 歩き(ます-stem) + ます
-type 未来を考えつつ歩きます = \`\${未来}を\${ConjugateVerb<考える, "ます形">}つつ\${ConjugateVerb<歩く, "ます形">}ます\`;
+type 未来を考えつつ歩きます = \`\${未来}を\${ConjugateVerb<考える, "Masu">}つつ\${ConjugateVerb<歩く, "Masu">}ます\`;
 `,
         },
         {
@@ -129,7 +129,7 @@ type 知る = GodanVerb & { stem: "知"; ending: "る" };
 type 飲む = GodanVerb & { stem: "飲"; ending: "む" };
 
 // 悪い(基本形) + と + 知り(ます-stem) + つつも + 飲み(ます-stem) + ました
-type 悪いと知りつつも飲みました = \`\${ConjugateAdjective<悪い, "基本形">}と\${ConjugateVerb<知る, "ます形">}つつも\${ConjugateVerb<飲む, "ます形">}ました\`;
+type 悪いと知りつつも飲みました = \`\${ConjugateAdjective<悪い, "Basic">}と\${ConjugateVerb<知る, "Masu">}つつも\${ConjugateVerb<飲む, "Masu">}ました\`;
 `,
         },
       ],

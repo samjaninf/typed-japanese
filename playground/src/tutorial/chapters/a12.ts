@@ -31,7 +31,7 @@ type 言語 = ProperNoun<"言語">;
 type 文化 = ProperNoun<"文化">;
 
 // 言語 + は + 文化 + である (written copula)
-type 言語は文化である = \`\${PhraseWithParticle<言語, "は">}\${ConjugateCopula<文化, "である形">}\`;
+type 言語は文化である = \`\${PhraseWithParticle<言語, "は">}\${ConjugateCopula<文化, "Written">}\`;
 `,
         },
         {
@@ -46,7 +46,7 @@ type 重要 = NaAdjective & { stem: "重要" };
 type 問題 = ProperNoun<"問題">;
 
 // これ + は + 重要な(基本形) + 問題 + である
-type これは重要な問題である = \`\${PhraseWithParticle<これ, "は">}\${ConjugateAdjective<重要, "基本形">}\${ConjugateCopula<問題, "である形">}\`;
+type これは重要な問題である = \`\${PhraseWithParticle<これ, "は">}\${ConjugateAdjective<重要, "Basic">}\${ConjugateCopula<問題, "Written">}\`;
 `,
         },
       ],
@@ -71,7 +71,7 @@ type 我々 = ProperNoun<"我々">;
 type 行く = GodanVerb & { stem: "行"; ending: "く" };
 
 // 我々 + は + 行か(ない形) + ねばならぬ
-type 我々は行かねばならぬ = \`\${PhraseWithParticle<我々, "は">}\${ConjugateVerb<行く, "ない形">}ねばならぬ\`;
+type 我々は行かねばならぬ = \`\${PhraseWithParticle<我々, "は">}\${ConjugateVerb<行く, "Nai">}ねばならぬ\`;
 `,
         },
         {
@@ -85,7 +85,7 @@ type 規則 = ProperNoun<"規則">;
 type 守る = GodanVerb & { stem: "守"; ending: "る" };
 
 // 規則 + を + 守ら(ない形) + ねばならない
-type 規則を守らねばならない = \`\${PhraseWithParticle<規則, "を">}\${ConjugateVerb<守る, "ない形">}ねばならない\`;
+type 規則を守らねばならない = \`\${PhraseWithParticle<規則, "を">}\${ConjugateVerb<守る, "Nai">}ねばならない\`;
 `,
         },
         {
@@ -124,7 +124,7 @@ type 何 = ProperNoun<"何">;
 type 知る = GodanVerb & { stem: "知"; ending: "る" };
 
 // 彼 + は + 何 + も + 知ら(ない形) + ぬ
-type 彼は何も知らぬ = \`\${PhraseWithParticle<彼, "は">}\${PhraseWithParticle<何, "も">}\${ConjugateVerb<知る, "ない形">}ぬ\`;
+type 彼は何も知らぬ = \`\${PhraseWithParticle<彼, "は">}\${PhraseWithParticle<何, "も">}\${ConjugateVerb<知る, "Nai">}ぬ\`;
 `,
         },
         {
@@ -139,7 +139,7 @@ type 人 = ProperNoun<"人">;
 type 声 = ProperNoun<"声">;
 
 // 知ら(ない形) + ぬ + 人 + に + 声 + を + かけられた(literal)
-type 知らぬ人に声をかけられた = \`\${ConjugateVerb<知る, "ない形">}ぬ\${PhraseWithParticle<人, "に">}\${PhraseWithParticle<声, "を">}かけられた\`;
+type 知らぬ人に声をかけられた = \`\${ConjugateVerb<知る, "Nai">}ぬ\${PhraseWithParticle<人, "に">}\${PhraseWithParticle<声, "を">}かけられた\`;
 `,
         },
       ],
@@ -179,7 +179,7 @@ type 読む = GodanVerb & { stem: "読"; ending: "む" };
 type 本 = ProperNoun<"本">;
 
 // これ + は + 読む(辞書形) + べき + 本 + である
-type これは読むべき本である = \`\${PhraseWithParticle<これ, "は">}\${ConjugateVerb<読む, "辞書形">}べき\${ConjugateCopula<本, "である形">}\`;
+type これは読むべき本である = \`\${PhraseWithParticle<これ, "は">}\${ConjugateVerb<読む, "Dictionary">}べき\${ConjugateCopula<本, "Written">}\`;
 `,
         },
       ],

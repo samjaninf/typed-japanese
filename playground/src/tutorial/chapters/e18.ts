@@ -32,7 +32,7 @@ type 日本語 = ProperNoun<"日本語">;
 type 話す = GodanVerb & { stem: "話"; ending: "す" };
 
 // 可能形 of 話す returns 話せ → append る = 話せる
-type 私は日本語が話せる = \`\${PhraseWithParticle<私, "は">}\${PhraseWithParticle<日本語, "が">}\${ConjugateVerb<話す, "可能形">}る\`;
+type 私は日本語が話せる = \`\${PhraseWithParticle<私, "は">}\${PhraseWithParticle<日本語, "が">}\${ConjugateVerb<話す, "Potential">}る\`;
 `,
         },
         {
@@ -46,7 +46,7 @@ type お酒 = ProperNoun<"お酒">;
 type 飲む = GodanVerb & { stem: "飲"; ending: "む" };
 
 // 飲める → polite question: 飲めますか
-type お酒が飲めますか = \`\${PhraseWithParticle<お酒, "が">}\${ConjugateVerb<飲む, "可能形">}ますか\`;
+type お酒が飲めますか = \`\${PhraseWithParticle<お酒, "が">}\${ConjugateVerb<飲む, "Potential">}ますか\`;
 `,
         },
         {
@@ -60,7 +60,7 @@ type 明日 = ProperNoun<"明日">;
 type 行く = GodanVerb & { stem: "行"; ending: "く" };
 
 // 行ける → negative: 行けない
-type 明日は行けない = \`\${PhraseWithParticle<明日, "は">}\${ConjugateVerb<行く, "可能形">}ない\`;
+type 明日は行けない = \`\${PhraseWithParticle<明日, "は">}\${ConjugateVerb<行く, "Potential">}ない\`;
 `,
         },
       ],
@@ -86,7 +86,7 @@ type 刺身 = ProperNoun<"刺身">;
 type 食べる = IchidanVerb & { stem: "食べ"; ending: "る" };
 
 // 可能形 of 食べる returns 食べられ → append る = 食べられる
-type 私は刺身が食べられる = \`\${PhraseWithParticle<私, "は">}\${PhraseWithParticle<刺身, "が">}\${ConjugateVerb<食べる, "可能形">}る\`;
+type 私は刺身が食べられる = \`\${PhraseWithParticle<私, "は">}\${PhraseWithParticle<刺身, "が">}\${ConjugateVerb<食べる, "Potential">}る\`;
 `,
         },
         {
@@ -101,7 +101,7 @@ type 富士山 = ProperNoun<"富士山">;
 type 見る = IchidanVerb & { stem: "見"; ending: "る" };
 
 // 見る → 見られる
-type ここから富士山が見られる = \`\${PhraseWithParticle<ここ, "から">}\${PhraseWithParticle<富士山, "が">}\${ConjugateVerb<見る, "可能形">}る\`;
+type ここから富士山が見られる = \`\${PhraseWithParticle<ここ, "から">}\${PhraseWithParticle<富士山, "が">}\${ConjugateVerb<見る, "Potential">}る\`;
 `,
         },
       ],
@@ -127,7 +127,7 @@ type ピアノ = ProperNoun<"ピアノ">;
 type する = IrregularVerb & { dictionary: "する" };
 
 // 可能形 of する returns でき → append る = できる
-type 私はピアノができる = \`\${PhraseWithParticle<私, "は">}\${PhraseWithParticle<ピアノ, "が">}\${ConjugateVerb<する, "可能形">}る\`;
+type 私はピアノができる = \`\${PhraseWithParticle<私, "は">}\${PhraseWithParticle<ピアノ, "が">}\${ConjugateVerb<する, "Potential">}る\`;
 `,
         },
         {
@@ -141,7 +141,7 @@ type 明日 = ProperNoun<"明日">;
 type 来る = IrregularVerb & { dictionary: "来る" };
 
 // 可能形 of 来る returns 来られ → polite question: 来られますか
-type 明日来られますか = \`\${明日}\${ConjugateVerb<来る, "可能形">}ますか\`;
+type 明日来られますか = \`\${明日}\${ConjugateVerb<来る, "Potential">}ますか\`;
 `,
         },
       ],
@@ -166,7 +166,7 @@ type 漢字 = ProperNoun<"漢字">;
 type 読む = GodanVerb & { stem: "読"; ending: "む" };
 
 // object marked with が + 読める
-type 漢字が読める = \`\${PhraseWithParticle<漢字, "が">}\${ConjugateVerb<読む, "可能形">}る\`;
+type 漢字が読める = \`\${PhraseWithParticle<漢字, "が">}\${ConjugateVerb<読む, "Potential">}る\`;
 `,
         },
         {
@@ -182,7 +182,7 @@ type 運転 = ProperNoun<"運転">;
 type 運転する = IrregularVerb & { dictionary: "する" };
 
 // 運転する → 運転できる; 運転 as a noun then できる via 可能形 + る
-type 私は車が運転できる = \`\${PhraseWithParticle<私, "は">}\${PhraseWithParticle<車, "が">}\${運転}\${ConjugateVerb<運転する, "可能形">}る\`;
+type 私は車が運転できる = \`\${PhraseWithParticle<私, "は">}\${PhraseWithParticle<車, "が">}\${運転}\${ConjugateVerb<運転する, "Potential">}る\`;
 `,
         },
       ],

@@ -8,18 +8,18 @@
 
 // Copula conjugation forms
 export type CopulaForm =
-  | "断定形" // Plain assertive (だ)
-  | "丁寧形" // Polite (です)
-  | "過去形" // Plain past (だった)
-  | "丁寧過去形" // Polite past (でした)
-  | "否定形" // Plain negative (ではない)
-  | "丁寧否定形" // Polite negative (ではありません)
-  | "否定過去形" // Plain negative past (ではなかった)
-  | "丁寧否定過去形" // Polite negative past (ではありませんでした)
-  | "口語否定形" // Casual negative (じゃない)
-  | "口語丁寧否定形" // Casual polite negative (じゃありません)
-  | "である形" // Formal written style (である)
-  | "て形"; // Connective (で)
+  | "Plain" // Plain assertive (だ)
+  | "Polite" // Polite (です)
+  | "Past" // Plain past (だった)
+  | "PolitePast" // Polite past (でした)
+  | "Negative" // Plain negative (ではない)
+  | "PoliteNegative" // Polite negative (ではありません)
+  | "NegativePast" // Plain negative past (ではなかった)
+  | "PoliteNegativePast" // Polite negative past (ではありませんでした)
+  | "CasualNegative" // Casual negative (じゃない)
+  | "CasualPoliteNegative" // Casual polite negative (じゃありません)
+  | "Written" // Formal written style (である)
+  | "Te"; // Connective (で)
 // Note: there is deliberately no generic attributive form here. The copula's
 // attributive surfaces as な only for 形容動詞 (na-adjectives), not for plain
 // nouns (×医者な人 — a noun takes の: 病気の人). That な is scoped to NaAdjective
@@ -28,29 +28,29 @@ export type CopulaForm =
 // The surface suffix produced by each form, independent of the 体言 it attaches
 // to. Use `Copula<Form>` when the predicate stands alone (e.g. a sentence-final
 // だ after a nominalizer); use `ConjugateCopula` to bind it to a 体言.
-export type Copula<F extends CopulaForm = "断定形"> = F extends "断定形"
+export type Copula<F extends CopulaForm = "Plain"> = F extends "Plain"
   ? "だ"
-  : F extends "丁寧形"
+  : F extends "Polite"
   ? "です"
-  : F extends "過去形"
+  : F extends "Past"
   ? "だった"
-  : F extends "丁寧過去形"
+  : F extends "PolitePast"
   ? "でした"
-  : F extends "否定形"
+  : F extends "Negative"
   ? "ではない"
-  : F extends "丁寧否定形"
+  : F extends "PoliteNegative"
   ? "ではありません"
-  : F extends "否定過去形"
+  : F extends "NegativePast"
   ? "ではなかった"
-  : F extends "丁寧否定過去形"
+  : F extends "PoliteNegativePast"
   ? "ではありませんでした"
-  : F extends "口語否定形"
+  : F extends "CasualNegative"
   ? "じゃない"
-  : F extends "口語丁寧否定形"
+  : F extends "CasualPoliteNegative"
   ? "じゃありません"
-  : F extends "である形"
+  : F extends "Written"
   ? "である"
-  : F extends "て形"
+  : F extends "Te"
   ? "で"
   : never;
 
@@ -59,10 +59,10 @@ export type Copula<F extends CopulaForm = "断定形"> = F extends "断定形"
 // copula rather than a particle.
 export type ConjugateCopula<
   Taigen extends string,
-  F extends CopulaForm = "断定形"
+  F extends CopulaForm = "Plain"
 > = `${Taigen}${Copula<F>}`;
 
 // Example usage
-type 医者断定 = ConjugateCopula<"医者", "断定形">; // "医者だ"
-type 医者丁寧否定 = ConjugateCopula<"医者", "丁寧否定形">; // "医者ではありません"
-type 学生でした = ConjugateCopula<"学生", "丁寧過去形">; // "学生でした"
+type 医者断定 = ConjugateCopula<"医者", "Plain">; // "医者だ"
+type 医者丁寧否定 = ConjugateCopula<"医者", "PoliteNegative">; // "医者ではありません"
+type 学生でした = ConjugateCopula<"学生", "PolitePast">; // "学生でした"

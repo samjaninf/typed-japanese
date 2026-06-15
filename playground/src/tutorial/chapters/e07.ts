@@ -32,7 +32,7 @@ type コーヒー = ProperNoun<"コーヒー">;
 type 飲む = GodanVerb & { stem: "飲"; ending: "む" };
 
 // 私 + は + コーヒー + を + 飲み(ます形) + ました
-type 私はコーヒーを飲みました = \`\${PhraseWithParticle<私, "は">}\${コーヒー}を\${ConjugateVerb<飲む, "ます形">}ました\`;
+type 私はコーヒーを飲みました = \`\${PhraseWithParticle<私, "は">}\${コーヒー}を\${ConjugateVerb<飲む, "Masu">}ました\`;
 `,
         },
         {
@@ -46,7 +46,7 @@ type 私 = ProperNoun<"私">;
 type パン = ProperNoun<"パン">;
 type 食べる = IchidanVerb & { stem: "食べ"; ending: "る" };
 
-type 私はパンを食べました = \`\${PhraseWithParticle<私, "は">}\${パン}を\${ConjugateVerb<食べる, "ます形">}ました\`;
+type 私はパンを食べました = \`\${PhraseWithParticle<私, "は">}\${パン}を\${ConjugateVerb<食べる, "Masu">}ました\`;
 `,
         },
         {
@@ -59,7 +59,7 @@ type 私はパンを食べました = \`\${PhraseWithParticle<私, "は">}\${パ
 type 田中さん = ProperNoun<"田中さん">;
 type 来る = IrregularVerb & { dictionary: "来る" };
 
-type 田中さんは来ました = \`\${PhraseWithParticle<田中さん, "は">}\${ConjugateVerb<来る, "ます形">}ました\`;
+type 田中さんは来ました = \`\${PhraseWithParticle<田中さん, "は">}\${ConjugateVerb<来る, "Masu">}ました\`;
 `,
         },
       ],
@@ -85,7 +85,7 @@ type お酒 = ProperNoun<"お酒">;
 type 飲む = GodanVerb & { stem: "飲"; ending: "む" };
 
 // ます形(飲み) + ませんでした
-type 私はお酒を飲みませんでした = \`\${PhraseWithParticle<私, "は">}\${お酒}を\${ConjugateVerb<飲む, "ます形">}ませんでした\`;
+type 私はお酒を飲みませんでした = \`\${PhraseWithParticle<私, "は">}\${お酒}を\${ConjugateVerb<飲む, "Masu">}ませんでした\`;
 `,
         },
         {
@@ -100,7 +100,7 @@ type 勉強 = ProperNoun<"勉強">;
 type する = IrregularVerb & { dictionary: "する" };
 
 // 勉強 + し(ます形 of する) + ませんでした
-type 私は勉強しませんでした = \`\${PhraseWithParticle<私, "は">}\${勉強}\${ConjugateVerb<する, "ます形">}ませんでした\`;
+type 私は勉強しませんでした = \`\${PhraseWithParticle<私, "は">}\${勉強}\${ConjugateVerb<する, "Masu">}ませんでした\`;
 `,
         },
       ],
@@ -125,7 +125,7 @@ type 田中さん = ProperNoun<"田中さん">;
 type 学生 = ProperNoun<"学生">;
 
 // です の過去形 → でした
-type 田中さんは学生でした = \`\${PhraseWithParticle<田中さん, "は">}\${ConjugateCopula<学生, "丁寧過去形">}\`;
+type 田中さんは学生でした = \`\${PhraseWithParticle<田中さん, "は">}\${ConjugateCopula<学生, "PolitePast">}\`;
 `,
         },
         {
@@ -138,7 +138,7 @@ type 田中さんは学生でした = \`\${PhraseWithParticle<田中さん, "は
 type 私 = ProperNoun<"私">;
 type 医者 = ProperNoun<"医者">;
 
-type 私は医者ではありませんでした = \`\${PhraseWithParticle<私, "は">}\${ConjugateCopula<医者, "丁寧否定過去形">}\`;
+type 私は医者ではありませんでした = \`\${PhraseWithParticle<私, "は">}\${ConjugateCopula<医者, "PoliteNegativePast">}\`;
 `,
         },
       ],
@@ -163,7 +163,7 @@ type 映画 = ProperNoun<"映画">;
 type おもしろい = IAdjective & { stem: "おもしろ"; ending: "い" };
 
 // 過去形 → おもしろかった、丁寧に → +です
-type 映画はおもしろかったです = \`\${PhraseWithParticle<映画, "は">}\${ConjugateAdjective<おもしろい, "過去形">}です\`;
+type 映画はおもしろかったです = \`\${PhraseWithParticle<映画, "は">}\${ConjugateAdjective<おもしろい, "Past">}です\`;
 `,
         },
         {
@@ -177,7 +177,7 @@ type 町 = ProperNoun<"町">;
 type 静か = NaAdjective & { stem: "静か" };
 
 // na-adjective の過去形 → 静かでした
-type 町は静かでした = \`\${PhraseWithParticle<町, "は">}\${ConjugateAdjective<静か, "過去形">}\`;
+type 町は静かでした = \`\${PhraseWithParticle<町, "は">}\${ConjugateAdjective<静か, "Past">}\`;
 `,
         },
       ],

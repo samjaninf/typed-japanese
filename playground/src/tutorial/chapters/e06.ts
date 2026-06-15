@@ -32,7 +32,7 @@ type 勉強 = ProperNoun<"勉強">;
 type する = IrregularVerb & { dictionary: "する" };
 
 // 図書館 + で (place of action) + 勉強 + します
-type 図書館で勉強します = \`\${PhraseWithParticle<図書館, "で">}\${勉強}\${ConjugateVerb<する, "ます形">}ます\`;
+type 図書館で勉強します = \`\${PhraseWithParticle<図書館, "で">}\${勉強}\${ConjugateVerb<する, "Masu">}ます\`;
 `,
         },
         {
@@ -45,7 +45,7 @@ type 図書館で勉強します = \`\${PhraseWithParticle<図書館, "で">}\${
 type レストラン = ProperNoun<"レストラン">;
 type 食べる = IchidanVerb & { stem: "食べ"; ending: "る" };
 
-type レストランで食べます = \`\${PhraseWithParticle<レストラン, "で">}\${ConjugateVerb<食べる, "ます形">}ます\`;
+type レストランで食べます = \`\${PhraseWithParticle<レストラン, "で">}\${ConjugateVerb<食べる, "Masu">}ます\`;
 `,
         },
       ],
@@ -70,7 +70,7 @@ type バス = ProperNoun<"バス">;
 type 行く = GodanVerb & { stem: "行"; ending: "く" };
 
 // バス + で (means) + 行きます
-type バスで行きます = \`\${PhraseWithParticle<バス, "で">}\${ConjugateVerb<行く, "ます形">}ます\`;
+type バスで行きます = \`\${PhraseWithParticle<バス, "で">}\${ConjugateVerb<行く, "Masu">}ます\`;
 `,
         },
         {
@@ -83,7 +83,7 @@ type バスで行きます = \`\${PhraseWithParticle<バス, "で">}\${Conjugate
 type 日本語 = ProperNoun<"日本語">;
 type 話す = GodanVerb & { stem: "話"; ending: "す" };
 
-type 日本語で話します = \`\${PhraseWithParticle<日本語, "で">}\${ConjugateVerb<話す, "ます形">}ます\`;
+type 日本語で話します = \`\${PhraseWithParticle<日本語, "で">}\${ConjugateVerb<話す, "Masu">}ます\`;
 `,
         },
       ],
@@ -108,7 +108,7 @@ type 学校 = ProperNoun<"学校">;
 type 行く = GodanVerb & { stem: "行"; ending: "く" };
 
 // 学校 + へ (direction) + 行きます
-type 学校へ行きます = \`\${PhraseWithParticle<学校, "へ">}\${ConjugateVerb<行く, "ます形">}ます\`;
+type 学校へ行きます = \`\${PhraseWithParticle<学校, "へ">}\${ConjugateVerb<行く, "Masu">}ます\`;
 `,
         },
         {
@@ -122,7 +122,7 @@ type 家 = ProperNoun<"家">;
 type 帰る = GodanVerb & { stem: "帰"; ending: "る" };
 
 // 家 + に (destination) + 帰ります
-type 家に帰ります = \`\${PhraseWithParticle<家, "に">}\${ConjugateVerb<帰る, "ます形">}ます\`;
+type 家に帰ります = \`\${PhraseWithParticle<家, "に">}\${ConjugateVerb<帰る, "Masu">}ます\`;
 `,
         },
         {
@@ -136,7 +136,7 @@ type 日本 = ProperNoun<"日本">;
 type 来る = IrregularVerb & { dictionary: "来る" };
 
 // 来る の ます形 → 来 (then append ます)
-type 日本へ来ます = \`\${PhraseWithParticle<日本, "へ">}\${ConjugateVerb<来る, "ます形">}ます\`;
+type 日本へ来ます = \`\${PhraseWithParticle<日本, "へ">}\${ConjugateVerb<来る, "Masu">}ます\`;
 `,
         },
       ],
@@ -161,7 +161,7 @@ type 七時 = ProperNoun<"7時">;
 type 起きる = IchidanVerb & { stem: "起き"; ending: "る" };
 
 // 7時 + に (point in time) + 起きます
-type 七時に起きます = \`\${PhraseWithParticle<七時, "に">}\${ConjugateVerb<起きる, "ます形">}ます\`;
+type 七時に起きます = \`\${PhraseWithParticle<七時, "に">}\${ConjugateVerb<起きる, "Masu">}ます\`;
 `,
         },
         {
@@ -174,7 +174,7 @@ type 七時に起きます = \`\${PhraseWithParticle<七時, "に">}\${Conjugate
 type 日曜日 = ProperNoun<"日曜日">;
 type 休む = GodanVerb & { stem: "休"; ending: "む" };
 
-type 日曜日に休みます = \`\${PhraseWithParticle<日曜日, "に">}\${ConjugateVerb<休む, "ます形">}ます\`;
+type 日曜日に休みます = \`\${PhraseWithParticle<日曜日, "に">}\${ConjugateVerb<休む, "Masu">}ます\`;
 `,
         },
       ],

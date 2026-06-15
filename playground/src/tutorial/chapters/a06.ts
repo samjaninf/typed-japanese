@@ -32,7 +32,7 @@ type 議論 = ProperNoun<"議論">;
 type する = IrregularVerb & { dictionary: "する" };
 
 // その + 問題 + をめぐって + 議論 + した (た形 of する)
-type その問題をめぐって議論した = \`その\${問題}をめぐって\${議論}\${ConjugateVerb<する, "た形">}\`;
+type その問題をめぐって議論した = \`その\${問題}をめぐって\${議論}\${ConjugateVerb<する, "Ta">}\`;
 `,
         },
         {
@@ -47,7 +47,7 @@ type 対立 = ProperNoun<"対立">;
 type する = IrregularVerb & { dictionary: "する" };
 
 // 予算 + をめぐって + 対立 + する (辞書形)
-type 予算をめぐって対立する = \`\${予算}をめぐって\${対立}\${ConjugateVerb<する, "辞書形">}\`;
+type 予算をめぐって対立する = \`\${予算}をめぐって\${対立}\${ConjugateVerb<する, "Dictionary">}\`;
 `,
         },
       ],
@@ -73,7 +73,7 @@ type 挨拶 = ProperNoun<"挨拶">;
 type する = IrregularVerb & { dictionary: "する" };
 
 // 開会 + にあたって + 挨拶 + する (辞書形)
-type 開会にあたって挨拶する = \`\${開会}にあたって\${挨拶}\${ConjugateVerb<する, "辞書形">}\`;
+type 開会にあたって挨拶する = \`\${開会}にあたって\${挨拶}\${ConjugateVerb<する, "Dictionary">}\`;
 `,
         },
         {
@@ -88,7 +88,7 @@ type 決意 = ProperNoun<"決意">;
 type する = IrregularVerb & { dictionary: "する" };
 
 // 新年 + にあたって + 決意 + した (た形 of する)
-type 新年にあたって決意した = \`\${新年}にあたって\${決意}\${ConjugateVerb<する, "た形">}\`;
+type 新年にあたって決意した = \`\${新年}にあたって\${決意}\${ConjugateVerb<する, "Ta">}\`;
 `,
         },
       ],
@@ -115,7 +115,7 @@ type 写真 = ProperNoun<"写真">;
 type 撮る = GodanVerb & { stem: "撮"; ending: "る" };
 
 // 卒業 + に際して + 写真 を + 撮った (た形)
-type 卒業に際して写真を撮った = \`\${卒業}\${に際して}\${PhraseWithParticle<写真, "を">}\${ConjugateVerb<撮る, "た形">}\`;
+type 卒業に際して写真を撮った = \`\${卒業}\${に際して}\${PhraseWithParticle<写真, "を">}\${ConjugateVerb<撮る, "Ta">}\`;
 `,
         },
         {
@@ -131,7 +131,7 @@ type 説明 = ProperNoun<"説明">;
 type する = IrregularVerb & { dictionary: "する" };
 
 // 契約 + に際して + 説明 + する (辞書形)
-type 契約に際して説明する = \`\${契約}\${に際して}\${説明}\${ConjugateVerb<する, "辞書形">}\`;
+type 契約に際して説明する = \`\${契約}\${に際して}\${説明}\${ConjugateVerb<する, "Dictionary">}\`;
 `,
         },
       ],

@@ -32,7 +32,7 @@ type 勉強 = ProperNoun<"勉強">;
 // する → ない形 stem "し"; then + なければなりません
 type する = IrregularVerb & { dictionary: "する" };
 
-type 毎日勉強しなければなりません = \`\${毎日}\${勉強}\${ConjugateVerb<する, "ない形">}なければなりません\`;
+type 毎日勉強しなければなりません = \`\${毎日}\${勉強}\${ConjugateVerb<する, "Nai">}なければなりません\`;
 `,
         },
         {
@@ -47,7 +47,7 @@ type 早く = ProperNoun<"早く">;
 // ichidan 起きる → ない形 stem "起き"
 type 起きる = IchidanVerb & { stem: "起き"; ending: "る" };
 
-type 明日早く起きなければなりません = \`\${明日}\${早く}\${ConjugateVerb<起きる, "ない形">}なければなりません\`;
+type 明日早く起きなければなりません = \`\${明日}\${早く}\${ConjugateVerb<起きる, "Nai">}なければなりません\`;
 `,
         },
         {
@@ -60,7 +60,7 @@ type 明日早く起きなければなりません = \`\${明日}\${早く}\${Co
 type パスポート = ProperNoun<"パスポート">;
 type 見せる = IchidanVerb & { stem: "見せ"; ending: "る" };
 
-type パスポートを見せなければなりません = \`\${PhraseWithParticle<パスポート, "を">}\${ConjugateVerb<見せる, "ない形">}なければなりません\`;
+type パスポートを見せなければなりません = \`\${PhraseWithParticle<パスポート, "を">}\${ConjugateVerb<見せる, "Nai">}なければなりません\`;
 `,
         },
       ],
@@ -85,7 +85,7 @@ type 今日 = ProperNoun<"今日">;
 // 来る → ない形 stem "来" (こ); then + なくてもいいです
 type 来る = IrregularVerb & { dictionary: "来る" };
 
-type 今日は来なくてもいいです = \`\${PhraseWithParticle<今日, "は">}\${ConjugateVerb<来る, "ない形">}なくてもいいです\`;
+type 今日は来なくてもいいです = \`\${PhraseWithParticle<今日, "は">}\${ConjugateVerb<来る, "Nai">}なくてもいいです\`;
 `,
         },
         {
@@ -99,7 +99,7 @@ type 靴 = ProperNoun<"靴">;
 // godan 脱ぐ → ない形 stem "脱が"
 type 脱ぐ = GodanVerb & { stem: "脱"; ending: "ぐ" };
 
-type 靴を脱がなくてもいいです = \`\${PhraseWithParticle<靴, "を">}\${ConjugateVerb<脱ぐ, "ない形">}なくてもいいです\`;
+type 靴を脱がなくてもいいです = \`\${PhraseWithParticle<靴, "を">}\${ConjugateVerb<脱ぐ, "Nai">}なくてもいいです\`;
 `,
         },
         {
@@ -111,7 +111,7 @@ type 靴を脱がなくてもいいです = \`\${PhraseWithParticle<靴, "を">}
 
 type 急ぐ = GodanVerb & { stem: "急"; ending: "ぐ" };
 
-type 急がなくてもいいです = \`\${ConjugateVerb<急ぐ, "ない形">}なくてもいいです\`;
+type 急がなくてもいいです = \`\${ConjugateVerb<急ぐ, "Nai">}なくてもいいです\`;
 `,
         },
       ],
@@ -136,7 +136,7 @@ type 学校 = ProperNoun<"学校">;
 // godan 行く → ない形 stem "行か"
 type 行く = GodanVerb & { stem: "行"; ending: "く" };
 
-type 学校に行かなくてもいいです = \`\${PhraseWithParticle<学校, "に">}\${ConjugateVerb<行く, "ない形">}なくてもいいです\`;
+type 学校に行かなくてもいいです = \`\${PhraseWithParticle<学校, "に">}\${ConjugateVerb<行く, "Nai">}なくてもいいです\`;
 `,
         },
         {
@@ -150,7 +150,7 @@ type 学校 = ProperNoun<"学校">;
 // same base 行か, now with the obligation ending
 type 行く = GodanVerb & { stem: "行"; ending: "く" };
 
-type 学校に行かなければなりません = \`\${PhraseWithParticle<学校, "に">}\${ConjugateVerb<行く, "ない形">}なければなりません\`;
+type 学校に行かなければなりません = \`\${PhraseWithParticle<学校, "に">}\${ConjugateVerb<行く, "Nai">}なければなりません\`;
 `,
         },
       ],

@@ -31,7 +31,7 @@ type 高い = IAdjective & { stem: "高"; ending: "い" };
 type 買う = GodanVerb & { stem: "買"; ending: "う" };
 
 // 高い (基本形) + から (reason) + 買い (ます形) + ません
-type 高いから買いません = \`\${PhraseWithParticle<ConjugateAdjective<高い, "基本形">, "から">}\${ConjugateVerb<買う, "ます形">}ません\`;
+type 高いから買いません = \`\${PhraseWithParticle<ConjugateAdjective<高い, "Basic">, "から">}\${ConjugateVerb<買う, "Masu">}ません\`;
 `,
         },
         {
@@ -45,7 +45,7 @@ type 忙しい = IAdjective & { stem: "忙し"; ending: "い" };
 type 行く = GodanVerb & { stem: "行"; ending: "く" };
 
 // 忙しい (基本形) + ので (reason) + 行き (ます形) + ません
-type 忙しいので行きません = \`\${ConjugateAdjective<忙しい, "基本形">}ので\${ConjugateVerb<行く, "ます形">}ません\`;
+type 忙しいので行きません = \`\${ConjugateAdjective<忙しい, "Basic">}ので\${ConjugateVerb<行く, "Masu">}ません\`;
 `,
         },
         {
@@ -59,7 +59,7 @@ type 雨 = ProperNoun<"雨">;
 type 休む = GodanVerb & { stem: "休"; ending: "む" };
 
 // 雨 + なので (noun + ので) + 休み (ます形) + ます
-type 雨なので休みます = \`\${雨}なので\${ConjugateVerb<休む, "ます形">}ます\`;
+type 雨なので休みます = \`\${雨}なので\${ConjugateVerb<休む, "Masu">}ます\`;
 `,
         },
       ],
@@ -84,7 +84,7 @@ type 高い = IAdjective & { stem: "高"; ending: "い" };
 type 買う = GodanVerb & { stem: "買"; ending: "う" };
 
 // 高いです (丁寧形) + が (contrast) + 買い (ます形) + ます
-type 高いですが買います = \`\${PhraseWithParticle<ConjugateAdjective<高い, "丁寧形">, "が">}\${ConjugateVerb<買う, "ます形">}ます\`;
+type 高いですが買います = \`\${PhraseWithParticle<ConjugateAdjective<高い, "Polite">, "が">}\${ConjugateVerb<買う, "Masu">}ます\`;
 `,
         },
         {
@@ -98,7 +98,7 @@ type 安い = IAdjective & { stem: "安"; ending: "い" };
 type 買う = GodanVerb & { stem: "買"; ending: "う" };
 
 // 安い (基本形) + けど (contrast) + 買い (ます形) + ません
-type 安いけど買いません = \`\${ConjugateAdjective<安い, "基本形">}けど\${ConjugateVerb<買う, "ます形">}ません\`;
+type 安いけど買いません = \`\${ConjugateAdjective<安い, "Basic">}けど\${ConjugateVerb<買う, "Masu">}ません\`;
 `,
         },
         {
@@ -112,7 +112,7 @@ type 行く = GodanVerb & { stem: "行"; ending: "く" };
 type 遅れる = IchidanVerb & { stem: "遅れ"; ending: "る" };
 
 // 行き (ます形) + ますが (polite + contrast) + 遅れ (ます形) + ます
-type 行きますが遅れます = \`\${ConjugateVerb<行く, "ます形">}ますが\${ConjugateVerb<遅れる, "ます形">}ます\`;
+type 行きますが遅れます = \`\${ConjugateVerb<行く, "Masu">}ますが\${ConjugateVerb<遅れる, "Masu">}ます\`;
 `,
         },
       ],
@@ -137,7 +137,7 @@ type 安い = IAdjective & { stem: "安"; ending: "い" };
 type 便利 = NaAdjective & { stem: "便利" };
 
 // 安い (基本形) + し + 便利です (na-adj 丁寧形)
-type 安いし便利です = \`\${ConjugateAdjective<安い, "基本形">}し\${ConjugateAdjective<便利, "丁寧形">}\`;
+type 安いし便利です = \`\${ConjugateAdjective<安い, "Basic">}し\${ConjugateAdjective<便利, "Polite">}\`;
 `,
         },
         {
@@ -151,7 +151,7 @@ type 雨 = ProperNoun<"雨">;
 type 寒い = IAdjective & { stem: "寒"; ending: "い" };
 
 // 雨 + だし (noun + し) + 寒いです (丁寧形)
-type 雨だし寒いです = \`\${ConjugateCopula<雨, "断定形">}し\${ConjugateAdjective<寒い, "丁寧形">}\`;
+type 雨だし寒いです = \`\${ConjugateCopula<雨, "Plain">}し\${ConjugateAdjective<寒い, "Polite">}\`;
 `,
         },
       ],

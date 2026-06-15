@@ -32,7 +32,7 @@ type 大阪 = ProperNoun<"大阪">;
 type 大きい = IAdjective & { stem: "大き"; ending: "い" };
 
 // 東京 + は + 大阪 + より + 大きいです
-type 東京は大阪より大きいです = \`\${PhraseWithParticle<東京, "は">}\${大阪}より\${ConjugateAdjective<大きい, "丁寧形">}\`;
+type 東京は大阪より大きいです = \`\${PhraseWithParticle<東京, "は">}\${大阪}より\${ConjugateAdjective<大きい, "Polite">}\`;
 `,
         },
         {
@@ -46,7 +46,7 @@ type 今日 = ProperNoun<"今日">;
 type 昨日 = ProperNoun<"昨日">;
 type 寒い = IAdjective & { stem: "寒"; ending: "い" };
 
-type 今日は昨日より寒いです = \`\${PhraseWithParticle<今日, "は">}\${昨日}より\${ConjugateAdjective<寒い, "丁寧形">}\`;
+type 今日は昨日より寒いです = \`\${PhraseWithParticle<今日, "は">}\${昨日}より\${ConjugateAdjective<寒い, "Polite">}\`;
 `,
         },
       ],
@@ -71,7 +71,7 @@ type 電車 = ProperNoun<"電車">;
 type 速い = IAdjective & { stem: "速"; ending: "い" };
 
 // 電車 + の + ほう + が + 速いです
-type 電車のほうが速いです = \`\${PhraseWithParticle<電車, "の">}ほう\${PhraseWithParticle<"", "が">}\${ConjugateAdjective<速い, "丁寧形">}\`;
+type 電車のほうが速いです = \`\${PhraseWithParticle<電車, "の">}ほう\${PhraseWithParticle<"", "が">}\${ConjugateAdjective<速い, "Polite">}\`;
 `,
         },
         {
@@ -86,7 +86,7 @@ type お茶 = ProperNoun<"お茶">;
 type いい = IAdjective & { stem: "い"; ending: "い"; irregular: true };
 
 // コーヒー + より + お茶 + の + ほう + が + いいです
-type コーヒーよりお茶のほうがいいです = \`\${コーヒー}より\${PhraseWithParticle<お茶, "の">}ほう\${PhraseWithParticle<"", "が">}\${ConjugateAdjective<いい, "丁寧形">}\`;
+type コーヒーよりお茶のほうがいいです = \`\${コーヒー}より\${PhraseWithParticle<お茶, "の">}ほう\${PhraseWithParticle<"", "が">}\${ConjugateAdjective<いい, "Polite">}\`;
 `,
         },
       ],
@@ -113,7 +113,7 @@ type りんご = ProperNoun<"りんご">;
 type 好き = NaAdjective & { stem: "好き" };
 
 // 果物 + の + 中 + で + りんご + が + いちばん + 好きです
-type 果物の中でりんごがいちばん好きです = \`\${PhraseWithParticle<果物, "の">}\${中}で\${PhraseWithParticle<りんご, "が">}いちばん\${ConjugateAdjective<好き, "丁寧形">}\`;
+type 果物の中でりんごがいちばん好きです = \`\${PhraseWithParticle<果物, "の">}\${中}で\${PhraseWithParticle<りんご, "が">}いちばん\${ConjugateAdjective<好き, "Polite">}\`;
 `,
         },
         {
@@ -130,7 +130,7 @@ type 背 = ProperNoun<"背">;
 type 高い = IAdjective & { stem: "高"; ending: "い" };
 
 // クラス + の + 中 + で + 田中さん + が + いちばん + 背 + が + 高いです
-type クラスの中で田中さんがいちばん背が高いです = \`\${PhraseWithParticle<クラス, "の">}\${中}で\${PhraseWithParticle<田中さん, "が">}いちばん\${PhraseWithParticle<背, "が">}\${ConjugateAdjective<高い, "丁寧形">}\`;
+type クラスの中で田中さんがいちばん背が高いです = \`\${PhraseWithParticle<クラス, "の">}\${中}で\${PhraseWithParticle<田中さん, "が">}いちばん\${PhraseWithParticle<背, "が">}\${ConjugateAdjective<高い, "Polite">}\`;
 `,
         },
       ],

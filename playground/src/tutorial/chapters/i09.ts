@@ -45,7 +45,7 @@ type 雨 = ProperNoun<"雨">;
 type 降る = GodanVerb & { stem: "降"; ending: "る" };
 
 // verb: ます-stem (降り) + そうです
-type 雨が降りそうです = \`\${PhraseWithParticle<雨, "が">}\${ConjugateVerb<降る, "ます形">}そうです\`;
+type 雨が降りそうです = \`\${PhraseWithParticle<雨, "が">}\${ConjugateVerb<降る, "Masu">}そうです\`;
 `,
         },
         {
@@ -85,7 +85,7 @@ type 雨 = ProperNoun<"雨">;
 type 降る = GodanVerb & { stem: "降"; ending: "る" };
 
 // plain (dictionary) form 降る + そうです
-type 明日は雨が降るそうです = \`\${PhraseWithParticle<明日, "は">}\${PhraseWithParticle<雨, "が">}\${ConjugateVerb<降る, "辞書形">}そうです\`;
+type 明日は雨が降るそうです = \`\${PhraseWithParticle<明日, "は">}\${PhraseWithParticle<雨, "が">}\${ConjugateVerb<降る, "Dictionary">}そうです\`;
 `,
         },
         {
@@ -100,7 +100,7 @@ type 来週 = ProperNoun<"来週">;
 type 来る = IrregularVerb & { dictionary: "来る" };
 
 // plain form 来る + そうです
-type 田中さんは来週来るそうです = \`\${PhraseWithParticle<田中さん, "は">}\${来週}\${ConjugateVerb<来る, "辞書形">}そうです\`;
+type 田中さんは来週来るそうです = \`\${PhraseWithParticle<田中さん, "は">}\${来週}\${ConjugateVerb<来る, "Dictionary">}そうです\`;
 `,
         },
       ],
@@ -139,7 +139,7 @@ type あの店 = ProperNoun<"あの店">;
 type 安い = IAdjective & { stem: "安"; ending: "い" };
 
 // i-adjective plain form 安い + らしいです
-type あの店は安いらしいです = \`\${PhraseWithParticle<あの店, "は">}\${ConjugateAdjective<安い, "基本形">}らしいです\`;
+type あの店は安いらしいです = \`\${PhraseWithParticle<あの店, "は">}\${ConjugateAdjective<安い, "Basic">}らしいです\`;
 `,
         },
       ],

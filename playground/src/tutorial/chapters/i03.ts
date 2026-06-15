@@ -32,7 +32,7 @@ type 薬 = ProperNoun<"薬">;
 type 飲む = GodanVerb & { stem: "飲"; ending: "む" };
 
 // 弟 + は + 薬を + [飲む causative stem 飲ま] + せられた
-type 弟は薬を飲ませられた = \`\${PhraseWithParticle<弟, "は">}\${PhraseWithParticle<薬, "を">}\${ConjugateVerb<飲む, "使役形">}せられた\`;
+type 弟は薬を飲ませられた = \`\${PhraseWithParticle<弟, "は">}\${PhraseWithParticle<薬, "を">}\${ConjugateVerb<飲む, "Causative">}せられた\`;
 `,
         },
         {
@@ -47,7 +47,7 @@ type 塾 = ProperNoun<"塾">;
 type 行く = GodanVerb & { stem: "行"; ending: "く" };
 
 // 毎日 + 塾に + [行く causative stem 行か] + せられます
-type 毎日塾に行かせられます = \`\${毎日}\${PhraseWithParticle<塾, "に">}\${ConjugateVerb<行く, "使役形">}せられます\`;
+type 毎日塾に行かせられます = \`\${毎日}\${PhraseWithParticle<塾, "に">}\${ConjugateVerb<行く, "Causative">}せられます\`;
 `,
         },
       ],
@@ -89,7 +89,7 @@ type 残業 = ProperNoun<"残業">;
 type する = IrregularVerb & { dictionary: "する" };
 
 // 私は + 部長に + 残業 + [する causative させ] + られた
-type 私は部長に残業させられた = \`\${PhraseWithParticle<私, "は">}\${PhraseWithParticle<部長, "に">}\${残業}\${ConjugateVerb<する, "使役形">}られた\`;
+type 私は部長に残業させられた = \`\${PhraseWithParticle<私, "は">}\${PhraseWithParticle<部長, "に">}\${残業}\${ConjugateVerb<する, "Causative">}られた\`;
 `,
         },
       ],
@@ -115,7 +115,7 @@ type 歌 = ProperNoun<"歌">;
 type 歌う = GodanVerb & { stem: "歌"; ending: "う" };
 
 // 私は + 歌を + [歌う causative stem 歌わ] + された (contraction of 歌わせられた)
-type 私は歌を歌わされた = \`\${PhraseWithParticle<私, "は">}\${PhraseWithParticle<歌, "を">}\${ConjugateVerb<歌う, "使役形">}された\`;
+type 私は歌を歌わされた = \`\${PhraseWithParticle<私, "は">}\${PhraseWithParticle<歌, "を">}\${ConjugateVerb<歌う, "Causative">}された\`;
 `,
         },
         {
@@ -129,7 +129,7 @@ type 一時間 = ProperNoun<"一時間">;
 type 待つ = GodanVerb & { stem: "待"; ending: "つ" };
 
 // 一時間も + [待つ causative stem 待た] + された
-type 一時間も待たされた = \`\${PhraseWithParticle<一時間, "も">}\${ConjugateVerb<待つ, "使役形">}された\`;
+type 一時間も待たされた = \`\${PhraseWithParticle<一時間, "も">}\${ConjugateVerb<待つ, "Causative">}された\`;
 `,
         },
       ],
@@ -156,7 +156,7 @@ type 勉強 = ProperNoun<"勉強">;
 type する = IrregularVerb & { dictionary: "する" };
 
 // 子供は + 毎日 + 勉強 + [する causative させ] + られる
-type 子供は毎日勉強させられる = \`\${PhraseWithParticle<子供, "は">}\${毎日}\${勉強}\${ConjugateVerb<する, "使役形">}られる\`;
+type 子供は毎日勉強させられる = \`\${PhraseWithParticle<子供, "は">}\${毎日}\${勉強}\${ConjugateVerb<する, "Causative">}られる\`;
 `,
         },
         {
@@ -170,7 +170,7 @@ type 私 = ProperNoun<"私">;
 type 笑う = GodanVerb & { stem: "笑"; ending: "う" };
 
 // 私は + [笑う causative stem 笑わ] + された (spontaneous reaction)
-type 私は笑わされた = \`\${PhraseWithParticle<私, "は">}\${ConjugateVerb<笑う, "使役形">}された\`;
+type 私は笑わされた = \`\${PhraseWithParticle<私, "は">}\${ConjugateVerb<笑う, "Causative">}された\`;
 `,
         },
       ],

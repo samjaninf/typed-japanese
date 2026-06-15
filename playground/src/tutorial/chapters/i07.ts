@@ -32,7 +32,7 @@ type 降る = GodanVerb & { stem: "降"; ending: "る" };
 type 行く = GodanVerb & { stem: "行"; ending: "く" };
 
 // 雨が + 降って (te-form) + も + 行きます
-type 雨が降っても行きます = \`\${雨}が\${ConjugateVerb<降る, "て形">}も\${ConjugateVerb<行く, "ます形">}ます\`;
+type 雨が降っても行きます = \`\${雨}が\${ConjugateVerb<降る, "Te">}も\${ConjugateVerb<行く, "Masu">}ます\`;
 `,
         },
         {
@@ -46,7 +46,7 @@ type 高くて = ProperNoun<"高くて">;
 type 買う = GodanVerb & { stem: "買"; ending: "う" };
 
 // 高くて (i-adj te-form) + も + 買います
-type 高くても買います = \`\${高くて}も\${ConjugateVerb<買う, "ます形">}ます\`;
+type 高くても買います = \`\${高くて}も\${ConjugateVerb<買う, "Masu">}ます\`;
 `,
         },
         {
@@ -60,7 +60,7 @@ type 食べる = IchidanVerb & { stem: "食べ"; ending: "る" };
 type 太る = GodanVerb & { stem: "太"; ending: "る" };
 
 // たくさん + 食べて (te-form) + も + 太りません
-type たくさん食べても太りません = \`たくさん\${ConjugateVerb<食べる, "て形">}も\${ConjugateVerb<太る, "ます形">}ません\`;
+type たくさん食べても太りません = \`たくさん\${ConjugateVerb<食べる, "Te">}も\${ConjugateVerb<太る, "Masu">}ません\`;
 `,
         },
       ],
@@ -86,7 +86,7 @@ type 来る = IrregularVerb & { dictionary: "来る" };
 type 会う = GodanVerb & { stem: "会"; ending: "う" };
 
 // 誰が + 来て (te-form) + も + 会いません
-type 誰が来ても会いません = \`\${誰}が\${ConjugateVerb<来る, "て形">}も\${ConjugateVerb<会う, "ます形">}ません\`;
+type 誰が来ても会いません = \`\${誰}が\${ConjugateVerb<来る, "Te">}も\${ConjugateVerb<会う, "Masu">}ません\`;
 `,
         },
         {
@@ -101,7 +101,7 @@ type 飲む = GodanVerb & { stem: "飲"; ending: "む" };
 type 眠る = GodanVerb & { stem: "眠"; ending: "る" };
 
 // 何を + 飲んで (te-form) + も + 眠れ (potential stem) + ません
-type 何を飲んでも眠れません = \`\${何}を\${ConjugateVerb<飲む, "て形">}も\${ConjugateVerb<眠る, "可能形">}ません\`;
+type 何を飲んでも眠れません = \`\${何}を\${ConjugateVerb<飲む, "Te">}も\${ConjugateVerb<眠る, "Potential">}ません\`;
 `,
         },
       ],
@@ -127,7 +127,7 @@ type 勉強する = IrregularVerb & { dictionary: "する" };
 type 分かる = GodanVerb & { stem: "分か"; ending: "る" };
 
 // 勉強 + した (ta-form of する) + のに + 分かりません
-type 勉強したのに分かりません = \`\${勉強}\${ConjugateVerb<勉強する, "た形">}のに\${ConjugateVerb<分かる, "ます形">}ません\`;
+type 勉強したのに分かりません = \`\${勉強}\${ConjugateVerb<勉強する, "Ta">}のに\${ConjugateVerb<分かる, "Masu">}ません\`;
 `,
         },
         {
@@ -142,7 +142,7 @@ type 飲む = GodanVerb & { stem: "飲"; ending: "む" };
 type 治る = GodanVerb & { stem: "治"; ending: "る" };
 
 // 薬を + 飲んだ (ta-form) + のに + 治りません
-type 薬を飲んだのに治りません = \`\${薬}を\${ConjugateVerb<飲む, "た形">}のに\${ConjugateVerb<治る, "ます形">}ません\`;
+type 薬を飲んだのに治りません = \`\${薬}を\${ConjugateVerb<飲む, "Ta">}のに\${ConjugateVerb<治る, "Masu">}ません\`;
 `,
         },
         {
@@ -156,7 +156,7 @@ type 日曜日 = ProperNoun<"日曜日">;
 type 働く = GodanVerb & { stem: "働"; ending: "く" };
 
 // 日曜日 (noun) + なのに + 働きます
-type 日曜日なのに働きます = \`\${日曜日}なのに\${ConjugateVerb<働く, "ます形">}ます\`;
+type 日曜日なのに働きます = \`\${日曜日}なのに\${ConjugateVerb<働く, "Masu">}ます\`;
 `,
         },
       ],
@@ -182,7 +182,7 @@ type 練習する = IrregularVerb & { dictionary: "する" };
 type 下手 = ProperNoun<"下手">;
 
 // 練習 + して (te-form of する) + も + 下手 + です
-type 練習しても下手です = \`\${練習}\${ConjugateVerb<練習する, "て形">}も\${ConjugateCopula<下手, "丁寧形">}\`;
+type 練習しても下手です = \`\${練習}\${ConjugateVerb<練習する, "Te">}も\${ConjugateCopula<下手, "Polite">}\`;
 `,
         },
         {
@@ -197,7 +197,7 @@ type 練習する = IrregularVerb & { dictionary: "する" };
 type 下手 = ProperNoun<"下手">;
 
 // 練習 + した (ta-form of する) + のに + 下手 + です
-type 練習したのに下手です = \`\${練習}\${ConjugateVerb<練習する, "た形">}のに\${ConjugateCopula<下手, "丁寧形">}\`;
+type 練習したのに下手です = \`\${練習}\${ConjugateVerb<練習する, "Ta">}のに\${ConjugateCopula<下手, "Polite">}\`;
 `,
         },
       ],

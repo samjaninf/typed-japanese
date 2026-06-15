@@ -31,7 +31,7 @@ type 私 = ProperNoun<"私">;
 type 学生 = ProperNoun<"学生">;
 
 // 私 + は (topic) + 学生 + です
-type 私は学生です = \`\${PhraseWithParticle<私, "は">}\${ConjugateCopula<学生, "丁寧形">}\`;
+type 私は学生です = \`\${PhraseWithParticle<私, "は">}\${ConjugateCopula<学生, "Polite">}\`;
 `,
         },
         {
@@ -44,7 +44,7 @@ type 私は学生です = \`\${PhraseWithParticle<私, "は">}\${ConjugateCopula
 type 田中さん = ProperNoun<"田中さん">;
 type 先生 = ProperNoun<"先生">;
 
-type 田中さんは先生です = \`\${PhraseWithParticle<田中さん, "は">}\${ConjugateCopula<先生, "丁寧形">}\`;
+type 田中さんは先生です = \`\${PhraseWithParticle<田中さん, "は">}\${ConjugateCopula<先生, "Polite">}\`;
 `,
         },
       ],
@@ -68,7 +68,7 @@ type 田中さんは先生です = \`\${PhraseWithParticle<田中さん, "は">}
 type 私 = ProperNoun<"私">;
 type 医者 = ProperNoun<"医者">;
 
-type 私は医者ではありません = \`\${PhraseWithParticle<私, "は">}\${ConjugateCopula<医者, "丁寧否定形">}\`;
+type 私は医者ではありません = \`\${PhraseWithParticle<私, "は">}\${ConjugateCopula<医者, "PoliteNegative">}\`;
 `,
         },
       ],
@@ -92,7 +92,7 @@ type 私は医者ではありません = \`\${PhraseWithParticle<私, "は">}\${
 type あなた = ProperNoun<"あなた">;
 type 学生 = ProperNoun<"学生">;
 
-type あなたは学生ですか = \`\${PhraseWithParticle<あなた, "は">}\${ConjugateCopula<学生, "丁寧形">}か\`;
+type あなたは学生ですか = \`\${PhraseWithParticle<あなた, "は">}\${ConjugateCopula<学生, "Polite">}か\`;
 `,
         },
       ],

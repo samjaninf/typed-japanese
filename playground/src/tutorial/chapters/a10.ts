@@ -33,7 +33,7 @@ type 中国語 = ProperNoun<"中国語">;
 type 話す = GodanVerb & { stem: "話"; ending: "す" };
 
 // 彼 は + 英語 + ばかりか + 中国語 も + 話す (辞書形)
-type 彼は英語ばかりか中国語も話す = \`\${PhraseWithParticle<彼, "は">}\${英語}ばかりか\${PhraseWithParticle<中国語, "も">}\${ConjugateVerb<話す, "辞書形">}\`;
+type 彼は英語ばかりか中国語も話す = \`\${PhraseWithParticle<彼, "は">}\${英語}ばかりか\${PhraseWithParticle<中国語, "も">}\${ConjugateVerb<話す, "Dictionary">}\`;
 `,
         },
         {
@@ -48,7 +48,7 @@ type 美しい = IAdjective & { stem: "美し"; ending: "い" };
 type 優しい = IAdjective & { stem: "優し"; ending: "い" };
 
 // 彼女 は + 美しい (基本形) + ばかりか + 優しい (基本形)
-type 彼女は美しいばかりか優しい = \`\${PhraseWithParticle<彼女, "は">}\${ConjugateAdjective<美しい, "基本形">}ばかりか\${ConjugateAdjective<優しい, "基本形">}\`;
+type 彼女は美しいばかりか優しい = \`\${PhraseWithParticle<彼女, "は">}\${ConjugateAdjective<美しい, "Basic">}ばかりか\${ConjugateAdjective<優しい, "Basic">}\`;
 `,
         },
       ],
@@ -74,7 +74,7 @@ type お金持ち = ProperNoun<"お金持ち">;
 type 貧乏 = ProperNoun<"貧乏">;
 
 // 彼 は + お金持ち + どころか + 貧乏 だ
-type 彼はお金持ちどころか貧乏だ = \`\${PhraseWithParticle<彼, "は">}\${お金持ち}どころか\${ConjugateCopula<貧乏, "断定形">}\`;
+type 彼はお金持ちどころか貧乏だ = \`\${PhraseWithParticle<彼, "は">}\${お金持ち}どころか\${ConjugateCopula<貧乏, "Plain">}\`;
 `,
         },
         {
@@ -88,7 +88,7 @@ type 休む = GodanVerb & { stem: "休"; ending: "む" };
 type 働く = GodanVerb & { stem: "働"; ending: "く" };
 
 // 休む (辞書形) + どころか + 働いた (た形)
-type 休むどころか働いた = \`\${ConjugateVerb<休む, "辞書形">}どころか\${ConjugateVerb<働く, "た形">}\`;
+type 休むどころか働いた = \`\${ConjugateVerb<休む, "Dictionary">}どころか\${ConjugateVerb<働く, "Ta">}\`;
 `,
         },
       ],
@@ -114,7 +114,7 @@ type 先生 = ProperNoun<"先生">;
 type 来る = IrregularVerb & { dictionary: "来る" };
 
 // 学生 + のみならず + 先生 も + 来た (た形 of 来る)
-type 学生のみならず先生も来た = \`\${学生}のみならず\${PhraseWithParticle<先生, "も">}\${ConjugateVerb<来る, "た形">}\`;
+type 学生のみならず先生も来た = \`\${学生}のみならず\${PhraseWithParticle<先生, "も">}\${ConjugateVerb<来る, "Ta">}\`;
 `,
         },
         {
@@ -129,7 +129,7 @@ type 海外 = ProperNoun<"海外">;
 type 有名 = ProperNoun<"有名">;
 
 // 国内 + のみならず + 海外 + でも + 有名だ
-type 国内のみならず海外でも有名だ = \`\${国内}のみならず\${海外}でも\${ConjugateCopula<有名, "断定形">}\`;
+type 国内のみならず海外でも有名だ = \`\${国内}のみならず\${海外}でも\${ConjugateCopula<有名, "Plain">}\`;
 `,
         },
       ],

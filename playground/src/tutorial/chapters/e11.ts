@@ -32,7 +32,7 @@ type パン = ProperNoun<"パン">;
 type 食べる = IchidanVerb & { type: "ichidan"; stem: "食べ"; ending: "る" };
 
 // 私 + は + パン + を + 食べて(て形) + います
-type 私はパンを食べています = \`\${PhraseWithParticle<私, "は">}\${PhraseWithParticle<パン, "を">}\${ConjugateVerb<食べる, "て形">}います\`;
+type 私はパンを食べています = \`\${PhraseWithParticle<私, "は">}\${PhraseWithParticle<パン, "を">}\${ConjugateVerb<食べる, "Te">}います\`;
 `,
         },
         {
@@ -47,7 +47,7 @@ type 本 = ProperNoun<"本">;
 type 読む = GodanVerb & { type: "godan"; stem: "読"; ending: "む" };
 
 // 読む(む godan) → て形 = 読んで → 読んでいます
-type 弟は本を読んでいます = \`\${PhraseWithParticle<弟, "は">}\${PhraseWithParticle<本, "を">}\${ConjugateVerb<読む, "て形">}います\`;
+type 弟は本を読んでいます = \`\${PhraseWithParticle<弟, "は">}\${PhraseWithParticle<本, "を">}\${ConjugateVerb<読む, "Te">}います\`;
 `,
         },
       ],
@@ -73,7 +73,7 @@ type 結婚 = ProperNoun<"結婚">;
 type する = IrregularVerb & { type: "irregular"; dictionary: "する" };
 
 // 結婚 + する → て形 = して → 結婚しています (resultant state: is married)
-type 姉は結婚しています = \`\${PhraseWithParticle<姉, "は">}\${結婚}\${ConjugateVerb<する, "て形">}います\`;
+type 姉は結婚しています = \`\${PhraseWithParticle<姉, "は">}\${結婚}\${ConjugateVerb<する, "Te">}います\`;
 `,
         },
         {
@@ -88,7 +88,7 @@ type 人 = ProperNoun<"人">;
 type 知る = GodanVerb & { type: "godan"; stem: "知"; ending: "る" };
 
 // 知る(る godan) → て形 = 知って → 知っています (state: know)
-type 私はその人を知っています = \`\${PhraseWithParticle<私, "は">}その\${PhraseWithParticle<人, "を">}\${ConjugateVerb<知る, "て形">}います\`;
+type 私はその人を知っています = \`\${PhraseWithParticle<私, "は">}その\${PhraseWithParticle<人, "を">}\${ConjugateVerb<知る, "Te">}います\`;
 `,
         },
         {
@@ -103,7 +103,7 @@ type 東京 = ProperNoun<"東京">;
 type 住む = GodanVerb & { type: "godan"; stem: "住"; ending: "む" };
 
 // 住む → て形 = 住んで → 住んでいます (ongoing state: lives)
-type 兄は東京に住んでいます = \`\${PhraseWithParticle<兄, "は">}\${PhraseWithParticle<東京, "に">}\${ConjugateVerb<住む, "て形">}います\`;
+type 兄は東京に住んでいます = \`\${PhraseWithParticle<兄, "は">}\${PhraseWithParticle<東京, "に">}\${ConjugateVerb<住む, "Te">}います\`;
 `,
         },
       ],
@@ -129,7 +129,7 @@ type 銀行 = ProperNoun<"銀行">;
 type 働く = GodanVerb & { type: "godan"; stem: "働"; ending: "く" };
 
 // 働く(く godan) → て形 = 働いて → 働いています
-type 父は銀行で働いています = \`\${PhraseWithParticle<父, "は">}\${PhraseWithParticle<銀行, "で">}\${ConjugateVerb<働く, "て形">}います\`;
+type 父は銀行で働いています = \`\${PhraseWithParticle<父, "は">}\${PhraseWithParticle<銀行, "で">}\${ConjugateVerb<働く, "Te">}います\`;
 `,
         },
         {
@@ -146,7 +146,7 @@ type 勉強 = ProperNoun<"勉強">;
 type する = IrregularVerb & { type: "irregular"; dictionary: "する" };
 
 // 毎日 (every day) marks the habitual reading; 勉強 + して + います
-type 私は毎日日本語を勉強しています = \`\${PhraseWithParticle<私, "は">}\${毎日}\${PhraseWithParticle<日本語, "を">}\${勉強}\${ConjugateVerb<する, "て形">}います\`;
+type 私は毎日日本語を勉強しています = \`\${PhraseWithParticle<私, "は">}\${毎日}\${PhraseWithParticle<日本語, "を">}\${勉強}\${ConjugateVerb<する, "Te">}います\`;
 `,
         },
       ],
@@ -171,7 +171,7 @@ type 彼 = ProperNoun<"彼">;
 type 来る = IrregularVerb & { type: "irregular"; dictionary: "来る" };
 
 // 来る → て形 = 来て → 来ていません (negative)
-type 彼はまだ来ていません = \`\${PhraseWithParticle<彼, "は">}まだ\${ConjugateVerb<来る, "て形">}いません\`;
+type 彼はまだ来ていません = \`\${PhraseWithParticle<彼, "は">}まだ\${ConjugateVerb<来る, "Te">}いません\`;
 `,
         },
         {
@@ -186,7 +186,7 @@ type 何 = ProperNoun<"何">;
 type 書く = GodanVerb & { type: "godan"; stem: "書"; ending: "く" };
 
 // 書く → て形 = 書いて → 書いていますか (question)
-type 今何を書いていますか = \`\${今}\${PhraseWithParticle<何, "を">}\${ConjugateVerb<書く, "て形">}いますか\`;
+type 今何を書いていますか = \`\${今}\${PhraseWithParticle<何, "を">}\${ConjugateVerb<書く, "Te">}いますか\`;
 `,
         },
       ],

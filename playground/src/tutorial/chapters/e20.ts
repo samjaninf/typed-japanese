@@ -32,7 +32,7 @@ type 雨 = ProperNoun<"雨">;
 type 思う = GodanVerb & { stem: "思"; ending: "う" };
 
 // 明日 + は (topic) + 雨 + だと + 思い(ます形) + ます
-type 明日は雨だと思います = \`\${PhraseWithParticle<明日, "は">}\${ConjugateCopula<雨, "断定形">}と\${ConjugateVerb<思う, "ます形">}ます\`;
+type 明日は雨だと思います = \`\${PhraseWithParticle<明日, "は">}\${ConjugateCopula<雨, "Plain">}と\${ConjugateVerb<思う, "Masu">}ます\`;
 `,
         },
         {
@@ -47,7 +47,7 @@ type 行く = GodanVerb & { stem: "行"; ending: "く" };
 type 思う = GodanVerb & { stem: "思"; ending: "う" };
 
 // 田中さんは + 行く(辞書形) + と + 思い(ます形) + ます
-type 田中さんは行くと思います = \`\${PhraseWithParticle<田中さん, "は">}\${ConjugateVerb<行く, "辞書形">}と\${ConjugateVerb<思う, "ます形">}ます\`;
+type 田中さんは行くと思います = \`\${PhraseWithParticle<田中さん, "は">}\${ConjugateVerb<行く, "Dictionary">}と\${ConjugateVerb<思う, "Masu">}ます\`;
 `,
         },
         {
@@ -62,7 +62,7 @@ type いい = IAdjective & { stem: "い"; ending: "い"; irregular: true };
 type 思う = GodanVerb & { stem: "思"; ending: "う" };
 
 // それは + いい(基本形) + と + 思う(辞書形)
-type それはいいと思う = \`\${PhraseWithParticle<それ, "は">}\${ConjugateAdjective<いい, "基本形">}と\${ConjugateVerb<思う, "辞書形">}\`;
+type それはいいと思う = \`\${PhraseWithParticle<それ, "は">}\${ConjugateAdjective<いい, "Basic">}と\${ConjugateVerb<思う, "Dictionary">}\`;
 `,
         },
       ],
@@ -88,7 +88,7 @@ type 行く = GodanVerb & { stem: "行"; ending: "く" };
 type 言う = GodanVerb & { stem: "言"; ending: "う" };
 
 // 田中さんは + 行く(辞書形) + と + 言い(ます形) + ました
-type 田中さんは行くと言いました = \`\${PhraseWithParticle<田中さん, "は">}\${ConjugateVerb<行く, "辞書形">}と\${ConjugateVerb<言う, "ます形">}ました\`;
+type 田中さんは行くと言いました = \`\${PhraseWithParticle<田中さん, "は">}\${ConjugateVerb<行く, "Dictionary">}と\${ConjugateVerb<言う, "Masu">}ました\`;
 `,
         },
         {
@@ -103,7 +103,7 @@ type 学生 = ProperNoun<"学生">;
 type 言う = GodanVerb & { stem: "言"; ending: "う" };
 
 // 彼は + 学生 + だと + 言い(ます形) + ました
-type 彼は学生だと言いました = \`\${PhraseWithParticle<彼, "は">}\${ConjugateCopula<学生, "断定形">}と\${ConjugateVerb<言う, "ます形">}ました\`;
+type 彼は学生だと言いました = \`\${PhraseWithParticle<彼, "は">}\${ConjugateCopula<学生, "Plain">}と\${ConjugateVerb<言う, "Masu">}ました\`;
 `,
         },
       ],
@@ -129,7 +129,7 @@ type 田中さん = ProperNoun<"田中さん">;
 type 聞く = GodanVerb & { stem: "聞"; ending: "く" };
 
 // 田中さんに + 聞いて(て形) + ください
-type 田中さんに聞いてください = \`\${PhraseWithParticle<田中さん, "に">}\${ConjugateVerb<聞く, "て形">}ください\`;
+type 田中さんに聞いてください = \`\${PhraseWithParticle<田中さん, "に">}\${ConjugateVerb<聞く, "Te">}ください\`;
 
 // 日本語 + なら + (result)
 type 日本語なら田中さんに聞いてください = ConditionalPhrase<日本語, "なら", 田中さんに聞いてください>;
@@ -146,7 +146,7 @@ type お酒 = ProperNoun<"お酒">;
 type 飲む = GodanVerb & { stem: "飲"; ending: "む" };
 
 // 飲み(ます形) + ません
-type 飲みません = \`\${ConjugateVerb<飲む, "ます形">}ません\`;
+type 飲みません = \`\${ConjugateVerb<飲む, "Masu">}ません\`;
 
 // お酒 + なら + 飲みません
 type お酒なら飲みません = ConditionalPhrase<お酒, "なら", 飲みません>;
@@ -163,7 +163,7 @@ type 東京 = ProperNoun<"東京">;
 type 行く = GodanVerb & { stem: "行"; ending: "く" };
 
 // 行き(ます形) + たいです
-type 行きたいです = \`\${ConjugateVerb<行く, "ます形">}たいです\`;
+type 行きたいです = \`\${ConjugateVerb<行く, "Masu">}たいです\`;
 
 // 東京 + なら + 行きたいです
 type 東京なら行きたいです = ConditionalPhrase<東京, "なら", 行きたいです>;

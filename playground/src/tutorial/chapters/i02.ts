@@ -30,7 +30,7 @@ const chapter: Chapter = {
 type 飲む = GodanVerb & { stem: "飲"; ending: "む" };
 
 // godan 使役形 returns the -a stem 飲ま, then add せる
-type 飲ませる = \`\${ConjugateVerb<飲む, "使役形">}せる\`;
+type 飲ませる = \`\${ConjugateVerb<飲む, "Causative">}せる\`;
 `,
         },
         {
@@ -42,7 +42,7 @@ type 飲ませる = \`\${ConjugateVerb<飲む, "使役形">}せる\`;
 
 type 行く = GodanVerb & { stem: "行"; ending: "く" };
 
-type 行かせる = \`\${ConjugateVerb<行く, "使役形">}せる\`;
+type 行かせる = \`\${ConjugateVerb<行く, "Causative">}せる\`;
 `,
         },
         {
@@ -55,7 +55,7 @@ type 行かせる = \`\${ConjugateVerb<行く, "使役形">}せる\`;
 type する = IrregularVerb & { dictionary: "する" };
 
 // する 使役形 returns させ, then add る
-type させる = \`\${ConjugateVerb<する, "使役形">}る\`;
+type させる = \`\${ConjugateVerb<する, "Causative">}る\`;
 `,
         },
       ],
@@ -81,7 +81,7 @@ type 弟 = ProperNoun<"弟">;
 type 泣く = GodanVerb & { stem: "泣"; ending: "く" };
 
 // causative 泣かせる, then its plain past (ichidan-style): 泣かせ + た
-type 母は弟を泣かせた = \`\${PhraseWithParticle<母, "は">}\${PhraseWithParticle<弟, "を">}\${ConjugateVerb<泣く, "使役形">}せた\`;
+type 母は弟を泣かせた = \`\${PhraseWithParticle<母, "は">}\${PhraseWithParticle<弟, "を">}\${ConjugateVerb<泣く, "Causative">}せた\`;
 `,
         },
         {
@@ -96,7 +96,7 @@ type 学生 = ProperNoun<"学生">;
 type 本 = ProperNoun<"本">;
 type 読む = GodanVerb & { stem: "読"; ending: "む" };
 
-type 先生は学生に本を読ませる = \`\${PhraseWithParticle<先生, "は">}\${PhraseWithParticle<学生, "に">}\${PhraseWithParticle<本, "を">}\${ConjugateVerb<読む, "使役形">}せる\`;
+type 先生は学生に本を読ませる = \`\${PhraseWithParticle<先生, "は">}\${PhraseWithParticle<学生, "に">}\${PhraseWithParticle<本, "を">}\${ConjugateVerb<読む, "Causative">}せる\`;
 `,
         },
       ],
@@ -120,7 +120,7 @@ type 先生は学生に本を読ませる = \`\${PhraseWithParticle<先生, "は
 type 子供 = ProperNoun<"子供">;
 type 遊ぶ = GodanVerb & { stem: "遊"; ending: "ぶ" };
 
-type 子供を遊ばせる = \`\${PhraseWithParticle<子供, "を">}\${ConjugateVerb<遊ぶ, "使役形">}せる\`;
+type 子供を遊ばせる = \`\${PhraseWithParticle<子供, "を">}\${ConjugateVerb<遊ぶ, "Causative">}せる\`;
 `,
         },
         {
@@ -133,7 +133,7 @@ type 子供を遊ばせる = \`\${PhraseWithParticle<子供, "を">}\${Conjugate
 type 行く = GodanVerb & { stem: "行"; ending: "く" };
 
 // causative 行かせる → て形 行かせて → 行かせてください
-type 行かせてください = \`\${ConjugateVerb<行く, "使役形">}せてください\`;
+type 行かせてください = \`\${ConjugateVerb<行く, "Causative">}せてください\`;
 `,
         },
       ],
@@ -177,7 +177,7 @@ type 勉強 = ProperNoun<"勉強">;
 type する = IrregularVerb & { dictionary: "する" };
 
 // 勉強する → causative 勉強させる → polite 勉強させます (させ + ます)
-type 毎日子供に勉強させます = \`\${毎日}\${PhraseWithParticle<子供, "に">}\${勉強}\${ConjugateVerb<する, "使役形">}ます\`;
+type 毎日子供に勉強させます = \`\${毎日}\${PhraseWithParticle<子供, "に">}\${勉強}\${ConjugateVerb<する, "Causative">}ます\`;
 `,
         },
       ],

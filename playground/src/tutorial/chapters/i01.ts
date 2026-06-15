@@ -30,7 +30,7 @@ const chapter: Chapter = {
 type 言う = GodanVerb & { stem: "言"; ending: "う" };
 
 // godan 受身形 gives the -a stem 言わ; add れる
-type 言われる = \`\${ConjugateVerb<言う, "受身形">}れる\`;
+type 言われる = \`\${ConjugateVerb<言う, "Passive">}れる\`;
 `,
         },
         {
@@ -43,7 +43,7 @@ type 言われる = \`\${ConjugateVerb<言う, "受身形">}れる\`;
 type 食べる = IchidanVerb & { stem: "食べ"; ending: "る" };
 
 // ichidan 受身形 gives 食べられ; add る
-type 食べられる = \`\${ConjugateVerb<食べる, "受身形">}る\`;
+type 食べられる = \`\${ConjugateVerb<食べる, "Passive">}る\`;
 `,
         },
         {
@@ -56,7 +56,7 @@ type 食べられる = \`\${ConjugateVerb<食べる, "受身形">}る\`;
 type する = IrregularVerb & { dictionary: "する" };
 
 // irregular 受身形 gives され; add る
-type される = \`\${ConjugateVerb<する, "受身形">}る\`;
+type される = \`\${ConjugateVerb<する, "Passive">}る\`;
 `,
         },
       ],
@@ -82,7 +82,7 @@ type 先生 = ProperNoun<"先生">;
 type 叱る = GodanVerb & { stem: "叱"; ending: "る" };
 
 // 私は + 先生に + 叱ら(受身形) + れた
-type 私は先生に叱られた = \`\${PhraseWithParticle<私, "は">}\${PhraseWithParticle<先生, "に">}\${ConjugateVerb<叱る, "受身形">}れた\`;
+type 私は先生に叱られた = \`\${PhraseWithParticle<私, "は">}\${PhraseWithParticle<先生, "に">}\${ConjugateVerb<叱る, "Passive">}れた\`;
 `,
         },
         {
@@ -98,7 +98,7 @@ type 招待 = ProperNoun<"招待">;
 type する = IrregularVerb & { dictionary: "する" };
 
 // 招待する is a noun + する verb: 招待 + され(受身形) + た
-type 私は友達に招待された = \`\${PhraseWithParticle<私, "は">}\${PhraseWithParticle<友達, "に">}\${招待}\${ConjugateVerb<する, "受身形">}た\`;
+type 私は友達に招待された = \`\${PhraseWithParticle<私, "は">}\${PhraseWithParticle<友達, "に">}\${招待}\${ConjugateVerb<する, "Passive">}た\`;
 `,
         },
         {
@@ -113,7 +113,7 @@ type みんな = ProperNoun<"みんな">;
 type ほめる = IchidanVerb & { stem: "ほめ"; ending: "る" };
 
 // 子供は + みんなに + ほめられ(受身形) + た
-type 子供はみんなにほめられた = \`\${PhraseWithParticle<子供, "は">}\${PhraseWithParticle<みんな, "に">}\${ConjugateVerb<ほめる, "受身形">}た\`;
+type 子供はみんなにほめられた = \`\${PhraseWithParticle<子供, "は">}\${PhraseWithParticle<みんな, "に">}\${ConjugateVerb<ほめる, "Passive">}た\`;
 `,
         },
       ],
@@ -139,7 +139,7 @@ type 財布 = ProperNoun<"財布">;
 type 盗む = GodanVerb & { stem: "盗"; ending: "む" };
 
 // 私は + 財布を + 盗ま(受身形) + れた
-type 私は財布を盗まれた = \`\${PhraseWithParticle<私, "は">}\${PhraseWithParticle<財布, "を">}\${ConjugateVerb<盗む, "受身形">}れた\`;
+type 私は財布を盗まれた = \`\${PhraseWithParticle<私, "は">}\${PhraseWithParticle<財布, "を">}\${ConjugateVerb<盗む, "Passive">}れた\`;
 `,
         },
         {
@@ -155,7 +155,7 @@ type 手 = ProperNoun<"手">;
 type 噛む = GodanVerb & { stem: "噛"; ending: "む" };
 
 // 弟は + 犬に + 手を + 噛ま(受身形) + れた
-type 弟は犬に手を噛まれた = \`\${PhraseWithParticle<弟, "は">}\${PhraseWithParticle<犬, "に">}\${PhraseWithParticle<手, "を">}\${ConjugateVerb<噛む, "受身形">}れた\`;
+type 弟は犬に手を噛まれた = \`\${PhraseWithParticle<弟, "は">}\${PhraseWithParticle<犬, "に">}\${PhraseWithParticle<手, "を">}\${ConjugateVerb<噛む, "Passive">}れた\`;
 `,
         },
       ],
@@ -180,7 +180,7 @@ type 雨 = ProperNoun<"雨">;
 type 降る = GodanVerb & { stem: "降"; ending: "る" };
 
 // intransitive 降る → suffering passive: 雨に + 降ら(受身形) + れた
-type 雨に降られた = \`\${PhraseWithParticle<雨, "に">}\${ConjugateVerb<降る, "受身形">}れた\`;
+type 雨に降られた = \`\${PhraseWithParticle<雨, "に">}\${ConjugateVerb<降る, "Passive">}れた\`;
 `,
         },
         {
@@ -195,7 +195,7 @@ type 赤ちゃん = ProperNoun<"赤ちゃん">;
 type 泣く = GodanVerb & { stem: "泣"; ending: "く" };
 
 // 私は + 赤ちゃんに + 泣か(受身形) + れた
-type 私は赤ちゃんに泣かれた = \`\${PhraseWithParticle<私, "は">}\${PhraseWithParticle<赤ちゃん, "に">}\${ConjugateVerb<泣く, "受身形">}れた\`;
+type 私は赤ちゃんに泣かれた = \`\${PhraseWithParticle<私, "は">}\${PhraseWithParticle<赤ちゃん, "に">}\${ConjugateVerb<泣く, "Passive">}れた\`;
 `,
         },
       ],

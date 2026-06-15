@@ -20,183 +20,183 @@ export type Verb = GodanVerb | IchidanVerb | IrregularVerb;
 
 // Conjugation forms
 export type ConjugationForm =
-  | "辞書形" // Dictionary form
-  | "ます形" // Polite form
-  | "て形" // Te form
-  | "た形" // Past form
-  | "ない形" // Negative form
-  | "可能形" // Potential form
-  | "受身形" // Passive form
-  | "使役形" // Causative form
-  | "意向形" // Volitional form
-  | "命令形" // Imperative form
-  | "条件形" // Conditional form
-  | "仮定形"; // Hypothetical form
+  | "Dictionary" // Dictionary form
+  | "Masu" // Polite form
+  | "Te" // Te form
+  | "Ta" // Past form
+  | "Nai" // Negative form
+  | "Potential" // Potential form
+  | "Passive" // Passive form
+  | "Causative" // Causative form
+  | "Volitional" // Volitional form
+  | "Imperative" // Imperative form
+  | "Conditional" // Conditional form
+  | "Hypothetical"; // Hypothetical form
 
 // Godan verb conjugation map - maps endings to their various conjugated forms
 type GodanConjugationMap = {
   う: {
-    ます形: "い";
-    て形: "って";
-    た形: "った";
-    ない形: "わ";
-    可能形: "え";
-    受身形: "わ";
-    使役形: "わ";
-    意向形: "お";
-    命令形: "え";
-    条件形: "え";
-    仮定形: "え";
+    Masu: "い";
+    Te: "って";
+    Ta: "った";
+    Nai: "わ";
+    Potential: "え";
+    Passive: "わ";
+    Causative: "わ";
+    Volitional: "お";
+    Imperative: "え";
+    Conditional: "え";
+    Hypothetical: "え";
   };
   く: {
-    ます形: "き";
-    て形: "いて";
-    た形: "いた";
-    ない形: "か";
-    可能形: "け";
-    受身形: "か";
-    使役形: "か";
-    意向形: "こ";
-    命令形: "け";
-    条件形: "け";
-    仮定形: "け";
+    Masu: "き";
+    Te: "いて";
+    Ta: "いた";
+    Nai: "か";
+    Potential: "け";
+    Passive: "か";
+    Causative: "か";
+    Volitional: "こ";
+    Imperative: "け";
+    Conditional: "け";
+    Hypothetical: "け";
   };
   ぐ: {
-    ます形: "ぎ";
-    て形: "いで";
-    た形: "いだ";
-    ない形: "が";
-    可能形: "げ";
-    受身形: "が";
-    使役形: "が";
-    意向形: "ご";
-    命令形: "げ";
-    条件形: "げ";
-    仮定形: "げ";
+    Masu: "ぎ";
+    Te: "いで";
+    Ta: "いだ";
+    Nai: "が";
+    Potential: "げ";
+    Passive: "が";
+    Causative: "が";
+    Volitional: "ご";
+    Imperative: "げ";
+    Conditional: "げ";
+    Hypothetical: "げ";
   };
   す: {
-    ます形: "し";
-    て形: "して";
-    た形: "した";
-    ない形: "さ";
-    可能形: "せ";
-    受身形: "さ";
-    使役形: "さ";
-    意向形: "そ";
-    命令形: "せ";
-    条件形: "せ";
-    仮定形: "せ";
+    Masu: "し";
+    Te: "して";
+    Ta: "した";
+    Nai: "さ";
+    Potential: "せ";
+    Passive: "さ";
+    Causative: "さ";
+    Volitional: "そ";
+    Imperative: "せ";
+    Conditional: "せ";
+    Hypothetical: "せ";
   };
   つ: {
-    ます形: "ち";
-    て形: "って";
-    た形: "った";
-    ない形: "た";
-    可能形: "て";
-    受身形: "た";
-    使役形: "た";
-    意向形: "と";
-    命令形: "て";
-    条件形: "て";
-    仮定形: "て";
+    Masu: "ち";
+    Te: "って";
+    Ta: "った";
+    Nai: "た";
+    Potential: "て";
+    Passive: "た";
+    Causative: "た";
+    Volitional: "と";
+    Imperative: "て";
+    Conditional: "て";
+    Hypothetical: "て";
   };
   ぬ: {
-    ます形: "に";
-    て形: "んで";
-    た形: "んだ";
-    ない形: "な";
-    可能形: "ね";
-    受身形: "な";
-    使役形: "な";
-    意向形: "の";
-    命令形: "ね";
-    条件形: "ね";
-    仮定形: "ね";
+    Masu: "に";
+    Te: "んで";
+    Ta: "んだ";
+    Nai: "な";
+    Potential: "ね";
+    Passive: "な";
+    Causative: "な";
+    Volitional: "の";
+    Imperative: "ね";
+    Conditional: "ね";
+    Hypothetical: "ね";
   };
   ぶ: {
-    ます形: "び";
-    て形: "んで";
-    た形: "んだ";
-    ない形: "ば";
-    可能形: "べ";
-    受身形: "ば";
-    使役形: "ば";
-    意向形: "ぼ";
-    命令形: "べ";
-    条件形: "べ";
-    仮定形: "べ";
+    Masu: "び";
+    Te: "んで";
+    Ta: "んだ";
+    Nai: "ば";
+    Potential: "べ";
+    Passive: "ば";
+    Causative: "ば";
+    Volitional: "ぼ";
+    Imperative: "べ";
+    Conditional: "べ";
+    Hypothetical: "べ";
   };
   む: {
-    ます形: "み";
-    て形: "んで";
-    た形: "んだ";
-    ない形: "ま";
-    可能形: "め";
-    受身形: "ま";
-    使役形: "ま";
-    意向形: "も";
-    命令形: "め";
-    条件形: "め";
-    仮定形: "め";
+    Masu: "み";
+    Te: "んで";
+    Ta: "んだ";
+    Nai: "ま";
+    Potential: "め";
+    Passive: "ま";
+    Causative: "ま";
+    Volitional: "も";
+    Imperative: "め";
+    Conditional: "め";
+    Hypothetical: "め";
   };
   る: {
-    ます形: "り";
-    て形: "って";
-    た形: "った";
-    ない形: "ら";
-    可能形: "れ";
-    受身形: "ら";
-    使役形: "ら";
-    意向形: "ろ";
-    命令形: "れ";
-    条件形: "れ";
-    仮定形: "れ";
+    Masu: "り";
+    Te: "って";
+    Ta: "った";
+    Nai: "ら";
+    Potential: "れ";
+    Passive: "ら";
+    Causative: "ら";
+    Volitional: "ろ";
+    Imperative: "れ";
+    Conditional: "れ";
+    Hypothetical: "れ";
   };
 };
 
 // Irregular verb conjugation map
 type IrregularConjugationMap = {
   する: {
-    辞書形: "する";
-    ます形: "し";
-    て形: "して";
-    た形: "した";
-    ない形: "し";
-    可能形: "でき";
-    受身形: "され";
-    使役形: "させ";
-    意向形: "しよう";
-    命令形: "しろ";
-    条件形: "すれ";
-    仮定形: "すれ";
+    Dictionary: "する";
+    Masu: "し";
+    Te: "して";
+    Ta: "した";
+    Nai: "し";
+    Potential: "でき";
+    Passive: "され";
+    Causative: "させ";
+    Volitional: "しよう";
+    Imperative: "しろ";
+    Conditional: "すれ";
+    Hypothetical: "すれ";
   };
   来る: {
-    辞書形: "来る";
-    ます形: "来";
-    て形: "来て";
-    た形: "来た";
-    ない形: "来";
-    可能形: "来られ";
-    受身形: "来られ";
-    使役形: "来させ";
-    意向形: "来よう";
-    命令形: "来い";
-    条件形: "来れ";
-    仮定形: "来れ";
+    Dictionary: "来る";
+    Masu: "来";
+    Te: "来て";
+    Ta: "来た";
+    Nai: "来";
+    Potential: "来られ";
+    Passive: "来られ";
+    Causative: "来させ";
+    Volitional: "来よう";
+    Imperative: "来い";
+    Conditional: "来れ";
+    Hypothetical: "来れ";
   };
   くる: {
-    辞書形: "くる";
-    ます形: "き";
-    て形: "きて";
-    た形: "きた";
-    ない形: "こ";
-    可能形: "こられ";
-    受身形: "こられ";
-    使役形: "こさせ";
-    意向形: "こよう";
-    命令形: "こい";
-    条件形: "くれ";
-    仮定形: "くれ";
+    Dictionary: "くる";
+    Masu: "き";
+    Te: "きて";
+    Ta: "きた";
+    Nai: "こ";
+    Potential: "こられ";
+    Passive: "こられ";
+    Causative: "こさせ";
+    Volitional: "こよう";
+    Imperative: "こい";
+    Conditional: "くれ";
+    Hypothetical: "くれ";
   };
 };
 
@@ -225,25 +225,25 @@ export type ConjugateVerb<
   V extends Verb,
   F extends ConjugationForm
 > = V extends GodanVerb
-  ? F extends "辞書形"
+  ? F extends "Dictionary"
     ? `${V["stem"]}${V["ending"]}`
     : `${V["stem"]}${GetGodanConjugation<V["ending"], F>}`
   : V extends IchidanVerb
-  ? F extends "辞書形"
+  ? F extends "Dictionary"
     ? `${V["stem"]}${V["ending"]}`
-    : F extends "ます形"
+    : F extends "Masu"
     ? `${V["stem"]}`
-    : F extends "て形"
+    : F extends "Te"
     ? `${V["stem"]}て`
-    : F extends "た形"
+    : F extends "Ta"
     ? `${V["stem"]}た`
-    : F extends "ない形"
+    : F extends "Nai"
     ? `${V["stem"]}`
-    : F extends "可能形" | "受身形" | "使役形" | "仮定形" | "条件形"
+    : F extends "Potential" | "Passive" | "Causative" | "Hypothetical" | "Conditional"
     ? `${V["stem"]}られ`
-    : F extends "意向形"
+    : F extends "Volitional"
     ? `${V["stem"]}よう`
-    : F extends "命令形"
+    : F extends "Imperative"
     ? `${V["stem"]}ろ`
     : never
   : V extends IrregularVerb
@@ -256,6 +256,6 @@ type 食べる = IchidanVerb & { stem: "食べ"; ending: "る" };
 type する = IrregularVerb & { dictionary: "する" };
 
 // Type-level conjugation tests
-type 話すます形 = ConjugateVerb<話す, "ます形">; // Evaluates to "話し"
-type 食べるて形 = ConjugateVerb<食べる, "て形">; // Evaluates to "食べて"
-type する命令形 = ConjugateVerb<する, "命令形">; // Evaluates to "しろ"
+type 話すMasu = ConjugateVerb<話す, "Masu">; // Evaluates to "話し"
+type 食べるTe = ConjugateVerb<食べる, "Te">; // Evaluates to "食べて"
+type するImperative = ConjugateVerb<する, "Imperative">; // Evaluates to "しろ"

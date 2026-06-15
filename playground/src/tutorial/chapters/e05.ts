@@ -32,7 +32,7 @@ type コーヒー = ProperNoun<"コーヒー">;
 type 飲む = GodanVerb & { type: "godan"; stem: "飲"; ending: "む" };
 
 // 私 + は + コーヒー + を + 飲み(ます形) + ます
-type 私はコーヒーを飲みます = \`\${PhraseWithParticle<私, "は">}\${PhraseWithParticle<コーヒー, "を">}\${ConjugateVerb<飲む, "ます形">}ます\`;
+type 私はコーヒーを飲みます = \`\${PhraseWithParticle<私, "は">}\${PhraseWithParticle<コーヒー, "を">}\${ConjugateVerb<飲む, "Masu">}ます\`;
 `,
         },
         {
@@ -48,7 +48,7 @@ type ご飯 = ProperNoun<"ご飯">;
 type 食べる = IchidanVerb & { type: "ichidan"; stem: "食べ"; ending: "る" };
 
 // 私 + は + 毎日 + ご飯 + を + 食べ(ます形) + ます
-type 私は毎日ご飯を食べます = \`\${PhraseWithParticle<私, "は">}\${毎日}\${PhraseWithParticle<ご飯, "を">}\${ConjugateVerb<食べる, "ます形">}ます\`;
+type 私は毎日ご飯を食べます = \`\${PhraseWithParticle<私, "は">}\${毎日}\${PhraseWithParticle<ご飯, "を">}\${ConjugateVerb<食べる, "Masu">}ます\`;
 `,
         },
       ],
@@ -73,7 +73,7 @@ type 本 = ProperNoun<"本">;
 type 読む = GodanVerb & { type: "godan"; stem: "読"; ending: "む" };
 
 // 本 + を + 読み(ます形) + ます
-type 本を読みます = \`\${PhraseWithParticle<本, "を">}\${ConjugateVerb<読む, "ます形">}ます\`;
+type 本を読みます = \`\${PhraseWithParticle<本, "を">}\${ConjugateVerb<読む, "Masu">}ます\`;
 `,
         },
         {
@@ -87,7 +87,7 @@ type テレビ = ProperNoun<"テレビ">;
 type 見る = IchidanVerb & { type: "ichidan"; stem: "見"; ending: "る" };
 
 // テレビ + を + 見(ます形) + ます
-type テレビを見ます = \`\${PhraseWithParticle<テレビ, "を">}\${ConjugateVerb<見る, "ます形">}ます\`;
+type テレビを見ます = \`\${PhraseWithParticle<テレビ, "を">}\${ConjugateVerb<見る, "Masu">}ます\`;
 `,
         },
       ],
@@ -113,7 +113,7 @@ type お酒 = ProperNoun<"お酒">;
 type 飲む = GodanVerb & { type: "godan"; stem: "飲"; ending: "む" };
 
 // 私 + は + お酒 + を + 飲み(ます形) + ません
-type 私はお酒を飲みません = \`\${PhraseWithParticle<私, "は">}\${PhraseWithParticle<お酒, "を">}\${ConjugateVerb<飲む, "ます形">}ません\`;
+type 私はお酒を飲みません = \`\${PhraseWithParticle<私, "は">}\${PhraseWithParticle<お酒, "を">}\${ConjugateVerb<飲む, "Masu">}ません\`;
 `,
         },
         {
@@ -127,7 +127,7 @@ type 肉 = ProperNoun<"肉">;
 type 食べる = IchidanVerb & { type: "ichidan"; stem: "食べ"; ending: "る" };
 
 // 肉 + を + 食べ(ます形) + ません
-type 肉を食べません = \`\${PhraseWithParticle<肉, "を">}\${ConjugateVerb<食べる, "ます形">}ません\`;
+type 肉を食べません = \`\${PhraseWithParticle<肉, "を">}\${ConjugateVerb<食べる, "Masu">}ません\`;
 `,
         },
       ],
@@ -152,7 +152,7 @@ type コーヒー = ProperNoun<"コーヒー">;
 type 飲む = GodanVerb & { type: "godan"; stem: "飲"; ending: "む" };
 
 // コーヒー + を + 飲み(ます形) + ますか
-type コーヒーを飲みますか = \`\${PhraseWithParticle<コーヒー, "を">}\${ConjugateVerb<飲む, "ます形">}ますか\`;
+type コーヒーを飲みますか = \`\${PhraseWithParticle<コーヒー, "を">}\${ConjugateVerb<飲む, "Masu">}ますか\`;
 `,
         },
         {
@@ -167,7 +167,7 @@ type ご飯 = ProperNoun<"ご飯">;
 type 食べる = IchidanVerb & { type: "ichidan"; stem: "食べ"; ending: "る" };
 
 // 一緒に + ご飯 + を + 食べ(ます形) + ませんか
-type 一緒にご飯を食べませんか = \`\${一緒に}\${PhraseWithParticle<ご飯, "を">}\${ConjugateVerb<食べる, "ます形">}ませんか\`;
+type 一緒にご飯を食べませんか = \`\${一緒に}\${PhraseWithParticle<ご飯, "を">}\${ConjugateVerb<食べる, "Masu">}ませんか\`;
 `,
         },
       ],

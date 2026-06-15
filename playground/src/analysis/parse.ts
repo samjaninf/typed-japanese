@@ -99,11 +99,11 @@ const CATEGORY_BY_NAME: Record<string, GrammarCategory> = {
 };
 
 const FORMS = new Set([
-  "辞書形", "ます形", "て形", "た形", "ない形", "可能形", "受身形", "使役形",
-  "意向形", "命令形", "条件形", "仮定形", "基本形", "丁寧形", "過去形", "否定形",
+  "Dictionary", "Masu", "Te", "Ta", "Nai", "Potential", "Passive", "Causative",
+  "Volitional", "Imperative", "Conditional", "Hypothetical", "Basic", "Polite", "Past", "Negative",
   // copula forms
-  "断定形", "丁寧過去形", "丁寧否定形", "否定過去形", "丁寧否定過去形",
-  "口語否定形", "口語丁寧否定形", "である形",
+  "Plain", "PolitePast", "PoliteNegative", "NegativePast", "PoliteNegativePast",
+  "CasualNegative", "CasualPoliteNegative", "Written",
 ]);
 const CONDITIONAL = new Set(["なら", "たら", "れば"]);
 const DEMONSTRATIVE = new Set(["こう", "そう", "ああ", "どう"]);
@@ -290,7 +290,7 @@ export async function buildTree(
     const text = node.getText(sf).trim();
 
     // String literal leaf. A standalone literal type-argument is a single,
-    // deliberate token (a form name like "て形", a particle like "は") — classify
+    // deliberate token (a form name like "Te", a particle like "は") — classify
     // it as one node, never split it. (Multi-word glue lives in template chunks,
     // which ARE tokenized below.)
     if (ts.isLiteralTypeNode(node) && ts.isStringLiteral(node.literal)) {

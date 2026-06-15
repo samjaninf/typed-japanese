@@ -30,7 +30,7 @@ const chapter: Chapter = {
 type 持つ = GodanVerb & { stem: "持"; ending: "つ" };
 
 // お + 持ち (ます形) + します
-type お持ちします = \`お\${ConjugateVerb<持つ, "ます形">}します\`;
+type お持ちします = \`お\${ConjugateVerb<持つ, "Masu">}します\`;
 `,
         },
         {
@@ -44,7 +44,7 @@ type 私 = ProperNoun<"私">;
 type 送る = GodanVerb & { stem: "送"; ending: "る" };
 
 // 私 + が + お + 送り (ます形) + します
-type 私がお送りします = \`\${PhraseWithParticle<私, "が">}お\${ConjugateVerb<送る, "ます形">}します\`;
+type 私がお送りします = \`\${PhraseWithParticle<私, "が">}お\${ConjugateVerb<送る, "Masu">}します\`;
 `,
         },
         {
@@ -58,7 +58,7 @@ type ここ = ProperNoun<"ここ">;
 type 待つ = GodanVerb & { stem: "待"; ending: "つ" };
 
 // ここ + で + お + 待ち (ます形) + します
-type ここでお待ちします = \`\${PhraseWithParticle<ここ, "で">}お\${ConjugateVerb<待つ, "ます形">}します\`;
+type ここでお待ちします = \`\${PhraseWithParticle<ここ, "で">}お\${ConjugateVerb<待つ, "Masu">}します\`;
 `,
         },
       ],
@@ -83,7 +83,7 @@ type 田中 = ProperNoun<"田中">;
 type 申す = GodanVerb & { stem: "申"; ending: "す" };
 
 // 田中 + と + 申し (ます形) + ます
-type 田中と申します = \`\${PhraseWithParticle<田中, "と">}\${ConjugateVerb<申す, "ます形">}ます\`;
+type 田中と申します = \`\${PhraseWithParticle<田中, "と">}\${ConjugateVerb<申す, "Masu">}ます\`;
 `,
         },
         {
@@ -97,7 +97,7 @@ type すぐ = ProperNoun<"すぐ">;
 type 参る = GodanVerb & { stem: "参"; ending: "る" };
 
 // すぐ + 参り (ます形) + ます
-type すぐ参ります = \`\${すぐ}\${ConjugateVerb<参る, "ます形">}ます\`;
+type すぐ参ります = \`\${すぐ}\${ConjugateVerb<参る, "Masu">}ます\`;
 `,
         },
         {
@@ -111,7 +111,7 @@ type 私 = ProperNoun<"私">;
 type いたす = GodanVerb & { stem: "いた"; ending: "す" };
 
 // 私 + が + いたし (ます形) + ます
-type 私がいたします = \`\${PhraseWithParticle<私, "が">}\${ConjugateVerb<いたす, "ます形">}ます\`;
+type 私がいたします = \`\${PhraseWithParticle<私, "が">}\${ConjugateVerb<いたす, "Masu">}ます\`;
 `,
         },
       ],

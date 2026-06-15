@@ -49,7 +49,7 @@ type 読む = GodanVerb & { stem: "読"; ending: "む" };
 
 // 社長 + が + 本 + を + お + 読み(ます形) + になり(ます形) + ます
 // Use お〜になる ONCE; do not add 〜られる on top of it.
-type 社長が本をお読みになります = \`\${PhraseWithParticle<社長, "が">}\${PhraseWithParticle<本, "を">}お\${ConjugateVerb<読む, "ます形">}になります\`;
+type 社長が本をお読みになります = \`\${PhraseWithParticle<社長, "が">}\${PhraseWithParticle<本, "を">}お\${ConjugateVerb<読む, "Masu">}になります\`;
 `,
         },
       ],
@@ -75,7 +75,7 @@ type 待つ = GodanVerb & { stem: "待"; ending: "つ" };
 
 // 少々 + お + 待ち(ます形) + いただけますか
 // お〜いただく in the potential-question form: politest request.
-type 少々お待ちいただけますか = \`\${少々}お\${ConjugateVerb<待つ, "ます形">}いただけますか\`;
+type 少々お待ちいただけますか = \`\${少々}お\${ConjugateVerb<待つ, "Masu">}いただけますか\`;
 `,
         },
         {
@@ -142,7 +142,7 @@ type お願い = ProperNoun<"お願い">;
 type する = IrregularVerb & { dictionary: "する" };
 
 // どうぞよろしく + お願い + いたし(ます形) + ます
-type どうぞよろしくお願いいたします = \`どうぞよろしく\${お願い}いた\${ConjugateVerb<する, "ます形">}ます\`;
+type どうぞよろしくお願いいたします = \`どうぞよろしく\${お願い}いた\${ConjugateVerb<する, "Masu">}ます\`;
 `,
         },
         {
@@ -158,9 +158,9 @@ type 入る = GodanVerb & { stem: "入"; ending: "る" };
 type 待つ = GodanVerb & { stem: "待"; ending: "つ" };
 
 // 恐れ + 入り(ます形) + ますが  →  cushioning opener
-type 恐れ入りますが = \`\${恐れ}\${ConjugateVerb<入る, "ます形">}ますが\`;
+type 恐れ入りますが = \`\${恐れ}\${ConjugateVerb<入る, "Masu">}ますが\`;
 // 少々 + お + 待ち(ます形) + ください
-type 少々お待ちください = \`\${少々}お\${ConjugateVerb<待つ, "ます形">}ください\`;
+type 少々お待ちください = \`\${少々}お\${ConjugateVerb<待つ, "Masu">}ください\`;
 
 // join the two clauses with 、
 type 恐れ入りますが少々お待ちください = ConnectedPhrases<恐れ入りますが, 少々お待ちください>;

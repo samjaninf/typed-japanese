@@ -12,29 +12,29 @@ type いい例 = IAdjective & {
 };
 
 // Test all conjugation forms
-type いい基本形 = "いい" | "よい"; // Accept both forms
-type いい過去形 = ConjugateAdjective<いい例, "過去形">; // よかった
-type いい丁寧形 = ConjugateAdjective<いい例, "丁寧形">; // いいです
-type いい否定形 = ConjugateAdjective<いい例, "否定形">; // よくない
+type いいBasic = "いい" | "よい"; // Accept both forms
+type いいPast = ConjugateAdjective<いい例, "Past">; // よかった
+type いいPolite = ConjugateAdjective<いい例, "Polite">; // いいです
+type いいNegative = ConjugateAdjective<いい例, "Negative">; // よくない
 
 // Verify with particles
 type いいよ = PhraseWithParticle<"いい", "よ">; // いいよ
-type よかったね = PhraseWithParticle<いい過去形, "ね">; // よかったね
+type よかったね = PhraseWithParticle<いいPast, "ね">; // よかったね
 
 // Type checking
 // These should work
-const verifyBasic: いい基本形 = "よい";
-const verifyPast: いい過去形 = "よかった";
-const verifyNegative: いい否定形 = "よくない";
-const verifyPolite: いい丁寧形 = "いいです";
+const verifyBasic: いいBasic = "よい";
+const verifyPast: いいPast = "よかった";
+const verifyNegative: いいNegative = "よくない";
+const verifyPolite: いいPolite = "いいです";
 
 // These should now produce type errors because they have wrong forms
 // @ts-expect-error - Wrong form
-const wrongBasic: いい基本形 = "はい";
+const wrongBasic: いいBasic = "はい";
 // @ts-expect-error - Should be よかった
-const wrongPast: いい過去形 = "いかった";
+const wrongPast: いいPast = "いかった";
 // @ts-expect-error - Should be よくない
-const wrongNegative: いい否定形 = "いくない";
+const wrongNegative: いいNegative = "いくない";
 
 // Print results
 console.log("Testing いい adjective conjugations:");

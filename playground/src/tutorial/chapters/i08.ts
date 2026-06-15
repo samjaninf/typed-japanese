@@ -33,7 +33,7 @@ type 薬 = ProperNoun<"薬">;
 type 飲む = GodanVerb & { stem: "飲"; ending: "む" };
 
 // 病気が + 治る(辞書形) + ように + 薬を + 飲み(ます形) + ます
-type 病気が治るように薬を飲みます = \`\${PhraseWithParticle<病気, "が">}\${ConjugateVerb<治る, "辞書形">}ように\${薬}を\${ConjugateVerb<飲む, "ます形">}ます\`;
+type 病気が治るように薬を飲みます = \`\${PhraseWithParticle<病気, "が">}\${ConjugateVerb<治る, "Dictionary">}ように\${薬}を\${ConjugateVerb<飲む, "Masu">}ます\`;
 `,
         },
         {
@@ -48,7 +48,7 @@ type 名前 = ProperNoun<"名前">;
 type 書く = GodanVerb & { stem: "書"; ending: "く" };
 
 // 忘れ(ない形) + ない + ように + 名前を + 書き(ます形) + ます
-type 忘れないように名前を書きます = \`\${ConjugateVerb<忘れる, "ない形">}ないように\${名前}を\${ConjugateVerb<書く, "ます形">}ます\`;
+type 忘れないように名前を書きます = \`\${ConjugateVerb<忘れる, "Nai">}ないように\${名前}を\${ConjugateVerb<書く, "Masu">}ます\`;
 `,
         },
         {
@@ -64,7 +64,7 @@ type 勉強 = ProperNoun<"勉強">;
 type する = IrregularVerb & { dictionary: "する" };
 
 // 漢字が + 読め(可能形) + る + ように + 勉強 + し(ます形) + ます
-type 漢字が読めるように勉強します = \`\${PhraseWithParticle<漢字, "が">}\${ConjugateVerb<読む, "可能形">}るように\${勉強}\${ConjugateVerb<する, "ます形">}ます\`;
+type 漢字が読めるように勉強します = \`\${PhraseWithParticle<漢字, "が">}\${ConjugateVerb<読む, "Potential">}るように\${勉強}\${ConjugateVerb<する, "Masu">}ます\`;
 `,
         },
       ],
@@ -104,7 +104,7 @@ type 先生 = ProperNoun<"先生">;
 type なる = GodanVerb & { stem: "な"; ending: "る" };
 
 // 田中さん + の + ような + 先生に + なり(ます形) + たいです
-type 田中さんのような先生になりたいです = \`\${PhraseWithParticle<田中さん, "の">}ような\${先生}に\${ConjugateVerb<なる, "ます形">}たいです\`;
+type 田中さんのような先生になりたいです = \`\${PhraseWithParticle<田中さん, "の">}ような\${先生}に\${ConjugateVerb<なる, "Masu">}たいです\`;
 `,
         },
         {
@@ -144,7 +144,7 @@ type 運動 = ProperNoun<"運動">;
 type する = IrregularVerb & { dictionary: "する" };
 
 // 毎日 + 運動 + する(辞書形) + ように + し(ます形) + ます
-type 毎日運動するようにします = \`\${毎日}\${運動}\${ConjugateVerb<する, "辞書形">}ように\${ConjugateVerb<する, "ます形">}ます\`;
+type 毎日運動するようにします = \`\${毎日}\${運動}\${ConjugateVerb<する, "Dictionary">}ように\${ConjugateVerb<する, "Masu">}ます\`;
 `,
         },
         {
@@ -159,7 +159,7 @@ type 飲む = GodanVerb & { stem: "飲"; ending: "む" };
 type する = IrregularVerb & { dictionary: "する" };
 
 // お酒を + 飲ま(ない形) + ない + ように + し(て形) + います
-type お酒を飲まないようにしています = \`\${PhraseWithParticle<お酒, "を">}\${ConjugateVerb<飲む, "ない形">}ないように\${ConjugateVerb<する, "て形">}います\`;
+type お酒を飲まないようにしています = \`\${PhraseWithParticle<お酒, "を">}\${ConjugateVerb<飲む, "Nai">}ないように\${ConjugateVerb<する, "Te">}います\`;
 `,
         },
         {
@@ -174,7 +174,7 @@ type 寝る = IchidanVerb & { stem: "寝"; ending: "る" };
 type する = IrregularVerb & { dictionary: "する" };
 
 // 早く + 寝る(辞書形) + ように + し(て形) + ください
-type 早く寝るようにしてください = \`\${早く}\${ConjugateVerb<寝る, "辞書形">}ように\${ConjugateVerb<する, "て形">}ください\`;
+type 早く寝るようにしてください = \`\${早く}\${ConjugateVerb<寝る, "Dictionary">}ように\${ConjugateVerb<する, "Te">}ください\`;
 `,
         },
       ],

@@ -33,9 +33,9 @@ const whyIntensifierSentence: WhyIntensifierSentence["value"] =
 type SentenceParts = [
   AdverbPart<"なんで">,
   IntensifierPart<"そんなに">,
-  VerbPart<慣れる, "て形">,
+  VerbPart<慣れる, "Te">,
   ContractedPart<"ん">,
-  CopulaPart<"断定形">,
+  CopulaPart<"Plain">,
   ParticlePart<"よ">
 ];
 

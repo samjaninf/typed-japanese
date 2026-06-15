@@ -31,7 +31,7 @@ type 一緒に = ProperNoun<"一緒に">;
 type 行く = GodanVerb & { stem: "行"; ending: "く" };
 
 // ます形 of 行く is 行き; append ましょう for the polite volitional
-type 一緒に行きましょう = \`\${一緒に}\${ConjugateVerb<行く, "ます形">}ましょう\`;
+type 一緒に行きましょう = \`\${一緒に}\${ConjugateVerb<行く, "Masu">}ましょう\`;
 `,
         },
         {
@@ -45,7 +45,7 @@ type コーヒー = ProperNoun<"コーヒー">;
 type 飲む = GodanVerb & { stem: "飲"; ending: "む" };
 
 // 意向形 of 飲む returns 飲も; append う → 飲もう
-type コーヒーを飲もう = \`\${コーヒー}を\${ConjugateVerb<飲む, "意向形">}う\`;
+type コーヒーを飲もう = \`\${コーヒー}を\${ConjugateVerb<飲む, "Volitional">}う\`;
 `,
         },
         {
@@ -60,7 +60,7 @@ type また = ProperNoun<"また">;
 type 来る = IrregularVerb & { dictionary: "来る" };
 
 // 意向形 of 来る is already complete: 来よう
-type 明日また来よう = \`\${明日}\${また}\${ConjugateVerb<来る, "意向形">}\`;
+type 明日また来よう = \`\${明日}\${また}\${ConjugateVerb<来る, "Volitional">}\`;
 `,
         },
       ],
@@ -85,7 +85,7 @@ type 日本 = ProperNoun<"日本">;
 type 行く = GodanVerb & { stem: "行"; ending: "く" };
 
 // 日本 + へ + 行く(辞書形) + つもりです
-type 日本へ行くつもりです = \`\${PhraseWithParticle<日本, "へ">}\${ConjugateVerb<行く, "辞書形">}つもりです\`;
+type 日本へ行くつもりです = \`\${PhraseWithParticle<日本, "へ">}\${ConjugateVerb<行く, "Dictionary">}つもりです\`;
 `,
         },
         {
@@ -100,7 +100,7 @@ type 勉強 = ProperNoun<"勉強">;
 type する = IrregularVerb & { dictionary: "する" };
 
 // 辞書形 of する is する; add つもりです
-type 毎日勉強するつもりです = \`\${毎日}\${勉強}\${ConjugateVerb<する, "辞書形">}つもりです\`;
+type 毎日勉強するつもりです = \`\${毎日}\${勉強}\${ConjugateVerb<する, "Dictionary">}つもりです\`;
 `,
         },
         {
@@ -114,7 +114,7 @@ type 今日 = ProperNoun<"今日">;
 type 飲む = GodanVerb & { stem: "飲"; ending: "む" };
 
 // ない形 of 飲む returns 飲ま; append ない, then つもりです
-type 今日は飲まないつもりです = \`\${PhraseWithParticle<今日, "は">}\${ConjugateVerb<飲む, "ない形">}ないつもりです\`;
+type 今日は飲まないつもりです = \`\${PhraseWithParticle<今日, "は">}\${ConjugateVerb<飲む, "Nai">}ないつもりです\`;
 `,
         },
       ],
@@ -153,7 +153,7 @@ type 彼 = ProperNoun<"彼">;
 type 来る = IrregularVerb & { dictionary: "来る" };
 
 // 彼 + は + 来る(辞書形) + でしょう
-type 彼は来るでしょう = \`\${PhraseWithParticle<彼, "は">}\${ConjugateVerb<来る, "辞書形">}でしょう\`;
+type 彼は来るでしょう = \`\${PhraseWithParticle<彼, "は">}\${ConjugateVerb<来る, "Dictionary">}でしょう\`;
 `,
         },
       ],

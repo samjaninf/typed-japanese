@@ -31,7 +31,7 @@ type 食べる = IchidanVerb & { stem: "食べ"; ending: "る" };
 type 好き = NaAdjective & { stem: "好き" };
 
 // 食べる (辞書形) + の (nominalizer) + が + 好き (丁寧形 = 好きです)
-type 食べるのが好きです = \`\${PhraseWithParticle<\`\${ConjugateVerb<食べる, "辞書形">}の\`, "が">}\${ConjugateAdjective<好き, "丁寧形">}\`;
+type 食べるのが好きです = \`\${PhraseWithParticle<\`\${ConjugateVerb<食べる, "Dictionary">}の\`, "が">}\${ConjugateAdjective<好き, "Polite">}\`;
 `,
         },
         {
@@ -46,7 +46,7 @@ type 話す = GodanVerb & { stem: "話"; ending: "す" };
 type 難しい = IAdjective & { stem: "難し"; ending: "い" };
 
 // 日本語 + を + 話す (辞書形) + の + は + 難しい (基本形)
-type 日本語を話すのは難しい = \`\${PhraseWithParticle<日本語, "を">}\${PhraseWithParticle<\`\${ConjugateVerb<話す, "辞書形">}の\`, "は">}\${ConjugateAdjective<難しい, "基本形">}\`;
+type 日本語を話すのは難しい = \`\${PhraseWithParticle<日本語, "を">}\${PhraseWithParticle<\`\${ConjugateVerb<話す, "Dictionary">}の\`, "は">}\${ConjugateAdjective<難しい, "Basic">}\`;
 `,
         },
       ],
@@ -72,7 +72,7 @@ type 話す = GodanVerb & { stem: "話"; ending: "す" };
 type 難しい = IAdjective & { stem: "難し"; ending: "い" };
 
 // 日本語 + を + 話す (辞書形) + こと + は + 難しい (基本形)
-type 日本語を話すことは難しい = \`\${PhraseWithParticle<日本語, "を">}\${PhraseWithParticle<\`\${ConjugateVerb<話す, "辞書形">}こと\`, "は">}\${ConjugateAdjective<難しい, "基本形">}\`;
+type 日本語を話すことは難しい = \`\${PhraseWithParticle<日本語, "を">}\${PhraseWithParticle<\`\${ConjugateVerb<話す, "Dictionary">}こと\`, "は">}\${ConjugateAdjective<難しい, "Basic">}\`;
 `,
         },
         {
@@ -87,7 +87,7 @@ type 本 = ProperNoun<"本">;
 type 読む = GodanVerb & { stem: "読"; ending: "む" };
 
 // 私の趣味 + は + 本 + を + 読む (辞書形) + こと + です
-type 私の趣味は本を読むことです = \`\${PhraseWithParticle<私の趣味, "は">}\${PhraseWithParticle<本, "を">}\${ConjugateVerb<読む, "辞書形">}ことです\`;
+type 私の趣味は本を読むことです = \`\${PhraseWithParticle<私の趣味, "は">}\${PhraseWithParticle<本, "を">}\${ConjugateVerb<読む, "Dictionary">}ことです\`;
 `,
         },
         {
@@ -101,7 +101,7 @@ type 日本語 = ProperNoun<"日本語">;
 type 話す = GodanVerb & { stem: "話"; ending: "す" };
 
 // 日本語 + を + 話す (辞書形) + こと + が + できます
-type 日本語を話すことができます = \`\${PhraseWithParticle<日本語, "を">}\${PhraseWithParticle<\`\${ConjugateVerb<話す, "辞書形">}こと\`, "が">}できます\`;
+type 日本語を話すことができます = \`\${PhraseWithParticle<日本語, "を">}\${PhraseWithParticle<\`\${ConjugateVerb<話す, "Dictionary">}こと\`, "が">}できます\`;
 `,
         },
       ],
@@ -127,8 +127,8 @@ type 読む = GodanVerb & { stem: "読"; ending: "む" };
 type 眼鏡 = ProperNoun<"眼鏡">;
 type かける = IchidanVerb & { stem: "かけ"; ending: "る" };
 
-type 本を読むとき = \`\${PhraseWithParticle<本, "を">}\${ConjugateVerb<読む, "辞書形">}とき\`;
-type 眼鏡をかけます = \`\${PhraseWithParticle<眼鏡, "を">}\${ConjugateVerb<かける, "ます形">}ます\`;
+type 本を読むとき = \`\${PhraseWithParticle<本, "を">}\${ConjugateVerb<読む, "Dictionary">}とき\`;
+type 眼鏡をかけます = \`\${PhraseWithParticle<眼鏡, "を">}\${ConjugateVerb<かける, "Masu">}ます\`;
 
 // 本を読むとき + 、 + 眼鏡をかけます
 type 本を読むとき眼鏡をかけます = ConnectedPhrases<本を読むとき, 眼鏡をかけます>;
@@ -148,7 +148,7 @@ type 泣く = GodanVerb & { stem: "泣"; ending: "く" };
 // 子供 + の + とき
 type 子供のとき = \`\${PhraseWithParticle<子供, "の">}とき\`;
 // よく + 泣き (ます形) + ました
-type よく泣きました = \`\${よく}\${ConjugateVerb<泣く, "ます形">}ました\`;
+type よく泣きました = \`\${よく}\${ConjugateVerb<泣く, "Masu">}ました\`;
 
 type 子供のときよく泣きました = ConnectedPhrases<子供のとき, よく泣きました>;
 `,
@@ -165,9 +165,9 @@ type コート = ProperNoun<"コート">;
 type 着る = IchidanVerb & { stem: "着"; ending: "る" };
 
 // 寒い (基本形) + とき
-type 寒いとき = \`\${ConjugateAdjective<寒い, "基本形">}とき\`;
+type 寒いとき = \`\${ConjugateAdjective<寒い, "Basic">}とき\`;
 // コート + を + 着 (ます形) + ます
-type コートを着ます = \`\${PhraseWithParticle<コート, "を">}\${ConjugateVerb<着る, "ます形">}ます\`;
+type コートを着ます = \`\${PhraseWithParticle<コート, "を">}\${ConjugateVerb<着る, "Masu">}ます\`;
 
 type 寒いときコートを着ます = ConnectedPhrases<寒いとき, コートを着ます>;
 `,

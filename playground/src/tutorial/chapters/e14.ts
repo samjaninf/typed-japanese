@@ -31,7 +31,7 @@ type 写真 = ProperNoun<"写真">;
 type 撮る = GodanVerb & { stem: "撮"; ending: "る" };
 
 // ここで + 写真を + 撮って (te-form) + もいいです
-type ここで写真を撮ってもいいです = \`ここで\${写真}を\${ConjugateVerb<撮る, "て形">}もいいです\`;
+type ここで写真を撮ってもいいです = \`ここで\${写真}を\${ConjugateVerb<撮る, "Te">}もいいです\`;
 `,
         },
         {
@@ -45,7 +45,7 @@ type 本 = ProperNoun<"本">;
 type 借りる = IchidanVerb & { stem: "借り"; ending: "る" };
 
 // この + 本を + 借りて (te-form) + もいいですか
-type この本を借りてもいいですか = \`この\${本}を\${ConjugateVerb<借りる, "て形">}もいいですか\`;
+type この本を借りてもいいですか = \`この\${本}を\${ConjugateVerb<借りる, "Te">}もいいですか\`;
 `,
         },
         {
@@ -58,7 +58,7 @@ type この本を借りてもいいですか = \`この\${本}を\${ConjugateVer
 type 休む = GodanVerb & { stem: "休"; ending: "む" };
 
 // ここで + 休んで (te-form) + もいいです
-type ここで休んでもいいです = \`ここで\${ConjugateVerb<休む, "て形">}もいいです\`;
+type ここで休んでもいいです = \`ここで\${ConjugateVerb<休む, "Te">}もいいです\`;
 `,
         },
       ],
@@ -83,7 +83,7 @@ type タバコ = ProperNoun<"タバコ">;
 type 吸う = GodanVerb & { stem: "吸"; ending: "う" };
 
 // ここで + タバコを + 吸って (te-form) + はいけません
-type ここでタバコを吸ってはいけません = \`ここで\${タバコ}を\${ConjugateVerb<吸う, "て形">}はいけません\`;
+type ここでタバコを吸ってはいけません = \`ここで\${タバコ}を\${ConjugateVerb<吸う, "Te">}はいけません\`;
 `,
         },
         {
@@ -96,7 +96,7 @@ type ここでタバコを吸ってはいけません = \`ここで\${タバコ}
 type 入る = GodanVerb & { stem: "入"; ending: "る" };
 
 // ここに + 入って (te-form) + はいけません
-type ここに入ってはいけません = \`ここに\${ConjugateVerb<入る, "て形">}はいけません\`;
+type ここに入ってはいけません = \`ここに\${ConjugateVerb<入る, "Te">}はいけません\`;
 `,
         },
         {
@@ -110,7 +110,7 @@ type 写真 = ProperNoun<"写真">;
 type 撮る = GodanVerb & { stem: "撮"; ending: "る" };
 
 // ここで + 写真を + 撮って (te-form) + はいけません
-type ここで写真を撮ってはいけません = \`ここで\${写真}を\${ConjugateVerb<撮る, "て形">}はいけません\`;
+type ここで写真を撮ってはいけません = \`ここで\${写真}を\${ConjugateVerb<撮る, "Te">}はいけません\`;
 `,
         },
       ],
@@ -135,7 +135,7 @@ type 電話 = ProperNoun<"電話">;
 type 使う = GodanVerb & { stem: "使"; ending: "う" };
 
 // ここで + 電話を + 使って (te-form) + もいいですか
-type ここで電話を使ってもいいですか = \`ここで\${電話}を\${ConjugateVerb<使う, "て形">}もいいですか\`;
+type ここで電話を使ってもいいですか = \`ここで\${電話}を\${ConjugateVerb<使う, "Te">}もいいですか\`;
 `,
         },
         {
@@ -149,7 +149,7 @@ type 電話 = ProperNoun<"電話">;
 type 使う = GodanVerb & { stem: "使"; ending: "う" };
 
 // いいえ、 + ここで + 電話を + 使って (te-form) + はいけません
-type いいえここで電話を使ってはいけません = \`いいえ、ここで\${電話}を\${ConjugateVerb<使う, "て形">}はいけません\`;
+type いいえここで電話を使ってはいけません = \`いいえ、ここで\${電話}を\${ConjugateVerb<使う, "Te">}はいけません\`;
 `,
         },
       ],

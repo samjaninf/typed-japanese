@@ -31,7 +31,7 @@ type 子供 = ProperNoun<"子供">;
 type 遊ぶ = GodanVerb & { stem: "遊"; ending: "ぶ" };
 
 // 子供 + は + 遊ぶ(辞書形) + ものだ
-type 子供は遊ぶものだ = \`\${PhraseWithParticle<子供, "は">}\${ConjugateVerb<遊ぶ, "辞書形">}ものだ\`;
+type 子供は遊ぶものだ = \`\${PhraseWithParticle<子供, "は">}\${ConjugateVerb<遊ぶ, "Dictionary">}ものだ\`;
 `,
         },
         {
@@ -46,7 +46,7 @@ type 早く = ProperNoun<"早く">;
 type 過ぎる = IchidanVerb & { stem: "過ぎ"; ending: "る" };
 
 // 時間 + は + 早く + 過ぎる(辞書形) + ものだ
-type 時間は早く過ぎるものだ = \`\${PhraseWithParticle<時間, "は">}\${早く}\${ConjugateVerb<過ぎる, "辞書形">}ものだ\`;
+type 時間は早く過ぎるものだ = \`\${PhraseWithParticle<時間, "は">}\${早く}\${ConjugateVerb<過ぎる, "Dictionary">}ものだ\`;
 `,
         },
       ],
@@ -71,7 +71,7 @@ type 昔 = ProperNoun<"昔">;
 type 泳ぐ = GodanVerb & { stem: "泳"; ending: "ぐ" };
 
 // 昔 + は + よく + 泳いだ(た形) + ものだ
-type 昔はよく泳いだものだ = \`\${PhraseWithParticle<昔, "は">}よく\${ConjugateVerb<泳ぐ, "た形">}ものだ\`;
+type 昔はよく泳いだものだ = \`\${PhraseWithParticle<昔, "は">}よく\${ConjugateVerb<泳ぐ, "Ta">}ものだ\`;
 `,
         },
         {
@@ -85,7 +85,7 @@ type 子供の頃 = ProperNoun<"子供の頃">;
 type 遊ぶ = GodanVerb & { stem: "遊"; ending: "ぶ" };
 
 // 子供の頃 + は + よく + 遊んだ(た形) + ものだ
-type 子供の頃はよく遊んだものだ = \`\${PhraseWithParticle<子供の頃, "は">}よく\${ConjugateVerb<遊ぶ, "た形">}ものだ\`;
+type 子供の頃はよく遊んだものだ = \`\${PhraseWithParticle<子供の頃, "は">}よく\${ConjugateVerb<遊ぶ, "Ta">}ものだ\`;
 `,
         },
       ],
@@ -111,7 +111,7 @@ type 練習 = ProperNoun<"練習">;
 type 練習する = IrregularVerb & { dictionary: "する" };
 
 // 毎日 + 練習 + する(辞書形) + ことだ
-type 毎日練習することだ = \`\${毎日}\${練習}\${ConjugateVerb<練習する, "辞書形">}ことだ\`;
+type 毎日練習することだ = \`\${毎日}\${練習}\${ConjugateVerb<練習する, "Dictionary">}ことだ\`;
 `,
         },
         {
@@ -125,7 +125,7 @@ type 医者 = ProperNoun<"医者">;
 type 聞く = GodanVerb & { stem: "聞"; ending: "く" };
 
 // まず + 医者 + に + 聞く(辞書形) + ことだ
-type まず医者に聞くことだ = \`まず\${PhraseWithParticle<医者, "に">}\${ConjugateVerb<聞く, "辞書形">}ことだ\`;
+type まず医者に聞くことだ = \`まず\${PhraseWithParticle<医者, "に">}\${ConjugateVerb<聞く, "Dictionary">}ことだ\`;
 `,
         },
       ],
@@ -149,7 +149,7 @@ type まず医者に聞くことだ = \`まず\${PhraseWithParticle<医者, "に
 type 素晴らしい = IAdjective & { stem: "素晴らし"; ending: "い" };
 
 // 素晴らしい(基本形) + ことだ
-type 素晴らしいことだ = \`\${ConjugateAdjective<素晴らしい, "基本形">}ことだ\`;
+type 素晴らしいことだ = \`\${ConjugateAdjective<素晴らしい, "Basic">}ことだ\`;
 `,
         },
         {
@@ -163,7 +163,7 @@ type 本当に = ProperNoun<"本当に">;
 type 幸せ = NaAdjective & { stem: "幸せ" };
 
 // 本当に + 幸せ(基本形=幸せな) + ことだ
-type 本当に幸せなことだ = \`\${本当に}\${ConjugateAdjective<幸せ, "基本形">}ことだ\`;
+type 本当に幸せなことだ = \`\${本当に}\${ConjugateAdjective<幸せ, "Basic">}ことだ\`;
 `,
         },
       ],

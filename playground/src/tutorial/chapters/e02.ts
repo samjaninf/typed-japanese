@@ -31,7 +31,7 @@ type これ = ProperNoun<"これ">;
 type 本 = ProperNoun<"本">;
 
 // これ + は (topic) + 本 + です
-type これは本です = \`\${PhraseWithParticle<これ, "は">}\${ConjugateCopula<本, "丁寧形">}\`;
+type これは本です = \`\${PhraseWithParticle<これ, "は">}\${ConjugateCopula<本, "Polite">}\`;
 `,
         },
         {
@@ -46,7 +46,7 @@ type 私 = ProperNoun<"私">;
 type かばん = ProperNoun<"かばん">;
 
 // それ + は + 私 + の + かばん + です
-type それは私のかばんです = \`\${PhraseWithParticle<それ, "は">}\${PhraseWithParticle<私, "の">}\${ConjugateCopula<かばん, "丁寧形">}\`;
+type それは私のかばんです = \`\${PhraseWithParticle<それ, "は">}\${PhraseWithParticle<私, "の">}\${ConjugateCopula<かばん, "Polite">}\`;
 `,
         },
         {
@@ -60,7 +60,7 @@ type あれ = ProperNoun<"あれ">;
 type 何 = ProperNoun<"何">;
 
 // あれ + は + 何 + ですか
-type あれは何ですか = \`\${PhraseWithParticle<あれ, "は">}\${ConjugateCopula<何, "丁寧形">}か\`;
+type あれは何ですか = \`\${PhraseWithParticle<あれ, "は">}\${ConjugateCopula<何, "Polite">}か\`;
 `,
         },
       ],
@@ -85,7 +85,7 @@ type 本 = ProperNoun<"本">;
 type 面白い = IAdjective & { stem: "面白"; ending: "い" };
 
 // この + 本 + は + 面白い + です
-type この本は面白いです = \`この\${PhraseWithParticle<本, "は">}\${ConjugateAdjective<面白い, "基本形">}です\`;
+type この本は面白いです = \`この\${PhraseWithParticle<本, "は">}\${ConjugateAdjective<面白い, "Basic">}です\`;
 `,
         },
         {
@@ -99,7 +99,7 @@ type 人 = ProperNoun<"人">;
 type 田中さん = ProperNoun<"田中さん">;
 
 // その + 人 + は + 田中さん + です
-type その人は田中さんです = \`その\${PhraseWithParticle<人, "は">}\${ConjugateCopula<田中さん, "丁寧形">}\`;
+type その人は田中さんです = \`その\${PhraseWithParticle<人, "は">}\${ConjugateCopula<田中さん, "Polite">}\`;
 `,
         },
         {
@@ -113,7 +113,7 @@ type 店 = ProperNoun<"店">;
 type 新しい = IAdjective & { stem: "新し"; ending: "い" };
 
 // あの + 店 + は + 新しい + です
-type あの店は新しいです = \`あの\${PhraseWithParticle<店, "は">}\${ConjugateAdjective<新しい, "基本形">}です\`;
+type あの店は新しいです = \`あの\${PhraseWithParticle<店, "は">}\${ConjugateAdjective<新しい, "Basic">}です\`;
 `,
         },
       ],
@@ -139,7 +139,7 @@ type 私 = ProperNoun<"私">;
 type 傘 = ProperNoun<"傘">;
 
 // これ + は + 私 + の + 傘 + です
-type これは私の傘です = \`\${PhraseWithParticle<これ, "は">}\${PhraseWithParticle<私, "の">}\${ConjugateCopula<傘, "丁寧形">}\`;
+type これは私の傘です = \`\${PhraseWithParticle<これ, "は">}\${PhraseWithParticle<私, "の">}\${ConjugateCopula<傘, "Polite">}\`;
 `,
         },
         {
@@ -154,7 +154,7 @@ type 車 = ProperNoun<"車">;
 type 赤い = IAdjective & { stem: "赤"; ending: "い" };
 
 // 田中さん + の + 車 + は + 赤い + です
-type 田中さんの車は赤いです = \`\${PhraseWithParticle<田中さん, "の">}\${PhraseWithParticle<車, "は">}\${ConjugateAdjective<赤い, "基本形">}です\`;
+type 田中さんの車は赤いです = \`\${PhraseWithParticle<田中さん, "の">}\${PhraseWithParticle<車, "は">}\${ConjugateAdjective<赤い, "Basic">}です\`;
 `,
         },
         {
@@ -169,7 +169,7 @@ type 日本 = ProperNoun<"日本">;
 type 車 = ProperNoun<"車">;
 
 // あれ + は + 日本 + の + 車 + です
-type あれは日本の車です = \`\${PhraseWithParticle<あれ, "は">}\${PhraseWithParticle<日本, "の">}\${ConjugateCopula<車, "丁寧形">}\`;
+type あれは日本の車です = \`\${PhraseWithParticle<あれ, "は">}\${PhraseWithParticle<日本, "の">}\${ConjugateCopula<車, "Polite">}\`;
 `,
         },
       ],

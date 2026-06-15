@@ -56,12 +56,12 @@ export type NounPhrase<Noun extends string> = `${Noun}`;
 
 export type AdjectivalPhrase<
   A extends Adjective,
-  F extends AdjectiveConjugationForm = "基本形"
+  F extends AdjectiveConjugationForm = "Basic"
 > = ConjugateAdjective<A, F>;
 
 export type VerbPhrase<
   V extends Verb,
-  F extends ConjugationForm = "辞書形"
+  F extends ConjugationForm = "Dictionary"
 > = ConjugateVerb<V, F>;
 
 // Phrase with particle
@@ -74,7 +74,7 @@ export type PhraseWithParticle<
 export type DemonstrativeAction<
   Demo extends string,
   V extends Verb,
-  F extends ConjugationForm = "辞書形"
+  F extends ConjugationForm = "Dictionary"
 > = `${Demo}${ConjugateVerb<V, F>}`;
 
 // Conditional phrase with なら
@@ -212,16 +212,16 @@ export type WhyIntensifierPatternWithEmphasis<
   [
     AdverbPart<Why>,
     IntensifierPart<Intensifier>,
-    VerbPart<V, "て形">,
+    VerbPart<V, "Te">,
     ContractedPart<"ん">,
-    CopulaPart<"断定形">,
+    CopulaPart<"Plain">,
     ParticlePart<P>
   ]
 >;
 
 // Examples for the target phrase "いいよ、来いよ"
 type いい = IAdjective & { stem: "い"; ending: "い"; irregular: true };
-type いいよ = PhraseWithParticle<ConjugateAdjective<いい, "基本形">, "よ">;
+type いいよ = PhraseWithParticle<ConjugateAdjective<いい, "Basic">, "よ">;
 type 来る = IrregularVerb & { dictionary: "来る" };
-type 来いよ = PhraseWithParticle<ConjugateVerb<来る, "命令形">, "よ">;
+type 来いよ = PhraseWithParticle<ConjugateVerb<来る, "Imperative">, "よ">;
 type いいよ来いよ = ConnectedPhrases<いいよ, 来いよ>;

@@ -31,7 +31,7 @@ type 春 = ProperNoun<"春">;
 type 寒い = IAdjective & { stem: "寒"; ending: "い" };
 
 // 春 + とはいえ + まだ + 寒い (基本形)
-type 春とはいえまだ寒い = \`\${春}とはいえまだ\${ConjugateAdjective<寒い, "基本形">}\`;
+type 春とはいえまだ寒い = \`\${春}とはいえまだ\${ConjugateAdjective<寒い, "Basic">}\`;
 `,
         },
         {
@@ -45,7 +45,7 @@ type 便利 = ProperNoun<"便利">;
 type 高い = IAdjective & { stem: "高"; ending: "い" };
 
 // 便利 (noun, だ dropped) + とはいえ + 高い (基本形)
-type 便利とはいえ高い = \`\${便利}とはいえ\${ConjugateAdjective<高い, "基本形">}\`;
+type 便利とはいえ高い = \`\${便利}とはいえ\${ConjugateAdjective<高い, "Basic">}\`;
 `,
         },
       ],
@@ -84,7 +84,7 @@ type 高い = IAdjective & { stem: "高"; ending: "い" };
 type 千円 = ProperNoun<"千円">;
 
 // 高い (基本形) + といっても + 千円 + だ
-type 高いといっても千円だ = \`\${ConjugateAdjective<高い, "基本形">}といっても\${ConjugateCopula<千円, "断定形">}\`;
+type 高いといっても千円だ = \`\${ConjugateAdjective<高い, "Basic">}といっても\${ConjugateCopula<千円, "Plain">}\`;
 `,
         },
       ],
@@ -109,7 +109,7 @@ type 安い = IAdjective & { stem: "安"; ending: "い" };
 type 買う = GodanVerb & { stem: "買"; ending: "う" };
 
 // 安い (基本形) + からといって + 買わ (ない形 stem) + ない
-type 安いからといって買わない = \`\${ConjugateAdjective<安い, "基本形">}からといって\${ConjugateVerb<買う, "ない形">}ない\`;
+type 安いからといって買わない = \`\${ConjugateAdjective<安い, "Basic">}からといって\${ConjugateVerb<買う, "Nai">}ない\`;
 `,
         },
         {
@@ -123,7 +123,7 @@ type 学生 = ProperNoun<"学生">;
 type 暇 = NaAdjective & { stem: "暇" };
 
 // 学生 + だ + からといって + 暇ではない (否定形)
-type 学生だからといって暇ではない = \`\${ConjugateCopula<学生, "断定形">}からといって\${ConjugateAdjective<暇, "否定形">}\`;
+type 学生だからといって暇ではない = \`\${ConjugateCopula<学生, "Plain">}からといって\${ConjugateAdjective<暇, "Negative">}\`;
 `,
         },
       ],

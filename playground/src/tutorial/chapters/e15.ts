@@ -32,7 +32,7 @@ type 水 = ProperNoun<"水">;
 type 飲む = GodanVerb & { stem: "飲"; ending: "む" };
 
 // 私 + は + 水 + が + 飲み(ます形) + たい
-type 私は水が飲みたい = \`\${PhraseWithParticle<私, "は">}\${PhraseWithParticle<水, "が">}\${ConjugateVerb<飲む, "ます形">}たい\`;
+type 私は水が飲みたい = \`\${PhraseWithParticle<私, "は">}\${PhraseWithParticle<水, "が">}\${ConjugateVerb<飲む, "Masu">}たい\`;
 `,
         },
         {
@@ -46,7 +46,7 @@ type 寿司 = ProperNoun<"寿司">;
 type 食べる = IchidanVerb & { stem: "食べ"; ending: "る" };
 
 // 寿司 + が + 食べ(ます形) + たい
-type 寿司が食べたい = \`\${PhraseWithParticle<寿司, "が">}\${ConjugateVerb<食べる, "ます形">}たい\`;
+type 寿司が食べたい = \`\${PhraseWithParticle<寿司, "が">}\${ConjugateVerb<食べる, "Masu">}たい\`;
 `,
         },
         {
@@ -60,7 +60,7 @@ type 日本 = ProperNoun<"日本">;
 type 行く = GodanVerb & { stem: "行"; ending: "く" };
 
 // 日本 + へ + 行き(ます形) + たい + です (polite)
-type 日本へ行きたいです = \`\${PhraseWithParticle<日本, "へ">}\${ConjugateVerb<行く, "ます形">}たいです\`;
+type 日本へ行きたいです = \`\${PhraseWithParticle<日本, "へ">}\${ConjugateVerb<行く, "Masu">}たいです\`;
 `,
         },
       ],
@@ -99,7 +99,7 @@ type 新しい = IAdjective & { stem: "新し"; ending: "い" };
 type かばん = ProperNoun<"かばん">;
 
 // 新しい(基本形) + かばん + が + ほしいです
-type 新しいかばんがほしいです = \`\${ConjugateAdjective<新しい, "基本形">}\${PhraseWithParticle<かばん, "が">}ほしいです\`;
+type 新しいかばんがほしいです = \`\${ConjugateAdjective<新しい, "Basic">}\${PhraseWithParticle<かばん, "が">}ほしいです\`;
 `,
         },
       ],
@@ -124,7 +124,7 @@ type 今日 = ProperNoun<"今日">;
 type 働く = GodanVerb & { stem: "働"; ending: "く" };
 
 // 今日 + は + 働き(ます形) + たくない
-type 今日は働きたくない = \`\${PhraseWithParticle<今日, "は">}\${ConjugateVerb<働く, "ます形">}たくない\`;
+type 今日は働きたくない = \`\${PhraseWithParticle<今日, "は">}\${ConjugateVerb<働く, "Masu">}たくない\`;
 `,
         },
         {
@@ -138,7 +138,7 @@ type 肉 = ProperNoun<"肉">;
 type 食べる = IchidanVerb & { stem: "食べ"; ending: "る" };
 
 // 肉 + は + 食べ(ます形) + たくないです
-type 肉は食べたくないです = \`\${PhraseWithParticle<肉, "は">}\${ConjugateVerb<食べる, "ます形">}たくないです\`;
+type 肉は食べたくないです = \`\${PhraseWithParticle<肉, "は">}\${ConjugateVerb<食べる, "Masu">}たくないです\`;
 `,
         },
       ],

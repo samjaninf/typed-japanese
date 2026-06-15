@@ -31,7 +31,7 @@ type 私 = ProperNoun<"私">;
 type 行く = GodanVerb & { stem: "行"; ending: "く" };
 
 // 私 は + 行か (ない形 stem) + ざるを得ない
-type 私は行かざるを得ない = \`\${PhraseWithParticle<私, "は">}\${ConjugateVerb<行く, "ない形">}\${ProperNoun<"ざるを得ない">}\`;
+type 私は行かざるを得ない = \`\${PhraseWithParticle<私, "は">}\${ConjugateVerb<行く, "Nai">}\${ProperNoun<"ざるを得ない">}\`;
 `,
         },
         {
@@ -45,7 +45,7 @@ type 失敗 = ProperNoun<"失敗">;
 type 認める = IchidanVerb & { stem: "認め"; ending: "る" };
 
 // 失敗 を + 認め (ない形 stem) + ざるを得ない
-type 失敗を認めざるを得ない = \`\${PhraseWithParticle<失敗, "を">}\${ConjugateVerb<認める, "ない形">}\${ProperNoun<"ざるを得ない">}\`;
+type 失敗を認めざるを得ない = \`\${PhraseWithParticle<失敗, "を">}\${ConjugateVerb<認める, "Nai">}\${ProperNoun<"ざるを得ない">}\`;
 `,
         },
       ],
@@ -109,7 +109,7 @@ type 私 = ProperNoun<"私">;
 type 笑う = GodanVerb & { stem: "笑"; ending: "う" };
 
 // 私 は + 笑わ (ない形 stem) + ずにはいられない
-type 私は笑わずにはいられない = \`\${PhraseWithParticle<私, "は">}\${ConjugateVerb<笑う, "ない形">}ずにはいられない\`;
+type 私は笑わずにはいられない = \`\${PhraseWithParticle<私, "は">}\${ConjugateVerb<笑う, "Nai">}ずにはいられない\`;
 `,
         },
         {
@@ -123,7 +123,7 @@ type 真実 = ProperNoun<"真実">;
 type 疑う = GodanVerb & { stem: "疑"; ending: "う" };
 
 // 真実 を + 疑わ (ない形 stem) + ずにはいられない
-type 真実を疑わずにはいられない = \`\${PhraseWithParticle<真実, "を">}\${ConjugateVerb<疑う, "ない形">}ずにはいられない\`;
+type 真実を疑わずにはいられない = \`\${PhraseWithParticle<真実, "を">}\${ConjugateVerb<疑う, "Nai">}ずにはいられない\`;
 `,
         },
       ],

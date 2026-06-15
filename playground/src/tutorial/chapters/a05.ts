@@ -123,7 +123,7 @@ type 彼 = ProperNoun<"彼">;
 type 来る = IrregularVerb & { dictionary: "来る" };
 
 // 彼 + は (topic) + 来る (辞書形 = 来る) + にちがいない
-type 彼は来るにちがいない = \`\${PhraseWithParticle<彼, "は">}\${ConjugateVerb<来る, "辞書形">}にちがいない\`;
+type 彼は来るにちがいない = \`\${PhraseWithParticle<彼, "は">}\${ConjugateVerb<来る, "Dictionary">}にちがいない\`;
 `,
         },
         {
@@ -137,7 +137,7 @@ type あの店 = ProperNoun<"あの店">;
 type 高い = IAdjective & { stem: "高"; ending: "い" };
 
 // あの店 + は (topic) + 高い (基本形) + にちがいありません (polite)
-type あの店は高いにちがいありません = \`\${PhraseWithParticle<あの店, "は">}\${ConjugateAdjective<高い, "基本形">}にちがいありません\`;
+type あの店は高いにちがいありません = \`\${PhraseWithParticle<あの店, "は">}\${ConjugateAdjective<高い, "Basic">}にちがいありません\`;
 `,
         },
       ],

@@ -32,7 +32,7 @@ type 何も = ProperNoun<"何も">;
 type 知る = GodanVerb & { stem: "知"; ending: "る" };
 
 // 彼は + 何も + 知ら(ない形) + ない + かのようだ
-type 彼は何も知らないかのようだ = \`\${PhraseWithParticle<彼, "は">}\${何も}\${ConjugateVerb<知る, "ない形">}ないかのようだ\`;
+type 彼は何も知らないかのようだ = \`\${PhraseWithParticle<彼, "は">}\${何も}\${ConjugateVerb<知る, "Nai">}ないかのようだ\`;
 `,
         },
         {
@@ -46,7 +46,7 @@ type 夢 = ProperNoun<"夢">;
 type 見る = IchidanVerb & { stem: "見"; ending: "る" };
 
 // 夢を + 見て(て形) + いる + かのようだ
-type 夢を見ているかのようだ = \`\${PhraseWithParticle<夢, "を">}\${ConjugateVerb<見る, "て形">}いるかのようだ\`;
+type 夢を見ているかのようだ = \`\${PhraseWithParticle<夢, "を">}\${ConjugateVerb<見る, "Te">}いるかのようだ\`;
 `,
         },
         {
@@ -88,7 +88,7 @@ type 来る = IrregularVerb & { dictionary: "来る" };
 type 暖かい = IAdjective & { stem: "暖か"; ending: "い" };
 
 // 春が + 来た(た形) + かのように + 暖かい(基本形)
-type 春が来たかのように暖かい = \`春が\${ConjugateVerb<来る, "た形">}かのように\${ConjugateAdjective<暖かい, "基本形">}\`;
+type 春が来たかのように暖かい = \`春が\${ConjugateVerb<来る, "Ta">}かのように\${ConjugateAdjective<暖かい, "Basic">}\`;
 `,
         },
         {
@@ -103,7 +103,7 @@ type 降る = GodanVerb & { stem: "降"; ending: "る" };
 type 白い = IAdjective & { stem: "白"; ending: "い" };
 
 // 雪が + 降って(て形) + いる + かのように + 白い(基本形)
-type 雪が降っているかのように白い = \`\${PhraseWithParticle<雪, "が">}\${ConjugateVerb<降る, "て形">}いるかのように\${ConjugateAdjective<白い, "基本形">}\`;
+type 雪が降っているかのように白い = \`\${PhraseWithParticle<雪, "が">}\${ConjugateVerb<降る, "Te">}いるかのように\${ConjugateAdjective<白い, "Basic">}\`;
 `,
         },
       ],
@@ -130,7 +130,7 @@ type 行く = GodanVerb & { stem: "行"; ending: "く" };
 type 見る = IchidanVerb & { stem: "見"; ending: "る" };
 
 // 早く + 行け(命令形) + とばかりに + 彼を + 見た(た形)
-type 早く行けとばかりに彼を見た = \`\${早く}\${ConjugateVerb<行く, "命令形">}とばかりに\${PhraseWithParticle<彼, "を">}\${ConjugateVerb<見る, "た形">}\`;
+type 早く行けとばかりに彼を見た = \`\${早く}\${ConjugateVerb<行く, "Imperative">}とばかりに\${PhraseWithParticle<彼, "を">}\${ConjugateVerb<見る, "Ta">}\`;
 `,
         },
         {
@@ -144,7 +144,7 @@ type 待つ = GodanVerb & { stem: "待"; ending: "つ" };
 type 笑う = GodanVerb & { stem: "笑"; ending: "う" };
 
 // 待って(て形) + いた + とばかりに + 笑った(た形)
-type 待っていたとばかりに笑った = \`\${ConjugateVerb<待つ, "て形">}いたとばかりに\${ConjugateVerb<笑う, "た形">}\`;
+type 待っていたとばかりに笑った = \`\${ConjugateVerb<待つ, "Te">}いたとばかりに\${ConjugateVerb<笑う, "Ta">}\`;
 `,
         },
         {
@@ -159,7 +159,7 @@ type 聞く = GodanVerb & { stem: "聞"; ending: "く" };
 type 歩く = GodanVerb & { stem: "歩"; ending: "く" };
 
 // 何も + 聞いて(て形) + いない + とばかりに + 歩いた(た形)
-type 何も聞いていないとばかりに歩いた = \`\${何も}\${ConjugateVerb<聞く, "て形">}いないとばかりに\${ConjugateVerb<歩く, "た形">}\`;
+type 何も聞いていないとばかりに歩いた = \`\${何も}\${ConjugateVerb<聞く, "Te">}いないとばかりに\${ConjugateVerb<歩く, "Ta">}\`;
 `,
         },
       ],

@@ -32,7 +32,7 @@ type 本 = ProperNoun<"本">;
 type 読む = GodanVerb & { stem: "読"; ending: "む" };
 
 // 読む ます形 → "読み";  お + 読み + になります
-type 先生は本をお読みになります = \`\${PhraseWithParticle<先生, "は">}\${PhraseWithParticle<本, "を">}お\${ConjugateVerb<読む, "ます形">}になります\`;
+type 先生は本をお読みになります = \`\${PhraseWithParticle<先生, "は">}\${PhraseWithParticle<本, "を">}お\${ConjugateVerb<読む, "Masu">}になります\`;
 `,
         },
         {
@@ -46,7 +46,7 @@ type 社長 = ProperNoun<"社長">;
 type 帰る = GodanVerb & { stem: "帰"; ending: "る" };
 
 // 帰る ます形 → "帰り";  お + 帰り + になりました
-type 社長はもうお帰りになりました = \`\${PhraseWithParticle<社長, "は">}もうお\${ConjugateVerb<帰る, "ます形">}になりました\`;
+type 社長はもうお帰りになりました = \`\${PhraseWithParticle<社長, "は">}もうお\${ConjugateVerb<帰る, "Masu">}になりました\`;
 `,
         },
       ],
@@ -72,7 +72,7 @@ type 新聞 = ProperNoun<"新聞">;
 type 読む = GodanVerb & { stem: "読"; ending: "む" };
 
 // 読む 受身形 → "読ま";  読ま + れます
-type 部長は新聞を読まれます = \`\${PhraseWithParticle<部長, "は">}\${PhraseWithParticle<新聞, "を">}\${ConjugateVerb<読む, "受身形">}れます\`;
+type 部長は新聞を読まれます = \`\${PhraseWithParticle<部長, "は">}\${PhraseWithParticle<新聞, "を">}\${ConjugateVerb<読む, "Passive">}れます\`;
 `,
         },
         {
@@ -86,7 +86,7 @@ type 先生 = ProperNoun<"先生">;
 type 書く = GodanVerb & { stem: "書"; ending: "く" };
 
 // 書く 受身形 → "書か";  書か + れましたか
-type 先生はいつ書かれましたか = \`\${PhraseWithParticle<先生, "は">}いつ\${ConjugateVerb<書く, "受身形">}れましたか\`;
+type 先生はいつ書かれましたか = \`\${PhraseWithParticle<先生, "は">}いつ\${ConjugateVerb<書く, "Passive">}れましたか\`;
 `,
         },
       ],

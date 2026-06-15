@@ -34,7 +34,7 @@ type 連絡 = ProperNoun<"連絡">;
 type する = IrregularVerb & { dictionary: "する" };
 
 // 駅 に + 着き (ます形 stem of 着く) + 次第 + 連絡 + する (辞書形)
-type 駅に着き次第連絡する = \`\${PhraseWithParticle<駅, "に">}\${ConjugateVerb<着く, "ます形">}\${次第}\${連絡}\${ConjugateVerb<する, "辞書形">}\`;
+type 駅に着き次第連絡する = \`\${PhraseWithParticle<駅, "に">}\${ConjugateVerb<着く, "Masu">}\${次第}\${連絡}\${ConjugateVerb<する, "Dictionary">}\`;
 `,
         },
         {
@@ -49,7 +49,7 @@ type 次第 = ProperNoun<"次第">;
 type 決める = IchidanVerb & { stem: "決め"; ending: "る" };
 
 // 結果 + 次第 + で + 決める (辞書形)
-type 結果次第で決める = \`\${結果}\${次第}で\${ConjugateVerb<決める, "辞書形">}\`;
+type 結果次第で決める = \`\${結果}\${次第}で\${ConjugateVerb<決める, "Dictionary">}\`;
 `,
         },
       ],
@@ -77,7 +77,7 @@ type 判断 = ProperNoun<"判断">;
 type する = IrregularVerb & { dictionary: "する" };
 
 // 書類 を + 見た (た形) + 上で (fixed) + 判断 + する (辞書形)
-type 書類を見た上で判断する = \`\${PhraseWithParticle<書類, "を">}\${ConjugateVerb<見る, "た形">}\${上で}\${判断}\${ConjugateVerb<する, "辞書形">}\`;
+type 書類を見た上で判断する = \`\${PhraseWithParticle<書類, "を">}\${ConjugateVerb<見る, "Ta">}\${上で}\${判断}\${ConjugateVerb<する, "Dictionary">}\`;
 `,
         },
         {
@@ -119,7 +119,7 @@ type 限り = ProperNoun<"限り">;
 type 正しい = IAdjective & { stem: "正し"; ending: "い" };
 
 // 私 が + 知る (辞書形) + 限り + 正しい (基本形)
-type 私が知る限り正しい = \`\${PhraseWithParticle<私, "が">}\${ConjugateVerb<知る, "辞書形">}\${限り}\${ConjugateAdjective<正しい, "基本形">}\`;
+type 私が知る限り正しい = \`\${PhraseWithParticle<私, "が">}\${ConjugateVerb<知る, "Dictionary">}\${限り}\${ConjugateAdjective<正しい, "Basic">}\`;
 `,
         },
         {
@@ -135,7 +135,7 @@ type 努力 = ProperNoun<"努力">;
 type する = IrregularVerb & { dictionary: "する" };
 
 // できる (辞書形) + 限り + 努力 + する (辞書形)
-type できる限り努力する = \`\${ConjugateVerb<できる, "辞書形">}\${限り}\${努力}\${ConjugateVerb<する, "辞書形">}\`;
+type できる限り努力する = \`\${ConjugateVerb<できる, "Dictionary">}\${限り}\${努力}\${ConjugateVerb<する, "Dictionary">}\`;
 `,
         },
       ],
@@ -162,7 +162,7 @@ type 反面 = ProperNoun<"反面">;
 type 不便 = NaAdjective & { stem: "不便" };
 
 // この + 町 は + 静かな (na-adj 基本形 → 静かな) + 反面 + 不便 + だ (literal copula)
-type この町は静かな反面不便だ = \`この\${PhraseWithParticle<町, "は">}\${ConjugateAdjective<静か, "基本形">}\${反面}\${ConjugateCopula<不便["stem"], "断定形">}\`;
+type この町は静かな反面不便だ = \`この\${PhraseWithParticle<町, "は">}\${ConjugateAdjective<静か, "Basic">}\${反面}\${ConjugateCopula<不便["stem"], "Plain">}\`;
 `,
         },
         {
@@ -178,7 +178,7 @@ type 反面 = ProperNoun<"反面">;
 type 厳しい = IAdjective & { stem: "厳し"; ending: "い" };
 
 // この + 仕事 は + 楽しい (基本形) + 反面 + 厳しい (基本形)
-type この仕事は楽しい反面厳しい = \`この\${PhraseWithParticle<仕事, "は">}\${ConjugateAdjective<楽しい, "基本形">}\${反面}\${ConjugateAdjective<厳しい, "基本形">}\`;
+type この仕事は楽しい反面厳しい = \`この\${PhraseWithParticle<仕事, "は">}\${ConjugateAdjective<楽しい, "Basic">}\${反面}\${ConjugateAdjective<厳しい, "Basic">}\`;
 `,
         },
       ],

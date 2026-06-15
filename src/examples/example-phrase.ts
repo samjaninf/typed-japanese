@@ -14,15 +14,15 @@ type なんで春日影やったの = InterrogativePhrase<
   WhyInterrogative,
   春日影,
   やる,
-  "た形",
+  "Ta",
   "の"
 >;
 
 type 来る = IrregularVerb & { dictionary: "来る" };
 type いい = IAdjective & { stem: "い"; ending: "い"; irregular: true };
 
-type いいよ = PhraseWithParticle<ConjugateAdjective<いい, "基本形">, "よ">;
-type 来いよ = PhraseWithParticle<ConjugateVerb<来る, "命令形">, "よ">;
+type いいよ = PhraseWithParticle<ConjugateAdjective<いい, "Basic">, "よ">;
+type 来いよ = PhraseWithParticle<ConjugateVerb<来る, "Imperative">, "よ">;
 type いいよ来いよ = ConnectedPhrases<いいよ, 来いよ>;
 
 // Verify correct implementation works

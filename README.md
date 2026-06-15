@@ -22,7 +22,7 @@ type ヒンメル = ProperNoun<"ヒンメル">;
 type する = IrregularVerb & { dictionary: "する" };
 
 // Create the そうした pattern (past form of そうする)
-type そうした = DemonstrativeAction<Demonstrative & "そう", する, "た形">;
+type そうした = DemonstrativeAction<Demonstrative & "そう", する, "Ta">;
 
 // Create the conditional phrase "ヒンメルならそうした"
 type ヒンメルならそうした = ConditionalPhrase<ヒンメル, "なら", そうした>;
@@ -56,27 +56,27 @@ Japanese verbs are categorized into three main classes:
 
 The system supports these conjugation forms:
 
-- 辞書形 (Dictionary form)
-- ます形 (Polite form)
-- て形 (Te form)
-- た形 (Past form)
-- ない形 (Negative form)
-- 可能形 (Potential form)
-- 受身形 (Passive form)
-- 使役形 (Causative form)
-- 意向形 (Volitional form)
-- 命令形 (Imperative form)
-- 条件形 (Conditional form)
-- 仮定形 (Hypothetical form)
+- Dictionary (Dictionary form)
+- Masu (Polite form)
+- Te (Te form)
+- Ta (Past form)
+- Nai (Negative form)
+- Potential (Potential form)
+- Passive (Passive form)
+- Causative (Causative form)
+- Volitional (Volitional form)
+- Imperative (Imperative form)
+- Conditional (Conditional form)
+- Hypothetical (Hypothetical form)
 
 ```typescript
 type 買う = GodanVerb & { stem: "買"; ending: "う" };
-type 買うて形 = ConjugateVerb<買う, "て形">; // 買って
-type 買うた形 = ConjugateVerb<買う, "た形">; // 買った
+type 買うTe = ConjugateVerb<買う, "Te">; // 買って
+type 買うTa = ConjugateVerb<買う, "Ta">; // 買った
 
 type 食べる = IchidanVerb & { stem: "食べ"; ending: "る" };
-type 食べるて形 = ConjugateVerb<食べる, "て形">; // 食べて
-type 食べるた形 = ConjugateVerb<食べる, "た形">; // 食べた
+type 食べるTe = ConjugateVerb<食べる, "Te">; // 食べて
+type 食べるTa = ConjugateVerb<食べる, "Ta">; // 食べた
 ```
 
 ## 🎨 Adjective System
@@ -94,10 +94,10 @@ Japanese adjectives are categorized into two main classes:
 
 The system supports these conjugation forms for adjectives:
 
-- 基本形 (Basic form)
-- 丁寧形 (Polite form)
-- 過去形 (Past form)
-- 否定形 (Negative form)
+- Basic (Basic form)
+- Polite (Polite form)
+- Past (Past form)
+- Negative (Negative form)
 
 ```typescript
 type いい = IAdjective & { stem: "い"; ending: "い"; irregular: true };
@@ -113,20 +113,20 @@ politeness, tense and polarity, so it is modeled as a conjugable word via
 
 ### Copula Conjugation Forms
 
-- 断定形 → だ (plain) ・ 丁寧形 → です (polite)
-- 過去形 → だった ・ 丁寧過去形 → でした
-- 否定形 → ではない ・ 丁寧否定形 → ではありません
-- 否定過去形 → ではなかった ・ 丁寧否定過去形 → ではありませんでした
-- 口語否定形 → じゃない ・ 口語丁寧否定形 → じゃありません
-- である形 → である（formal written）・ て形 → で（connective）
+- Plain → だ (plain) ・ Polite → です (polite)
+- Past → だった ・ PolitePast → でした
+- Negative → ではない ・ PoliteNegative → ではありません
+- NegativePast → ではなかった ・ PoliteNegativePast → ではありませんでした
+- CasualNegative → じゃない ・ CasualPoliteNegative → じゃありません
+- Written → である（formal written）・ Te → で（connective）
 
 > The copula has no generic attributive form: な is licensed only for
 > な-adjectives (静かな町), never for plain nouns (×医者な — a noun takes の), so it
 > lives in the adjective system, not here.
 
 ```typescript
-type 医者だ = ConjugateCopula<"医者", "断定形">; // 医者だ
-type 医者ではありません = ConjugateCopula<"医者", "丁寧否定形">; // 医者ではありません
+type 医者だ = ConjugateCopula<"医者", "Plain">; // 医者だ
+type 医者ではありません = ConjugateCopula<"医者", "PoliteNegative">; // 医者ではありません
 ```
 
 ## 📚 Phrase and Sentence Composition
@@ -145,12 +145,12 @@ Example: Connecting simple adjective and imperative verb phrases
 // I-adjective "ii" (good) with irregular conjugation
 // Then add particle "yo" to basic form of "ii" -> "ii yo"
 type いい = IAdjective & { stem: "い"; ending: "い"; irregular: true };
-type いいよ = PhraseWithParticle<ConjugateAdjective<いい, "基本形">, "よ">;
+type いいよ = PhraseWithParticle<ConjugateAdjective<いい, "Basic">, "よ">;
 
 // Irregular verb "kuru" (to come)
 // Then add particle "yo" to imperative form of "kuru" -> "koi yo"
 type 来る = IrregularVerb & { dictionary: "来る" };
-type 来いよ = PhraseWithParticle<ConjugateVerb<来る, "命令形">, "よ">;
+type 来いよ = PhraseWithParticle<ConjugateVerb<来る, "Imperative">, "よ">;
 
 // Connect both phrases -> "ii yo, koi yo"
 type いいよ来いよ = ConnectedPhrases<いいよ, 来いよ>;
@@ -167,9 +167,9 @@ Example: More flexible component-based sentence construction
 type SentenceParts = [
   AdverbPart<"なんで">, // "Why" - question adverb
   IntensifierPart<"そんなに">, // "So much" - intensifier
-  VerbPart<慣れる, "て形">, // "Get used to" in te-form
+  VerbPart<慣れる, "Te">, // "Get used to" in te-form
   ContractedPart<"ん">, // Contraction of "の" - colloquial nominalizer
-  CopulaPart<"断定形">, // Copula "is" (だ) — a conjugable copula, not a particle
+  CopulaPart<"Plain">, // Copula "is" (だ) — a conjugable copula, not a particle
   ParticlePart<"よ"> // Emphatic sentence-ending particle
 ];
 

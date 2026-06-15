@@ -10,7 +10,7 @@ type ヒンメル = ProperNoun<"ヒンメル">;
 type する = IrregularVerb & { dictionary: "する" };
 
 // Create the そうした pattern (past form of そうする)
-type そうした = DemonstrativeAction<Demonstrative & "そう", する, "た形">;
+type そうした = DemonstrativeAction<Demonstrative & "そう", する, "Ta">;
 
 // Create the conditional phrase "ヒンメルならそうした"
 type ヒンメルならそうした = ConditionalPhrase<ヒンメル, "なら", そうした>;

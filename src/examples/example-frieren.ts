@@ -17,13 +17,13 @@ type 思う = GodanVerb & { stem: "思"; ending: "う" };
 type 日本語はわかってた = PhraseWithParticle<
     日本語,
     "は"
-> & ConjugateVerb<わかる, "て形"> & "た";
+> & ConjugateVerb<わかる, "Te"> & "た";
 
 // Type representation for "知ろうと思わなかった"
 // (I didn't think to learn)
 type 知ろうと思わなかった = ConnectedPhrases<
-    ConjugateVerb<知る, "意向形">,
-    ConjugateVerb<思う, "ない形"> & "た"
+    ConjugateVerb<知る, "Volitional">,
+    ConjugateVerb<思う, "Nai"> & "た"
 >;
 
 // Type representation for "なんでもっとTypeScriptを知ろうと思わなかったんだろう"
@@ -32,7 +32,7 @@ type なんでもっとTypeScriptを知ろうと思わなかったんだろう =
     WhyInterrogative,
     `もっと${TypeScript}を`,
     知ろうと思わなかった,
-    "辞書形",
+    "Dictionary",
     "の"
 >;
 

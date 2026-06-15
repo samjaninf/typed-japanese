@@ -31,7 +31,7 @@ type 急ぐ = GodanVerb & { stem: "急"; ending: "ぐ" };
 type 間に合う = GodanVerb & { stem: "間に合"; ending: "う" };
 
 // 急ぐ(仮定形)=急げ → +ば → 急げば
-type 急げば間に合います = \`\${ConjugateVerb<急ぐ, "仮定形">}ば、\${ConjugateVerb<間に合う, "ます形">}ます\`;
+type 急げば間に合います = \`\${ConjugateVerb<急ぐ, "Hypothetical">}ば、\${ConjugateVerb<間に合う, "Masu">}ます\`;
 `,
         },
         {
@@ -45,7 +45,7 @@ type 安い = IAdjective & { stem: "安"; ending: "い" };
 type 買う = GodanVerb & { stem: "買"; ending: "う" };
 
 // い-adjective: 安 + ければ → 安ければ
-type 安ければ買います = \`\${安い["stem"]}ければ、\${ConjugateVerb<買う, "ます形">}ます\`;
+type 安ければ買います = \`\${安い["stem"]}ければ、\${ConjugateVerb<買う, "Masu">}ます\`;
 `,
         },
         {
@@ -59,7 +59,7 @@ type 来る = IrregularVerb & { dictionary: "来る" };
 type 暖かい = IAdjective & { stem: "暖か"; ending: "い" };
 
 // 来る(仮定形)=来れ → +ば → 来れば ; 暖か + くなる
-type 春が来れば暖かくなる = \`\${PhraseWithParticle<ProperNoun<"春">, "が">}\${ConjugateVerb<来る, "仮定形">}ば、\${暖かい["stem"]}くなる\`;
+type 春が来れば暖かくなる = \`\${PhraseWithParticle<ProperNoun<"春">, "が">}\${ConjugateVerb<来る, "Hypothetical">}ば、\${暖かい["stem"]}くなる\`;
 `,
         },
       ],
@@ -83,7 +83,7 @@ type 春が来れば暖かくなる = \`\${PhraseWithParticle<ProperNoun<"春">,
 type 行く = GodanVerb & { stem: "行"; ending: "く" };
 
 // 行く(ない形)=行か → +なければなりません
-type 行かなければなりません = \`\${ConjugateVerb<行く, "ない形">}なければなりません\`;
+type 行かなければなりません = \`\${ConjugateVerb<行く, "Nai">}なければなりません\`;
 `,
         },
         {
@@ -98,7 +98,7 @@ type 練習 = ProperNoun<"練習">;
 type 上手 = ProperNoun<"上手">;
 
 // する(ない形)=し → 練習し + なければ ; 上手になりません
-type 練習しなければ上手になりません = \`\${練習}\${ConjugateVerb<する, "ない形">}なければ\${上手}になりません\`;
+type 練習しなければ上手になりません = \`\${練習}\${ConjugateVerb<する, "Nai">}なければ\${上手}になりません\`;
 `,
         },
       ],
@@ -123,7 +123,7 @@ type 読む = GodanVerb & { stem: "読"; ending: "む" };
 type 面白い = IAdjective & { stem: "面白"; ending: "い" };
 
 // 読め(仮定形)+ば + 読む(辞書形)+ ほど + 面白い
-type 読めば読むほど面白い = \`\${ConjugateVerb<読む, "仮定形">}ば\${ConjugateVerb<読む, "辞書形">}ほど\${ConjugateAdjective<面白い, "基本形">}\`;
+type 読めば読むほど面白い = \`\${ConjugateVerb<読む, "Hypothetical">}ば\${ConjugateVerb<読む, "Dictionary">}ほど\${ConjugateAdjective<面白い, "Basic">}\`;
 `,
         },
         {
@@ -137,7 +137,7 @@ type 高い = IAdjective & { stem: "高"; ending: "い" };
 type いい = IAdjective & { stem: "い"; ending: "い"; irregular: true };
 
 // 高 + ければ + 高い(基本形)+ ほど + いい
-type 高ければ高いほどいい = \`\${高い["stem"]}ければ\${ConjugateAdjective<高い, "基本形">}ほど\${ConjugateAdjective<いい, "基本形">}\`;
+type 高ければ高いほどいい = \`\${高い["stem"]}ければ\${ConjugateAdjective<高い, "Basic">}ほど\${ConjugateAdjective<いい, "Basic">}\`;
 `,
         },
         {
@@ -151,7 +151,7 @@ type 考える = IchidanVerb & { stem: "考え"; ending: "る" };
 type 分かる = GodanVerb & { stem: "分か"; ending: "る" };
 
 // ichidan: 考え + れば + 考える(辞書形)+ ほど ; 分か(ない形)+ なくなる
-type 考えれば考えるほど分からなくなる = \`\${考える["stem"]}れば\${ConjugateVerb<考える, "辞書形">}ほど\${ConjugateVerb<分かる, "ない形">}なくなる\`;
+type 考えれば考えるほど分からなくなる = \`\${考える["stem"]}れば\${ConjugateVerb<考える, "Dictionary">}ほど\${ConjugateVerb<分かる, "Nai">}なくなる\`;
 `,
         },
       ],

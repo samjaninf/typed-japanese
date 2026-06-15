@@ -30,7 +30,7 @@ const chapter: Chapter = {
 type 食べる = IchidanVerb & { stem: "食べ"; ending: "る" };
 
 // ichidan: drop る, add て
-type 食べて = ConjugateVerb<食べる, "て形">;
+type 食べて = ConjugateVerb<食べる, "Te">;
 `,
         },
         {
@@ -43,7 +43,7 @@ type 食べて = ConjugateVerb<食べる, "て形">;
 type 飲む = GodanVerb & { stem: "飲"; ending: "む" };
 
 // godan む → んで
-type 飲んで = ConjugateVerb<飲む, "て形">;
+type 飲んで = ConjugateVerb<飲む, "Te">;
 `,
         },
         {
@@ -56,7 +56,7 @@ type 飲んで = ConjugateVerb<飲む, "て形">;
 type 書く = GodanVerb & { stem: "書"; ending: "く" };
 
 // godan く → いて
-type 書いて = ConjugateVerb<書く, "て形">;
+type 書いて = ConjugateVerb<書く, "Te">;
 `,
         },
       ],
@@ -81,7 +81,7 @@ type 本 = ProperNoun<"本">;
 type 読む = GodanVerb & { stem: "読"; ending: "む" };
 
 // 本 + を + [読む て形] + ください
-type 本を読んでください = \`\${PhraseWithParticle<本, "を">}\${ConjugateVerb<読む, "て形">}ください\`;
+type 本を読んでください = \`\${PhraseWithParticle<本, "を">}\${ConjugateVerb<読む, "Te">}ください\`;
 `,
         },
         {
@@ -95,7 +95,7 @@ type ここ = ProperNoun<"ここ">;
 type 待つ = GodanVerb & { stem: "待"; ending: "つ" };
 
 // ここ + で + [待つ て形] + ください
-type ここで待ってください = \`\${PhraseWithParticle<ここ, "で">}\${ConjugateVerb<待つ, "て形">}ください\`;
+type ここで待ってください = \`\${PhraseWithParticle<ここ, "で">}\${ConjugateVerb<待つ, "Te">}ください\`;
 `,
         },
       ],
@@ -122,9 +122,9 @@ type 勉強 = ProperNoun<"勉強">;
 type する = IrregularVerb & { dictionary: "する" };
 
 // ご飯を + [食べる て形] + から
-type ご飯を食べてから = \`\${PhraseWithParticle<ご飯, "を">}\${ConjugateVerb<食べる, "て形">}から\`;
+type ご飯を食べてから = \`\${PhraseWithParticle<ご飯, "を">}\${ConjugateVerb<食べる, "Te">}から\`;
 // 勉強 + [する ます形] + ます
-type 勉強します = \`\${勉強}\${ConjugateVerb<する, "ます形">}ます\`;
+type 勉強します = \`\${勉強}\${ConjugateVerb<する, "Masu">}ます\`;
 
 type ご飯を食べてから勉強します = ConnectedPhrases<ご飯を食べてから, 勉強します>;
 `,
@@ -141,9 +141,9 @@ type 洗う = GodanVerb & { stem: "洗"; ending: "う" };
 type 食べる = IchidanVerb & { stem: "食べ"; ending: "る" };
 
 // 手を + [洗う て形] + から
-type 手を洗ってから = \`\${PhraseWithParticle<手, "を">}\${ConjugateVerb<洗う, "て形">}から\`;
+type 手を洗ってから = \`\${PhraseWithParticle<手, "を">}\${ConjugateVerb<洗う, "Te">}から\`;
 // [食べる ます形] + ます
-type 食べます = \`\${ConjugateVerb<食べる, "ます形">}ます\`;
+type 食べます = \`\${ConjugateVerb<食べる, "Masu">}ます\`;
 
 type 手を洗ってから食べます = ConnectedPhrases<手を洗ってから, 食べます>;
 `,

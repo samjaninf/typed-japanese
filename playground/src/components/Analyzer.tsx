@@ -226,7 +226,60 @@ export default function Analyzer({ code, gloss }: Props) {
   );
 
   return (
-    <div className="grid grid-cols-2 gap-4 items-stretch min-h-[520px] max-[880px]:grid-cols-1">
+    <div className="flex flex-col gap-4">
+      {/* Sentence structure — visualization on top */}
+      <section className="tj-card flex flex-col overflow-hidden p-0">
+        <div className="flex items-center justify-between gap-2.5 px-4 py-3 border-b border-border">
+          <h2 className="tj-panel-title">Sentence structure</h2>
+          {aliases.length > 1 && (
+            <select
+              className="tj-select w-auto max-w-[230px] px-2.5 py-[5px] font-jp text-[0.86rem]"
+              value={selectedAlias ?? ""}
+              onChange={(e) => pickAlias(e.target.value)}
+              aria-label="Type to visualise"
+            >
+              {aliases.map((a) => (
+                <option key={a.name} value={a.name}>
+                  {a.name}
+                </option>
+              ))}
+            </select>
+          )}
+        </div>
+
+        <div className="flex flex-col gap-0.5 pt-3.5 px-4 pb-2">
+          <span className="jp text-[1.7rem] font-extrabold text-sakura-600 leading-[1.25]">
+            {tree?.resolved ? `「${tree.resolved}」` : "—"}
+          </span>
+          {gloss && <span className="text-[0.84rem] text-ink-500">{gloss}</span>}
+        </div>
+
+        <div className="overflow-auto pt-1 px-3.5 pb-3.5 max-h-[460px]">
+          {tree ? (
+            <CompositionTree
+              node={tree}
+              selectedId={selectedNodeId}
+              onSelect={handleSelectNode}
+            />
+          ) : (
+            <p className="tj-subtle">
+              Define a <code className="tj-code">type</code> alias whose value is a
+              phrase, and its structure appears here.
+            </p>
+          )}
+        </div>
+
+        {selectedNode && (
+          <div className="flex items-center gap-3 flex-wrap px-4 py-2.5 border-t border-border bg-surface-2">
+            <code className="tj-code text-[0.78rem] max-w-full overflow-auto whitespace-nowrap">{selectedNode.text}</code>
+            {selectedNode.resolved && (
+              <span className="jp text-[1.05rem] font-bold text-sakura-600 ml-auto">「{selectedNode.resolved}」</span>
+            )}
+          </div>
+        )}
+      </section>
+
+      {/* TypeScript — code below */}
       <section className="tj-card flex flex-col overflow-hidden p-0">
         <div className="flex items-center justify-between gap-2.5 px-4 py-3 border-b border-border">
           <h2 className="tj-panel-title">TypeScript</h2>
@@ -240,7 +293,7 @@ export default function Analyzer({ code, gloss }: Props) {
             ))}
         </div>
         <Editor
-          className="flex-1 min-h-[360px] max-[880px]:min-h-[300px]"
+          className="h-[420px]"
           theme={theme === "dark" ? "sakura-dark" : "sakura-light"}
           language="typescript"
           path={MODEL_PATH}
@@ -272,57 +325,6 @@ export default function Analyzer({ code, gloss }: Props) {
               </li>
             ))}
           </ul>
-        )}
-      </section>
-
-      <section className="tj-card flex flex-col overflow-hidden p-0">
-        <div className="flex items-center justify-between gap-2.5 px-4 py-3 border-b border-border">
-          <h2 className="tj-panel-title">Sentence structure</h2>
-          {aliases.length > 1 && (
-            <select
-              className="tj-select w-auto max-w-[230px] px-2.5 py-[5px] font-jp text-[0.86rem]"
-              value={selectedAlias ?? ""}
-              onChange={(e) => pickAlias(e.target.value)}
-              aria-label="Type to visualise"
-            >
-              {aliases.map((a) => (
-                <option key={a.name} value={a.name}>
-                  {a.name}
-                </option>
-              ))}
-            </select>
-          )}
-        </div>
-
-        <div className="flex flex-col gap-0.5 pt-3.5 px-4 pb-2">
-          <span className="jp text-[1.7rem] font-extrabold text-sakura-600 leading-[1.25]">
-            {tree?.resolved ? `「${tree.resolved}」` : "—"}
-          </span>
-          {gloss && <span className="text-[0.84rem] text-ink-500">{gloss}</span>}
-        </div>
-
-        <div className="flex-1 overflow-auto pt-1 px-3.5 pb-3.5">
-          {tree ? (
-            <CompositionTree
-              node={tree}
-              selectedId={selectedNodeId}
-              onSelect={handleSelectNode}
-            />
-          ) : (
-            <p className="tj-subtle">
-              Define a <code className="tj-code">type</code> alias whose value is a
-              phrase, and its structure appears here.
-            </p>
-          )}
-        </div>
-
-        {selectedNode && (
-          <div className="flex items-center gap-3 flex-wrap px-4 py-2.5 border-t border-border bg-surface-2">
-            <code className="tj-code text-[0.78rem] max-w-full overflow-auto whitespace-nowrap">{selectedNode.text}</code>
-            {selectedNode.resolved && (
-              <span className="jp text-[1.05rem] font-bold text-sakura-600 ml-auto">「{selectedNode.resolved}」</span>
-            )}
-          </div>
         )}
       </section>
     </div>

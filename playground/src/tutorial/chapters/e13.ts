@@ -32,7 +32,7 @@ type コーヒー = ProperNoun<"コーヒー">;
 type 飲む = GodanVerb & { stem: "飲"; ending: "む" };
 
 // 私 + は + コーヒー + を + 飲む (plain non-past)
-type 私はコーヒーを飲む = \`\${PhraseWithParticle<私, "は">}\${PhraseWithParticle<コーヒー, "を">}\${ConjugateVerb<飲む, "辞書形">}\`;
+type 私はコーヒーを飲む = \`\${PhraseWithParticle<私, "は">}\${PhraseWithParticle<コーヒー, "を">}\${ConjugateVerb<飲む, "Dictionary">}\`;
 `,
         },
         {
@@ -47,7 +47,7 @@ type 学校 = ProperNoun<"学校">;
 type 来る = IrregularVerb & { dictionary: "来る" };
 
 // 明日 + 学校 + へ + 来る (plain non-past)
-type 明日学校へ来る = \`\${明日}\${PhraseWithParticle<学校, "へ">}\${ConjugateVerb<来る, "辞書形">}\`;
+type 明日学校へ来る = \`\${明日}\${PhraseWithParticle<学校, "へ">}\${ConjugateVerb<来る, "Dictionary">}\`;
 `,
         },
       ],
@@ -73,7 +73,7 @@ type パン = ProperNoun<"パン">;
 type 食べる = IchidanVerb & { stem: "食べ"; ending: "る" };
 
 // 私 + は + パン + を + 食べた (plain past)
-type 私はパンを食べた = \`\${PhraseWithParticle<私, "は">}\${PhraseWithParticle<パン, "を">}\${ConjugateVerb<食べる, "た形">}\`;
+type 私はパンを食べた = \`\${PhraseWithParticle<私, "は">}\${PhraseWithParticle<パン, "を">}\${ConjugateVerb<食べる, "Ta">}\`;
 `,
         },
         {
@@ -88,7 +88,7 @@ type お茶 = ProperNoun<"お茶">;
 type 飲む = GodanVerb & { stem: "飲"; ending: "む" };
 
 // 友達 + と + お茶 + を + 飲んだ (plain past)
-type 友達とお茶を飲んだ = \`\${PhraseWithParticle<友達, "と">}\${PhraseWithParticle<お茶, "を">}\${ConjugateVerb<飲む, "た形">}\`;
+type 友達とお茶を飲んだ = \`\${PhraseWithParticle<友達, "と">}\${PhraseWithParticle<お茶, "を">}\${ConjugateVerb<飲む, "Ta">}\`;
 `,
         },
       ],
@@ -114,7 +114,7 @@ type 肉 = ProperNoun<"肉">;
 type 食べる = IchidanVerb & { stem: "食べ"; ending: "る" };
 
 // 今日 + は + 肉 + を + 食べ + ない (plain negative)
-type 今日は肉を食べない = \`\${PhraseWithParticle<今日, "は">}\${PhraseWithParticle<肉, "を">}\${ConjugateVerb<食べる, "ない形">}ない\`;
+type 今日は肉を食べない = \`\${PhraseWithParticle<今日, "は">}\${PhraseWithParticle<肉, "を">}\${ConjugateVerb<食べる, "Nai">}ない\`;
 `,
         },
         {
@@ -129,7 +129,7 @@ type お酒 = ProperNoun<"お酒">;
 type 飲む = GodanVerb & { stem: "飲"; ending: "む" };
 
 // 私 + は + お酒 + を + 飲ま + ない (plain negative)
-type 私はお酒を飲まない = \`\${PhraseWithParticle<私, "は">}\${PhraseWithParticle<お酒, "を">}\${ConjugateVerb<飲む, "ない形">}ない\`;
+type 私はお酒を飲まない = \`\${PhraseWithParticle<私, "は">}\${PhraseWithParticle<お酒, "を">}\${ConjugateVerb<飲む, "Nai">}ない\`;
 `,
         },
       ],
@@ -154,7 +154,7 @@ type 私 = ProperNoun<"私">;
 type 学生 = ProperNoun<"学生">;
 
 // 私 + は + 学生 + だ (plain copula)
-type 私は学生だ = \`\${PhraseWithParticle<私, "は">}\${ConjugateCopula<学生, "断定形">}\`;
+type 私は学生だ = \`\${PhraseWithParticle<私, "は">}\${ConjugateCopula<学生, "Plain">}\`;
 `,
         },
         {
@@ -169,7 +169,7 @@ type 私 = ProperNoun<"私">;
 type 本 = ProperNoun<"本">;
 
 // これ + は + 私 + の + 本 + だ
-type これは私の本だ = \`\${PhraseWithParticle<これ, "は">}\${PhraseWithParticle<私, "の">}\${ConjugateCopula<本, "断定形">}\`;
+type これは私の本だ = \`\${PhraseWithParticle<これ, "は">}\${PhraseWithParticle<私, "の">}\${ConjugateCopula<本, "Plain">}\`;
 `,
         },
       ],
@@ -194,7 +194,7 @@ type 明日 = ProperNoun<"明日">;
 type 来る = IrregularVerb & { dictionary: "来る" };
 
 // 明日 + も + 来る + よ
-type 明日も来るよ = \`\${PhraseWithParticle<明日, "も">}\${PhraseWithParticle<ConjugateVerb<来る, "辞書形">, "よ">}\`;
+type 明日も来るよ = \`\${PhraseWithParticle<明日, "も">}\${PhraseWithParticle<ConjugateVerb<来る, "Dictionary">, "よ">}\`;
 `,
         },
         {
@@ -208,7 +208,7 @@ type ご飯 = ProperNoun<"ご飯">;
 type 食べる = IchidanVerb & { stem: "食べ"; ending: "る" };
 
 // もう + ご飯 + を + 食べた + ね
-type もうご飯を食べたね = \`もう\${PhraseWithParticle<ご飯, "を">}\${PhraseWithParticle<ConjugateVerb<食べる, "た形">, "ね">}\`;
+type もうご飯を食べたね = \`もう\${PhraseWithParticle<ご飯, "を">}\${PhraseWithParticle<ConjugateVerb<食べる, "Ta">, "ね">}\`;
 `,
         },
       ],

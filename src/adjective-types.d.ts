@@ -17,28 +17,28 @@ export type Adjective = IAdjective | NaAdjective;
 
 // Adjective conjugation forms
 export type AdjectiveConjugationForm =
-  | "基本形" // Basic form
-  | "丁寧形" // Polite form
-  | "過去形" // Past form
-  | "否定形"; // Negative form
+  | "Basic" // Basic form
+  | "Polite" // Polite form
+  | "Past" // Past form
+  | "Negative"; // Negative form
 
 // I-adjective conjugation mapping
 type IAdjectiveConjugationMap = {
   い: {
-    基本形: "い";
-    丁寧形: "いです";
-    過去形: "かった";
-    否定形: "くない";
+    Basic: "い";
+    Polite: "いです";
+    Past: "かった";
+    Negative: "くない";
   };
 };
 
 // Special case for いい
 type IrregularAdjectiveMap = {
   い: {
-    過去形: "よかった";
-    否定形: "よくない";
-    て形: "よくて";
-    丁寧形: "いいです";
+    Past: "よかった";
+    Negative: "よくない";
+    Te: "よくて";
+    Polite: "いいです";
   };
 };
 
@@ -66,41 +66,41 @@ export type ConjugateAdjective<
   F extends AdjectiveConjugationForm
 > = A extends IAdjective
   ? A extends { irregular: true }
-    ? F extends "基本形"
+    ? F extends "Basic"
       ? `${A["stem"]}${A["ending"]}`
       : `${GetIrregularAdjectiveConjugation<A["stem"], F>}`
-    : F extends "基本形"
+    : F extends "Basic"
     ? `${A["stem"]}${A["ending"]}`
     : `${A["stem"]}${GetIAdjectiveConjugation<F>}`
   : A extends NaAdjective
   ? // A na-adjective inflects through the copula for です / でした / ではない / で.
-    // Its 基本形 (attributive) な is 形容動詞-specific — it is NOT a generic copula
+    // Its Basic (attributive) な is 形容動詞-specific — it is NOT a generic copula
     // form (a plain noun takes の, not な), so it stays a literal here.
-    F extends "基本形"
+    F extends "Basic"
     ? `${A["stem"]}な`
-    : F extends "丁寧形"
-    ? ConjugateCopula<A["stem"], "丁寧形">
-    : F extends "過去形"
-    ? ConjugateCopula<A["stem"], "丁寧過去形">
-    : F extends "否定形"
-    ? ConjugateCopula<A["stem"], "否定形">
-    : F extends "て形"
-    ? ConjugateCopula<A["stem"], "て形">
+    : F extends "Polite"
+    ? ConjugateCopula<A["stem"], "Polite">
+    : F extends "Past"
+    ? ConjugateCopula<A["stem"], "PolitePast">
+    : F extends "Negative"
+    ? ConjugateCopula<A["stem"], "Negative">
+    : F extends "Te"
+    ? ConjugateCopula<A["stem"], "Te">
     : never
   : never;
 
 // Example usage
-type いい基本形 = ConjugateAdjective<
+type いいBasic = ConjugateAdjective<
   { type: "i-adjective"; stem: "い"; ending: "い"; irregular: true },
-  "基本形"
+  "Basic"
 >; // "いい"
 // na-adjective
-type 綺麗基本形 = ConjugateAdjective<
+type 綺麗Basic = ConjugateAdjective<
   { type: "na-adjective"; stem: "綺麗" },
-  "基本形"
+  "Basic"
 >; // "綺麗な"
-// 綺麗な丁寧形
-type 綺麗丁寧形 = ConjugateAdjective<
+// 綺麗なPolite
+type 綺麗Polite = ConjugateAdjective<
   { type: "na-adjective"; stem: "綺麗" },
-  "丁寧形"
+  "Polite"
 >; // "綺麗です"

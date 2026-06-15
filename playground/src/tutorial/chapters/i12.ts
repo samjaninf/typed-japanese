@@ -31,7 +31,7 @@ type 窓 = ProperNoun<"窓">;
 type 開ける = IchidanVerb & { stem: "開け"; ending: "る" };
 
 // 窓 + を (object) + 開ける (transitive, dictionary form)
-type 窓を開ける = \`\${PhraseWithParticle<窓, "を">}\${ConjugateVerb<開ける, "辞書形">}\`;
+type 窓を開ける = \`\${PhraseWithParticle<窓, "を">}\${ConjugateVerb<開ける, "Dictionary">}\`;
 `,
         },
         {
@@ -45,7 +45,7 @@ type 窓 = ProperNoun<"窓">;
 type 開く = GodanVerb & { stem: "開"; ending: "く" };
 
 // 窓 + が (subject) + 開く (intransitive, dictionary form)
-type 窓が開く = \`\${PhraseWithParticle<窓, "が">}\${ConjugateVerb<開く, "辞書形">}\`;
+type 窓が開く = \`\${PhraseWithParticle<窓, "が">}\${ConjugateVerb<開く, "Dictionary">}\`;
 `,
         },
         {
@@ -59,7 +59,7 @@ type ドア = ProperNoun<"ドア">;
 type 閉める = IchidanVerb & { stem: "閉め"; ending: "る" };
 
 // ドア + を (object) + 閉め (ます stem) + ます
-type ドアを閉めます = \`\${PhraseWithParticle<ドア, "を">}\${ConjugateVerb<閉める, "ます形">}ます\`;
+type ドアを閉めます = \`\${PhraseWithParticle<ドア, "を">}\${ConjugateVerb<閉める, "Masu">}ます\`;
 `,
         },
       ],
@@ -84,7 +84,7 @@ type 電気 = ProperNoun<"電気">;
 type 消す = GodanVerb & { stem: "消"; ending: "す" };
 
 // 電気 + を (object) + 消す (transitive)
-type 電気を消す = \`\${PhraseWithParticle<電気, "を">}\${ConjugateVerb<消す, "辞書形">}\`;
+type 電気を消す = \`\${PhraseWithParticle<電気, "を">}\${ConjugateVerb<消す, "Dictionary">}\`;
 `,
         },
         {
@@ -98,7 +98,7 @@ type 電気 = ProperNoun<"電気">;
 type 消える = IchidanVerb & { stem: "消え"; ending: "る" };
 
 // 電気 + が (subject) + 消える (intransitive)
-type 電気が消える = \`\${PhraseWithParticle<電気, "が">}\${ConjugateVerb<消える, "辞書形">}\`;
+type 電気が消える = \`\${PhraseWithParticle<電気, "が">}\${ConjugateVerb<消える, "Dictionary">}\`;
 `,
         },
         {
@@ -112,7 +112,7 @@ type お湯 = ProperNoun<"お湯">;
 type 出る = IchidanVerb & { stem: "出"; ending: "る" };
 
 // お湯 + が (subject) + 出 (ます stem) + ます
-type お湯が出ます = \`\${PhraseWithParticle<お湯, "が">}\${ConjugateVerb<出る, "ます形">}ます\`;
+type お湯が出ます = \`\${PhraseWithParticle<お湯, "が">}\${ConjugateVerb<出る, "Masu">}ます\`;
 `,
         },
       ],
@@ -137,7 +137,7 @@ type 窓 = ProperNoun<"窓">;
 type 開ける = IchidanVerb & { stem: "開け"; ending: "る" };
 
 // 窓 + が + 開けて (て形) + ある
-type 窓が開けてある = \`\${PhraseWithParticle<窓, "が">}\${ConjugateVerb<開ける, "て形">}ある\`;
+type 窓が開けてある = \`\${PhraseWithParticle<窓, "が">}\${ConjugateVerb<開ける, "Te">}ある\`;
 `,
         },
         {
@@ -151,7 +151,7 @@ type 電気 = ProperNoun<"電気">;
 type 消す = GodanVerb & { stem: "消"; ending: "す" };
 
 // 電気 + が + 消して (て形) + あります
-type 電気が消してあります = \`\${PhraseWithParticle<電気, "が">}\${ConjugateVerb<消す, "て形">}あります\`;
+type 電気が消してあります = \`\${PhraseWithParticle<電気, "が">}\${ConjugateVerb<消す, "Te">}あります\`;
 `,
         },
       ],
@@ -176,7 +176,7 @@ type 窓 = ProperNoun<"窓">;
 type 開く = GodanVerb & { stem: "開"; ending: "く" };
 
 // 窓 + が + 開いて (て形) + いる
-type 窓が開いている = \`\${PhraseWithParticle<窓, "が">}\${ConjugateVerb<開く, "て形">}いる\`;
+type 窓が開いている = \`\${PhraseWithParticle<窓, "が">}\${ConjugateVerb<開く, "Te">}いる\`;
 `,
         },
         {
@@ -190,7 +190,7 @@ type ドア = ProperNoun<"ドア">;
 type 閉まる = GodanVerb & { stem: "閉ま"; ending: "る" };
 
 // ドア + が + 閉まって (て形) + います
-type ドアが閉まっています = \`\${PhraseWithParticle<ドア, "が">}\${ConjugateVerb<閉まる, "て形">}います\`;
+type ドアが閉まっています = \`\${PhraseWithParticle<ドア, "が">}\${ConjugateVerb<閉まる, "Te">}います\`;
 `,
         },
       ],
