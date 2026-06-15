@@ -114,7 +114,7 @@ export default function App() {
         )}
       </footer>
 
-      {import.meta.env.DEV && <FontLab />}
+      <FontLab />
     </div>
   );
 }

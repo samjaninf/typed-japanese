@@ -44,16 +44,6 @@
   border-bottom: 1px solid var(--border);
 }
 
-.devTag {
-  font-size: 0.6rem;
-  font-weight: 800;
-  letter-spacing: 0.08em;
-  color: var(--on-accent);
-  background: var(--sakura-400);
-  padding: 1px 6px;
-  border-radius: 5px;
-}
-
 .close {
   margin-left: auto;
   border: none;

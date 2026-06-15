@@ -27,8 +27,8 @@ type Preset = {
 const PRESETS: Preset[] = [
   {
     id: "default",
-    name: "黑体 · 当前默认",
-    note: "无衬线 Gothic，技术文档感",
+    name: "黑体 Gothic",
+    note: "无衬线，技术文档感",
     ui: 'system-ui, -apple-system, "Segoe UI", Roboto, sans-serif',
     jp: '"Hiragino Kaku Gothic ProN", "Yu Gothic", "Noto Sans JP", sans-serif',
     heading: 'system-ui, -apple-system, "Segoe UI", Roboto, sans-serif',
@@ -69,17 +69,17 @@ const PRESETS: Preset[] = [
     id: "lxgw",
     name: "霞鹜文楷 · LXGW WenKai",
     note: "楷体，CN+JP 一体，最像课本",
-    ui: '"LXGW WenKai", "Noto Serif SC", serif',
-    jp: '"LXGW WenKai", "Noto Serif JP", serif',
-    heading: '"LXGW WenKai", serif',
+    ui: '"LXGW WenKai Screen", "Noto Serif SC", serif',
+    jp: '"LXGW WenKai Screen", "Noto Serif JP", serif',
+    heading: '"LXGW WenKai Screen", serif',
   },
   {
     id: "klee",
     name: "Klee One · 教科書体",
-    note: "日本教科书手写感",
-    ui: '"LXGW WenKai", "Klee One", "Noto Serif SC", serif',
-    jp: '"Klee One", "LXGW WenKai", serif',
-    heading: '"Klee One", "LXGW WenKai", serif',
+    note: "当前默认 · 教科书手写感",
+    ui: '"LXGW WenKai Screen", "Klee One", "Noto Serif SC", serif',
+    jp: '"Klee One", "LXGW WenKai Screen", serif',
+    heading: '"Klee One", "LXGW WenKai Screen", serif',
   },
   {
     id: "zen-maru",
@@ -91,11 +91,13 @@ const PRESETS: Preset[] = [
   },
 ];
 
-// Web fonts pulled on demand (dev only). Google Fonts subsets CJK by
+// The default textbook fonts (Klee One, LXGW WenKai Screen, Noto Serif
+// SC/JP) are already loaded in index.html. These are the *extra* families
+// only this panel offers; injected lazily the first time the panel opens so
+// they never weigh on normal page load. Google Fonts subsets CJK by
 // unicode-range, so only the glyphs in view get downloaded.
 const FONT_LINKS = [
-  "https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700&family=Noto+Serif+JP:wght@400;600;700&family=Shippori+Mincho:wght@400;600;700&family=Zen+Old+Mincho:wght@400;600;700&family=Klee+One:wght@400;600&family=Zen+Maru+Gothic:wght@400;500;700&display=swap",
-  "https://cdn.jsdelivr.net/npm/lxgw-wenkai-webfont@1.7.0/style.css",
+  "https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;600;700&family=Zen+Old+Mincho:wght@400;600;700&family=Zen+Maru+Gothic:wght@400;500;700&display=swap",
 ];
 
 const STORAGE_KEY = "fontlab-preset";
@@ -107,19 +109,19 @@ function applyPreset(p: Preset) {
   root.style.setProperty("--font-heading", p.heading);
 }
 
-function clearPreset() {
-  const root = document.documentElement;
-  root.style.removeProperty("--font-ui");
-  root.style.removeProperty("--font-jp");
-  root.style.removeProperty("--font-heading");
-}
+// The live default (see theme.css) is the textbook stack — i.e. the "klee"
+// preset. With no stored override that is what the page already renders.
+const DEFAULT_ID = "klee";
 
 export default function FontLab() {
   const [open, setOpen] = useState(false);
-  const [active, setActive] = useState<string | null>(null);
+  const [active, setActive] = useState<string>(DEFAULT_ID);
+  const [fontsInjected, setFontsInjected] = useState(false);
 
-  // Inject the web-font stylesheets once.
+  // Lazily inject the extra preview fonts the first time the panel opens, so
+  // visitors who never touch the switcher pay nothing for them.
   useEffect(() => {
+    if (!open || fontsInjected) return;
     FONT_LINKS.forEach((href) => {
       if (document.querySelector(`link[href="${href}"]`)) return;
       const link = document.createElement("link");
@@ -127,7 +129,8 @@ export default function FontLab() {
       link.href = href;
       document.head.appendChild(link);
     });
-  }, []);
+    setFontsInjected(true);
+  }, [open, fontsInjected]);
 
   // Restore last choice.
   useEffect(() => {
@@ -141,12 +144,6 @@ export default function FontLab() {
   }, []);
 
   function choose(p: Preset) {
-    if (p.id === "default") {
-      clearPreset();
-      localStorage.removeItem(STORAGE_KEY);
-      setActive(null);
-      return;
-    }
     applyPreset(p);
     localStorage.setItem(STORAGE_KEY, p.id);
     setActive(p.id);
@@ -157,7 +154,7 @@ export default function FontLab() {
       <button
         className={styles.fab}
         onClick={() => setOpen((o) => !o)}
-        title="字体实验室（仅本地开发可见）"
+        title="切换字体"
       >
         Aa 字体
       </button>
@@ -165,8 +162,7 @@ export default function FontLab() {
       {open && (
         <div className={styles.panel}>
           <div className={styles.head}>
-            <strong>字体实验室</strong>
-            <span className={styles.devTag}>DEV</span>
+            <strong>切换字体</strong>
             <button className={styles.close} onClick={() => setOpen(false)}>
               ×
             </button>
@@ -176,8 +172,7 @@ export default function FontLab() {
           </p>
           <div className={styles.list}>
             {PRESETS.map((p) => {
-              const isActive =
-                active === p.id || (active === null && p.id === "default");
+              const isActive = active === p.id;
               return (
                 <button
                   key={p.id}
