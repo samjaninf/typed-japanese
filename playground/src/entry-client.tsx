@@ -1,5 +1,5 @@
 import React from "react";
-import ReactDOM from "react-dom/client";
+import { createRoot, hydrateRoot } from "react-dom/client";
 import "./monaco-setup"; // self-host Monaco + workers before anything renders
 import App from "./App";
 import { RouteProvider } from "./context/route";
@@ -7,7 +7,7 @@ import { LangProvider } from "./context/lang";
 import { ThemeProvider } from "./context/theme";
 import "./theme.css";
 
-ReactDOM.createRoot(document.getElementById("root")!).render(
+const tree = (
   <React.StrictMode>
     <RouteProvider>
       <ThemeProvider>
@@ -18,3 +18,12 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
     </RouteProvider>
   </React.StrictMode>
 );
+
+const root = document.getElementById("root")!;
+// Production HTML is prerendered (has element children) → hydrate.
+// Dev serves an empty shell → fresh render.
+if (root.firstElementChild) {
+  hydrateRoot(root, tree);
+} else {
+  createRoot(root).render(tree);
+}

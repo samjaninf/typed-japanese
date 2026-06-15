@@ -1,4 +1,6 @@
 import {
+  lazy,
+  Suspense,
   useEffect,
   useLayoutEffect,
   useMemo,
@@ -12,9 +14,16 @@ import { exampleAnchorId, type Chapter, type Example, type Level } from "../tuto
 import { useLang } from "../context/lang";
 import { useRoute } from "../context/route";
 import { extractWords } from "../vocab/extract";
-import Analyzer from "./Analyzer";
 import VocabWord from "./VocabWord";
 import styles from "./Tutorial.module.css";
+
+// Monaco-backed; lazy so it stays out of the server prerender.
+const Analyzer = lazy(() => import("./Analyzer"));
+
+// Layout effects don't run on the server; fall back to useEffect there to avoid
+// the SSR warning (this effect is client-only — it scrolls/flashes an example).
+const useIsoLayoutEffect =
+  typeof window !== "undefined" ? useLayoutEffect : useEffect;
 
 const LEVELS: Level[] = ["elementary", "intermediate", "advanced"];
 
@@ -64,7 +73,7 @@ export default function Tutorial() {
 
   // After the target chapter has rendered, scroll the example into view and
   // flash it. Runs after every render until the anchor element exists.
-  useLayoutEffect(() => {
+  useIsoLayoutEffect(() => {
     const anchor = pendingAnchor.current;
     if (!anchor) return;
     const el = document.getElementById(anchor);
@@ -248,10 +257,12 @@ export default function Tutorial() {
         </div>
         <div className="flex-1 overflow-auto p-4">
           {drawerExample && (
-            <Analyzer
-              code={drawerExample.code}
-              gloss={lang === "zh" ? drawerExample.zh : drawerExample.en}
-            />
+            <Suspense fallback={<p className="tj-subtle">Loading…</p>}>
+              <Analyzer
+                code={drawerExample.code}
+                gloss={lang === "zh" ? drawerExample.zh : drawerExample.en}
+              />
+            </Suspense>
           )}
         </div>
       </aside>

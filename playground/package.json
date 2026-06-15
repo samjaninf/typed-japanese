@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "node scripts/gen-reverse-index.mjs && vite",
-    "build": "node scripts/gen-reverse-index.mjs && tsc -b && vite build",
+    "build": "node scripts/gen-reverse-index.mjs && tsc -b && vite build && vite build --ssr src/entry-server.tsx --outDir dist-server && node scripts/prerender.mjs",
     "gen:reverse-index": "node scripts/gen-reverse-index.mjs",
     "preview": "vite preview",
     "typecheck": "node scripts/gen-reverse-index.mjs && tsc --noEmit",
