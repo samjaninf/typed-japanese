@@ -104,6 +104,31 @@ type いい = IAdjective & { stem: "い"; ending: "い"; irregular: true };
 type 綺麗 = NaAdjective & { stem: "綺麗" };
 ```
 
+## 🔗 Copula System
+
+The copula (だ / です) turns a 体言 (noun or na-adjective stem) into a statement —
+"X is …". It is **not** a particle: like a verb or an adjective it inflects for
+politeness, tense and polarity, so it is modeled as a conjugable word via
+`ConjugateCopula<Taigen, Form>` (mirroring `ConjugateVerb` / `ConjugateAdjective`).
+
+### Copula Conjugation Forms
+
+- 断定形 → だ (plain) ・ 丁寧形 → です (polite)
+- 過去形 → だった ・ 丁寧過去形 → でした
+- 否定形 → ではない ・ 丁寧否定形 → ではありません
+- 否定過去形 → ではなかった ・ 丁寧否定過去形 → ではありませんでした
+- 口語否定形 → じゃない ・ 口語丁寧否定形 → じゃありません
+- である形 → である（formal written）・ て形 → で（connective）
+
+> The copula has no generic attributive form: な is licensed only for
+> な-adjectives (静かな町), never for plain nouns (×医者な — a noun takes の), so it
+> lives in the adjective system, not here.
+
+```typescript
+type 医者だ = ConjugateCopula<"医者", "断定形">; // 医者だ
+type 医者ではありません = ConjugateCopula<"医者", "丁寧否定形">; // 医者ではありません
+```
+
 ## 📚 Phrase and Sentence Composition
 
 The system now supports:
@@ -144,7 +169,7 @@ type SentenceParts = [
   IntensifierPart<"そんなに">, // "So much" - intensifier
   VerbPart<慣れる, "て形">, // "Get used to" in te-form
   ContractedPart<"ん">, // Contraction of "の" - colloquial nominalizer
-  ParticlePart<"だ">, // Copula "is"
+  CopulaPart<"断定形">, // Copula "is" (だ) — a conjugable copula, not a particle
   ParticlePart<"よ"> // Emphatic sentence-ending particle
 ];
 

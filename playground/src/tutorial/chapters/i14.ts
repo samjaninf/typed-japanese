@@ -145,13 +145,13 @@ type 安いし便利です = \`\${ConjugateAdjective<安い, "基本形">}し\${
           reading: "あめだしさむいです",
           en: "It's raining, and it's cold too.",
           zh: "又下雨,而且又冷。",
-          code: `import type { ProperNoun, IAdjective, ConjugateAdjective } from "typed-japanese";
+          code: `import type { ProperNoun, IAdjective, ConjugateAdjective, ConjugateCopula } from "typed-japanese";
 
 type 雨 = ProperNoun<"雨">;
 type 寒い = IAdjective & { stem: "寒"; ending: "い" };
 
 // 雨 + だし (noun + し) + 寒いです (丁寧形)
-type 雨だし寒いです = \`\${雨}だし\${ConjugateAdjective<寒い, "丁寧形">}\`;
+type 雨だし寒いです = \`\${ConjugateCopula<雨, "断定形">}し\${ConjugateAdjective<寒い, "丁寧形">}\`;
 `,
         },
       ],

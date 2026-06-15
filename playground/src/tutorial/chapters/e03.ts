@@ -25,13 +25,13 @@ const chapter: Chapter = {
           reading: "ここはとしょかんです",
           en: "This place is a library.",
           zh: "这里是图书馆。",
-          code: `import type { ProperNoun, PhraseWithParticle } from "typed-japanese";
+          code: `import type { ProperNoun, PhraseWithParticle, ConjugateCopula } from "typed-japanese";
 
 type ここ = ProperNoun<"ここ">;
 type 図書館 = ProperNoun<"図書館">;
 
 // ここ + は (topic) + 図書館 + です
-type ここは図書館です = \`\${PhraseWithParticle<ここ, "は">}\${図書館}です\`;
+type ここは図書館です = \`\${PhraseWithParticle<ここ, "は">}\${ConjugateCopula<図書館, "丁寧形">}\`;
 `,
         },
         {
@@ -39,12 +39,12 @@ type ここは図書館です = \`\${PhraseWithParticle<ここ, "は">}\${図書
           reading: "あそこはえきです",
           en: "Over there is the station.",
           zh: "那边是车站。",
-          code: `import type { ProperNoun, PhraseWithParticle } from "typed-japanese";
+          code: `import type { ProperNoun, PhraseWithParticle, ConjugateCopula } from "typed-japanese";
 
 type あそこ = ProperNoun<"あそこ">;
 type 駅 = ProperNoun<"駅">;
 
-type あそこは駅です = \`\${PhraseWithParticle<あそこ, "は">}\${駅}です\`;
+type あそこは駅です = \`\${PhraseWithParticle<あそこ, "は">}\${ConjugateCopula<駅, "丁寧形">}\`;
 `,
         },
       ],

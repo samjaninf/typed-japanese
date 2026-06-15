@@ -15,6 +15,7 @@ import type {
 } from "./verb-types";
 import type { InterrogativeAdverb, WhyInterrogative } from "./adverb-types";
 import type { ProperNoun } from "./noun-types";
+import type { Copula, CopulaForm } from "./copula-types";
 
 // Particle system
 export type Particle =
@@ -32,8 +33,9 @@ export type Particle =
   | "か" // Question particle
   | "よね" // Combined emphasis and agreement
   | "の" // Nominalizer/question particle
-  | "だ" // Copula as particle
   | "も"; // Also/even particle
+// Note: the copula だ is NOT a particle. It inflects, so it lives in
+// ./copula-types as `ConjugateCopula` / `Copula`.
 
 // Punctuation marks
 export type PunctuationMark =
@@ -104,6 +106,7 @@ export type PhrasePart =
   | NounPart
   | AdverbPart
   | ParticlePart
+  | CopulaPart
   | IntensifierPart
   | ContractedPart
   | NestedPhrasePart
@@ -146,6 +149,12 @@ export type ParticlePart<P extends Particle = Particle> = {
   type: "particle";
   particle: P;
   value: P;
+};
+
+export type CopulaPart<F extends CopulaForm = CopulaForm> = {
+  type: "copula";
+  form: F;
+  value: Copula<F>;
 };
 
 export type IntensifierPart<I extends string = string> = {
@@ -205,7 +214,7 @@ export type WhyIntensifierPatternWithEmphasis<
     IntensifierPart<Intensifier>,
     VerbPart<V, "て形">,
     ContractedPart<"ん">,
-    ParticlePart<"だ">,
+    CopulaPart<"断定形">,
     ParticlePart<P>
   ]
 >;

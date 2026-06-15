@@ -25,14 +25,14 @@ const chapter: Chapter = {
           reading: "あしたはあめだとおもいます",
           en: "I think it will rain tomorrow.",
           zh: "我想明天会下雨。",
-          code: `import type { ProperNoun, GodanVerb, ConjugateVerb, PhraseWithParticle } from "typed-japanese";
+          code: `import type { ProperNoun, GodanVerb, ConjugateVerb, PhraseWithParticle, ConjugateCopula } from "typed-japanese";
 
 type 明日 = ProperNoun<"明日">;
 type 雨 = ProperNoun<"雨">;
 type 思う = GodanVerb & { stem: "思"; ending: "う" };
 
 // 明日 + は (topic) + 雨 + だと + 思い(ます形) + ます
-type 明日は雨だと思います = \`\${PhraseWithParticle<明日, "は">}\${雨}だと\${ConjugateVerb<思う, "ます形">}ます\`;
+type 明日は雨だと思います = \`\${PhraseWithParticle<明日, "は">}\${ConjugateCopula<雨, "断定形">}と\${ConjugateVerb<思う, "ます形">}ます\`;
 `,
         },
         {
@@ -96,14 +96,14 @@ type 田中さんは行くと言いました = \`\${PhraseWithParticle<田中さ
           reading: "かれはがくせいだといいました",
           en: "He said he was a student.",
           zh: "他说他是学生。",
-          code: `import type { ProperNoun, GodanVerb, ConjugateVerb, PhraseWithParticle } from "typed-japanese";
+          code: `import type { ProperNoun, GodanVerb, ConjugateVerb, PhraseWithParticle, ConjugateCopula } from "typed-japanese";
 
 type 彼 = ProperNoun<"彼">;
 type 学生 = ProperNoun<"学生">;
 type 言う = GodanVerb & { stem: "言"; ending: "う" };
 
 // 彼は + 学生 + だと + 言い(ます形) + ました
-type 彼は学生だと言いました = \`\${PhraseWithParticle<彼, "は">}\${学生}だと\${ConjugateVerb<言う, "ます形">}ました\`;
+type 彼は学生だと言いました = \`\${PhraseWithParticle<彼, "は">}\${ConjugateCopula<学生, "断定形">}と\${ConjugateVerb<言う, "ます形">}ました\`;
 `,
         },
       ],

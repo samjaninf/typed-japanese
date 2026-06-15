@@ -70,6 +70,7 @@ const COMPOSITIONAL = new Set([
   "DemonstrativeAction",
   "ConjugateVerb",
   "ConjugateAdjective",
+  "ConjugateCopula",
   "NounPhrase",
   "VerbPhrase",
   "AdjectivalPhrase",
@@ -86,6 +87,7 @@ const CATEGORY_BY_NAME: Record<string, GrammarCategory> = {
   DemonstrativeAction: "phrase",
   ConjugateVerb: "conjugation",
   ConjugateAdjective: "conjugation",
+  ConjugateCopula: "conjugation",
   GodanVerb: "verb",
   IchidanVerb: "verb",
   IrregularVerb: "verb",
@@ -99,6 +101,9 @@ const CATEGORY_BY_NAME: Record<string, GrammarCategory> = {
 const FORMS = new Set([
   "辞書形", "ます形", "て形", "た形", "ない形", "可能形", "受身形", "使役形",
   "意向形", "命令形", "条件形", "仮定形", "基本形", "丁寧形", "過去形", "否定形",
+  // copula forms
+  "断定形", "丁寧過去形", "丁寧否定形", "否定過去形", "丁寧否定過去形",
+  "口語否定形", "口語丁寧否定形", "である形",
 ]);
 const CONDITIONAL = new Set(["なら", "たら", "れば"]);
 const DEMONSTRATIVE = new Set(["こう", "そう", "ああ", "どう"]);
@@ -106,7 +111,7 @@ const INTERROGATIVE = new Set([
   "なぜ", "なんで", "どうして", "いつ", "どこ", "だれ", "誰", "何", "なに", "どんな", "どれ",
 ]);
 const PARTICLES = new Set([
-  "は", "が", "を", "に", "へ", "で", "と", "から", "まで", "よ", "ね", "か", "よね", "の", "だ", "も",
+  "は", "が", "を", "に", "へ", "で", "と", "から", "まで", "よ", "ね", "か", "よね", "の", "も",
 ]);
 
 function classifyLiteral(value: string): GrammarCategory {

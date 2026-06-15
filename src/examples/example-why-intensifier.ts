@@ -2,6 +2,7 @@ import type { WhyInterrogative } from "../adverb-types";
 import type {
   AdverbPart,
   ContractedPart,
+  CopulaPart,
   IntensifierPart,
   JoinPhrasePartsValue,
   ParticlePart,
@@ -34,7 +35,7 @@ type SentenceParts = [
   IntensifierPart<"そんなに">,
   VerbPart<慣れる, "て形">,
   ContractedPart<"ん">,
-  ParticlePart<"だ">,
+  CopulaPart<"断定形">,
   ParticlePart<"よ">
 ];
 

@@ -67,14 +67,14 @@ type 彼女は美しいばかりか優しい = \`\${PhraseWithParticle<彼女, "
           reading: "かれはおかねもちどころかびんぼうだ",
           en: "Far from being rich, he is poor.",
           zh: "他别说有钱了,反而很穷。",
-          code: `import type { ProperNoun, PhraseWithParticle } from "typed-japanese";
+          code: `import type { ProperNoun, PhraseWithParticle, ConjugateCopula } from "typed-japanese";
 
 type 彼 = ProperNoun<"彼">;
 type お金持ち = ProperNoun<"お金持ち">;
 type 貧乏 = ProperNoun<"貧乏">;
 
 // 彼 は + お金持ち + どころか + 貧乏 だ
-type 彼はお金持ちどころか貧乏だ = \`\${PhraseWithParticle<彼, "は">}\${お金持ち}どころか\${PhraseWithParticle<貧乏, "だ">}\`;
+type 彼はお金持ちどころか貧乏だ = \`\${PhraseWithParticle<彼, "は">}\${お金持ち}どころか\${ConjugateCopula<貧乏, "断定形">}\`;
 `,
         },
         {
@@ -122,14 +122,14 @@ type 学生のみならず先生も来た = \`\${学生}のみならず\${Phrase
           reading: "こくないのみならずかいがいでもゆうめいだ",
           en: "It is famous not only domestically but also abroad.",
           zh: "它不仅在国内,在海外也很有名。",
-          code: `import type { ProperNoun } from "typed-japanese";
+          code: `import type { ProperNoun, ConjugateCopula } from "typed-japanese";
 
 type 国内 = ProperNoun<"国内">;
 type 海外 = ProperNoun<"海外">;
 type 有名 = ProperNoun<"有名">;
 
 // 国内 + のみならず + 海外 + でも + 有名だ
-type 国内のみならず海外でも有名だ = \`\${国内}のみならず\${海外}でも\${有名}だ\`;
+type 国内のみならず海外でも有名だ = \`\${国内}のみならず\${海外}でも\${ConjugateCopula<有名, "断定形">}\`;
 `,
         },
       ],

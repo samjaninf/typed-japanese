@@ -154,7 +154,7 @@ type できる限り努力する = \`\${ConjugateVerb<できる, "辞書形">}\$
           reading: "このまちはしずかなはんめんふべんだ",
           en: "This town is quiet, but on the other hand inconvenient.",
           zh: "这个小镇虽然安静,另一方面却不方便。",
-          code: `import type { ProperNoun, NaAdjective, ConjugateAdjective, PhraseWithParticle } from "typed-japanese";
+          code: `import type { ProperNoun, NaAdjective, ConjugateAdjective, PhraseWithParticle, ConjugateCopula } from "typed-japanese";
 
 type 町 = ProperNoun<"町">;
 type 静か = NaAdjective & { stem: "静か" };
@@ -162,7 +162,7 @@ type 反面 = ProperNoun<"反面">;
 type 不便 = NaAdjective & { stem: "不便" };
 
 // この + 町 は + 静かな (na-adj 基本形 → 静かな) + 反面 + 不便 + だ (literal copula)
-type この町は静かな反面不便だ = \`この\${PhraseWithParticle<町, "は">}\${ConjugateAdjective<静か, "基本形">}\${反面}\${不便["stem"]}だ\`;
+type この町は静かな反面不便だ = \`この\${PhraseWithParticle<町, "は">}\${ConjugateAdjective<静か, "基本形">}\${反面}\${ConjugateCopula<不便["stem"], "断定形">}\`;
 `,
         },
         {

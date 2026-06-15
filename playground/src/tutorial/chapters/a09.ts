@@ -78,13 +78,13 @@ type 留学といっても一週間だけ = \`\${留学}といっても\${一週
           reading: "たかいといってもせんえんだ",
           en: "Even though I say it's expensive, it's a thousand yen.",
           zh: "虽说贵,也就一千日元。",
-          code: `import type { ProperNoun, IAdjective, ConjugateAdjective } from "typed-japanese";
+          code: `import type { ProperNoun, IAdjective, ConjugateAdjective, ConjugateCopula } from "typed-japanese";
 
 type 高い = IAdjective & { stem: "高"; ending: "い" };
 type 千円 = ProperNoun<"千円">;
 
 // 高い (基本形) + といっても + 千円 + だ
-type 高いといっても千円だ = \`\${ConjugateAdjective<高い, "基本形">}といっても\${千円}だ\`;
+type 高いといっても千円だ = \`\${ConjugateAdjective<高い, "基本形">}といっても\${ConjugateCopula<千円, "断定形">}\`;
 `,
         },
       ],
@@ -117,13 +117,13 @@ type 安いからといって買わない = \`\${ConjugateAdjective<安い, "基
           reading: "がくせいだからといってひまではない",
           en: "Just because I'm a student doesn't mean I'm free.",
           zh: "并不是因为是学生就有空。",
-          code: `import type { ProperNoun, NaAdjective, ConjugateAdjective } from "typed-japanese";
+          code: `import type { ProperNoun, NaAdjective, ConjugateAdjective, ConjugateCopula } from "typed-japanese";
 
 type 学生 = ProperNoun<"学生">;
 type 暇 = NaAdjective & { stem: "暇" };
 
 // 学生 + だ + からといって + 暇ではない (否定形)
-type 学生だからといって暇ではない = \`\${学生}だからといって\${ConjugateAdjective<暇, "否定形">}\`;
+type 学生だからといって暇ではない = \`\${ConjugateCopula<学生, "断定形">}からといって\${ConjugateAdjective<暇, "否定形">}\`;
 `,
         },
       ],

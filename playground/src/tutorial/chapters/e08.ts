@@ -53,13 +53,13 @@ type 静かな部屋 = \`\${ConjugateAdjective<静か, "基本形">}\${部屋}\`
           reading: "きれいなはなです",
           en: "It is a pretty flower.",
           zh: "是漂亮的花。",
-          code: `import type { NaAdjective, ConjugateAdjective, ProperNoun } from "typed-japanese";
+          code: `import type { NaAdjective, ConjugateAdjective, ProperNoun, ConjugateCopula } from "typed-japanese";
 
 type きれい = NaAdjective & { stem: "きれい" };
 type 花 = ProperNoun<"花">;
 
 // 静かな部屋 pattern, then close with です
-type きれいな花です = \`\${ConjugateAdjective<きれい, "基本形">}\${花}です\`;
+type きれいな花です = \`\${ConjugateAdjective<きれい, "基本形">}\${ConjugateCopula<花, "丁寧形">}\`;
 `,
         },
       ],

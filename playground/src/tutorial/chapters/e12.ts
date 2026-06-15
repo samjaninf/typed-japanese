@@ -150,7 +150,7 @@ type 彼はピアノを弾くことができる = \`\${PhraseWithParticle<彼, "
           reading: "わたしはおよぐことがすきだ",
           en: "I like swimming.",
           zh: "我喜欢游泳。",
-          code: `import type { ProperNoun, GodanVerb, ConjugateVerb, NaAdjective, ConjugateAdjective, PhraseWithParticle } from "typed-japanese";
+          code: `import type { ProperNoun, GodanVerb, ConjugateVerb, NaAdjective, ConjugateAdjective, PhraseWithParticle, ConjugateCopula } from "typed-japanese";
 
 type 私 = ProperNoun<"私">;
 type 泳ぐ = GodanVerb & { stem: "泳"; ending: "ぐ" };
@@ -158,7 +158,7 @@ type 好き = NaAdjective & { stem: "好き" };
 
 // 好きだ = 好き(な形容詞) + だ
 // 私は + 泳ぐこと + が + 好き + だ
-type 私は泳ぐことが好きだ = \`\${PhraseWithParticle<私, "は">}\${PhraseWithParticle<\`\${ConjugateVerb<泳ぐ, "辞書形">}こと\`, "が">}\${好き["stem"]}だ\`;
+type 私は泳ぐことが好きだ = \`\${PhraseWithParticle<私, "は">}\${PhraseWithParticle<\`\${ConjugateVerb<泳ぐ, "辞書形">}こと\`, "が">}\${ConjugateCopula<好き["stem"], "断定形">}\`;
 `,
         },
         {

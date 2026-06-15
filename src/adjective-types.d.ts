@@ -1,3 +1,5 @@
+import type { ConjugateCopula } from "./copula-types";
+
 // Adjective types
 export type IAdjective = {
   type: "i-adjective";
@@ -71,16 +73,19 @@ export type ConjugateAdjective<
     ? `${A["stem"]}${A["ending"]}`
     : `${A["stem"]}${GetIAdjectiveConjugation<F>}`
   : A extends NaAdjective
-  ? F extends "基本形"
+  ? // A na-adjective inflects through the copula for です / でした / ではない / で.
+    // Its 基本形 (attributive) な is 形容動詞-specific — it is NOT a generic copula
+    // form (a plain noun takes の, not な), so it stays a literal here.
+    F extends "基本形"
     ? `${A["stem"]}な`
     : F extends "丁寧形"
-    ? `${A["stem"]}です`
+    ? ConjugateCopula<A["stem"], "丁寧形">
     : F extends "過去形"
-    ? `${A["stem"]}でした`
+    ? ConjugateCopula<A["stem"], "丁寧過去形">
     : F extends "否定形"
-    ? `${A["stem"]}ではない`
+    ? ConjugateCopula<A["stem"], "否定形">
     : F extends "て形"
-    ? `${A["stem"]}で`
+    ? ConjugateCopula<A["stem"], "て形">
     : never
   : never;
 

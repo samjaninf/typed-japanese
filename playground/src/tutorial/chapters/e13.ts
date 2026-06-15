@@ -148,13 +148,13 @@ type 私はお酒を飲まない = \`\${PhraseWithParticle<私, "は">}\${Phrase
           reading: "わたしはがくせいだ",
           en: "I'm a student.",
           zh: "我是学生。",
-          code: `import type { ProperNoun, PhraseWithParticle } from "typed-japanese";
+          code: `import type { ProperNoun, PhraseWithParticle, ConjugateCopula } from "typed-japanese";
 
 type 私 = ProperNoun<"私">;
 type 学生 = ProperNoun<"学生">;
 
 // 私 + は + 学生 + だ (plain copula)
-type 私は学生だ = \`\${PhraseWithParticle<私, "は">}\${PhraseWithParticle<学生, "だ">}\`;
+type 私は学生だ = \`\${PhraseWithParticle<私, "は">}\${ConjugateCopula<学生, "断定形">}\`;
 `,
         },
         {
@@ -162,14 +162,14 @@ type 私は学生だ = \`\${PhraseWithParticle<私, "は">}\${PhraseWithParticle
           reading: "これはわたしのほんだ",
           en: "This is my book.",
           zh: "这是我的书。",
-          code: `import type { ProperNoun, PhraseWithParticle } from "typed-japanese";
+          code: `import type { ProperNoun, PhraseWithParticle, ConjugateCopula } from "typed-japanese";
 
 type これ = ProperNoun<"これ">;
 type 私 = ProperNoun<"私">;
 type 本 = ProperNoun<"本">;
 
 // これ + は + 私 + の + 本 + だ
-type これは私の本だ = \`\${PhraseWithParticle<これ, "は">}\${PhraseWithParticle<私, "の">}\${PhraseWithParticle<本, "だ">}\`;
+type これは私の本だ = \`\${PhraseWithParticle<これ, "は">}\${PhraseWithParticle<私, "の">}\${ConjugateCopula<本, "断定形">}\`;
 `,
         },
       ],

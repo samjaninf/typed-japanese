@@ -25,13 +25,13 @@ const chapter: Chapter = {
           reading: "これはほんです",
           en: "This is a book.",
           zh: "这是书。",
-          code: `import type { ProperNoun, PhraseWithParticle } from "typed-japanese";
+          code: `import type { ProperNoun, PhraseWithParticle, ConjugateCopula } from "typed-japanese";
 
 type これ = ProperNoun<"これ">;
 type 本 = ProperNoun<"本">;
 
 // これ + は (topic) + 本 + です
-type これは本です = \`\${PhraseWithParticle<これ, "は">}\${本}です\`;
+type これは本です = \`\${PhraseWithParticle<これ, "は">}\${ConjugateCopula<本, "丁寧形">}\`;
 `,
         },
         {
@@ -39,14 +39,14 @@ type これは本です = \`\${PhraseWithParticle<これ, "は">}\${本}です\`
           reading: "それはわたしのかばんです",
           en: "That (by you) is my bag.",
           zh: "那(你那边的)是我的包。",
-          code: `import type { ProperNoun, PhraseWithParticle } from "typed-japanese";
+          code: `import type { ProperNoun, PhraseWithParticle, ConjugateCopula } from "typed-japanese";
 
 type それ = ProperNoun<"それ">;
 type 私 = ProperNoun<"私">;
 type かばん = ProperNoun<"かばん">;
 
 // それ + は + 私 + の + かばん + です
-type それは私のかばんです = \`\${PhraseWithParticle<それ, "は">}\${PhraseWithParticle<私, "の">}\${かばん}です\`;
+type それは私のかばんです = \`\${PhraseWithParticle<それ, "は">}\${PhraseWithParticle<私, "の">}\${ConjugateCopula<かばん, "丁寧形">}\`;
 `,
         },
         {
@@ -54,13 +54,13 @@ type それは私のかばんです = \`\${PhraseWithParticle<それ, "は">}\${
           reading: "あれはなんですか",
           en: "What is that over there?",
           zh: "那边的那个是什么?",
-          code: `import type { ProperNoun, PhraseWithParticle } from "typed-japanese";
+          code: `import type { ProperNoun, PhraseWithParticle, ConjugateCopula } from "typed-japanese";
 
 type あれ = ProperNoun<"あれ">;
 type 何 = ProperNoun<"何">;
 
 // あれ + は + 何 + ですか
-type あれは何ですか = \`\${PhraseWithParticle<あれ, "は">}\${何}ですか\`;
+type あれは何ですか = \`\${PhraseWithParticle<あれ, "は">}\${ConjugateCopula<何, "丁寧形">}か\`;
 `,
         },
       ],
@@ -93,13 +93,13 @@ type この本は面白いです = \`この\${PhraseWithParticle<本, "は">}\${
           reading: "そのひとはたなかさんです",
           en: "That person is Mr. Tanaka.",
           zh: "那个人是田中先生。",
-          code: `import type { ProperNoun, PhraseWithParticle } from "typed-japanese";
+          code: `import type { ProperNoun, PhraseWithParticle, ConjugateCopula } from "typed-japanese";
 
 type 人 = ProperNoun<"人">;
 type 田中さん = ProperNoun<"田中さん">;
 
 // その + 人 + は + 田中さん + です
-type その人は田中さんです = \`その\${PhraseWithParticle<人, "は">}\${田中さん}です\`;
+type その人は田中さんです = \`その\${PhraseWithParticle<人, "は">}\${ConjugateCopula<田中さん, "丁寧形">}\`;
 `,
         },
         {
@@ -132,14 +132,14 @@ type あの店は新しいです = \`あの\${PhraseWithParticle<店, "は">}\${
           reading: "これはわたしのかさです",
           en: "This is my umbrella.",
           zh: "这是我的伞。",
-          code: `import type { ProperNoun, PhraseWithParticle } from "typed-japanese";
+          code: `import type { ProperNoun, PhraseWithParticle, ConjugateCopula } from "typed-japanese";
 
 type これ = ProperNoun<"これ">;
 type 私 = ProperNoun<"私">;
 type 傘 = ProperNoun<"傘">;
 
 // これ + は + 私 + の + 傘 + です
-type これは私の傘です = \`\${PhraseWithParticle<これ, "は">}\${PhraseWithParticle<私, "の">}\${傘}です\`;
+type これは私の傘です = \`\${PhraseWithParticle<これ, "は">}\${PhraseWithParticle<私, "の">}\${ConjugateCopula<傘, "丁寧形">}\`;
 `,
         },
         {
@@ -162,14 +162,14 @@ type 田中さんの車は赤いです = \`\${PhraseWithParticle<田中さん, "
           reading: "あれはにほんのくるまです",
           en: "That over there is a Japanese car.",
           zh: "那边那辆是日本(产)的车。",
-          code: `import type { ProperNoun, PhraseWithParticle } from "typed-japanese";
+          code: `import type { ProperNoun, PhraseWithParticle, ConjugateCopula } from "typed-japanese";
 
 type あれ = ProperNoun<"あれ">;
 type 日本 = ProperNoun<"日本">;
 type 車 = ProperNoun<"車">;
 
 // あれ + は + 日本 + の + 車 + です
-type あれは日本の車です = \`\${PhraseWithParticle<あれ, "は">}\${PhraseWithParticle<日本, "の">}\${車}です\`;
+type あれは日本の車です = \`\${PhraseWithParticle<あれ, "は">}\${PhraseWithParticle<日本, "の">}\${ConjugateCopula<車, "丁寧形">}\`;
 `,
         },
       ],

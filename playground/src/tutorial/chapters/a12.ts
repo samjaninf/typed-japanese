@@ -25,13 +25,13 @@ const chapter: Chapter = {
           reading: "げんごはぶんかである",
           en: "Language is culture.",
           zh: "语言即文化。",
-          code: `import type { ProperNoun, PhraseWithParticle } from "typed-japanese";
+          code: `import type { ProperNoun, PhraseWithParticle, ConjugateCopula } from "typed-japanese";
 
 type 言語 = ProperNoun<"言語">;
 type 文化 = ProperNoun<"文化">;
 
 // 言語 + は + 文化 + である (written copula)
-type 言語は文化である = \`\${PhraseWithParticle<言語, "は">}\${文化}である\`;
+type 言語は文化である = \`\${PhraseWithParticle<言語, "は">}\${ConjugateCopula<文化, "である形">}\`;
 `,
         },
         {
@@ -39,14 +39,14 @@ type 言語は文化である = \`\${PhraseWithParticle<言語, "は">}\${文化
           reading: "これはじゅうようなもんだいである",
           en: "This is an important problem.",
           zh: "这是一个重要的问题。",
-          code: `import type { ProperNoun, NaAdjective, ConjugateAdjective, PhraseWithParticle } from "typed-japanese";
+          code: `import type { ProperNoun, NaAdjective, ConjugateAdjective, PhraseWithParticle, ConjugateCopula } from "typed-japanese";
 
 type これ = ProperNoun<"これ">;
 type 重要 = NaAdjective & { stem: "重要" };
 type 問題 = ProperNoun<"問題">;
 
 // これ + は + 重要な(基本形) + 問題 + である
-type これは重要な問題である = \`\${PhraseWithParticle<これ, "は">}\${ConjugateAdjective<重要, "基本形">}\${問題}である\`;
+type これは重要な問題である = \`\${PhraseWithParticle<これ, "は">}\${ConjugateAdjective<重要, "基本形">}\${ConjugateCopula<問題, "である形">}\`;
 `,
         },
       ],
@@ -172,14 +172,14 @@ type 今こそ行動すべし = \`\${今}こそ\${行動}すべし\`;
           reading: "これはよむべきほんである",
           en: "This is a book one should read.",
           zh: "这是一本应该读的书。",
-          code: `import type { ProperNoun, GodanVerb, ConjugateVerb, PhraseWithParticle } from "typed-japanese";
+          code: `import type { ProperNoun, GodanVerb, ConjugateVerb, PhraseWithParticle, ConjugateCopula } from "typed-japanese";
 
 type これ = ProperNoun<"これ">;
 type 読む = GodanVerb & { stem: "読"; ending: "む" };
 type 本 = ProperNoun<"本">;
 
 // これ + は + 読む(辞書形) + べき + 本 + である
-type これは読むべき本である = \`\${PhraseWithParticle<これ, "は">}\${ConjugateVerb<読む, "辞書形">}べき\${本}である\`;
+type これは読むべき本である = \`\${PhraseWithParticle<これ, "は">}\${ConjugateVerb<読む, "辞書形">}べき\${ConjugateCopula<本, "である形">}\`;
 `,
         },
       ],

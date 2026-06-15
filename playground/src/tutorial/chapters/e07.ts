@@ -119,13 +119,13 @@ type 私は勉強しませんでした = \`\${PhraseWithParticle<私, "は">}\${
           reading: "たなかさんはがくせいでした",
           en: "Mr. Tanaka was a student.",
           zh: "田中先生曾是学生。",
-          code: `import type { ProperNoun, PhraseWithParticle } from "typed-japanese";
+          code: `import type { ProperNoun, PhraseWithParticle, ConjugateCopula } from "typed-japanese";
 
 type 田中さん = ProperNoun<"田中さん">;
 type 学生 = ProperNoun<"学生">;
 
 // です の過去形 → でした
-type 田中さんは学生でした = \`\${PhraseWithParticle<田中さん, "は">}\${学生}でした\`;
+type 田中さんは学生でした = \`\${PhraseWithParticle<田中さん, "は">}\${ConjugateCopula<学生, "丁寧過去形">}\`;
 `,
         },
         {
@@ -133,12 +133,12 @@ type 田中さんは学生でした = \`\${PhraseWithParticle<田中さん, "は
           reading: "わたしはいしゃではありませんでした",
           en: "I was not a doctor.",
           zh: "我曾经不是医生。",
-          code: `import type { ProperNoun, PhraseWithParticle } from "typed-japanese";
+          code: `import type { ProperNoun, PhraseWithParticle, ConjugateCopula } from "typed-japanese";
 
 type 私 = ProperNoun<"私">;
 type 医者 = ProperNoun<"医者">;
 
-type 私は医者ではありませんでした = \`\${PhraseWithParticle<私, "は">}\${医者}ではありませんでした\`;
+type 私は医者ではありませんでした = \`\${PhraseWithParticle<私, "は">}\${ConjugateCopula<医者, "丁寧否定過去形">}\`;
 `,
         },
       ],
