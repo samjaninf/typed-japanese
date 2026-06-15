@@ -1,12 +1,7 @@
-import {
-  createContext,
-  useCallback,
-  useContext,
-  useState,
-  type ReactNode,
-} from "react";
+import { createContext, useCallback, useContext, type ReactNode } from "react";
+import { useRoute, type Lang } from "./route";
 
-export type Lang = "en" | "zh";
+export type { Lang };
 
 interface LangCtx {
   lang: Lang;
@@ -18,23 +13,27 @@ interface LangCtx {
 const Ctx = createContext<LangCtx | null>(null);
 const STORAGE_KEY = "tj-lang";
 
-function initialLang(): Lang {
-  if (typeof localStorage !== "undefined") {
-    const v = localStorage.getItem(STORAGE_KEY);
-    if (v === "en" || v === "zh") return v;
-  }
-  return "en";
-}
-
+/**
+ * Language lives in the route (the URL), so switching it is a navigable action
+ * with Back / Forward support and is shareable. We mirror the choice to
+ * localStorage so a fresh visit (no `lang` in the URL) restores the last pick.
+ */
 export function LangProvider({ children }: { children: ReactNode }) {
-  const [lang, setLangState] = useState<Lang>(initialLang);
+  const { route, navigate } = useRoute();
+  const lang = route.lang;
 
-  const setLang = useCallback((l: Lang) => {
-    setLangState(l);
-    if (typeof localStorage !== "undefined") localStorage.setItem(STORAGE_KEY, l);
-  }, []);
+  const setLang = useCallback(
+    (l: Lang) => {
+      if (typeof localStorage !== "undefined") localStorage.setItem(STORAGE_KEY, l);
+      navigate({ lang: l });
+    },
+    [navigate]
+  );
 
-  const t = useCallback((en: string, zh: string) => (lang === "zh" ? zh : en), [lang]);
+  const t = useCallback(
+    (en: string, zh: string) => (lang === "zh" ? zh : en),
+    [lang]
+  );
 
   return <Ctx.Provider value={{ lang, setLang, t }}>{children}</Ctx.Provider>;
 }

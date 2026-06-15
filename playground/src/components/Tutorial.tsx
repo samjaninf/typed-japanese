@@ -10,6 +10,7 @@ import { CHAPTERS } from "../tutorial/chapters";
 import { LEVEL_META } from "../tutorial/levels";
 import { exampleAnchorId, type Chapter, type Example, type Level } from "../tutorial/types";
 import { useLang } from "../context/lang";
+import { useRoute } from "../context/route";
 import { extractWords } from "../vocab/extract";
 import Analyzer from "./Analyzer";
 import VocabWord from "./VocabWord";
@@ -38,38 +39,28 @@ function RichText({ text }: { text: string }): ReactNode {
   );
 }
 
-type Props = {
-  /** A glossary "used in" link requesting a jump to an example. */
-  jump: { chapterId: string; anchor: string } | null;
-  onJumpHandled: () => void;
-  /** When set (e.g. from a Foundations deep-link), jump to this chapter id. */
-  focusChapter?: string | null;
-  onChapterFocused?: () => void;
-};
-
-export default function Tutorial({
-  jump,
-  onJumpHandled,
-  focusChapter = null,
-  onChapterFocused,
-}: Props) {
+export default function Tutorial() {
   const { lang, t } = useLang();
+  const { route, navigate } = useRoute();
   const [query, setQuery] = useState("");
-  const [activeId, setActiveId] = useState<string>(
-    jump?.chapterId ?? CHAPTERS[0]?.id ?? ""
-  );
+  // The selected chapter is driven by the URL, so Back / Forward move between
+  // chapters and a deep-link (Foundations / Glossary) lands on the right one.
+  const activeId =
+    route.chapter && CHAPTERS.some((c) => c.id === route.chapter)
+      ? route.chapter
+      : CHAPTERS[0]?.id ?? "";
   const [drawerExample, setDrawerExample] = useState<Example | null>(null);
   const [drawerOpen, setDrawerOpen] = useState(false);
   const [flash, setFlash] = useState<string | null>(null);
   const pendingAnchor = useRef<string | null>(null);
 
-  // A jump request: select the chapter, then mark the anchor for scrolling.
+  // The route can point at an example (a Glossary "used in" link). Capture the
+  // anchor, then strip it from the URL so re-clicking the same link re-fires.
   useEffect(() => {
-    if (!jump) return;
-    pendingAnchor.current = jump.anchor;
-    setActiveId(jump.chapterId);
-    onJumpHandled();
-  }, [jump, onJumpHandled]);
+    if (!route.ex) return;
+    pendingAnchor.current = route.ex;
+    navigate({ ex: undefined }, { replace: true });
+  }, [route.ex, navigate]);
 
   // After the target chapter has rendered, scroll the example into view and
   // flash it. Runs after every render until the anchor element exists.
@@ -87,14 +78,6 @@ export default function Tutorial({
     );
     return () => window.clearTimeout(timer);
   });
-
-  // Honour a deep-link from another tab: select the requested chapter once.
-  useEffect(() => {
-    if (focusChapter && CHAPTERS.some((c) => c.id === focusChapter)) {
-      setActiveId(focusChapter);
-      onChapterFocused?.();
-    }
-  }, [focusChapter, onChapterFocused]);
 
   const byLevel = useMemo(() => {
     const q = query.trim().toLowerCase();
@@ -153,7 +136,7 @@ export default function Tutorial({
                     key={c.id}
                     type="button"
                     className={`${styles.chapterLink} ${c.id === activeId ? styles.chapterActive : ""}`}
-                    onClick={() => setActiveId(c.id)}
+                    onClick={() => navigate({ chapter: c.id })}
                   >
                     <span className={styles.chapterNum}>{c.order}</span>
                     <span>{t(c.titleEn, c.titleZh)}</span>

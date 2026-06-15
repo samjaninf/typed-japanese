@@ -3,6 +3,7 @@ import { VOCAB_LIST } from "../vocab/dictionary";
 import { POS_LABEL, type PartOfSpeech } from "../vocab/types";
 import { REVERSE_INDEX } from "../tutorial/reverseIndex.generated";
 import { useLang } from "../context/lang";
+import { useRoute } from "../context/route";
 import styles from "./Glossary.module.css";
 
 const POS_GROUPS: { key: PartOfSpeech[]; en: string; zh: string }[] = [
@@ -13,13 +14,9 @@ const POS_GROUPS: { key: PartOfSpeech[]; en: string; zh: string }[] = [
   { key: ["particle", "copula", "suffix", "conjunction", "prefix"], en: "Grammar", zh: "语法词" },
 ];
 
-type Props = {
-  /** Jump to an example card in the tutorial tab. */
-  onNavigate: (chapterId: string, anchor: string) => void;
-};
-
-export default function Glossary({ onNavigate }: Props) {
+export default function Glossary() {
   const { lang, t } = useLang();
+  const { navigate } = useRoute();
   const [query, setQuery] = useState("");
   const [filter, setFilter] = useState<number | null>(null);
   const [expanded, setExpanded] = useState<string | null>(null);
@@ -126,7 +123,13 @@ export default function Glossary({ onNavigate }: Props) {
                               key={k}
                               type="button"
                               className={styles.refItem}
-                              onClick={() => onNavigate(r.chapterId, r.anchor)}
+                              onClick={() =>
+                                navigate({
+                                  tab: "tutorial",
+                                  chapter: r.chapterId,
+                                  ex: r.anchor,
+                                })
+                              }
                               title={t("Open in the course", "在教程中打开")}
                             >
                               <span className={`jp ${styles.refJp}`}>{r.jp}</span>
