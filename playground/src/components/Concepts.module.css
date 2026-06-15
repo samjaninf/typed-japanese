@@ -53,27 +53,10 @@
   color: var(--sakura-600);
 }
 
-.articleIcon {
-  font-size: 1.3rem;
-  flex: none;
-}
-
-.articleLinkText {
-  display: flex;
-  flex-direction: column;
-  gap: 1px;
-  min-width: 0;
-}
-
 .articleLinkTitle {
   font-size: 0.9rem;
   font-weight: 700;
   line-height: 1.25;
-}
-
-.articleLinkRead {
-  font-size: 0.72rem;
-  color: var(--ink-300);
 }
 
 /* ---- article content ---- */
@@ -86,23 +69,12 @@
   margin-bottom: 8px;
 }
 
-.readChip {
-  margin-bottom: 10px;
-}
-
 .articleTitle {
   margin: 4px 0 8px;
   font-size: 1.9rem;
   font-weight: 800;
   color: var(--ink-900);
   line-height: 1.2;
-  display: flex;
-  align-items: center;
-  gap: 12px;
-}
-
-.articleTitleIcon {
-  font-size: 1.7rem;
 }
 
 .articleTagline {
@@ -216,6 +188,262 @@
   line-height: 1.65;
   color: var(--ink-700);
   font-size: 0.95rem;
+}
+
+/* ---- compare card: Japanese ↔ English ↔ TypeScript ---- */
+.compare {
+  max-width: 72ch;
+  margin: 16px 0;
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius);
+  overflow: hidden;
+  background: var(--surface);
+}
+
+.compareJpRow {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 6px 12px;
+  padding: 12px 16px 8px;
+}
+
+.compareJp {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--ink-900);
+}
+
+.compareReading {
+  font-size: 0.9rem;
+  color: var(--ink-500);
+}
+
+.compareGloss {
+  padding: 0 16px 12px;
+  font-size: 0.95rem;
+  color: var(--ink-500);
+  border-bottom: 1px solid var(--border);
+}
+
+.compareTs {
+  margin: 0;
+  padding: 14px 16px;
+  background: var(--code-bg);
+  font-family: var(--font-mono);
+  font-size: 0.86rem;
+  line-height: 1.6;
+  color: var(--ink-700);
+  overflow-x: auto;
+  white-space: pre;
+  tab-size: 2;
+}
+
+/* syntax-highlight tokens */
+.tokComment {
+  color: var(--ink-500);
+  font-style: italic;
+}
+.tokString {
+  color: var(--cat-noun);
+}
+.tokKeyword {
+  color: var(--cat-particle);
+  font-weight: 600;
+}
+.tokType {
+  color: var(--cat-verb);
+}
+.tokFunc {
+  color: var(--cat-phrase);
+}
+.tokNumber {
+  color: var(--cat-conjugation);
+}
+.tokPunct {
+  color: var(--ink-500);
+}
+
+.compareNote {
+  margin: 0;
+  padding: 11px 16px 13px;
+  font-size: 0.9rem;
+  line-height: 1.6;
+  color: var(--ink-700);
+  background: var(--surface-2);
+  border-top: 1px solid var(--border);
+}
+
+/* ---- composition diagram: nested clauses as boxes ---- */
+.diagram {
+  max-width: 72ch;
+  margin: 16px 0;
+  padding: 16px;
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius);
+  background: var(--surface);
+}
+
+.diaCaption {
+  font-size: 0.9rem;
+  color: var(--ink-500);
+  line-height: 1.55;
+  margin-bottom: 12px;
+}
+
+.diaCanvas {
+  overflow-x: auto;
+}
+
+/* a clause = a bordered box whose contents are args → verb */
+.diaClause {
+  display: inline-flex;
+  flex-direction: column;
+  gap: 5px;
+  padding: 10px 12px;
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius-sm);
+  background: var(--surface-2);
+}
+
+/* nested clauses get the paper tone so depth reads through alternation */
+.diaClause .diaClause {
+  background: var(--code-bg);
+}
+
+.diaClauseLabel {
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  color: var(--sakura-600);
+}
+
+.diaRow {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+}
+
+.diaChip {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3px;
+}
+
+.diaArg .diaChipMain,
+.diaChipMain {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 3px;
+  padding: 5px 9px;
+  border: 1px solid var(--border-strong);
+  border-radius: 999px;
+  background: var(--surface);
+}
+
+.diaWord {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--ink-900);
+}
+
+.diaTag {
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--sakura-600);
+}
+
+.diaRole {
+  font-size: 0.7rem;
+  color: var(--ink-500);
+  text-align: center;
+}
+
+.diaArrow {
+  font-family: var(--font-mono);
+  color: var(--ink-300);
+  font-weight: 700;
+}
+
+/* the verb — the function that closes the clause — stands out */
+.diaVerb {
+  padding: 6px 12px;
+  border-radius: 999px;
+  background: var(--sakura-500);
+}
+
+.diaVerb .diaWord {
+  color: var(--on-accent);
+}
+
+/* ---- breakdown: peel a complex sentence apart ---- */
+.breakdown {
+  max-width: 72ch;
+  margin: 16px 0;
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius);
+  overflow: hidden;
+  background: var(--surface);
+}
+
+.breakdownHead {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 6px 12px;
+  padding: 14px 16px;
+  background: var(--surface-2);
+  border-bottom: 1px solid var(--border);
+}
+
+.breakdownJp {
+  font-size: 1.45rem;
+  font-weight: 800;
+  color: var(--ink-900);
+}
+
+.breakdownReading {
+  font-size: 0.9rem;
+  color: var(--ink-500);
+}
+
+.breakdownGloss {
+  flex-basis: 100%;
+  font-size: 0.92rem;
+  color: var(--ink-500);
+  line-height: 1.5;
+}
+
+.breakdownLayers {
+  display: flex;
+  flex-direction: column;
+  padding: 8px 0;
+}
+
+.breakdownLayer {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 4px 12px;
+  padding: 7px 16px;
+  border-left: 2px solid var(--border-strong);
+  margin: 2px 0;
+}
+
+.breakdownFragment {
+  font-size: 1.12rem;
+  font-weight: 700;
+  color: var(--sakura-600);
+  min-width: 8ch;
+}
+
+.breakdownRole {
+  font-size: 0.9rem;
+  color: var(--ink-700);
+  line-height: 1.5;
 }
 
 /* ---- example line ---- */

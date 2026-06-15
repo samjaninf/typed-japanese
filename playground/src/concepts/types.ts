@@ -1,9 +1,9 @@
 /**
  * Content model for "Foundations" (原理) — standalone concept articles that
- * explain the *architecture* of Japanese, programming-language-101 style, rather
- * than walking the grammar syllabus. They are independent from the grammar
- * Course, the Glossary and the Playground, and they deep-link INTO the Course
- * chapters where each idea is drilled.
+ * explain the *architecture* of Japanese rather than walking the grammar
+ * syllabus. They are independent from the grammar Course, the Glossary and the
+ * Playground, and they deep-link INTO the Course chapters where each idea is
+ * drilled.
  *
  * Every string is bilingual (English + 简体中文). Prose supports inline `code`
  * spans (backticks) and **bold** spans.
@@ -14,7 +14,7 @@ export type ConceptBlock =
   // A run of paragraphs (split on blank lines). Supports `code` and **bold**.
   | { kind: "prose"; en: string; zh: string }
   // A defined term — rendered as a callout so a beginner never meets a jargon
-  // word (体言, 助詞, …) without its definition right there.
+  // word (体言, 助詞, 主題 …) without its definition right there.
   | {
       kind: "define";
       term: string;
@@ -23,10 +23,68 @@ export type ConceptBlock =
       en: string;
       zh: string;
     }
-  // A Japanese example line (display only — not necessarily a typed snippet).
+  // The core teaching unit: one thought shown three ways — the Japanese, its
+  // English counterpart, and a small piece of TypeScript that makes the
+  // structural difference concrete. The TS is per-language so the comments are
+  // in the reader's language; it is syntax-highlighted by the renderer.
+  | {
+      kind: "compare";
+      jp: string;
+      reading?: string;
+      en: string;
+      zh: string;
+      /** Lightweight, readable TypeScript with English comments. */
+      tsEn: string;
+      /** Same code, comments in 简体中文. */
+      tsZh: string;
+      noteEn?: string;
+      noteZh?: string;
+    }
+  // Peel a complex sentence apart, layer by layer, to show the principles
+  // composing. Each layer is a Japanese fragment with a role gloss; `depth`
+  // indents nested clauses.
+  | {
+      kind: "breakdown";
+      jp: string;
+      reading?: string;
+      en: string;
+      zh: string;
+      layers: { fragment: string; depth?: number; en: string; zh: string }[];
+    }
+  // A node-composition diagram: a clause is a verb (function) applied to tagged
+  // arguments; a clause can itself be an argument of another, so it nests. See
+  // {@link DiagramNode}.
+  | {
+      kind: "diagram";
+      captionEn?: string;
+      captionZh?: string;
+      /** A composition tree (clause with nested args). */
+      root?: DiagramNode;
+      /** OR a flat row of independent chips (e.g. one verb in several forms). */
+      row?: DiagramNode[];
+    }
+  // A plain Japanese example line (display only).
   | { kind: "example"; jp: string; reading?: string; en: string; zh: string }
   // "Where this is taught" — links into Course chapters by id (e.g. "e01").
   | { kind: "chapters"; ids: string[] };
+
+/**
+ * One node in a composition diagram.
+ * - A **leaf** (no `args`) is a tagged argument — a noun chip plus its particle.
+ * - A **clause** (has `args`) is a box whose `label` is the verb that closes it;
+ *   its `args` render inside, and an arg may itself be a clause — that's nesting.
+ */
+export interface DiagramNode {
+  /** Japanese surface: a noun for a leaf, or the closing verb for a clause. */
+  label: string;
+  /** Particle attached after this node (は / が / を / で / と …), shown as a chip. */
+  tag?: string;
+  /** Short role gloss shown under the chip. */
+  roleEn?: string;
+  roleZh?: string;
+  /** Argument nodes. Present ⇒ this node is a clause and `label` is its verb. */
+  args?: DiagramNode[];
+}
 
 export interface ConceptSection {
   id: string;
@@ -43,16 +101,11 @@ export interface ConceptArticle {
   id: string;
   /** Order in the Foundations list. */
   order: number;
-  /** Emoji shown in the list and header. */
-  icon: string;
   titleEn: string;
   titleZh: string;
-  /** One-line hook for the list. */
+  /** One-line hook for the list and header. */
   taglineEn: string;
   taglineZh: string;
-  /** Read-time hook, e.g. "~1 hour" / "约 1 小时". */
-  readEn: string;
-  readZh: string;
   /** Lead paragraph(s) under the title. Supports `code` and **bold**. */
   introEn: string;
   introZh: string;
