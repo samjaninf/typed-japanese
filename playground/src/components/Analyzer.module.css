@@ -24,7 +24,7 @@
 
 .chipActive {
   background: var(--sakura-500);
-  color: #fff;
+  color: var(--on-accent);
   border-color: var(--sakura-500);
 }
 
@@ -73,12 +73,12 @@
 
 .ok {
   color: var(--ok);
-  background: #e8f7f0;
+  background: var(--ok-soft);
 }
 
 .err {
   color: var(--err);
-  background: #fdeaed;
+  background: var(--err-soft);
 }
 
 .diagList {

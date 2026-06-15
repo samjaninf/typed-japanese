@@ -11,6 +11,7 @@ import {
 } from "../analysis/parse";
 import { resolveValues } from "../analysis/resolve";
 import CompositionTree from "./CompositionTree";
+import { useTheme } from "../context/theme";
 import styles from "./Analyzer.module.css";
 
 type StandaloneEditor = ReturnType<Monaco["editor"]["create"]>;
@@ -61,6 +62,7 @@ function findNode(node: CompositionNode, id: string): CompositionNode | null {
 }
 
 export default function Analyzer({ code, gloss }: Props) {
+  const { theme } = useTheme();
   const [aliases, setAliases] = useState<AliasSummary[]>([]);
   const [selectedAlias, setSelectedAlias] = useState<string | null>(null);
   const [tree, setTree] = useState<CompositionNode | null>(null);
@@ -239,7 +241,7 @@ export default function Analyzer({ code, gloss }: Props) {
         </div>
         <Editor
           className={styles.editor}
-          theme="light"
+          theme={theme === "dark" ? "sakura-dark" : "sakura-light"}
           language="typescript"
           path={MODEL_PATH}
           defaultValue={code}
