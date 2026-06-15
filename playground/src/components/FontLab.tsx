@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import styles from "./FontLab.module.css";
 
 /**
  * FontLab — a dev-only floating panel for trying out tutorial fonts.
@@ -158,7 +157,7 @@ export default function FontLab() {
   return (
     <>
       <button
-        className={styles.fab}
+        className="fixed right-[18px] bottom-[18px] z-[60] border border-border-strong bg-surface text-ink-700 text-[0.85rem] font-bold px-3.5 py-[9px] rounded-full shadow-pop cursor-pointer transition-[transform,color] duration-[120ms] hover:text-sakura-600 hover:-translate-y-px"
         onClick={() => setOpen((o) => !o)}
         title="切换字体"
       >
@@ -166,42 +165,55 @@ export default function FontLab() {
       </button>
 
       {open && (
-        <div className={styles.panel}>
-          <div className={styles.head}>
+        <div className="fixed right-[18px] bottom-16 z-[60] w-[min(360px,calc(100vw-36px))] max-h-[min(72vh,680px)] flex flex-col bg-paper border border-border rounded-card shadow-drawer overflow-hidden">
+          <div className="flex items-center gap-2 px-3.5 py-3 border-b border-border">
             <strong>切换字体</strong>
-            <span className={styles.devTag}>DEV</span>
-            <button className={styles.close} onClick={() => setOpen(false)}>
+            <span className="text-[0.6rem] font-extrabold tracking-[0.08em] text-on-accent bg-sakura-400 px-1.5 py-px rounded-[5px]">
+              DEV
+            </span>
+            <button
+              className="ml-auto border-none bg-transparent text-ink-500 text-[1.3rem] leading-none cursor-pointer px-1 py-0 hover:text-ink-900"
+              onClick={() => setOpen(false)}
+            >
               ×
             </button>
           </div>
-          <div className={styles.list}>
+          <div className="overflow-y-auto p-2 flex flex-col gap-1.5">
             {PRESETS.map((p) => {
               const isActive = active === p.id;
               return (
                 <button
                   key={p.id}
-                  className={`${styles.preset} ${isActive ? styles.presetActive : ""}`}
+                  className={`flex flex-col gap-2 text-left px-3 py-2.5 border rounded-field cursor-pointer transition-[border-color,background] duration-[120ms] ${
+                    isActive
+                      ? "border-sakura-400 bg-sakura-50"
+                      : "border-border bg-surface hover:border-border-strong"
+                  }`}
                   onClick={() => choose(p)}
                 >
-                  <div className={styles.presetMeta}>
-                    <span className={styles.presetName}>{p.name}</span>
-                    <span className={styles.presetNote}>{p.note}</span>
+                  <div className="flex items-baseline justify-between gap-2">
+                    <span className="text-[0.85rem] font-bold text-ink-900">
+                      {p.name}
+                    </span>
+                    <span className="text-[0.68rem] text-ink-500 flex-none">
+                      {p.note}
+                    </span>
                   </div>
-                  <div className={styles.swatch}>
+                  <div className="flex flex-col gap-[3px] pt-1.5 border-t border-dashed border-border">
                     <span
-                      className={styles.swatchHeading}
+                      className="text-[1.05rem] font-bold text-ink-900"
                       style={{ fontFamily: p.heading }}
                     >
                       存在句：あります
                     </span>
                     <span
-                      className={styles.swatchBody}
+                      className="text-[0.86rem] text-ink-700"
                       style={{ fontFamily: p.ui }}
                     >
                       想象你身处一个陌生的街区，
                     </span>
                     <span
-                      className={styles.swatchJp}
+                      className="text-base text-sakura-600"
                       style={{ fontFamily: p.jp }}
                     >
                       場所 に 事物 が あります。

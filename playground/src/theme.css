@@ -1,14 +1,21 @@
 /* ----------------------------------------------------------------------------
    Typed Japanese Playground — global theme · "Washi & Sumi" (和紙・墨) 🌸
    Warm washi paper, near-black sumi ink, a single muted dusty-rose sakura accent.
-   Canonical design tokens (the source of truth is DESIGN.md) plus a small set of
-   utility classes the feature components share so the app reads as one piece.
 
-   Light tokens live in :root; dark overrides in :root[data-theme="dark"].
-   The active theme is set on <html data-theme> by the no-flash script in
-   index.html and toggled at runtime by src/context/theme.tsx.
+   Tailwind v4 is the styling system. The design tokens stay as CSS custom
+   properties (the source of truth, light in :root and dark in
+   :root[data-theme="dark"]) and are mapped into Tailwind's theme with
+   `@theme inline`, so utilities like `bg-sakura-500` / `text-ink-900` resolve to
+   those vars and dark mode works with no `dark:` variants.
 ---------------------------------------------------------------------------- */
 
+@import "tailwindcss";
+
+/* Dark mode is driven by <html data-theme="dark"> (set by the no-flash script in
+   index.html), not by the OS — so register a custom `dark` variant for it. */
+@custom-variant dark (&:where([data-theme="dark"], [data-theme="dark"] *));
+
+/* ---- raw design tokens ---------------------------------------------------- */
 :root {
   color-scheme: light;
 
@@ -132,150 +139,157 @@
   --bg-glow-2: rgba(138, 88, 112, 0.1);
 }
 
-* {
-  box-sizing: border-box;
+/* ---- map tokens into Tailwind's theme (dark-aware via the vars above) ----- */
+@theme inline {
+  --color-sakura-50: var(--sakura-50);
+  --color-sakura-100: var(--sakura-100);
+  --color-sakura-200: var(--sakura-200);
+  --color-sakura-300: var(--sakura-300);
+  --color-sakura-400: var(--sakura-400);
+  --color-sakura-500: var(--sakura-500);
+  --color-sakura-600: var(--sakura-600);
+
+  --color-ink-900: var(--ink-900);
+  --color-ink-700: var(--ink-700);
+  --color-ink-500: var(--ink-500);
+  --color-ink-300: var(--ink-300);
+
+  --color-paper: var(--paper);
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
+  --color-border: var(--border);
+  --color-border-strong: var(--border-strong);
+  --color-code-bg: var(--code-bg);
+
+  --color-ok: var(--ok);
+  --color-err: var(--err);
+  --color-ok-soft: var(--ok-soft);
+  --color-err-soft: var(--err-soft);
+  --color-accent: var(--accent);
+  --color-on-accent: var(--on-accent);
+  --color-ring: var(--ring);
+  --color-scrim: var(--scrim);
+
+  --color-cat-phrase: var(--cat-phrase);
+  --color-cat-conjugation: var(--cat-conjugation);
+  --color-cat-verb: var(--cat-verb);
+  --color-cat-adjective: var(--cat-adjective);
+  --color-cat-noun: var(--cat-noun);
+  --color-cat-adverb: var(--cat-adverb);
+  --color-cat-particle: var(--cat-particle);
+  --color-cat-form: var(--cat-form);
+  --color-cat-demonstrative: var(--cat-demonstrative);
+  --color-cat-interrogative: var(--cat-interrogative);
+  --color-cat-literal: var(--cat-literal);
+  --color-cat-other: var(--cat-other);
+
+  --font-jp: var(--font-jp);
+  --font-ui: var(--font-ui);
+  --font-heading: var(--font-heading);
+  --font-mono: var(--font-mono);
+  --font-sans: var(--font-ui);
+
+  --radius-card: var(--radius);
+  --radius-field: var(--radius-sm);
+
+  --shadow-card: var(--shadow-sm);
+  --shadow-pop: var(--shadow-md);
+  --shadow-drawer: var(--shadow-drawer);
 }
 
-html,
-body,
-#root {
-  height: 100%;
-  margin: 0;
+/* ---- base ----------------------------------------------------------------- */
+@layer base {
+  html,
+  body,
+  #root {
+    height: 100%;
+    margin: 0;
+  }
+
+  body {
+    font-family: var(--font-ui);
+    color: var(--ink-900);
+    background:
+      radial-gradient(1200px 500px at 100% -10%, var(--bg-glow-1), transparent 60%),
+      radial-gradient(900px 500px at -10% 110%, var(--bg-glow-2), transparent 55%),
+      var(--paper);
+    /* Anchor the glows to the viewport so they don't tile into a visible seam
+       every screen-height as the page scrolls. */
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    -webkit-font-smoothing: antialiased;
+    transition: background-color 0.2s ease, color 0.2s ease;
+  }
+
+  :lang(ja),
+  .jp {
+    font-family: var(--font-jp);
+  }
 }
 
-body {
-  font-family: var(--font-ui);
-  color: var(--ink-900);
-  background:
-    radial-gradient(1200px 500px at 100% -10%, var(--bg-glow-1), transparent 60%),
-    radial-gradient(900px 500px at -10% 110%, var(--bg-glow-2), transparent 55%),
-    var(--paper);
-  /* Anchor the glows to the viewport so they don't tile into a visible seam
-     every screen-height as the page scrolls. */
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-  -webkit-font-smoothing: antialiased;
-  transition: background-color 0.2s ease, color 0.2s ease;
-}
+/* ---- shared component primitives (used across feature components) --------- */
+@layer components {
+  .tj-card {
+    @apply bg-surface border border-border rounded-card shadow-card;
+  }
 
-:lang(ja),
-.jp {
-  font-family: var(--font-jp);
-}
+  .tj-panel-title {
+    @apply m-0 mb-1 text-[1.05rem] font-bold text-ink-900;
+  }
 
-button {
-  font-family: inherit;
-}
+  .tj-subtle {
+    @apply text-ink-500 text-[0.86rem];
+  }
 
-/* ----- shared utility classes ------------------------------------------- */
+  .tj-label {
+    @apply block text-[0.72rem] font-bold uppercase text-ink-500 mb-1.5;
+    letter-spacing: 0.04em;
+  }
 
-.tj-card {
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-  box-shadow: var(--shadow-sm);
-}
+  .tj-select,
+  .tj-input {
+    @apply w-full px-3 py-[9px] text-[0.95rem] text-ink-900 bg-surface
+      border border-border-strong rounded-field outline-none;
+    font-family: inherit;
+    transition: border-color 0.15s, box-shadow 0.15s;
+  }
 
-.tj-panel-title {
-  margin: 0 0 4px;
-  font-size: 1.05rem;
-  font-weight: 700;
-  color: var(--ink-900);
-}
+  .tj-select:focus,
+  .tj-input:focus {
+    @apply border-sakura-400;
+    box-shadow: 0 0 0 3px var(--ring);
+  }
 
-.tj-subtle {
-  color: var(--ink-500);
-  font-size: 0.86rem;
-}
+  .tj-btn {
+    @apply inline-flex items-center gap-1.5 px-[14px] py-2 text-[0.9rem]
+      font-semibold text-ink-700 bg-surface border border-border-strong
+      rounded-full cursor-pointer;
+    transition: all 0.15s;
+  }
 
-.tj-label {
-  display: block;
-  font-size: 0.72rem;
-  font-weight: 700;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
-  color: var(--ink-500);
-  margin-bottom: 6px;
-}
+  .tj-btn:hover {
+    @apply border-sakura-400 text-sakura-600;
+  }
 
-.tj-select,
-.tj-input {
-  width: 100%;
-  padding: 9px 12px;
-  font-size: 0.95rem;
-  font-family: inherit;
-  color: var(--ink-900);
-  background: var(--surface);
-  border: 1px solid var(--border-strong);
-  border-radius: var(--radius-sm);
-  outline: none;
-  transition: border-color 0.15s, box-shadow 0.15s;
-}
+  .tj-btn--primary {
+    @apply text-on-accent bg-sakura-500 border-sakura-500;
+  }
 
-.tj-select:focus,
-.tj-input:focus {
-  border-color: var(--sakura-400);
-  box-shadow: 0 0 0 3px var(--ring);
-}
+  .tj-btn--primary:hover {
+    @apply bg-sakura-600 border-sakura-600 text-on-accent;
+  }
 
-.tj-btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  padding: 8px 14px;
-  font-size: 0.9rem;
-  font-weight: 600;
-  color: var(--ink-700);
-  background: var(--surface);
-  border: 1px solid var(--border-strong);
-  border-radius: 999px;
-  cursor: pointer;
-  transition: all 0.15s;
-}
+  .tj-chip {
+    @apply inline-flex items-center gap-1.5 px-2.5 py-1 text-[0.78rem]
+      font-semibold rounded-full bg-surface-2 text-sakura-600 border border-border;
+  }
 
-.tj-btn:hover {
-  border-color: var(--sakura-400);
-  color: var(--sakura-600);
-}
+  .tj-result {
+    @apply font-jp text-[1.6rem] font-bold text-sakura-600;
+  }
 
-.tj-btn--primary {
-  color: var(--on-accent);
-  background: var(--sakura-500);
-  border-color: var(--sakura-500);
-}
-
-.tj-btn--primary:hover {
-  background: var(--sakura-600);
-  border-color: var(--sakura-600);
-  color: var(--on-accent);
-}
-
-.tj-chip {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  padding: 4px 10px;
-  font-size: 0.78rem;
-  font-weight: 600;
-  border-radius: 999px;
-  background: var(--surface-2);
-  color: var(--sakura-600);
-  border: 1px solid var(--border);
-}
-
-.tj-result {
-  font-family: var(--font-jp);
-  font-size: 1.6rem;
-  font-weight: 700;
-  color: var(--sakura-600);
-}
-
-.tj-code {
-  font-family: var(--font-mono);
-  font-size: 0.85rem;
-  background: var(--surface-2);
-  border: 1px solid var(--border);
-  border-radius: var(--radius-sm);
-  padding: 2px 7px;
-  color: var(--ink-700);
+  .tj-code {
+    @apply font-mono text-[0.85rem] bg-surface-2 border border-border
+      rounded-field px-[7px] py-0.5 text-ink-700;
+  }
 }

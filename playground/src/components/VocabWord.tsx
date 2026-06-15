@@ -3,7 +3,6 @@ import { createPortal } from "react-dom";
 import { lookup } from "../vocab/dictionary";
 import { POS_LABEL } from "../vocab/types";
 import { useLang } from "../context/lang";
-import styles from "./VocabWord.module.css";
 
 type Variant = "chip" | "plain";
 
@@ -38,7 +37,7 @@ export default function VocabWord({ word, display, variant = "chip" }: Props) {
   const label = display ?? word;
   if (!entry) {
     // No dictionary entry — render as inert text.
-    return <span className={variant === "chip" ? styles.chipPlain : ""}>{label}</span>;
+    return <span className={variant === "chip" ? "text-ink-500" : ""}>{label}</span>;
   }
 
   const toggle = () => {
@@ -52,30 +51,39 @@ export default function VocabWord({ word, display, variant = "chip" }: Props) {
       <button
         ref={ref}
         type="button"
-        className={variant === "chip" ? styles.chip : styles.inline}
+        className={
+          variant === "chip"
+            ? "inline-flex flex-col items-start gap-0 leading-[1.15] px-[9px] py-1 border border-border rounded-field bg-surface cursor-pointer transition-[border-color,background] duration-[120ms] hover:border-sakura-400 hover:bg-surface-2"
+            : "border-none bg-transparent p-0 cursor-pointer text-inherit font-[inherit] border-b border-dotted border-border-strong hover:text-sakura-600 hover:border-sakura-400"
+        }
         onClick={toggle}
         aria-expanded={open}
       >
-        <span className={`jp ${styles.word}`}>{label}</span>
-        {variant === "chip" && <span className={`jp ${styles.reading}`}>{entry.reading}</span>}
+        <span className="jp text-[0.95rem] font-bold text-ink-900">{label}</span>
+        {variant === "chip" && <span className="jp text-[0.68rem] text-ink-500">{entry.reading}</span>}
       </button>
 
       {open &&
         pos &&
         createPortal(
           <>
-            <div className={styles.backdrop} onClick={() => setOpen(false)} />
-            <div className={styles.popover} style={{ top: pos.top, left: pos.left }}>
-              <div className={styles.popHead}>
-                <span className={`jp ${styles.popWord}`}>{entry.word}</span>
-                <span className={`jp ${styles.popReading}`}>{entry.reading}</span>
+            <div className="fixed inset-0 z-[60]" onClick={() => setOpen(false)} />
+            <div
+              className="fixed z-[61] min-w-[200px] max-w-[280px] bg-surface border border-border-strong rounded-card shadow-pop py-3 px-3.5"
+              style={{ top: pos.top, left: pos.left }}
+            >
+              <div className="flex items-baseline gap-[9px]">
+                <span className="jp text-[1.3rem] font-extrabold text-ink-900">{entry.word}</span>
+                <span className="jp text-[0.95rem] text-sakura-600 font-bold">{entry.reading}</span>
               </div>
-              <div className={styles.popMeta}>
-                <span className={styles.romaji}>{entry.romaji}</span>
-                <span className={styles.posTag}>{t(POS_LABEL[entry.pos].en, POS_LABEL[entry.pos].zh)}</span>
+              <div className="flex items-center gap-2 mt-1 mb-2">
+                <span className="italic text-[0.8rem] text-ink-500">{entry.romaji}</span>
+                <span className="text-[0.68rem] font-bold text-sakura-600 bg-surface-2 border border-border px-[7px] py-px rounded-full">
+                  {t(POS_LABEL[entry.pos].en, POS_LABEL[entry.pos].zh)}
+                </span>
               </div>
-              <p className={styles.meaning}>{lang === "zh" ? entry.zh : entry.en}</p>
-              <p className={styles.meaningAlt}>{lang === "zh" ? entry.en : entry.zh}</p>
+              <p className="m-0 text-[0.92rem] text-ink-900">{lang === "zh" ? entry.zh : entry.en}</p>
+              <p className="mt-[3px] text-[0.82rem] text-ink-500">{lang === "zh" ? entry.en : entry.zh}</p>
             </div>
           </>,
           document.body

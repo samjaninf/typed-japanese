@@ -1,7 +1,6 @@
 import type { CompositionNode, GrammarCategory } from "../analysis/parse";
 import { lookup } from "../vocab/dictionary";
 import { useLang } from "../context/lang";
-import styles from "./CompositionTree.module.css";
 
 export const CATEGORY_META: Record<
   GrammarCategory,
@@ -50,28 +49,39 @@ export default function CompositionTree({
   const entry = lookup(lookupKey);
 
   return (
-    <div className={styles.node} style={{ ["--cat" as string]: color }}>
+    <div className="relative" style={{ ["--cat" as string]: color }}>
       <button
         type="button"
-        className={`${styles.row} ${selected ? styles.selected : ""}`}
+        className={`flex items-center gap-[9px] w-full text-left px-2.5 py-[7px] my-[3px] border border-[var(--border)] border-l-[3px] border-l-[var(--cat)] rounded-field bg-surface cursor-pointer transition-[background,box-shadow,transform] duration-[120ms] hover:bg-surface-2 max-[720px]:flex-wrap ${
+          selected ? "bg-surface-2 shadow-[inset_0_0_0_2px_var(--cat),var(--shadow-sm)]" : ""
+        }`}
         onClick={() => onSelect(node)}
         title={entry ? `${entry.reading} · ${lang === "zh" ? entry.zh : entry.en}` : node.text}
       >
-        <span className={styles.tag} style={{ background: color }}>
+        <span
+          className="flex-none text-[0.68rem] font-bold text-on-accent px-[7px] py-0.5 rounded-full font-jp"
+          style={{ background: color }}
+        >
           {meta.jp}
         </span>
-        <span className={`jp ${styles.label}`}>{node.label}</span>
-        {entry && <span className={`jp ${styles.reading}`}>{entry.reading}</span>}
-        {node.ctor && <span className={styles.ctor}>{node.ctor}</span>}
+        <span className="jp text-[1.02rem] font-bold text-ink-900 whitespace-nowrap">{node.label}</span>
+        {entry && (
+          <span className="jp text-[0.74rem] text-ink-500 whitespace-nowrap">{entry.reading}</span>
+        )}
+        {node.ctor && (
+          <span className="font-mono text-[0.74rem] text-ink-500 bg-surface-2 px-1.5 py-px rounded-[5px] whitespace-nowrap">
+            {node.ctor}
+          </span>
+        )}
         {showResolved && (
-          <span className={`jp ${styles.resolved}`}>
-            <span className={styles.arrow}>→</span>「{node.resolved}」
+          <span className="jp ml-auto text-[0.98rem] font-bold text-cat-phrase whitespace-nowrap max-[720px]:ml-0">
+            <span className="mr-[3px] text-ink-300 font-normal">→</span>「{node.resolved}」
           </span>
         )}
       </button>
 
       {node.children.length > 0 && (
-        <div className={styles.children}>
+        <div className="ml-4 pl-3 border-l-2 border-dashed border-border-strong">
           {node.children.map((child) => (
             <CompositionTree
               key={child.id}

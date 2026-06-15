@@ -6,7 +6,20 @@ import FontLab from "./components/FontLab";
 import { useLang } from "./context/lang";
 import { useTheme } from "./context/theme";
 import { useRoute } from "./context/route";
-import styles from "./App.module.css";
+
+const TAB_BASE =
+  "inline-flex items-center gap-[7px] px-[18px] py-[9px] border rounded-full cursor-pointer text-[0.9rem] font-bold transition-all duration-[140ms]";
+const tabState = (on: boolean) =>
+  on
+    ? "border-sakura-500 bg-sakura-500 text-on-accent shadow-pop"
+    : "border-border bg-surface text-ink-500 hover:text-sakura-600 hover:border-border-strong";
+
+const LANG_BASE =
+  "border-0 text-[0.8rem] font-bold px-3 py-1.5 cursor-pointer transition-[background,color] duration-[120ms]";
+const langState = (on: boolean) =>
+  on
+    ? "bg-sakura-500 text-on-accent"
+    : "bg-surface text-ink-500 hover:text-sakura-600";
 
 export default function App() {
   const { lang, setLang, t } = useLang();
@@ -15,13 +28,17 @@ export default function App() {
   const tab = route.tab;
 
   return (
-    <div className={styles.app}>
-      <header className={styles.header}>
-        <div className={styles.brand}>
-          <span className={styles.logo}>🌸</span>
+    <div className="flex flex-col min-h-full max-w-[1280px] mx-auto px-5">
+      <header className="flex items-center justify-between gap-4 px-1 pt-[22px] pb-4">
+        <div className="flex items-center gap-3.5">
+          <span className="text-[2.4rem] leading-none [filter:drop-shadow(var(--shadow-md))]">
+            🌸
+          </span>
           <div>
-            <h1 className={styles.title}>Typed Japanese</h1>
-            <p className={styles.tagline}>
+            <h1 className="m-0 font-heading text-[1.4rem] font-extrabold tracking-[-0.01em] bg-[linear-gradient(120deg,var(--sakura-600),var(--sakura-400))] bg-clip-text text-transparent">
+              Typed Japanese
+            </h1>
+            <p className="mt-[3px] mb-0 text-[0.85rem] text-ink-500 max-w-[52ch]">
               {t(
                 "Learn Japanese grammar as TypeScript types.",
                 "用 TypeScript 类型学日语语法。"
@@ -30,23 +47,27 @@ export default function App() {
           </div>
         </div>
 
-        <div className={styles.actions}>
-          <div className={styles.langToggle} role="group" aria-label="Language">
+        <div className="flex items-center gap-2.5">
+          <div
+            className="flex border border-border-strong rounded-full overflow-hidden"
+            role="group"
+            aria-label="Language"
+          >
             <button
-              className={`${styles.langBtn} ${lang === "en" ? styles.langActive : ""}`}
+              className={`${LANG_BASE} ${langState(lang === "en")}`}
               onClick={() => setLang("en")}
             >
               EN
             </button>
             <button
-              className={`${styles.langBtn} ${lang === "zh" ? styles.langActive : ""}`}
+              className={`${LANG_BASE} ${langState(lang === "zh")}`}
               onClick={() => setLang("zh")}
             >
               中文
             </button>
           </div>
           <button
-            className={styles.themeToggle}
+            className="flex-none inline-flex items-center justify-center w-[34px] h-[34px] border border-border-strong bg-surface text-ink-500 rounded-full cursor-pointer transition-[color,border-color,background] duration-150 hover:text-sakura-600 hover:border-sakura-400 hover:bg-surface-2"
             onClick={toggleTheme}
             aria-label={t("Toggle dark mode", "切换深色模式")}
             title={t("Toggle dark mode", "切换深色模式")}
@@ -70,7 +91,7 @@ export default function App() {
             )}
           </button>
           <a
-            className={styles.repo}
+            className="flex-none inline-flex items-center gap-1.5 text-[0.85rem] font-semibold text-sakura-600 no-underline px-[13px] py-[7px] border border-border-strong rounded-full transition-[background] duration-150 hover:bg-surface-2"
             href="https://github.com/typedgrammar/typed-japanese"
             target="_blank"
             rel="noreferrer"
@@ -83,41 +104,41 @@ export default function App() {
         </div>
       </header>
 
-      <nav className={styles.tabs}>
+      <nav className="flex gap-2 mb-[18px]">
         <button
-          className={`${styles.tab} ${tab === "concepts" ? styles.tabActive : ""}`}
+          className={`${TAB_BASE} ${tabState(tab === "concepts")}`}
           onClick={() => navigate({ tab: "concepts" })}
         >
           {t("Foundations", "原理")}
         </button>
         <button
-          className={`${styles.tab} ${tab === "tutorial" ? styles.tabActive : ""}`}
+          className={`${TAB_BASE} ${tabState(tab === "tutorial")}`}
           onClick={() => navigate({ tab: "tutorial" })}
         >
           {t("Grammar Course", "语法教程")}
         </button>
         <button
-          className={`${styles.tab} ${tab === "glossary" ? styles.tabActive : ""}`}
+          className={`${TAB_BASE} ${tabState(tab === "glossary")}`}
           onClick={() => navigate({ tab: "glossary" })}
         >
           {t("Glossary", "词汇表")}
         </button>
         <button
-          className={`${styles.tab} ${tab === "playground" ? styles.tabActive : ""}`}
+          className={`${TAB_BASE} ${tabState(tab === "playground")}`}
           onClick={() => navigate({ tab: "playground" })}
         >
           {t("Playground", "演练场")}
         </button>
       </nav>
 
-      <main className={styles.main}>
+      <main className="flex-1 pt-1.5 pb-4">
         {tab === "concepts" && <Concepts />}
         {tab === "tutorial" && <Tutorial />}
         {tab === "glossary" && <Glossary />}
         {tab === "playground" && <Playground />}
       </main>
 
-      <footer className={styles.footer}>
+      <footer className="px-1 pt-[18px] pb-[26px] text-center text-[0.78rem] text-ink-300">
         {t(
           "Conjugations resolved by TypeScript's type system — grammar you can verify.",
           "所有活用变形都由 TypeScript 类型系统推导 —— 可被编译器验证的语法。"

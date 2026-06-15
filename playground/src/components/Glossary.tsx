@@ -38,17 +38,17 @@ export default function Glossary() {
   }, [query, filter]);
 
   return (
-    <div className={styles.wrap}>
-      <div className={styles.toolbar}>
+    <div className="flex flex-col gap-3">
+      <div className="flex flex-wrap items-center gap-3">
         <input
-          className={`tj-input ${styles.search}`}
+          className="tj-input flex-1 min-w-[240px]"
           placeholder={t("Search word, reading, romaji or meaning…", "搜索词语、读音、罗马字或释义…")}
           value={query}
           onChange={(e) => setQuery(e.target.value)}
         />
-        <div className={styles.filters}>
+        <div className="flex gap-1.5 flex-wrap">
           <button
-            className={`tj-chip ${styles.filter} ${filter === null ? styles.filterActive : ""}`}
+            className={`tj-chip cursor-pointer border border-border ${filter === null ? "bg-sakura-500 text-on-accent border-sakura-500" : ""}`}
             onClick={() => setFilter(null)}
           >
             {t("All", "全部")}
@@ -56,7 +56,7 @@ export default function Glossary() {
           {POS_GROUPS.map((g, i) => (
             <button
               key={i}
-              className={`tj-chip ${styles.filter} ${filter === i ? styles.filterActive : ""}`}
+              className={`tj-chip cursor-pointer border border-border ${filter === i ? "bg-sakura-500 text-on-accent border-sakura-500" : ""}`}
               onClick={() => setFilter(i)}
             >
               {t(g.en, g.zh)}
@@ -72,8 +72,8 @@ export default function Glossary() {
         )}
       </p>
 
-      <div className={`tj-card ${styles.tableWrap}`}>
-        <table className={styles.table}>
+      <div className="tj-card overflow-auto max-h-[calc(100vh-260px)]">
+        <table className={`w-full border-collapse text-[0.9rem] ${styles.table}`}>
           <thead>
             <tr>
               <th>{t("Word", "词语")}</th>
@@ -91,23 +91,23 @@ export default function Glossary() {
               return (
                 <Fragment key={`${e.word}-${i}`}>
                   <tr
-                    className={refs.length ? styles.rowClickable : undefined}
+                    className={refs.length ? "cursor-pointer" : undefined}
                     onClick={() =>
                       refs.length && setExpanded(isOpen ? null : e.word)
                     }
                   >
-                    <td className={`jp ${styles.word}`}>{e.word}</td>
-                    <td className={`jp ${styles.reading}`}>{e.reading}</td>
-                    <td className={styles.romaji}>{e.romaji}</td>
+                    <td className="jp text-[1.05rem] font-bold text-ink-900 whitespace-nowrap">{e.word}</td>
+                    <td className="jp text-sakura-600 font-semibold whitespace-nowrap">{e.reading}</td>
+                    <td className="italic text-ink-500 whitespace-nowrap">{e.romaji}</td>
                     <td>
-                      <span className={styles.posTag}>{t(POS_LABEL[e.pos].en, POS_LABEL[e.pos].zh)}</span>
+                      <span className="text-[0.7rem] font-bold text-sakura-600 bg-surface-2 border border-border px-2 py-0.5 rounded-full whitespace-nowrap">{t(POS_LABEL[e.pos].en, POS_LABEL[e.pos].zh)}</span>
                     </td>
-                    <td className={styles.meaning}>{lang === "zh" ? e.zh : e.en}</td>
-                    <td className={styles.usedIn}>
+                    <td className="text-ink-700">{lang === "zh" ? e.zh : e.en}</td>
+                    <td className="whitespace-nowrap">
                       {refs.length ? (
-                        <span className={styles.usedBadge}>
+                        <span className="inline-flex items-center gap-1 text-[0.78rem] font-bold text-sakura-600 bg-sakura-100 px-[9px] py-0.5 rounded-full">
                           {refs.length}
-                          <span className={styles.caret}>{isOpen ? "▴" : "▾"}</span>
+                          <span className="text-[0.6rem] opacity-80">{isOpen ? "▴" : "▾"}</span>
                         </span>
                       ) : (
                         <span className="tj-subtle">—</span>
@@ -117,12 +117,12 @@ export default function Glossary() {
                   {isOpen && refs.length > 0 && (
                     <tr className={styles.refRow}>
                       <td colSpan={6}>
-                        <div className={styles.refList}>
+                        <div className="flex flex-col gap-1.5">
                           {refs.map((r, k) => (
                             <button
                               key={k}
                               type="button"
-                              className={styles.refItem}
+                              className="flex flex-col gap-0.5 text-left w-full border border-border bg-paper rounded-field px-3 py-2 cursor-pointer transition-[border-color,background] duration-[120ms] hover:border-sakura-400 hover:bg-sakura-50"
                               onClick={() =>
                                 navigate({
                                   tab: "tutorial",
@@ -132,8 +132,8 @@ export default function Glossary() {
                               }
                               title={t("Open in the course", "在教程中打开")}
                             >
-                              <span className={`jp ${styles.refJp}`}>{r.jp}</span>
-                              <span className={styles.refCtx}>
+                              <span className="jp text-base font-semibold text-ink-900">{r.jp}</span>
+                              <span className="text-[0.74rem] text-ink-500">
                                 {t(r.chapterTitleEn, r.chapterTitleZh)} ·{" "}
                                 {t(r.pointTitleEn, r.pointTitleZh)}
                               </span>

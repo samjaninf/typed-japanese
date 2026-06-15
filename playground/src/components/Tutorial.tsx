@@ -23,7 +23,7 @@ function RichText({ text }: { text: string }): ReactNode {
   return (
     <>
       {text.split(/\n\s*\n/).map((para, i) => (
-        <p key={i} className={styles.para}>
+        <p key={i} className="my-2 leading-[1.7] text-ink-700">
           {para.split(/(`[^`]+`)/).map((seg, j) =>
             seg.startsWith("`") && seg.endsWith("`") ? (
               <code key={j} className="tj-code">
@@ -110,35 +110,39 @@ export default function Tutorial() {
   }
 
   return (
-    <div className={styles.layout}>
+    <div className="grid grid-cols-[268px_1fr] gap-5 items-start max-[900px]:grid-cols-1">
       {/* ---- sidebar ---- */}
-      <aside className={styles.sidebar}>
+      <aside className="sticky top-4 max-h-[calc(100vh-32px)] flex flex-col gap-3 overflow-hidden max-[900px]:static max-[900px]:max-h-none">
         <input
-          className={`tj-input ${styles.search}`}
+          className="tj-input flex-none"
           placeholder={t("Search chapters…", "搜索章节…")}
           value={query}
           onChange={(e) => setQuery(e.target.value)}
         />
-        <nav className={styles.nav}>
+        <nav className="overflow-y-auto pr-1 flex flex-col gap-4 max-[900px]:max-h-[240px]">
           {LEVELS.map((level) => {
             const chapters = byLevel[level];
             if (chapters.length === 0) return null;
             const meta = LEVEL_META[level];
             return (
-              <div key={level} className={styles.group}>
-                <div className={styles.groupTitle}>
+              <div key={level} className="flex flex-col gap-0.5">
+                <div className="flex items-center gap-1.5 text-[0.74rem] font-extrabold tracking-[0.04em] uppercase text-ink-500 px-2 py-1">
                   <span>{meta.emoji}</span>
                   {t(meta.en, meta.zh)}
-                  <span className={`jp ${styles.groupJp}`}>{meta.jp}</span>
+                  <span className="jp ml-auto text-ink-300">{meta.jp}</span>
                 </div>
                 {chapters.map((c) => (
                   <button
                     key={c.id}
                     type="button"
-                    className={`${styles.chapterLink} ${c.id === activeId ? styles.chapterActive : ""}`}
+                    className={`flex items-baseline gap-[9px] text-left px-[9px] py-[7px] border-none rounded-field cursor-pointer text-[0.88rem] leading-[1.3] transition-[background,color] duration-[120ms] ${
+                      c.id === activeId
+                        ? "bg-sakura-100 text-sakura-600 font-bold"
+                        : "bg-transparent text-ink-700 hover:bg-surface-2"
+                    }`}
                     onClick={() => navigate({ chapter: c.id })}
                   >
-                    <span className={styles.chapterNum}>{c.order}</span>
+                    <span className="flex-none font-mono text-[0.72rem] text-ink-300 min-w-[1.4em] text-right">{c.order}</span>
                     <span>{t(c.titleEn, c.titleZh)}</span>
                   </button>
                 ))}
@@ -149,74 +153,74 @@ export default function Tutorial() {
       </aside>
 
       {/* ---- chapter content ---- */}
-      <article className={styles.content}>
+      <article className="min-w-0 pb-10">
         {active && (
           <>
-            <header className={styles.chapterHead}>
-              <span className={`tj-chip ${styles.levelChip}`}>
+            <header className="mb-[22px]">
+              <span className="tj-chip mb-2">
                 {LEVEL_META[active.level].emoji} {t(LEVEL_META[active.level].en, LEVEL_META[active.level].zh)} · {active.order}
               </span>
-              <h2 className={styles.chapterTitle}>{t(active.titleEn, active.titleZh)}</h2>
-              <p className={styles.chapterSummary}>{t(active.summaryEn, active.summaryZh)}</p>
+              <h2 className="mt-1 mb-1.5 font-heading text-[1.7rem] font-extrabold text-ink-900">{t(active.titleEn, active.titleZh)}</h2>
+              <p className="m-0 text-ink-500 text-[0.98rem] max-w-[70ch]">{t(active.summaryEn, active.summaryZh)}</p>
             </header>
 
             {active.id === CHAPTERS[0]?.id && (
               <button
                 type="button"
-                className={styles.foundationsNote}
+                className="flex flex-wrap items-center justify-between gap-x-4 gap-y-2 w-full max-w-[72ch] mt-[18px] mb-1 px-4 py-[13px] text-left cursor-pointer bg-sakura-50 border border-border-strong border-l-4 border-l-sakura-400 rounded-field transition-[background,border-color,transform] duration-[120ms] hover:bg-sakura-100 hover:border-sakura-400 hover:-translate-y-px"
                 onClick={() =>
                   navigate({ tab: "concepts", article: "architecture" })
                 }
               >
-                <span className={styles.foundationsNoteText}>
+                <span className="flex-[1_1_22ch] text-[0.92rem] leading-[1.55] text-ink-700">
                   {t(
                     "New to Japanese? Read the Foundations primer first — it shows how a sentence is built, the way you'd learn a programming language.",
                     "刚接触日语？建议先读一遍《原理》—— 它会像学编程语言那样，讲清楚一句日语是怎么搭起来的。"
                   )}
                 </span>
-                <span className={styles.foundationsNoteCta}>
+                <span className="flex-none text-[0.88rem] font-bold whitespace-nowrap text-sakura-600">
                   {t("Open Foundations", "打开原理")} →
                 </span>
               </button>
             )}
 
             {active.points.map((pt) => (
-              <section key={pt.id} className={styles.point}>
-                <h3 className={styles.pointTitle}>{t(pt.titleEn, pt.titleZh)}</h3>
-                <div className={styles.body}>
+              <section key={pt.id} className="my-[26px] pt-[18px] border-t border-border">
+                <h3 className="mt-0 mb-2 font-heading text-[1.2rem] font-bold text-sakura-600">{t(pt.titleEn, pt.titleZh)}</h3>
+                <div className="max-w-[72ch]">
                   <RichText text={t(pt.bodyEn, pt.bodyZh)} />
                 </div>
 
-                <div className={styles.examples}>
+                <div className="flex flex-col gap-2.5 mt-4">
                   {pt.examples.map((ex, i) => {
                     const anchor = exampleAnchorId(active.id, pt.id, i);
                     return (
                     <div
                       key={i}
                       id={anchor}
-                      className={`tj-card ${styles.example} ${flash === anchor ? styles.exampleFlash : ""}`}
+                      className={`tj-card flex flex-wrap items-baseline gap-x-[14px] gap-y-1.5 px-4 py-3 scroll-mt-4 ${flash === anchor ? styles.exampleFlash : ""}`}
                     >
                       <button
                         type="button"
-                        className={`jp ${styles.exJp}`}
+                        className="jp text-[1.3rem] font-bold text-ink-900 bg-none border-none p-0 cursor-pointer text-left border-b-2 border-dashed border-border-strong transition-[color,border-color] duration-[120ms] hover:text-sakura-600 hover:border-sakura-400"
                         onClick={() => openExample(ex)}
                         title={t("Analyze in Typed Japanese", "用 Typed Japanese 解析")}
                       >
                         {ex.jp}
                       </button>
                       {ex.reading && (
-                        <span className={`jp ${styles.exReading}`}>{ex.reading}</span>
+                        <span className="jp text-[0.9rem] text-ink-500">{ex.reading}</span>
                       )}
-                      <span className={styles.exTrans}>{lang === "zh" ? ex.zh : ex.en}</span>
+                      <span className="basis-full text-[0.92rem] text-ink-700">{lang === "zh" ? ex.zh : ex.en}</span>
                       <button
                         type="button"
-                        className={`tj-btn ${styles.analyzeBtn}`}
+                        className="tj-btn ml-auto self-center flex-none text-[0.82rem] px-3 py-[5px]"
                         onClick={() => openExample(ex)}
                       >
                         🔬 {t("Analyze", "解析")}
                       </button>
-                      <div className={styles.vocabRow}>
-                        <span className={styles.vocabLabel}>{t("Words", "词汇")}</span>
+                      <div className="basis-full flex flex-wrap items-center gap-1.5 mt-1.5 pt-2.5 border-t border-dashed border-border">
+                        <span className="text-[0.68rem] font-extrabold tracking-[0.04em] uppercase text-ink-300 mr-0.5">{t("Words", "词汇")}</span>
                         {extractWords(ex.code).map((w, k) => (
                           <VocabWord key={k} word={w.word} />
                         ))}
@@ -233,16 +237,16 @@ export default function Tutorial() {
 
       {/* ---- analyzer drawer ---- */}
       {drawerOpen && (
-        <div className={styles.scrim} onClick={() => setDrawerOpen(false)} />
+        <div className="fixed inset-0 bg-scrim z-40" onClick={() => setDrawerOpen(false)} />
       )}
-      <aside className={`${styles.drawer} ${drawerOpen ? styles.drawerOpen : ""}`}>
-        <div className={styles.drawerHead}>
+      <aside className={`fixed top-0 right-0 h-screen w-[min(760px,94vw)] bg-paper border-l border-border shadow-drawer z-[41] transition-transform duration-[260ms] ease-[cubic-bezier(0.4,0,0.2,1)] flex flex-col ${drawerOpen ? "translate-x-0" : "translate-x-full"}`}>
+        <div className="flex items-center justify-between px-[18px] py-3.5 border-b border-border">
           <h3 className="tj-panel-title">{t("Structure", "结构解析")}</h3>
           <button type="button" className="tj-btn" onClick={() => setDrawerOpen(false)}>
             {t("Close", "关闭")} ✕
           </button>
         </div>
-        <div className={styles.drawerBody}>
+        <div className="flex-1 overflow-auto p-4">
           {drawerExample && (
             <Analyzer
               code={drawerExample.code}

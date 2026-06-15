@@ -226,28 +226,28 @@ export default function Analyzer({ code, gloss }: Props) {
   );
 
   return (
-    <div className={styles.panes}>
-      <section className={`tj-card ${styles.editorPane}`}>
-        <div className={styles.paneHead}>
+    <div className="grid grid-cols-2 gap-4 items-stretch min-h-[520px] max-[880px]:grid-cols-1">
+      <section className="tj-card flex flex-col overflow-hidden p-0">
+        <div className="flex items-center justify-between gap-2.5 px-4 py-3 border-b border-border">
           <h2 className="tj-panel-title">TypeScript</h2>
           {ready &&
             (errorCount === 0 ? (
-              <span className={`${styles.badge} ${styles.ok}`}>✓ Type-checks</span>
+              <span className="text-[0.74rem] font-bold px-2.5 py-[3px] rounded-full text-ok bg-ok-soft">✓ Type-checks</span>
             ) : (
-              <span className={`${styles.badge} ${styles.err}`}>
+              <span className="text-[0.74rem] font-bold px-2.5 py-[3px] rounded-full text-err bg-err-soft">
                 {errorCount} error{errorCount === 1 ? "" : "s"}
               </span>
             ))}
         </div>
         <Editor
-          className={styles.editor}
+          className="flex-1 min-h-[360px] max-[880px]:min-h-[300px]"
           theme={theme === "dark" ? "sakura-dark" : "sakura-light"}
           language="typescript"
           path={MODEL_PATH}
           defaultValue={code}
           onMount={handleMount}
           onChange={scheduleAnalysis}
-          loading={<div className={styles.loading}>Loading TypeScript…</div>}
+          loading={<div className="p-5 text-ink-500 text-[0.9rem]">Loading TypeScript…</div>}
           options={{
             fontSize: 13.5,
             fontFamily: "var(--font-mono)",
@@ -261,10 +261,13 @@ export default function Analyzer({ code, gloss }: Props) {
           }}
         />
         {diagnostics.length > 0 && (
-          <ul className={styles.diagList}>
+          <ul className="list-none m-0 px-3 py-2 max-h-[130px] overflow-auto border-t border-border bg-surface-2">
             {diagnostics.map((d, i) => (
-              <li key={i} className={`${styles.diag} ${d.isError ? styles.diagErr : ""}`}>
-                <span className={styles.diagLine}>L{d.line}</span>
+              <li
+                key={i}
+                className={`flex gap-2 font-mono text-[0.76rem] py-0.5 ${d.isError ? "text-err" : "text-ink-700"}`}
+              >
+                <span className="flex-none opacity-70">L{d.line}</span>
                 {d.message}
               </li>
             ))}
@@ -272,12 +275,12 @@ export default function Analyzer({ code, gloss }: Props) {
         )}
       </section>
 
-      <section className={`tj-card ${styles.treePane}`}>
-        <div className={styles.paneHead}>
+      <section className="tj-card flex flex-col overflow-hidden p-0">
+        <div className="flex items-center justify-between gap-2.5 px-4 py-3 border-b border-border">
           <h2 className="tj-panel-title">Sentence structure</h2>
           {aliases.length > 1 && (
             <select
-              className={`tj-select ${styles.aliasSelect}`}
+              className="tj-select w-auto max-w-[230px] px-2.5 py-[5px] font-jp text-[0.86rem]"
               value={selectedAlias ?? ""}
               onChange={(e) => pickAlias(e.target.value)}
               aria-label="Type to visualise"
@@ -291,14 +294,14 @@ export default function Analyzer({ code, gloss }: Props) {
           )}
         </div>
 
-        <div className={styles.sentenceHead}>
-          <span className={`jp ${styles.sentence}`}>
+        <div className="flex flex-col gap-0.5 pt-3.5 px-4 pb-2">
+          <span className="jp text-[1.7rem] font-extrabold text-sakura-600 leading-[1.25]">
             {tree?.resolved ? `「${tree.resolved}」` : "—"}
           </span>
-          {gloss && <span className={styles.gloss}>{gloss}</span>}
+          {gloss && <span className="text-[0.84rem] text-ink-500">{gloss}</span>}
         </div>
 
-        <div className={styles.treeScroll}>
+        <div className="flex-1 overflow-auto pt-1 px-3.5 pb-3.5">
           {tree ? (
             <CompositionTree
               node={tree}
@@ -314,10 +317,10 @@ export default function Analyzer({ code, gloss }: Props) {
         </div>
 
         {selectedNode && (
-          <div className={styles.detail}>
-            <code className={`tj-code ${styles.detailCode}`}>{selectedNode.text}</code>
+          <div className="flex items-center gap-3 flex-wrap px-4 py-2.5 border-t border-border bg-surface-2">
+            <code className="tj-code text-[0.78rem] max-w-full overflow-auto whitespace-nowrap">{selectedNode.text}</code>
             {selectedNode.resolved && (
-              <span className={`jp ${styles.detailVal}`}>「{selectedNode.resolved}」</span>
+              <span className="jp text-[1.05rem] font-bold text-sakura-600 ml-auto">「{selectedNode.resolved}」</span>
             )}
           </div>
         )}
