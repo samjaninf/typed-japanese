@@ -84,19 +84,19 @@ export default function App() {
           className={`${styles.tab} ${tab === "tutorial" ? styles.tabActive : ""}`}
           onClick={() => setTab("tutorial")}
         >
-          📖 {t("Grammar Course", "语法教程")}
+          {t("Grammar Course", "语法教程")}
         </button>
         <button
           className={`${styles.tab} ${tab === "glossary" ? styles.tabActive : ""}`}
           onClick={() => setTab("glossary")}
         >
-          📚 {t("Glossary", "词汇表")}
+          {t("Glossary", "词汇表")}
         </button>
         <button
           className={`${styles.tab} ${tab === "playground" ? styles.tabActive : ""}`}
           onClick={() => setTab("playground")}
         >
-          🧪 {t("Playground", "演练场")}
+          {t("Playground", "演练场")}
         </button>
       </nav>
 
