@@ -103,15 +103,18 @@ swift run
 
 ## One-click test
 
-`smoke.ts` (also a Bun Shell script) validates the whole stack and then opens the
-app — the fastest way to confirm a working setup:
+From the repo root, `bun macos` validates the whole stack and then opens the app
+— the fastest way to confirm a working setup:
 
 ```sh
-./smoke.ts                  # toolchain + swift build + bridge parse + live model, then launch
-bun smoke.ts --no-launch    # checks only (CI-friendly; exits non-zero on failure)
-./smoke.ts --skip-live      # skip the codex/claude call (offline / fast)
-./smoke.ts --engine claude  # use claude for the live annotation (default: codex)
+bun macos                  # toolchain + swift build + bridge parse + live model, then launch
+bun macos --no-launch      # checks only (CI-friendly; exits non-zero on failure)
+bun macos --skip-live      # skip the codex/claude call (offline / fast)
+bun macos --engine claude  # use claude for the live annotation (default: codex)
 ```
+
+(`bun macos` is wired in the root `package.json` to `apps/TypedTranslate/smoke.ts`,
+a Bun Shell script you can also run directly as `./smoke.ts`.)
 
 It checks, in order: `bun`/`swift`/`codex`/`claude` on the login PATH → `swift
 build` → a deterministic bridge `parse` (asserts a known snippet resolves to
