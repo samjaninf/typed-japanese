@@ -50,6 +50,47 @@ function log(msg: string): void {
   process.stderr.write(`[tt-bridge] ${msg}\n`);
 }
 
+// --- timing ------------------------------------------------------------------
+
+const nowMs = (): number => performance.now();
+const secs = (ms: number): string => `${(ms / 1000).toFixed(2)}s`;
+const round = (ms: number): number => Math.round(ms);
+
+interface AttemptTiming {
+  attempt: number;
+  modelMs: number;
+  verifyMs: number;
+  ok: boolean;
+}
+
+/** Human-readable per-phase breakdown to stderr (forwarded to the app's stderr). */
+function logTimingSummary(
+  label: string,
+  attempts: AttemptTiming[],
+  parseMs: number | null,
+  totalMs: number
+): void {
+  log(`timing — ${label}: total ${secs(totalMs)}`);
+  for (const a of attempts) {
+    log(`  attempt ${a.attempt}: model ${secs(a.modelMs)}  verify ${secs(a.verifyMs)}  → ${a.ok ? "ok" : "rejected"}`);
+  }
+  if (parseMs !== null) log(`  parse(tree) ${secs(parseMs)}`);
+}
+
+/** Machine-readable timings, added to the response JSON (additive; ignored by old clients). */
+function timingsJSON(attempts: AttemptTiming[], parseMs: number | null, totalMs: number) {
+  return {
+    total_ms: round(totalMs),
+    ...(parseMs !== null ? { parse_ms: round(parseMs) } : {}),
+    attempts: attempts.map((a) => ({
+      attempt: a.attempt,
+      model_ms: round(a.modelMs),
+      verify_ms: round(a.verifyMs),
+      ok: a.ok,
+    })),
+  };
+}
+
 // --- request types -----------------------------------------------------------
 
 type Engine = "codex" | "claude";
@@ -81,6 +122,7 @@ interface AnnotateOutcome {
   code: string;
   resolved: string | null;
   errors: string[];
+  attempts: AttemptTiming[];
 }
 
 /**
@@ -94,17 +136,20 @@ function runAnnotate(
   model: string | undefined,
   retries: number
 ): AnnotateOutcome {
-  let best: AnnotateOutcome | null = null;
+  let best: Omit<AnnotateOutcome, "attempts"> | null = null;
   let prior: { code: string; errors: string[] } | undefined;
+  const attempts: AttemptTiming[] = [];
 
   for (let attempt = 1; attempt <= retries; attempt++) {
     log(`annotate attempt ${attempt}/${retries} via ${engine}`);
     const prompt = buildPrompt(sentence, prior);
 
+    const tModel = nowMs();
     let code: string;
     try {
       code = parseResult(callModel(engine, prompt, model)).code;
     } catch (e) {
+      attempts.push({ attempt, modelMs: nowMs() - tModel, verifyMs: 0, ok: false });
       const errors = [(e as Error).message];
       log(`attempt ${attempt} model/parse error: ${errors[0]!.split("\n")[0]}`);
       best = { ok: false, code: prior?.code ?? "", resolved: null, errors };
@@ -112,40 +157,63 @@ function runAnnotate(
       continue;
     }
 
+    const tVerify = nowMs();
+    const modelMs = tVerify - tModel;
     const check = verify(code, sentence);
+    attempts.push({ attempt, modelMs, verifyMs: nowMs() - tVerify, ok: check.ok });
+
     best = { ok: check.ok, code, resolved: check.resolved, errors: check.errors };
     if (check.ok) {
       log(`annotate verified on attempt ${attempt} -> ${JSON.stringify(check.resolved)}`);
-      return best;
+      return { ...best, attempts };
     }
     log(`attempt ${attempt} failed with ${check.errors.length} error(s)`);
     prior = { code, errors: check.errors };
   }
 
-  return best ?? { ok: false, code: "", resolved: null, errors: ["no attempts were made"] };
+  return { ...(best ?? { ok: false, code: "", resolved: null, errors: ["no attempts were made"] }), attempts };
 }
 
 // --- command handlers --------------------------------------------------------
 
 function handleAnnotate(req: AnnotateRequest): never {
+  const t0 = nowMs();
   const sentence = typeof req.sentence === "string" ? req.sentence.trim() : "";
   if (!sentence) {
     emit({ ok: false, code: "", resolved: null, errors: ["`sentence` is required"] });
   }
   const outcome = runAnnotate(sentence, asEngine(req.engine), typeof req.model === "string" ? req.model : undefined, asRetries(req.retries));
-  emit(outcome);
+  const totalMs = nowMs() - t0;
+  logTimingSummary("annotate", outcome.attempts, null, totalMs);
+  emit({
+    ok: outcome.ok,
+    code: outcome.code,
+    resolved: outcome.resolved,
+    errors: outcome.errors,
+    timings: timingsJSON(outcome.attempts, null, totalMs),
+  });
 }
 
 function handleParse(req: ParseRequest): never {
+  const t0 = nowMs();
   const code = typeof req.code === "string" ? req.code : "";
   if (!code.trim()) {
     emit({ ok: false, aliases: [], tree: null, errors: ["`code` is required"] });
   }
   const result = parseTree(code);
-  emit({ ok: result.ok, aliases: result.aliases, tree: result.tree, errors: result.errors });
+  const parseMs = nowMs() - t0;
+  logTimingSummary("parse", [], parseMs, parseMs);
+  emit({
+    ok: result.ok,
+    aliases: result.aliases,
+    tree: result.tree,
+    errors: result.errors,
+    timings: timingsJSON([], parseMs, parseMs),
+  });
 }
 
 function handleAnnotateParse(req: AnnotateRequest): never {
+  const t0 = nowMs();
   const sentence = typeof req.sentence === "string" ? req.sentence.trim() : "";
   if (!sentence) {
     emit({ ok: false, code: "", resolved: null, tree: null, errors: ["`sentence` is required"] });
@@ -155,18 +223,24 @@ function handleAnnotateParse(req: AnnotateRequest): never {
   // Parse the winning code (even a failed-verification best attempt may parse).
   let tree = null;
   let parseErrors: string[] = [];
+  let parseMs: number | null = null;
   if (ann.code.trim()) {
+    const tParse = nowMs();
     const parsed = parseTree(ann.code);
+    parseMs = nowMs() - tParse;
     tree = parsed.tree;
     if (!ann.ok) parseErrors = parsed.errors;
   }
 
+  const totalMs = nowMs() - t0;
+  logTimingSummary("annotate+parse", ann.attempts, parseMs, totalMs);
   emit({
     ok: ann.ok,
     code: ann.code,
     resolved: ann.resolved,
     tree,
     errors: ann.ok ? ann.errors : [...ann.errors, ...parseErrors],
+    timings: timingsJSON(ann.attempts, parseMs, totalMs),
   });
 }
 

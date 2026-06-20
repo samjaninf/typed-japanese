@@ -97,6 +97,12 @@ actor CLIService {
         let shell = "cd \(quote(repoPath)) && bun \(quote(bridgePath)) \(quote(command))"
         let result = try await runShell(command: shell, stdin: json, timeout: 240)
 
+        // Forward the bridge's diagnostics (incl. the timing trace) to our stderr
+        // so `[tt-bridge] timing — …` shows in the terminal running the app.
+        if !result.stderr.isEmpty {
+            FileHandle.standardError.write(Data(result.stderr.utf8))
+        }
+
         // The bridge exits 0 even on handled errors; nonzero means a real crash.
         if result.exitCode != 0 {
             throw CLIError.nonZeroExit(code: result.exitCode, stderr: result.stderr)
