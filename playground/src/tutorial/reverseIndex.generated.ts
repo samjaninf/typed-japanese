@@ -220,6 +220,15 @@ export const REVERSE_INDEX: Record<string, ExampleRef[]> = {
       "jp": "コーヒーよりお茶のほうがいいです"
     },
     {
+      "chapterId": "e17",
+      "chapterTitleEn": "Obligation",
+      "chapterTitleZh": "义务",
+      "pointTitleEn": "〜なくてもいい — “don't have to / need not”",
+      "pointTitleZh": "〜なくてもいい ——「不必/可以不」",
+      "anchor": "ex-e17-e17-2-0",
+      "jp": "今日は来なくてもいいです"
+    },
+    {
       "chapterId": "e20",
       "chapterTitleEn": "Quotation & なら",
       "chapterTitleZh": "引用与なら",
@@ -236,6 +245,17 @@ export const REVERSE_INDEX: Record<string, ExampleRef[]> = {
       "pointTitleZh": "〜ば〜ほど ——「越……越……」",
       "anchor": "ex-i06-i06-3-1",
       "jp": "高ければ高いほどいい"
+    }
+  ],
+  "いく": [
+    {
+      "chapterId": "a03",
+      "chapterTitleEn": "The 〜わけ family",
+      "chapterTitleZh": "〜わけ系列",
+      "pointTitleEn": "〜わけにはいかない — “I can't very well…”",
+      "pointTitleZh": "〜わけにはいかない ——「不能、不可以」",
+      "anchor": "ex-a03-a03-3-2",
+      "jp": "今日は休むわけにはいきません"
     }
   ],
   "いたす": [
@@ -450,6 +470,15 @@ export const REVERSE_INDEX: Record<string, ExampleRef[]> = {
     }
   ],
   "かける": [
+    {
+      "chapterId": "a12",
+      "chapterTitleEn": "Written & literary style",
+      "chapterTitleZh": "书面语与文语",
+      "pointTitleEn": "〜ぬ — the classical negative",
+      "pointTitleZh": "〜ぬ —— 文语否定",
+      "anchor": "ex-a12-a12-3-1",
+      "jp": "知らぬ人に声をかけられた"
+    },
     {
       "chapterId": "i15",
       "chapterTitleEn": "Nominalization の・こと, 〜とき",
@@ -1091,6 +1120,15 @@ export const REVERSE_INDEX: Record<string, ExampleRef[]> = {
       "jp": "子供は毎日勉強させられる"
     },
     {
+      "chapterId": "i05",
+      "chapterTitleEn": "Humble & polite 謙譲語・丁寧語",
+      "chapterTitleZh": "谦让语与郑重语",
+      "pointTitleEn": "お〜する — the humble pattern",
+      "pointTitleZh": "お〜する ——谦让句型",
+      "anchor": "ex-i05-i05-1-2",
+      "jp": "ここでお待ちします"
+    },
+    {
       "chapterId": "i06",
       "chapterTitleEn": "The 〜ば conditional & 〜ば〜ほど",
       "chapterTitleZh": "〜ば条件与〜ば〜ほど",
@@ -1500,6 +1538,17 @@ export const REVERSE_INDEX: Record<string, ExampleRef[]> = {
       "pointTitleZh": "〜わけではない ——「并不是说……、未必」",
       "anchor": "ex-a03-a03-2-1",
       "jp": "全部わかるわけではない"
+    }
+  ],
+  "わけ": [
+    {
+      "chapterId": "a03",
+      "chapterTitleEn": "The 〜わけ family",
+      "chapterTitleZh": "〜わけ系列",
+      "pointTitleEn": "〜わけにはいかない — “I can't very well…”",
+      "pointTitleZh": "〜わけにはいかない ——「不能、不可以」",
+      "anchor": "ex-a03-a03-3-2",
+      "jp": "今日は休むわけにはいきません"
     }
   ],
   "わさび": [
@@ -6066,6 +6115,17 @@ export const REVERSE_INDEX: Record<string, ExampleRef[]> = {
       "jp": "素晴らしいことだ"
     }
   ],
+  "早い": [
+    {
+      "chapterId": "i08",
+      "chapterTitleEn": "〜ように / 〜ような",
+      "chapterTitleZh": "〜ように／〜ような",
+      "pointTitleEn": "〜ようにする — “make an effort to / try to (habitually)”",
+      "pointTitleZh": "〜ようにする ——「(尽量)做到……、努力养成……」",
+      "anchor": "ex-i08-i08-3-2",
+      "jp": "早く寝るようにしてください"
+    }
+  ],
   "早く": [
     {
       "chapterId": "a02",
@@ -6093,15 +6153,6 @@ export const REVERSE_INDEX: Record<string, ExampleRef[]> = {
       "pointTitleZh": "〜なければならない ——「必须/不得不」",
       "anchor": "ex-e17-e17-1-1",
       "jp": "明日早く起きなければなりません"
-    },
-    {
-      "chapterId": "i08",
-      "chapterTitleEn": "〜ように / 〜ような",
-      "chapterTitleZh": "〜ように／〜ような",
-      "pointTitleEn": "〜ようにする — “make an effort to / try to (habitually)”",
-      "pointTitleZh": "〜ようにする ——「(尽量)做到……、努力养成……」",
-      "anchor": "ex-i08-i08-3-2",
-      "jp": "早く寝るようにしてください"
     }
   ],
   "窓": [

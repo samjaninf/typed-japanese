@@ -3,6 +3,7 @@ import Concepts from "./components/Concepts";
 import Tutorial from "./components/Tutorial";
 import Playground from "./components/Playground";
 import Glossary from "./components/Glossary";
+import Eval from "./components/Eval";
 import { useLang } from "./context/lang";
 import { useTheme } from "./context/theme";
 import { useRoute } from "./context/route";
@@ -135,6 +136,12 @@ export default function App() {
         >
           {t("Playground", "演练场")}
         </button>
+        <button
+          className={`${TAB_BASE} ${tabState(tab === "eval")}`}
+          onClick={() => navigate({ tab: "eval" })}
+        >
+          {t("Eval", "评测")}
+        </button>
       </nav>
 
       <main className="flex-1 pt-1.5 pb-4">
@@ -142,6 +149,7 @@ export default function App() {
         {tab === "tutorial" && <Tutorial />}
         {tab === "glossary" && <Glossary />}
         {tab === "playground" && <Playground />}
+        {tab === "eval" && <Eval />}
       </main>
 
       <footer className="px-1 pt-[18px] pb-[26px] text-center text-[0.78rem] text-ink-300">

@@ -136,6 +136,15 @@ export function getRoutes(): RouteMeta[] {
     },
     "WebApplication"
   );
+  make(
+    { tab: "eval" },
+    { en: "Parsing Eval", zh: "解析评测" },
+    {
+      en: "A fixed benchmark of grammar examples scored each round by independent reviewers against a six-dimension rubric — the project's quantifiable, comparable parsing-accuracy metric over time.",
+      zh: "一组固定的语法示例基准，每轮由独立评审依据六维评分标准打分 —— 项目随时间可量化、可比较的解析准确度指标。",
+    },
+    "Dataset"
+  );
 
   // Course chapters
   for (const c of CHAPTERS) {

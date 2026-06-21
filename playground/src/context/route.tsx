@@ -22,7 +22,7 @@ import {
   type ReactNode,
 } from "react";
 
-export type Tab = "concepts" | "tutorial" | "glossary" | "playground";
+export type Tab = "concepts" | "tutorial" | "glossary" | "playground" | "eval";
 export type Lang = "en" | "zh";
 
 export interface Route {
@@ -52,12 +52,14 @@ const TAB_TO_SEG: Record<Tab, string> = {
   tutorial: "course",
   glossary: "glossary",
   playground: "playground",
+  eval: "eval",
 };
 const SEG_TO_TAB: Record<string, Tab> = {
   foundations: "concepts",
   course: "tutorial",
   glossary: "glossary",
   playground: "playground",
+  eval: "eval",
 };
 
 export const LANGS: Lang[] = ["en", "zh"];
