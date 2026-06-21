@@ -52,10 +52,11 @@ interface Args {
   dryRun: boolean;
   help: boolean;
   printPrompt: boolean;
+  json: boolean;
 }
 
 function parseArgs(argv: string[]): Args {
-  const out: Args = { sentence: "", retries: 3, engine: "codex", dryRun: false, help: false, printPrompt: false };
+  const out: Args = { sentence: "", retries: 3, engine: "codex", dryRun: false, help: false, printPrompt: false, json: false };
   const positional: string[] = [];
   for (let i = 0; i < argv.length; i++) {
     const a = argv[i]!;
@@ -73,6 +74,7 @@ function parseArgs(argv: string[]): Args {
       case "--model": out.model = argv[++i]; break;
       case "--dry-run": out.dryRun = true; break;
       case "--print-prompt": out.printPrompt = true; break;
+      case "--json": out.json = true; out.dryRun = true; break;
       case "-h":
       case "--help": out.help = true; break;
       default:
@@ -713,8 +715,10 @@ function main(): void {
 
   let best: { result: ModelResult; check: CheckResult } | null = null;
   let prior: { code: string; errors: string[] } | undefined;
+  let attemptsUsed = 0;
 
   for (let attempt = 1; attempt <= args.retries; attempt++) {
+    attemptsUsed = attempt;
     console.log(dim(`  attempt ${attempt}/${args.retries} — asking ${args.engine}…`));
     const prompt = buildPrompt(args.sentence, prior);
 
@@ -737,6 +741,17 @@ function main(): void {
     console.log(`  ✗ ${check.errors.length} error(s):`);
     for (const e of check.errors.slice(0, 4)) console.log(dim(`      ${e}`));
     prior = { code: result.code, errors: check.errors };
+  }
+
+  // Machine-readable result (for the eval harness): the best attempt's resolved
+  // value, code, and pass/fail — even on failure, so the harness can diff the
+  // drift. Delimited so it survives the human progress logs on stdout.
+  if (args.json) {
+    const out = best
+      ? { ok: best.check.ok, resolved: best.check.resolved ?? null, code: best.result.code, title: best.result.title ?? "", en: best.result.en ?? "", errors: best.check.errors ?? [], attempts: attemptsUsed }
+      : { ok: false, resolved: null, code: null, title: "", en: "", errors: ["no model output"], attempts: attemptsUsed };
+    process.stdout.write(`\n@@TJJSON@@${JSON.stringify(out)}@@END@@\n`);
+    process.exit(0);
   }
 
   if (!best || !best.check.ok) {

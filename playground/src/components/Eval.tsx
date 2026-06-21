@@ -46,26 +46,53 @@ const ROUNDS: RoundResult[] = Object.values(modules).sort(
 );
 
 // --- Hard eval: real codex annotate pipeline on the hard-cases set ---
+interface Drift {
+  kind: "drift" | "unresolved";
+  at?: number;
+  context?: string;
+  got?: string;
+  want?: string;
+}
 interface HardItem {
   id: string;
   jp: string;
   en: string;
   category: string;
   modelability: "full" | "partial" | "classical-literal";
-  difficulty: "hard" | "very-hard";
+  difficulty: "medium" | "hard" | "very-hard";
   passed: boolean;
   attempts: number;
   resolved: string | null;
   code: string | null;
-  error: string | null;
+  error?: string | null;
+  // newer rounds (N-sample) add these:
+  samples?: number;
+  reliability?: number;
+  capable?: boolean;
+  drift?: Drift | null;
 }
 interface HardRound {
   round: number;
   ran: number;
   passed: number;
   passRate: number;
-  byCategory: Record<string, { ran: number; passed: number }>;
+  samples?: number;
+  capabilityRate?: number;
+  byCategory: Record<string, { ran: number; passed: number; capable?: number }>;
   items: HardItem[];
+}
+
+/** Aggregate every round into a per-case cross-round reliability + capability map. */
+function crossRound(rounds: HardRound[]) {
+  const m = new Map<string, { appears: number; passes: number; ever: boolean }>();
+  for (const r of rounds)
+    for (const it of r.items) {
+      const e = m.get(it.id) ?? { appears: 0, passes: 0, ever: false };
+      e.appears += 1;
+      if (it.passed) { e.passes += 1; e.ever = true; }
+      m.set(it.id, e);
+    }
+  return m;
 }
 const hardModules = import.meta.glob<HardRound>("../../eval/history/hard-*.json", {
   eager: true,
@@ -115,6 +142,20 @@ const CAT_LABEL: Record<string, { en: string; zh: string }> = {
   "quotation-modality": { en: "Quotation", zh: "引用情态" },
   "long-multiclause": { en: "Multi-clause", zh: "多句复合" },
   "classical-formal": { en: "Classical", zh: "文语古典" },
+  "basic-predicate": { en: "Basic predicate", zh: "基本谓语" },
+  "verb-conjugation": { en: "Verb form", zh: "动词活用" },
+  "particle-basics": { en: "Particles", zh: "基础助词" },
+  "te-chains": { en: "Te-chains", zh: "て形连接" },
+  "simple-relative": { en: "Simple relative", zh: "简单关系节" },
+  "adjective-forms": { en: "Adjective form", zh: "形容词活用" },
+  "counters-time": { en: "Counters/time", zh: "数量/时间" },
+  "comparatives": { en: "Comparatives", zh: "比较" },
+  "simple-keigo": { en: "Simple keigo", zh: "基础敬语" },
+};
+const DIFF_LABEL: Record<string, { en: string; zh: string }> = {
+  medium: { en: "medium", zh: "中等" },
+  hard: { en: "hard", zh: "难" },
+  "very-hard": { en: "very-hard", zh: "极难" },
 };
 
 function HardEvalSection() {
@@ -126,6 +167,7 @@ function HardEvalSection() {
   if (!HARD_ROUNDS.length) return null;
   const latest = HARD_ROUNDS[HARD_ROUNDS.length - 1]!;
   const shown = HARD_ROUNDS.find((r) => r.round === open) ?? latest;
+  const xr = crossRound(HARD_ROUNDS); // per-case reliability across all rounds
 
   return (
     <div className="mb-9">
@@ -134,8 +176,8 @@ function HardEvalSection() {
       </h3>
       <p className="mt-2 mb-4 text-[0.92rem] text-ink-500 leading-relaxed max-w-[68ch]">
         {t(
-          "A much harder set: every sentence is run through the real `codex exec` annotate pipeline, and a case passes only if codex produces a snippet that type-checks AND resolves byte-identically to the target. Pass-rate is the honest end-to-end accuracy; classical-literal cases are reported separately since the library cannot fully express them.",
-          "一组难度高得多的句子：每句都经过真实的 `codex exec` 标注流水线，只有当 codex 生成的代码既能通过类型检查、又能逐字还原出原句时才算通过。通过率即端到端的真实准确度；文语古典句因类型库无法完全表达，单独统计。"
+          "Every sentence (medium → very-hard) is run through the real `codex exec` annotate pipeline; a case passes only if codex's snippet type-checks AND resolves byte-identically. Reliability = how often it passes (codex accuracy); capability = whether codex ever resolved it at all (evidence the library can express it). Click any case to see codex's actual parse.",
+          "每句（中等→极难）都经过真实的 `codex exec` 标注流水线；只有当 codex 的代码既通过类型检查、又能逐字还原原句时才算通过。reliability = 通过的频率（codex 准确度）；capability = 是否曾经还原成功（即类型库能否表达）。点击任一句可查看 codex 的实际解析。"
         )}
       </p>
 
@@ -146,25 +188,31 @@ function HardEvalSection() {
             <thead>
               <tr className="text-ink-400 text-left">
                 <th className="font-semibold px-5 py-2.5">{t("Round", "轮次")}</th>
-                <th className="font-semibold px-3 py-2.5 min-w-[160px]">{t("Pass rate", "通过率")}</th>
-                <th className="font-semibold px-3 py-2.5 text-right whitespace-nowrap">{t("Passed", "通过")}</th>
+                <th className="font-semibold px-3 py-2.5 min-w-[160px]">{t("Reliability", "可靠度")}</th>
+                <th className="font-semibold px-3 py-2.5 text-right whitespace-nowrap">{t("Maj-pass", "多数通过")}</th>
+                <th className="font-semibold px-3 py-2.5 text-right whitespace-nowrap">{t("Capability", "可建模能力")}</th>
                 <th className="font-semibold px-3 py-2.5 text-right whitespace-nowrap">{t("Modelable", "可建模")}</th>
               </tr>
             </thead>
             <tbody>
               {HARD_ROUNDS.map((r) => {
+                const cap = r.items.filter((x) => x.capable ?? x.passed).length;
                 const mod = r.items.filter((x) => x.modelability !== "classical-literal");
-                const modPass = mod.filter((x) => x.passed).length;
+                const modCap = mod.filter((x) => x.capable ?? x.passed).length;
                 return (
                   <tr
                     key={r.round}
                     className={`border-t border-border cursor-pointer ${r.round === open ? "bg-surface-2" : ""}`}
                     onClick={() => { setOpen(r.round); setSel(null); }}
                   >
-                    <td className="px-5 py-2.5 font-semibold text-ink-700 tabular-nums">{String(r.round).padStart(3, "0")}</td>
+                    <td className="px-5 py-2.5 font-semibold text-ink-700 tabular-nums">
+                      {String(r.round).padStart(3, "0")}
+                      {(r.samples ?? 1) > 1 && <span className="ml-1 text-[0.7rem] text-ink-400">×{r.samples}</span>}
+                    </td>
                     <td className="px-3 py-2.5"><ConformanceBar value={r.passRate} /></td>
                     <td className="px-3 py-2.5 text-right tabular-nums text-ink-500">{r.passed}/{r.ran}</td>
-                    <td className="px-3 py-2.5 text-right tabular-nums text-ink-500">{pct(mod.length ? modPass / mod.length : undefined)}</td>
+                    <td className="px-3 py-2.5 text-right tabular-nums text-ink-500">{pct(r.ran ? cap / r.ran : undefined)}</td>
+                    <td className="px-3 py-2.5 text-right tabular-nums text-ink-500">{pct(mod.length ? modCap / mod.length : undefined)}</td>
                   </tr>
                 );
               })}
@@ -187,12 +235,15 @@ function HardEvalSection() {
               <tr className="text-ink-400 text-left">
                 <th className="font-semibold px-5 py-2">{t("Sentence", "句子")}</th>
                 <th className="font-semibold px-3 py-2 whitespace-nowrap">{t("Category", "类别")}</th>
+                <th className="font-semibold px-3 py-2 text-right whitespace-nowrap" title={t("passes across all rounds", "所有轮次中的通过次数")}>{t("Reliab.", "可靠度")}</th>
                 <th className="font-semibold px-3 py-2 text-right whitespace-nowrap">{t("Result", "结果")}</th>
               </tr>
             </thead>
             <tbody>
               {shown.items.map((it) => {
                 const clickable = !!it.code;
+                const cr = xr.get(it.id);
+                const d = it.drift;
                 return (
                   <tr
                     key={it.id}
@@ -206,10 +257,24 @@ function HardEvalSection() {
                           {t("view ▾", "查看 ▾")}
                         </span>
                       )}
+                      {!it.passed && d && d.kind === "drift" && (
+                        <div className="mt-0.5 text-[0.72rem] text-ink-400 font-sans">
+                          {t("drift:", "偏差：")}{" "}
+                          <span className="font-jp">…{d.context}</span>
+                          <span className="text-amber-600 font-jp">[{d.got || "∅"}]</span>
+                          <span className="text-ink-300">{t(" vs ", " ↔ ")}</span>
+                          <span className="text-emerald-600 font-jp">[{d.want || "∅"}]</span>
+                        </div>
+                      )}
                     </td>
                     <td className="px-3 py-2 text-ink-400 whitespace-nowrap">
                       {t(CAT_LABEL[it.category]?.en ?? it.category, CAT_LABEL[it.category]?.zh ?? it.category)}
-                      {it.difficulty === "very-hard" && <span className="ml-1 text-[0.7rem] text-sakura-600">★</span>}
+                      <span className="ml-1 text-[0.68rem] text-ink-300">
+                        {t(DIFF_LABEL[it.difficulty]?.en ?? it.difficulty, DIFF_LABEL[it.difficulty]?.zh ?? it.difficulty)}
+                      </span>
+                    </td>
+                    <td className="px-3 py-2 text-right tabular-nums text-ink-500 whitespace-nowrap">
+                      {cr ? `${cr.passes}/${cr.appears}` : "—"}
                     </td>
                     <td className="px-3 py-2 text-right whitespace-nowrap">
                       {it.passed ? (
@@ -218,6 +283,8 @@ function HardEvalSection() {
                         </span>
                       ) : it.modelability === "classical-literal" ? (
                         <span className="text-[0.78rem] font-semibold text-ink-400">{t("classical", "文语")}</span>
+                      ) : !(xr.get(it.id)?.ever) ? (
+                        <span className="text-[0.78rem] font-semibold text-rose-600" title={t("never resolved in any round — likely a real library gap", "所有轮次均未还原 —— 可能是真实的库缺口")}>{t("gap?", "缺口?")}</span>
                       ) : (
                         <span className="text-[0.78rem] font-semibold text-amber-600">{t("miss", "未通过")}</span>
                       )}
