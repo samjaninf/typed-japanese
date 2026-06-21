@@ -44,7 +44,10 @@ function annotate(jp) {
     });
     let stdout = "";
     let stderr = "";
-    const killer = setTimeout(() => child.kill("SIGKILL"), 240000);
+    // Generous per-attempt cap: the longest multi-clause sentences can take
+    // several minutes for one codex pass. Too tight a cap turns latency variance
+    // into spurious "failures" (a killed run looks identical to a real miss).
+    const killer = setTimeout(() => child.kill("SIGKILL"), 600000);
     child.stdout.on("data", (d) => (stdout += d));
     child.stderr.on("data", (d) => (stderr += d));
     child.on("error", (e) => {

@@ -58,21 +58,20 @@ const row =
   `${rate(hard.filter((x) => x.passed).length, hard.length)} / ${rate(vhard.filter((x) => x.passed).length, vhard.length)} |\n`;
 let sb = fs.existsSync(sbPath) ? fs.readFileSync(sbPath, "utf8") : header;
 if (!sb.includes("| round |")) sb = header;
-// replace an existing row for this round, else append
+// Work on the TABLE region only — strip any trailing per-round breakdown first so
+// a new row is inserted into the table, not appended after the breakdown (which
+// the breakdown-rewrite below would then clobber).
+let table = sb.replace(/\n## Round [\s\S]*$/, "").trimEnd();
 const rowRe = new RegExp(`^\\| ${pad} \\|.*$`, "m");
-sb = rowRe.test(sb) ? sb.replace(rowRe, row.trimEnd()) : sb.trimEnd() + "\n" + row;
-fs.writeFileSync(sbPath, sb.endsWith("\n") ? sb : sb + "\n");
+table = rowRe.test(table) ? table.replace(rowRe, row.trimEnd()) : table + "\n" + row.trimEnd();
 
-// per-category breakdown block (overwrite a fenced section)
-let breakdown = `\n## Round ${pad} by category\n\n| category | pass |\n|---|---|\n`;
+// per-category breakdown for this round, appended after the table
+let breakdown = `## Round ${pad} by category\n\n| category | pass |\n|---|---|\n`;
 for (const c of CATS) {
   const b = r.byCategory[c];
   if (b) breakdown += `| ${c} | ${b.passed}/${b.ran} |\n`;
 }
-const fence = /\n## Round \d+ by category[\s\S]*$/;
-sb = fs.readFileSync(sbPath, "utf8");
-sb = (fence.test(sb) ? sb.replace(fence, "") : sb).trimEnd() + "\n" + breakdown;
-fs.writeFileSync(sbPath, sb);
+fs.writeFileSync(sbPath, table + "\n\n" + breakdown);
 
 // 3. playground presets — passing cases (they have valid, resolving code)
 const presets = items
