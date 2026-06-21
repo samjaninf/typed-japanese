@@ -33,7 +33,7 @@ type 薬 = CommonNoun<"薬">;
 type 飲む = GodanVerb & { stem: "飲"; ending: "む" };
 
 // 病気が + 治る(辞書形) + ように + 薬を + 飲み(ます形) + ます
-type 病気が治るように薬を飲みます = \`\${PhraseWithParticle<病気, "が">}\${ConjugateVerb<治る, "Dictionary">}ように\${薬}を\${ConjugateVerb<飲む, "Masu">}\`;
+type 病気が治るように薬を飲みます = \`\${PhraseWithParticle<病気, "が">}\${ConjugateVerb<治る, "Dictionary">}ように\${PhraseWithParticle<薬, "を">}\${ConjugateVerb<飲む, "Masu">}\`;
 `,
         },
         {
@@ -41,14 +41,14 @@ type 病気が治るように薬を飲みます = \`\${PhraseWithParticle<病気
           reading: "わすれないようになまえをかきます",
           en: "I write down the name so that I won't forget it.",
           zh: "为了不忘记而把名字写下来。",
-          code: `import type { CommonNoun, GodanVerb, IchidanVerb, ConjugateVerb } from "typed-japanese";
+          code: `import type { CommonNoun, GodanVerb, IchidanVerb, ConjugateVerb, PhraseWithParticle } from "typed-japanese";
 
 type 忘れる = IchidanVerb & { stem: "忘れ"; ending: "る" };
 type 名前 = CommonNoun<"名前">;
 type 書く = GodanVerb & { stem: "書"; ending: "く" };
 
 // 忘れ(ない形) + ない + ように + 名前を + 書き(ます形) + ます
-type 忘れないように名前を書きます = \`\${ConjugateVerb<忘れる, "Nai">}ないように\${名前}を\${ConjugateVerb<書く, "Masu">}\`;
+type 忘れないように名前を書きます = \`\${ConjugateVerb<忘れる, "Nai">}ないように\${PhraseWithParticle<名前, "を">}\${ConjugateVerb<書く, "Masu">}\`;
 `,
         },
         {
@@ -56,15 +56,14 @@ type 忘れないように名前を書きます = \`\${ConjugateVerb<忘れる, 
           reading: "かんじがよめるようにべんきょうします",
           en: "I study so that I can read kanji.",
           zh: "为了能读懂汉字而学习。",
-          code: `import type { CommonNoun, GodanVerb, IrregularVerb, ConjugateVerb, PhraseWithParticle } from "typed-japanese";
+          code: `import type { CommonNoun, GodanVerb, SuruVerb, ConjugateVerb, PhraseWithParticle } from "typed-japanese";
 
 type 漢字 = CommonNoun<"漢字">;
 type 読む = GodanVerb & { stem: "読"; ending: "む" };
-type 勉強 = CommonNoun<"勉強">;
-type する = IrregularVerb & { dictionary: "する" };
+type 勉強する = SuruVerb<"勉強">;
 
-// 漢字が + 読め(可能形) + る + ように + 勉強 + し(ます形) + ます
-type 漢字が読めるように勉強します = \`\${PhraseWithParticle<漢字, "が">}\${ConjugateVerb<読む, "Potential">}るように\${勉強}\${ConjugateVerb<する, "Masu">}\`;
+// 漢字が + 読め(可能形) + る + ように + 勉強し(ます形) + ます
+type 漢字が読めるように勉強します = \`\${PhraseWithParticle<漢字, "が">}\${ConjugateVerb<読む, "Potential">}るように\${ConjugateVerb<勉強する, "Masu">}\`;
 `,
         },
       ],
@@ -97,9 +96,9 @@ type 花のような人 = \`\${PhraseWithParticle<花, "の">}ような\${人}\`
           reading: "たなかさんのようなせんせいになりたいです",
           en: "I want to become a teacher like Mr. Tanaka.",
           zh: "我想成为像田中先生那样的老师。",
-          code: `import type { CommonNoun, GodanVerb, ConjugateVerb, PhraseWithParticle } from "typed-japanese";
+          code: `import type { CommonNoun, ProperNoun, GodanVerb, ConjugateVerb, PhraseWithParticle } from "typed-japanese";
 
-type 田中さん = CommonNoun<"田中さん">;
+type 田中さん = ProperNoun<"田中さん">;
 type 先生 = CommonNoun<"先生">;
 type なる = GodanVerb & { stem: "な"; ending: "る" };
 
@@ -137,14 +136,14 @@ type 夢のような話 = \`\${PhraseWithParticle<夢, "の">}ような\${話}\`
           reading: "まいにちうんどうするようにします",
           en: "I'll make an effort to exercise every day.",
           zh: "我会尽量做到每天运动。",
-          code: `import type { Adverb, CommonNoun, IrregularVerb, ConjugateVerb } from "typed-japanese";
+          code: `import type { Adverb, SuruVerb, IrregularVerb, ConjugateVerb } from "typed-japanese";
 
 type 毎日 = Adverb<"毎日">;
-type 運動 = CommonNoun<"運動">;
+type 運動する = SuruVerb<"運動">;
 type する = IrregularVerb & { dictionary: "する" };
 
-// 毎日 + 運動 + する(辞書形) + ように + し(ます形) + ます
-type 毎日運動するようにします = \`\${毎日}\${運動}\${ConjugateVerb<する, "Dictionary">}ように\${ConjugateVerb<する, "Masu">}\`;
+// 毎日 + 運動する(辞書形) + ように + し(ます形) + ます
+type 毎日運動するようにします = \`\${毎日}\${ConjugateVerb<運動する, "Dictionary">}ように\${ConjugateVerb<する, "Masu">}\`;
 `,
         },
         {

@@ -66,14 +66,14 @@ type 毎日塾に行かせられます = \`\${毎日}\${PhraseWithParticle<塾, 
           reading: "わたしはやさいをたべさせられた",
           en: "I was made to eat the vegetables.",
           zh: "我被逼着把蔬菜吃了。",
-          code: `import type { CommonNoun, Pronoun, IchidanVerb, PhraseWithParticle } from "typed-japanese";
+          code: `import type { CommonNoun, Pronoun, IchidanVerb, ConjugateVerb, PhraseWithParticle } from "typed-japanese";
 
 type 私 = Pronoun<"私">;
 type 野菜 = CommonNoun<"野菜">;
 type 食べる = IchidanVerb & { stem: "食べ"; ending: "る" };
 
-// 私 + は + 野菜を + [食べ stem] + させられた
-type 私は野菜を食べさせられた = \`\${PhraseWithParticle<私, "は">}\${PhraseWithParticle<野菜, "を">}\${食べる["stem"]}させられた\`;
+// 私 + は + 野菜を + [食べる causative 食べさせ] + られた
+type 私は野菜を食べさせられた = \`\${PhraseWithParticle<私, "は">}\${PhraseWithParticle<野菜, "を">}\${ConjugateVerb<食べる, "Causative">}られた\`;
 `,
         },
         {
@@ -81,15 +81,14 @@ type 私は野菜を食べさせられた = \`\${PhraseWithParticle<私, "は">}
           reading: "わたしはぶちょうにざんぎょうさせられた",
           en: "I was made to work overtime by the department head.",
           zh: "我被部长逼着加了班。",
-          code: `import type { CommonNoun, Pronoun, IrregularVerb, ConjugateVerb, PhraseWithParticle } from "typed-japanese";
+          code: `import type { CommonNoun, Pronoun, SuruVerb, ConjugateVerb, PhraseWithParticle } from "typed-japanese";
 
 type 私 = Pronoun<"私">;
 type 部長 = CommonNoun<"部長">;
-type 残業 = CommonNoun<"残業">;
-type する = IrregularVerb & { dictionary: "する" };
+type 残業する = SuruVerb<"残業">;
 
-// 私は + 部長に + 残業 + [する causative させ] + られた
-type 私は部長に残業させられた = \`\${PhraseWithParticle<私, "は">}\${PhraseWithParticle<部長, "に">}\${残業}\${ConjugateVerb<する, "Causative">}られた\`;
+// 私は + 部長に + [残業する causative 残業させ] + られた
+type 私は部長に残業させられた = \`\${PhraseWithParticle<私, "は">}\${PhraseWithParticle<部長, "に">}\${ConjugateVerb<残業する, "Causative">}られた\`;
 `,
         },
       ],
@@ -148,15 +147,14 @@ type 一時間も待たされた = \`\${PhraseWithParticle<一時間, "も">}\${
           reading: "こどもはまいにちべんきょうさせられる",
           en: "Children are made to study every day.",
           zh: "孩子们每天都被逼着学习。",
-          code: `import type { Adverb, CommonNoun, IrregularVerb, ConjugateVerb, PhraseWithParticle } from "typed-japanese";
+          code: `import type { Adverb, CommonNoun, SuruVerb, ConjugateVerb, PhraseWithParticle } from "typed-japanese";
 
 type 子供 = CommonNoun<"子供">;
 type 毎日 = Adverb<"毎日">;
-type 勉強 = CommonNoun<"勉強">;
-type する = IrregularVerb & { dictionary: "する" };
+type 勉強する = SuruVerb<"勉強">;
 
-// 子供は + 毎日 + 勉強 + [する causative させ] + られる
-type 子供は毎日勉強させられる = \`\${PhraseWithParticle<子供, "は">}\${毎日}\${勉強}\${ConjugateVerb<する, "Causative">}られる\`;
+// 子供は + 毎日 + [勉強する causative 勉強させ] + られる
+type 子供は毎日勉強させられる = \`\${PhraseWithParticle<子供, "は">}\${毎日}\${ConjugateVerb<勉強する, "Causative">}られる\`;
 `,
         },
         {

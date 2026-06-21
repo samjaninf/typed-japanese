@@ -39,9 +39,10 @@ type 私は学生です = \`\${PhraseWithParticle<私, "は">}\${ConjugateCopula
           reading: "たなかさんはせんせいです",
           en: "Mr. Tanaka is a teacher.",
           zh: "田中先生是老师。",
-          code: `import type { CommonNoun, PhraseWithParticle, ConjugateCopula } from "typed-japanese";
+          code: `import type { CommonNoun, ProperNoun, PhraseWithParticle, ConjugateCopula } from "typed-japanese";
 
-type 田中さん = CommonNoun<"田中さん">;
+type 田中 = ProperNoun<"田中">;
+type 田中さん = \`\${田中}さん\`;
 type 先生 = CommonNoun<"先生">;
 
 type 田中さんは先生です = \`\${PhraseWithParticle<田中さん, "は">}\${ConjugateCopula<先生, "Polite">}\`;

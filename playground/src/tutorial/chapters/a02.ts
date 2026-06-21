@@ -39,14 +39,14 @@ type 子供は遊ぶものだ = \`\${PhraseWithParticle<子供, "は">}\${Conjug
           reading: "じかんははやくすぎるものだ",
           en: "Time naturally passes quickly.",
           zh: "时间总是过得很快的。",
-          code: `import type { Adverb, CommonNoun, IchidanVerb, ConjugateVerb, PhraseWithParticle } from "typed-japanese";
+          code: `import type { CommonNoun, IAdjective, IchidanVerb, ConjugateAdjective, ConjugateVerb, PhraseWithParticle } from "typed-japanese";
 
 type 時間 = CommonNoun<"時間">;
-type 早く = Adverb<"早く">;
+type 早い = IAdjective & { stem: "早"; ending: "い" };
 type 過ぎる = IchidanVerb & { stem: "過ぎ"; ending: "る" };
 
-// 時間 + は + 早く + 過ぎる(辞書形) + ものだ
-type 時間は早く過ぎるものだ = \`\${PhraseWithParticle<時間, "は">}\${早く}\${ConjugateVerb<過ぎる, "Dictionary">}ものだ\`;
+// 時間 + は + 早く(連用形) + 過ぎる(辞書形) + ものだ
+type 時間は早く過ぎるものだ = \`\${PhraseWithParticle<時間, "は">}\${ConjugateAdjective<早い, "Adverbial">}\${ConjugateVerb<過ぎる, "Dictionary">}ものだ\`;
 `,
         },
       ],
@@ -105,14 +105,13 @@ type 子供の頃はよく遊んだものだ = \`\${子供}の\${PhraseWithParti
           reading: "まいにちれんしゅうすることだ",
           en: "The thing to do is to practise every day.",
           zh: "你要做的就是每天练习。",
-          code: `import type { Adverb, CommonNoun, IrregularVerb, ConjugateVerb } from "typed-japanese";
+          code: `import type { Adverb, SuruVerb, ConjugateVerb } from "typed-japanese";
 
 type 毎日 = Adverb<"毎日">;
-type 練習 = CommonNoun<"練習">;
-type 練習する = IrregularVerb & { dictionary: "する" };
+type 練習する = SuruVerb<"練習">;
 
-// 毎日 + 練習 + する(辞書形) + ことだ
-type 毎日練習することだ = \`\${毎日}\${練習}\${ConjugateVerb<練習する, "Dictionary">}ことだ\`;
+// 毎日 + 練習する(辞書形) + ことだ
+type 毎日練習することだ = \`\${毎日}\${ConjugateVerb<練習する, "Dictionary">}ことだ\`;
 `,
         },
         {
@@ -158,13 +157,13 @@ type 素晴らしいことだ = \`\${ConjugateAdjective<素晴らしい, "Basic"
           reading: "ほんとうにしあわせなことだ",
           en: "It really is a happy thing!",
           zh: "真是一件幸福的事啊!",
-          code: `import type { Adverb, NaAdjective, ConjugateAdjective } from "typed-japanese";
+          code: `import type { NaAdjective, ConjugateAdjective } from "typed-japanese";
 
-type 本当に = Adverb<"本当に">;
+type 本当 = NaAdjective & { stem: "本当" };
 type 幸せ = NaAdjective & { stem: "幸せ" };
 
-// 本当に + 幸せ(基本形=幸せな) + ことだ
-type 本当に幸せなことだ = \`\${本当に}\${ConjugateAdjective<幸せ, "Basic">}ことだ\`;
+// 本当に(連用形) + 幸せ(基本形=幸せな) + ことだ
+type 本当に幸せなことだ = \`\${ConjugateAdjective<本当, "Adverbial">}\${ConjugateAdjective<幸せ, "Basic">}ことだ\`;
 `,
         },
       ],

@@ -79,13 +79,14 @@ type 日本へ行きたいです = \`\${PhraseWithParticle<日本, "へ">}\${Con
           reading: "わたしはくるまがほしい",
           en: "I want a car.",
           zh: "我想要一辆车。",
-          code: `import type { CommonNoun, Pronoun, PhraseWithParticle } from "typed-japanese";
+          code: `import type { CommonNoun, Pronoun, IAdjective, ConjugateAdjective, PhraseWithParticle } from "typed-japanese";
 
 type 私 = Pronoun<"私">;
 type 車 = CommonNoun<"車">;
+type ほしい = IAdjective & { stem: "ほし"; ending: "い" };
 
 // 私 + は + 車 + が + ほしい
-type 私は車がほしい = \`\${PhraseWithParticle<私, "は">}\${PhraseWithParticle<車, "が">}ほしい\`;
+type 私は車がほしい = \`\${PhraseWithParticle<私, "は">}\${PhraseWithParticle<車, "が">}\${ConjugateAdjective<ほしい, "Basic">}\`;
 `,
         },
         {
@@ -97,9 +98,10 @@ type 私は車がほしい = \`\${PhraseWithParticle<私, "は">}\${PhraseWithPa
 
 type 新しい = IAdjective & { stem: "新し"; ending: "い" };
 type かばん = CommonNoun<"かばん">;
+type ほしい = IAdjective & { stem: "ほし"; ending: "い" };
 
-// 新しい(基本形) + かばん + が + ほしいです
-type 新しいかばんがほしいです = \`\${ConjugateAdjective<新しい, "Basic">}\${PhraseWithParticle<かばん, "が">}ほしいです\`;
+// 新しい(基本形) + かばん + が + ほしいです(丁寧形)
+type 新しいかばんがほしいです = \`\${ConjugateAdjective<新しい, "Basic">}\${PhraseWithParticle<かばん, "が">}\${ConjugateAdjective<ほしい, "Polite">}\`;
 `,
         },
       ],

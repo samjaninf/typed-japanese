@@ -30,9 +30,10 @@ const chapter: Chapter = {
 type 私 = Pronoun<"私">;
 type パン = CommonNoun<"パン">;
 type 食べる = IchidanVerb & { type: "ichidan"; stem: "食べ"; ending: "る" };
+type いる = IchidanVerb & { type: "ichidan"; stem: "い"; ending: "る" };
 
 // 私 + は + パン + を + 食べて(て形) + います
-type 私はパンを食べています = \`\${PhraseWithParticle<私, "は">}\${PhraseWithParticle<パン, "を">}\${ConjugateVerb<食べる, "Te">}います\`;
+type 私はパンを食べています = \`\${PhraseWithParticle<私, "は">}\${PhraseWithParticle<パン, "を">}\${ConjugateVerb<食べる, "Te">}\${ConjugateVerb<いる, "Masu">}\`;
 `,
         },
         {
@@ -40,14 +41,15 @@ type 私はパンを食べています = \`\${PhraseWithParticle<私, "は">}\${
           reading: "おとうとはほんをよんでいます",
           en: "My little brother is reading a book.",
           zh: "弟弟正在看书。",
-          code: `import type { CommonNoun, GodanVerb, ConjugateVerb, PhraseWithParticle } from "typed-japanese";
+          code: `import type { CommonNoun, IchidanVerb, GodanVerb, ConjugateVerb, PhraseWithParticle } from "typed-japanese";
 
 type 弟 = CommonNoun<"弟">;
 type 本 = CommonNoun<"本">;
 type 読む = GodanVerb & { type: "godan"; stem: "読"; ending: "む" };
+type いる = IchidanVerb & { type: "ichidan"; stem: "い"; ending: "る" };
 
 // 読む(む godan) → て形 = 読んで → 読んでいます
-type 弟は本を読んでいます = \`\${PhraseWithParticle<弟, "は">}\${PhraseWithParticle<本, "を">}\${ConjugateVerb<読む, "Te">}います\`;
+type 弟は本を読んでいます = \`\${PhraseWithParticle<弟, "は">}\${PhraseWithParticle<本, "を">}\${ConjugateVerb<読む, "Te">}\${ConjugateVerb<いる, "Masu">}\`;
 `,
         },
       ],
@@ -66,14 +68,14 @@ type 弟は本を読んでいます = \`\${PhraseWithParticle<弟, "は">}\${Phr
           reading: "あねはけっこんしています",
           en: "My older sister is married.",
           zh: "姐姐已经结婚了。",
-          code: `import type { CommonNoun, IrregularVerb, ConjugateVerb, PhraseWithParticle } from "typed-japanese";
+          code: `import type { CommonNoun, IchidanVerb, SuruVerb, ConjugateVerb, PhraseWithParticle } from "typed-japanese";
 
 type 姉 = CommonNoun<"姉">;
-type 結婚 = CommonNoun<"結婚">;
-type する = IrregularVerb & { type: "irregular"; dictionary: "する" };
+type 結婚する = SuruVerb<"結婚">;
+type いる = IchidanVerb & { type: "ichidan"; stem: "い"; ending: "る" };
 
-// 結婚 + する → て形 = して → 結婚しています (resultant state: is married)
-type 姉は結婚しています = \`\${PhraseWithParticle<姉, "は">}\${結婚}\${ConjugateVerb<する, "Te">}います\`;
+// 結婚する → て形 = 結婚して → 結婚しています (resultant state: is married)
+type 姉は結婚しています = \`\${PhraseWithParticle<姉, "は">}\${ConjugateVerb<結婚する, "Te">}\${ConjugateVerb<いる, "Masu">}\`;
 `,
         },
         {
@@ -81,14 +83,15 @@ type 姉は結婚しています = \`\${PhraseWithParticle<姉, "は">}\${結婚
           reading: "わたしはそのひとをしっています",
           en: "I know that person.",
           zh: "我认识那个人。",
-          code: `import type { CommonNoun, Pronoun, GodanVerb, ConjugateVerb, PhraseWithParticle } from "typed-japanese";
+          code: `import type { CommonNoun, Pronoun, IchidanVerb, GodanVerb, ConjugateVerb, PhraseWithParticle } from "typed-japanese";
 
 type 私 = Pronoun<"私">;
 type 人 = CommonNoun<"人">;
 type 知る = GodanVerb & { type: "godan"; stem: "知"; ending: "る" };
+type いる = IchidanVerb & { type: "ichidan"; stem: "い"; ending: "る" };
 
 // 知る(る godan) → て形 = 知って → 知っています (state: know)
-type 私はその人を知っています = \`\${PhraseWithParticle<私, "は">}その\${PhraseWithParticle<人, "を">}\${ConjugateVerb<知る, "Te">}います\`;
+type 私はその人を知っています = \`\${PhraseWithParticle<私, "は">}その\${PhraseWithParticle<人, "を">}\${ConjugateVerb<知る, "Te">}\${ConjugateVerb<いる, "Masu">}\`;
 `,
         },
         {
@@ -96,14 +99,15 @@ type 私はその人を知っています = \`\${PhraseWithParticle<私, "は">}
           reading: "あにはとうきょうにすんでいます",
           en: "My older brother lives in Tokyo.",
           zh: "哥哥住在东京。",
-          code: `import type { CommonNoun, ProperNoun, GodanVerb, ConjugateVerb, PhraseWithParticle } from "typed-japanese";
+          code: `import type { CommonNoun, ProperNoun, IchidanVerb, GodanVerb, ConjugateVerb, PhraseWithParticle } from "typed-japanese";
 
 type 兄 = CommonNoun<"兄">;
 type 東京 = ProperNoun<"東京">;
 type 住む = GodanVerb & { type: "godan"; stem: "住"; ending: "む" };
+type いる = IchidanVerb & { type: "ichidan"; stem: "い"; ending: "る" };
 
 // 住む → て形 = 住んで → 住んでいます (ongoing state: lives)
-type 兄は東京に住んでいます = \`\${PhraseWithParticle<兄, "は">}\${PhraseWithParticle<東京, "に">}\${ConjugateVerb<住む, "Te">}います\`;
+type 兄は東京に住んでいます = \`\${PhraseWithParticle<兄, "は">}\${PhraseWithParticle<東京, "に">}\${ConjugateVerb<住む, "Te">}\${ConjugateVerb<いる, "Masu">}\`;
 `,
         },
       ],
@@ -122,14 +126,15 @@ type 兄は東京に住んでいます = \`\${PhraseWithParticle<兄, "は">}\${
           reading: "ちちはぎんこうではたらいています",
           en: "My father works at a bank.",
           zh: "父亲在银行工作。",
-          code: `import type { CommonNoun, GodanVerb, ConjugateVerb, PhraseWithParticle } from "typed-japanese";
+          code: `import type { CommonNoun, IchidanVerb, GodanVerb, ConjugateVerb, PhraseWithParticle } from "typed-japanese";
 
 type 父 = CommonNoun<"父">;
 type 銀行 = CommonNoun<"銀行">;
 type 働く = GodanVerb & { type: "godan"; stem: "働"; ending: "く" };
+type いる = IchidanVerb & { type: "ichidan"; stem: "い"; ending: "る" };
 
 // 働く(く godan) → て形 = 働いて → 働いています
-type 父は銀行で働いています = \`\${PhraseWithParticle<父, "は">}\${PhraseWithParticle<銀行, "で">}\${ConjugateVerb<働く, "Te">}います\`;
+type 父は銀行で働いています = \`\${PhraseWithParticle<父, "は">}\${PhraseWithParticle<銀行, "で">}\${ConjugateVerb<働く, "Te">}\${ConjugateVerb<いる, "Masu">}\`;
 `,
         },
         {
@@ -137,16 +142,16 @@ type 父は銀行で働いています = \`\${PhraseWithParticle<父, "は">}\${
           reading: "わたしはまいにちにほんごをべんきょうしています",
           en: "I study Japanese every day.",
           zh: "我每天学习日语。",
-          code: `import type { Adverb, CommonNoun, Pronoun, IrregularVerb, ConjugateVerb, PhraseWithParticle } from "typed-japanese";
+          code: `import type { Adverb, CommonNoun, Pronoun, IchidanVerb, SuruVerb, ConjugateVerb, PhraseWithParticle } from "typed-japanese";
 
 type 私 = Pronoun<"私">;
 type 毎日 = Adverb<"毎日">;
 type 日本語 = CommonNoun<"日本語">;
-type 勉強 = CommonNoun<"勉強">;
-type する = IrregularVerb & { type: "irregular"; dictionary: "する" };
+type 勉強する = SuruVerb<"勉強">;
+type いる = IchidanVerb & { type: "ichidan"; stem: "い"; ending: "る" };
 
-// 毎日 (every day) marks the habitual reading; 勉強 + して + います
-type 私は毎日日本語を勉強しています = \`\${PhraseWithParticle<私, "は">}\${毎日}\${PhraseWithParticle<日本語, "を">}\${勉強}\${ConjugateVerb<する, "Te">}います\`;
+// 毎日 (every day) marks the habitual reading; 勉強して + います
+type 私は毎日日本語を勉強しています = \`\${PhraseWithParticle<私, "は">}\${毎日}\${PhraseWithParticle<日本語, "を">}\${ConjugateVerb<勉強する, "Te">}\${ConjugateVerb<いる, "Masu">}\`;
 `,
         },
       ],
@@ -165,13 +170,14 @@ type 私は毎日日本語を勉強しています = \`\${PhraseWithParticle<私
           reading: "かれはまだきていません",
           en: "He hasn't come yet.",
           zh: "他还没来。",
-          code: `import type { Pronoun, IrregularVerb, ConjugateVerb, PhraseWithParticle } from "typed-japanese";
+          code: `import type { Pronoun, IchidanVerb, IrregularVerb, ConjugateVerb, PhraseWithParticle } from "typed-japanese";
 
 type 彼 = Pronoun<"彼">;
 type 来る = IrregularVerb & { type: "irregular"; dictionary: "来る" };
+type いる = IchidanVerb & { type: "ichidan"; stem: "い"; ending: "る" };
 
 // 来る → て形 = 来て → 来ていません (negative)
-type 彼はまだ来ていません = \`\${PhraseWithParticle<彼, "は">}まだ\${ConjugateVerb<来る, "Te">}いません\`;
+type 彼はまだ来ていません = \`\${PhraseWithParticle<彼, "は">}まだ\${ConjugateVerb<来る, "Te">}\${ConjugateVerb<いる, "Masen">}\`;
 `,
         },
         {
@@ -179,14 +185,15 @@ type 彼はまだ来ていません = \`\${PhraseWithParticle<彼, "は">}まだ
           reading: "いまなにをかいていますか",
           en: "What are you writing now?",
           zh: "你现在在写什么?",
-          code: `import type { CommonNoun, Pronoun, GodanVerb, ConjugateVerb, PhraseWithParticle } from "typed-japanese";
+          code: `import type { CommonNoun, Pronoun, IchidanVerb, GodanVerb, ConjugateVerb, PhraseWithParticle } from "typed-japanese";
 
 type 今 = CommonNoun<"今">;
 type 何 = Pronoun<"何">;
 type 書く = GodanVerb & { type: "godan"; stem: "書"; ending: "く" };
+type いる = IchidanVerb & { type: "ichidan"; stem: "い"; ending: "る" };
 
 // 書く → て形 = 書いて → 書いていますか (question)
-type 今何を書いていますか = \`\${今}\${PhraseWithParticle<何, "を">}\${ConjugateVerb<書く, "Te">}いますか\`;
+type 今何を書いていますか = \`\${今}\${PhraseWithParticle<何, "を">}\${ConjugateVerb<書く, "Te">}\${ConjugateVerb<いる, "Masu">}か\`;
 `,
         },
       ],

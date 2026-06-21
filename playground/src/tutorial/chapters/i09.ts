@@ -94,9 +94,9 @@ type 明日は雨が降るそうです = \`\${PhraseWithParticle<明日, "は">}
           reading: "たなかさんはらいしゅうくるそうです",
           en: "I hear Mr. Tanaka is coming next week.",
           zh: "听说田中先生下周来。",
-          code: `import type { CommonNoun, IrregularVerb, ConjugateVerb, PhraseWithParticle } from "typed-japanese";
+          code: `import type { CommonNoun, ProperNoun, IrregularVerb, ConjugateVerb, PhraseWithParticle } from "typed-japanese";
 
-type 田中さん = CommonNoun<"田中さん">;
+type 田中さん = ProperNoun<"田中さん">;
 type 来週 = CommonNoun<"来週">;
 type 来る = IrregularVerb & { dictionary: "来る" };
 

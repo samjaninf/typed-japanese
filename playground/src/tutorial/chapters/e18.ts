@@ -174,15 +174,14 @@ type 漢字が読める = \`\${PhraseWithParticle<漢字, "が">}\${ConjugateVer
           reading: "わたしはくるまがうんてんできる",
           en: "I can drive a car.",
           zh: "我会开车。",
-          code: `import type { CommonNoun, Pronoun, IrregularVerb, ConjugateVerb, PhraseWithParticle } from "typed-japanese";
+          code: `import type { CommonNoun, Pronoun, SuruVerb, ConjugateVerb, PhraseWithParticle } from "typed-japanese";
 
 type 私 = Pronoun<"私">;
 type 車 = CommonNoun<"車">;
-type 運転 = CommonNoun<"運転">;
-type 運転する = IrregularVerb & { dictionary: "する" };
+type 運転する = SuruVerb<"運転">;
 
-// 運転する → 運転できる; 運転 as a noun then できる via 可能形 + る
-type 私は車が運転できる = \`\${PhraseWithParticle<私, "は">}\${PhraseWithParticle<車, "が">}\${運転}\${ConjugateVerb<運転する, "Potential">}る\`;
+// 運転する → 可能形 returns 運転でき → append る = 運転できる
+type 私は車が運転できる = \`\${PhraseWithParticle<私, "は">}\${PhraseWithParticle<車, "が">}\${ConjugateVerb<運転する, "Potential">}る\`;
 `,
         },
       ],

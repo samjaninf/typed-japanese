@@ -19,6 +19,12 @@ const entries: VocabEntry[] = [
   { word: "いく", reading: "いく", romaji: "iku", pos: "verb-godan", en: "to go", zh: "去" },
   { word: "早い", reading: "はやい", romaji: "hayai", pos: "i-adjective", en: "early; fast", zh: "早；快" },
   { word: "もらう", reading: "もらう", romaji: "morau", pos: "verb-godan", en: "to receive, to get", zh: "得到；收到" },
+  { word: "あげる", reading: "あげる", romaji: "ageru", pos: "verb-ichidan", en: "to give (to someone else)", zh: "给（别人）" },
+  { word: "くれる", reading: "くれる", romaji: "kureru", pos: "verb-ichidan", en: "to give (to me/us)", zh: "给（我）" },
+  { word: "ほしい", reading: "ほしい", romaji: "hoshii", pos: "i-adjective", en: "wanted, desired", zh: "想要" },
+  { word: "午後", reading: "ごご", romaji: "gogo", pos: "noun", en: "afternoon, p.m.", zh: "下午" },
+  { word: "3時", reading: "さんじ", romaji: "sanji", pos: "counter", en: "three o'clock", zh: "三点" },
+  { word: "30分", reading: "さんじゅっぷん", romaji: "sanjuppun", pos: "counter", en: "thirty minutes; half past", zh: "三十分" },
 ];
 
 export default entries;

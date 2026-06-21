@@ -25,14 +25,14 @@ const chapter: Chapter = {
           reading: "とうきょうはおおさかよりおおきいです",
           en: "Tokyo is bigger than Osaka.",
           zh: "东京比大阪大。",
-          code: `import type { CommonNoun, ProperNoun, PhraseWithParticle, IAdjective, ConjugateAdjective } from "typed-japanese";
+          code: `import type { ProperNoun, PhraseWithParticle, IAdjective, ConjugateAdjective } from "typed-japanese";
 
 type 東京 = ProperNoun<"東京">;
-type 大阪 = CommonNoun<"大阪">;
+type 大阪 = ProperNoun<"大阪">;
 type 大きい = IAdjective & { stem: "大き"; ending: "い" };
 
 // 東京 + は + 大阪 + より + 大きいです
-type 東京は大阪より大きいです = \`\${PhraseWithParticle<東京, "は">}\${大阪}より\${ConjugateAdjective<大きい, "Polite">}\`;
+type 東京は大阪より大きいです = \`\${PhraseWithParticle<東京, "は">}\${PhraseWithParticle<大阪, "より">}\${ConjugateAdjective<大きい, "Polite">}\`;
 `,
         },
         {
@@ -46,7 +46,7 @@ type 今日 = CommonNoun<"今日">;
 type 昨日 = CommonNoun<"昨日">;
 type 寒い = IAdjective & { stem: "寒"; ending: "い" };
 
-type 今日は昨日より寒いです = \`\${PhraseWithParticle<今日, "は">}\${昨日}より\${ConjugateAdjective<寒い, "Polite">}\`;
+type 今日は昨日より寒いです = \`\${PhraseWithParticle<今日, "は">}\${PhraseWithParticle<昨日, "より">}\${ConjugateAdjective<寒い, "Polite">}\`;
 `,
         },
       ],
@@ -86,7 +86,7 @@ type お茶 = CommonNoun<"お茶">;
 type いい = IAdjective & { stem: "い"; ending: "い"; irregular: true };
 
 // コーヒー + より + お茶 + の + ほう + が + いいです
-type コーヒーよりお茶のほうがいいです = \`\${コーヒー}より\${PhraseWithParticle<お茶, "の">}ほう\${PhraseWithParticle<"", "が">}\${ConjugateAdjective<いい, "Polite">}\`;
+type コーヒーよりお茶のほうがいいです = \`\${PhraseWithParticle<コーヒー, "より">}\${PhraseWithParticle<お茶, "の">}ほう\${PhraseWithParticle<"", "が">}\${ConjugateAdjective<いい, "Polite">}\`;
 `,
         },
       ],
@@ -121,11 +121,11 @@ type 果物の中でりんごがいちばん好きです = \`\${PhraseWithPartic
           reading: "クラスのなかでたなかさんがいちばんせがたかいです",
           en: "In the class, Mr. Tanaka is the tallest.",
           zh: "全班里田中同学个子最高。",
-          code: `import type { CommonNoun, PhraseWithParticle, IAdjective, ConjugateAdjective } from "typed-japanese";
+          code: `import type { CommonNoun, ProperNoun, PhraseWithParticle, IAdjective, ConjugateAdjective } from "typed-japanese";
 
 type クラス = CommonNoun<"クラス">;
 type 中 = CommonNoun<"中">;
-type 田中さん = CommonNoun<"田中さん">;
+type 田中さん = ProperNoun<"田中さん">;
 type 背 = CommonNoun<"背">;
 type 高い = IAdjective & { stem: "高"; ending: "い" };
 

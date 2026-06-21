@@ -131,13 +131,14 @@ type お湯が出ます = \`\${PhraseWithParticle<お湯, "が">}\${ConjugateVer
           reading: "まどがあけてある",
           en: "The window has been (deliberately) opened.",
           zh: "窗户(被人特意)打开着。",
-          code: `import type { CommonNoun, IchidanVerb, ConjugateVerb, PhraseWithParticle } from "typed-japanese";
+          code: `import type { CommonNoun, IchidanVerb, GodanVerb, ConjugateVerb, PhraseWithParticle } from "typed-japanese";
 
 type 窓 = CommonNoun<"窓">;
 type 開ける = IchidanVerb & { stem: "開け"; ending: "る" };
+type ある = GodanVerb & { stem: "あ"; ending: "る" };
 
 // 窓 + が + 開けて (て形) + ある
-type 窓が開けてある = \`\${PhraseWithParticle<窓, "が">}\${ConjugateVerb<開ける, "Te">}ある\`;
+type 窓が開けてある = \`\${PhraseWithParticle<窓, "が">}\${ConjugateVerb<開ける, "Te">}\${ConjugateVerb<ある, "Dictionary">}\`;
 `,
         },
         {
@@ -149,9 +150,10 @@ type 窓が開けてある = \`\${PhraseWithParticle<窓, "が">}\${ConjugateVer
 
 type 電気 = CommonNoun<"電気">;
 type 消す = GodanVerb & { stem: "消"; ending: "す" };
+type ある = GodanVerb & { stem: "あ"; ending: "る" };
 
 // 電気 + が + 消して (て形) + あります
-type 電気が消してあります = \`\${PhraseWithParticle<電気, "が">}\${ConjugateVerb<消す, "Te">}あります\`;
+type 電気が消してあります = \`\${PhraseWithParticle<電気, "が">}\${ConjugateVerb<消す, "Te">}\${ConjugateVerb<ある, "Masu">}\`;
 `,
         },
       ],
@@ -170,13 +172,14 @@ type 電気が消してあります = \`\${PhraseWithParticle<電気, "が">}\${
           reading: "まどがあいている",
           en: "The window is open.",
           zh: "窗户开着。",
-          code: `import type { CommonNoun, GodanVerb, ConjugateVerb, PhraseWithParticle } from "typed-japanese";
+          code: `import type { CommonNoun, GodanVerb, IchidanVerb, ConjugateVerb, PhraseWithParticle } from "typed-japanese";
 
 type 窓 = CommonNoun<"窓">;
 type 開く = GodanVerb & { stem: "開"; ending: "く" };
+type いる = IchidanVerb & { stem: "い"; ending: "る" };
 
 // 窓 + が + 開いて (て形) + いる
-type 窓が開いている = \`\${PhraseWithParticle<窓, "が">}\${ConjugateVerb<開く, "Te">}いる\`;
+type 窓が開いている = \`\${PhraseWithParticle<窓, "が">}\${ConjugateVerb<開く, "Te">}\${ConjugateVerb<いる, "Dictionary">}\`;
 `,
         },
         {
@@ -184,13 +187,14 @@ type 窓が開いている = \`\${PhraseWithParticle<窓, "が">}\${ConjugateVer
           reading: "ドアがしまっています",
           en: "The door is closed.",
           zh: "门关着。",
-          code: `import type { CommonNoun, GodanVerb, ConjugateVerb, PhraseWithParticle } from "typed-japanese";
+          code: `import type { CommonNoun, GodanVerb, IchidanVerb, ConjugateVerb, PhraseWithParticle } from "typed-japanese";
 
 type ドア = CommonNoun<"ドア">;
 type 閉まる = GodanVerb & { stem: "閉ま"; ending: "る" };
+type いる = IchidanVerb & { stem: "い"; ending: "る" };
 
 // ドア + が + 閉まって (て形) + います
-type ドアが閉まっています = \`\${PhraseWithParticle<ドア, "が">}\${ConjugateVerb<閉まる, "Te">}います\`;
+type ドアが閉まっています = \`\${PhraseWithParticle<ドア, "が">}\${ConjugateVerb<閉まる, "Te">}\${ConjugateVerb<いる, "Masu">}\`;
 `,
         },
       ],
