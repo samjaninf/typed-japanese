@@ -25,12 +25,13 @@ const chapter: Chapter = {
           reading: "おもちします",
           en: "I'll carry it (for you).",
           zh: "我来(替您)拿。",
-          code: `import type { GodanVerb, ConjugateVerb } from "typed-japanese";
+          code: `import type { GodanVerb, IrregularVerb, ConjugateVerb } from "typed-japanese";
 
 type 持つ = GodanVerb & { stem: "持"; ending: "つ" };
+type する = IrregularVerb & { dictionary: "する" };
 
-// お + 持ち (ます形) + します
-type お持ちします = \`お\${ConjugateVerb<持つ, "MasuStem">}します\`;
+// お + 持ち (ます形) + し (する の連用形) + ます
+type お持ちします = \`お\${ConjugateVerb<持つ, "MasuStem">}\${ConjugateVerb<する, "Masu">}\`;
 `,
         },
         {
@@ -38,13 +39,14 @@ type お持ちします = \`お\${ConjugateVerb<持つ, "MasuStem">}します\`;
           reading: "わたしがおおくりします",
           en: "I'll see you off / send it.",
           zh: "由我来送(您/它)。",
-          code: `import type { Pronoun, PhraseWithParticle, GodanVerb, ConjugateVerb } from "typed-japanese";
+          code: `import type { Pronoun, PhraseWithParticle, GodanVerb, IrregularVerb, ConjugateVerb } from "typed-japanese";
 
 type 私 = Pronoun<"私">;
 type 送る = GodanVerb & { stem: "送"; ending: "る" };
+type する = IrregularVerb & { dictionary: "する" };
 
-// 私 + が + お + 送り (ます形) + します
-type 私がお送りします = \`\${PhraseWithParticle<私, "が">}お\${ConjugateVerb<送る, "MasuStem">}します\`;
+// 私 + が + お + 送り (ます形) + し (する の連用形) + ます
+type 私がお送りします = \`\${PhraseWithParticle<私, "が">}お\${ConjugateVerb<送る, "MasuStem">}\${ConjugateVerb<する, "Masu">}\`;
 `,
         },
         {

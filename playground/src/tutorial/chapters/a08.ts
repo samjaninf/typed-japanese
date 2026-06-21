@@ -122,15 +122,15 @@ type 予約せずに来た = \`\${予約}せずに\${ConjugateVerb<来る, "Ta">
           reading: "わさびぬきですしをちゅうもんした",
           en: "I ordered sushi without wasabi.",
           zh: "我点了不要芥末的寿司。",
-          code: `import type { CommonNoun, PhraseWithParticle } from "typed-japanese";
+          code: `import type { CommonNoun, SuruVerb, ConjugateVerb, PhraseWithParticle } from "typed-japanese";
 
 type わさび = CommonNoun<"わさび">;
 type 抜き = CommonNoun<"抜き">;
 type 寿司 = CommonNoun<"寿司">;
-type 注文 = CommonNoun<"注文">;
+type 注文する = SuruVerb<"注文">;
 
-// わさび + 抜き + で + 寿司 + を + 注文 + した(kana)
-type わさび抜きで寿司を注文した = \`\${わさび}\${抜き}で\${PhraseWithParticle<寿司, "を">}\${注文}した\`;
+// わさび + 抜き + で + 寿司 + を + 注文した(た形)
+type わさび抜きで寿司を注文した = \`\${わさび}\${抜き}で\${PhraseWithParticle<寿司, "を">}\${ConjugateVerb<注文する, "Ta">}\`;
 `,
         },
         {

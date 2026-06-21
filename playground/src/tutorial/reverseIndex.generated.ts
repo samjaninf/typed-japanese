@@ -27,6 +27,28 @@ export const REVERSE_INDEX: Record<string, ExampleRef[]> = {
       "jp": "これは300円です"
     }
   ],
+  "30分": [
+    {
+      "chapterId": "e04",
+      "chapterTitleEn": "Numbers, time & counters",
+      "chapterTitleZh": "数字、时间与量词",
+      "pointTitleEn": "Telling time: 〜時〜分",
+      "pointTitleZh": "说时间:〜時〜分",
+      "anchor": "ex-e04-e04-2-0",
+      "jp": "今7時30分です"
+    }
+  ],
+  "3時": [
+    {
+      "chapterId": "e04",
+      "chapterTitleEn": "Numbers, time & counters",
+      "chapterTitleZh": "数字、时间与量词",
+      "pointTitleEn": "Telling time: 〜時〜分",
+      "pointTitleZh": "说时间:〜時〜分",
+      "anchor": "ex-e04-e04-2-1",
+      "jp": "会議は午後3時からです"
+    }
+  ],
   "5時": [
     {
       "chapterId": "e04",
@@ -40,17 +62,6 @@ export const REVERSE_INDEX: Record<string, ExampleRef[]> = {
   ],
   "7時": [
     {
-      "chapterId": "e06",
-      "chapterTitleEn": "Particles で, へ, に",
-      "chapterTitleZh": "助词 で、へ、に",
-      "pointTitleEn": "に — point in time",
-      "pointTitleZh": "に ——时间点",
-      "anchor": "ex-e06-e06-4-0",
-      "jp": "7時に起きます"
-    }
-  ],
-  "7時30分": [
-    {
       "chapterId": "e04",
       "chapterTitleEn": "Numbers, time & counters",
       "chapterTitleZh": "数字、时间与量词",
@@ -58,6 +69,15 @@ export const REVERSE_INDEX: Record<string, ExampleRef[]> = {
       "pointTitleZh": "说时间:〜時〜分",
       "anchor": "ex-e04-e04-2-0",
       "jp": "今7時30分です"
+    },
+    {
+      "chapterId": "e06",
+      "chapterTitleEn": "Particles で, へ, に",
+      "chapterTitleZh": "助词 で、へ、に",
+      "pointTitleEn": "に — point in time",
+      "pointTitleZh": "に ——时间点",
+      "anchor": "ex-e06-e06-4-0",
+      "jp": "7時に起きます"
     }
   ],
   "9時": [
@@ -80,6 +100,35 @@ export const REVERSE_INDEX: Record<string, ExampleRef[]> = {
       "pointTitleZh": "〜ことなく ——「(始终)不…而…」",
       "anchor": "ex-a08-a08-1-1",
       "jp": "彼女はあきらめることなく続けた"
+    }
+  ],
+  "あげる": [
+    {
+      "chapterId": "i13",
+      "chapterTitleEn": "Giving & receiving 授受",
+      "chapterTitleZh": "授受表达",
+      "pointTitleEn": "あげる — giving (away from me / toward others)",
+      "pointTitleZh": "あげる ——「(我方)给出去」",
+      "anchor": "ex-i13-i13-1-0",
+      "jp": "私は友達に本をあげる"
+    },
+    {
+      "chapterId": "i13",
+      "chapterTitleEn": "Giving & receiving 授受",
+      "chapterTitleZh": "授受表达",
+      "pointTitleEn": "あげる — giving (away from me / toward others)",
+      "pointTitleZh": "あげる ——「(我方)给出去」",
+      "anchor": "ex-i13-i13-1-1",
+      "jp": "母に花をあげます"
+    },
+    {
+      "chapterId": "i13",
+      "chapterTitleEn": "Giving & receiving 授受",
+      "chapterTitleZh": "授受表达",
+      "pointTitleEn": "〜てあげる / 〜てくれる — doing a favor",
+      "pointTitleZh": "〜てあげる / 〜てくれる ——「为某人做某事」",
+      "anchor": "ex-i13-i13-4-0",
+      "jp": "私は友達に日本語を教えてあげる"
     }
   ],
   "あそこ": [
@@ -169,6 +218,24 @@ export const REVERSE_INDEX: Record<string, ExampleRef[]> = {
       "pointTitleZh": "〜と —— 自然、必然的结果",
       "anchor": "ex-e16-e16-2-2",
       "jp": "右に曲がると、駅があります"
+    },
+    {
+      "chapterId": "i12",
+      "chapterTitleEn": "Transitive & intransitive verbs",
+      "chapterTitleZh": "自动词与他动词",
+      "pointTitleEn": "〜てある: a state someone set up (transitive)",
+      "pointTitleZh": "〜てある:有人特意造成的状态(他动词)",
+      "anchor": "ex-i12-i12-3-0",
+      "jp": "窓が開けてある"
+    },
+    {
+      "chapterId": "i12",
+      "chapterTitleEn": "Transitive & intransitive verbs",
+      "chapterTitleZh": "自动词与他动词",
+      "pointTitleEn": "〜てある: a state someone set up (transitive)",
+      "pointTitleZh": "〜てある:有人特意造成的状态(他动词)",
+      "anchor": "ex-i12-i12-3-1",
+      "jp": "電気が消してあります"
     }
   ],
   "あれ": [
@@ -271,6 +338,42 @@ export const REVERSE_INDEX: Record<string, ExampleRef[]> = {
   ],
   "いる": [
     {
+      "chapterId": "a07",
+      "chapterTitleEn": "〜かのようだ / 〜とばかりに",
+      "chapterTitleZh": "〜かのようだ／〜とばかりに",
+      "pointTitleEn": "〜かのようだ — “as if / as though”",
+      "pointTitleZh": "〜かのようだ ——「仿佛、好像」",
+      "anchor": "ex-a07-a07-1-1",
+      "jp": "夢を見ているかのようだ"
+    },
+    {
+      "chapterId": "a07",
+      "chapterTitleEn": "〜かのようだ / 〜とばかりに",
+      "chapterTitleZh": "〜かのようだ／〜とばかりに",
+      "pointTitleEn": "〜かのように — adverbial “as if”",
+      "pointTitleZh": "〜かのように ——副词性的「仿佛地」",
+      "anchor": "ex-a07-a07-2-1",
+      "jp": "雪が降っているかのように白い"
+    },
+    {
+      "chapterId": "a07",
+      "chapterTitleEn": "〜かのようだ / 〜とばかりに",
+      "chapterTitleZh": "〜かのようだ／〜とばかりに",
+      "pointTitleEn": "〜とばかりに — “as if to say …”",
+      "pointTitleZh": "〜とばかりに ——「仿佛在说……似的」",
+      "anchor": "ex-a07-a07-3-1",
+      "jp": "待っていたとばかりに笑った"
+    },
+    {
+      "chapterId": "a07",
+      "chapterTitleEn": "〜かのようだ / 〜とばかりに",
+      "chapterTitleZh": "〜かのようだ／〜とばかりに",
+      "pointTitleEn": "〜とばかりに — “as if to say …”",
+      "pointTitleZh": "〜とばかりに ——「仿佛在说……似的」",
+      "anchor": "ex-a07-a07-3-2",
+      "jp": "何も聞いていないとばかりに歩いた"
+    },
+    {
       "chapterId": "e03",
       "chapterTitleEn": "Existence: あります / います, location に",
       "chapterTitleZh": "存在句：あります／います，场所に",
@@ -298,6 +401,87 @@ export const REVERSE_INDEX: Record<string, ExampleRef[]> = {
       "jp": "机の上に猫がいます"
     },
     {
+      "chapterId": "e11",
+      "chapterTitleEn": "〜ています",
+      "chapterTitleZh": "〜ています进行与状态",
+      "pointTitleEn": "Progressive: an action in progress",
+      "pointTitleZh": "进行:正在进行的动作",
+      "anchor": "ex-e11-e11-1-0",
+      "jp": "私はパンを食べています"
+    },
+    {
+      "chapterId": "e11",
+      "chapterTitleEn": "〜ています",
+      "chapterTitleZh": "〜ています进行与状态",
+      "pointTitleEn": "Progressive: an action in progress",
+      "pointTitleZh": "进行:正在进行的动作",
+      "anchor": "ex-e11-e11-1-1",
+      "jp": "弟は本を読んでいます"
+    },
+    {
+      "chapterId": "e11",
+      "chapterTitleEn": "〜ています",
+      "chapterTitleZh": "〜ています进行与状态",
+      "pointTitleEn": "Resultant state",
+      "pointTitleZh": "结果状态",
+      "anchor": "ex-e11-e11-2-0",
+      "jp": "姉は結婚しています"
+    },
+    {
+      "chapterId": "e11",
+      "chapterTitleEn": "〜ています",
+      "chapterTitleZh": "〜ています进行与状态",
+      "pointTitleEn": "Resultant state",
+      "pointTitleZh": "结果状态",
+      "anchor": "ex-e11-e11-2-1",
+      "jp": "私はその人を知っています"
+    },
+    {
+      "chapterId": "e11",
+      "chapterTitleEn": "〜ています",
+      "chapterTitleZh": "〜ています进行与状态",
+      "pointTitleEn": "Resultant state",
+      "pointTitleZh": "结果状态",
+      "anchor": "ex-e11-e11-2-2",
+      "jp": "兄は東京に住んでいます"
+    },
+    {
+      "chapterId": "e11",
+      "chapterTitleEn": "〜ています",
+      "chapterTitleZh": "〜ています进行与状态",
+      "pointTitleEn": "Habitual / repeated action",
+      "pointTitleZh": "习惯 / 反复的动作",
+      "anchor": "ex-e11-e11-3-0",
+      "jp": "父は銀行で働いています"
+    },
+    {
+      "chapterId": "e11",
+      "chapterTitleEn": "〜ています",
+      "chapterTitleZh": "〜ています进行与状态",
+      "pointTitleEn": "Habitual / repeated action",
+      "pointTitleZh": "习惯 / 反复的动作",
+      "anchor": "ex-e11-e11-3-1",
+      "jp": "私は毎日日本語を勉強しています"
+    },
+    {
+      "chapterId": "e11",
+      "chapterTitleEn": "〜ています",
+      "chapterTitleZh": "〜ています进行与状态",
+      "pointTitleEn": "Negative and question forms",
+      "pointTitleZh": "否定与疑问",
+      "anchor": "ex-e11-e11-4-0",
+      "jp": "彼はまだ来ていません"
+    },
+    {
+      "chapterId": "e11",
+      "chapterTitleEn": "〜ています",
+      "chapterTitleZh": "〜ています进行与状态",
+      "pointTitleEn": "Negative and question forms",
+      "pointTitleZh": "否定与疑问",
+      "anchor": "ex-e11-e11-4-1",
+      "jp": "今何を書いていますか"
+    },
+    {
       "chapterId": "e16",
       "chapterTitleEn": "Conditionals: 〜たら / 〜と",
       "chapterTitleZh": "条件：〜たら／〜と",
@@ -305,6 +489,24 @@ export const REVERSE_INDEX: Record<string, ExampleRef[]> = {
       "pointTitleZh": "〜たら ——「如果／一旦……就……」",
       "anchor": "ex-e16-e16-1-0",
       "jp": "雨が降ったら、家にいます"
+    },
+    {
+      "chapterId": "i12",
+      "chapterTitleEn": "Transitive & intransitive verbs",
+      "chapterTitleZh": "自动词与他动词",
+      "pointTitleEn": "〜ている: a resulting state (intransitive)",
+      "pointTitleZh": "〜ている:自然呈现的结果状态(自动词)",
+      "anchor": "ex-i12-i12-4-0",
+      "jp": "窓が開いている"
+    },
+    {
+      "chapterId": "i12",
+      "chapterTitleEn": "Transitive & intransitive verbs",
+      "chapterTitleZh": "自动词与他动词",
+      "pointTitleEn": "〜ている: a resulting state (intransitive)",
+      "pointTitleZh": "〜ている:自然呈现的结果状态(自动词)",
+      "anchor": "ex-i12-i12-4-1",
+      "jp": "ドアが閉まっています"
     }
   ],
   "おいしい": [
@@ -531,6 +733,35 @@ export const REVERSE_INDEX: Record<string, ExampleRef[]> = {
       "jp": "クラスの中で田中さんがいちばん背が高いです"
     }
   ],
+  "くれる": [
+    {
+      "chapterId": "i13",
+      "chapterTitleEn": "Giving & receiving 授受",
+      "chapterTitleZh": "授受表达",
+      "pointTitleEn": "くれる — giving (toward me)",
+      "pointTitleZh": "くれる ——「(别人)给我方」",
+      "anchor": "ex-i13-i13-2-0",
+      "jp": "友達が本をくれる"
+    },
+    {
+      "chapterId": "i13",
+      "chapterTitleEn": "Giving & receiving 授受",
+      "chapterTitleZh": "授受表达",
+      "pointTitleEn": "くれる — giving (toward me)",
+      "pointTitleZh": "くれる ——「(别人)给我方」",
+      "anchor": "ex-i13-i13-2-1",
+      "jp": "先生が私に辞書をくれました"
+    },
+    {
+      "chapterId": "i13",
+      "chapterTitleEn": "Giving & receiving 授受",
+      "chapterTitleZh": "授受表达",
+      "pointTitleEn": "〜てあげる / 〜てくれる — doing a favor",
+      "pointTitleZh": "〜てあげる / 〜てくれる ——「为某人做某事」",
+      "anchor": "ex-i13-i13-4-1",
+      "jp": "友達が手伝ってくれる"
+    }
+  ],
   "ケーキ": [
     {
       "chapterId": "i09",
@@ -610,6 +841,15 @@ export const REVERSE_INDEX: Record<string, ExampleRef[]> = {
     }
   ],
   "ここ": [
+    {
+      "chapterId": "a03",
+      "chapterTitleEn": "The 〜わけ family",
+      "chapterTitleZh": "〜わけ系列",
+      "pointTitleEn": "〜わけにはいかない — “I can't very well…”",
+      "pointTitleZh": "〜わけにはいかない ——「不能、不可以」",
+      "anchor": "ex-a03-a03-3-1",
+      "jp": "ここで諦めるわけにはいかない"
+    },
     {
       "chapterId": "e03",
       "chapterTitleEn": "Existence: あります / います, location に",
@@ -868,15 +1108,6 @@ export const REVERSE_INDEX: Record<string, ExampleRef[]> = {
       "jp": "どうぞよろしくお願いいたします"
     },
     {
-      "chapterId": "a02",
-      "chapterTitleEn": "〜ものだ / 〜ことだ",
-      "chapterTitleZh": "〜ものだ／〜ことだ",
-      "pointTitleEn": "〜ことだ — advice (“the thing to do is…”)",
-      "pointTitleZh": "〜ことだ ——忠告(「该做的就是……」)",
-      "anchor": "ex-a02-a02-3-0",
-      "jp": "毎日練習することだ"
-    },
-    {
       "chapterId": "a06",
       "chapterTitleEn": "〜をめぐって / 〜にあたって / 〜に際して",
       "chapterTitleZh": "〜をめぐって／〜にあたって／〜に際して",
@@ -958,42 +1189,6 @@ export const REVERSE_INDEX: Record<string, ExampleRef[]> = {
       "jp": "図書館で勉強します"
     },
     {
-      "chapterId": "e07",
-      "chapterTitleEn": "Past tense",
-      "chapterTitleZh": "过去时",
-      "pointTitleEn": "Verbs: 〜ませんでした (polite past negative)",
-      "pointTitleZh": "动词:〜ませんでした(礼貌体过去否定)",
-      "anchor": "ex-e07-e07-2-1",
-      "jp": "私は勉強しませんでした"
-    },
-    {
-      "chapterId": "e10",
-      "chapterTitleEn": "て-form & requests",
-      "chapterTitleZh": "て形与请求",
-      "pointTitleEn": "〜てから — “after doing …”",
-      "pointTitleZh": "〜てから ——「做完……之后」",
-      "anchor": "ex-e10-e10-3-0",
-      "jp": "ご飯を食べてから、勉強します"
-    },
-    {
-      "chapterId": "e11",
-      "chapterTitleEn": "〜ています",
-      "chapterTitleZh": "〜ています进行与状态",
-      "pointTitleEn": "Resultant state",
-      "pointTitleZh": "结果状态",
-      "anchor": "ex-e11-e11-2-0",
-      "jp": "姉は結婚しています"
-    },
-    {
-      "chapterId": "e11",
-      "chapterTitleEn": "〜ています",
-      "chapterTitleZh": "〜ています进行与状态",
-      "pointTitleEn": "Habitual / repeated action",
-      "pointTitleZh": "习惯 / 反复的动作",
-      "anchor": "ex-e11-e11-3-1",
-      "jp": "私は毎日日本語を勉強しています"
-    },
-    {
       "chapterId": "e12",
       "chapterTitleEn": "Dictionary form & ability",
       "chapterTitleZh": "辞书形与能力",
@@ -1021,24 +1216,6 @@ export const REVERSE_INDEX: Record<string, ExampleRef[]> = {
       "jp": "母は料理をすることが好きです"
     },
     {
-      "chapterId": "e16",
-      "chapterTitleEn": "Conditionals: 〜たら / 〜と",
-      "chapterTitleZh": "条件：〜たら／〜と",
-      "pointTitleEn": "〜たら — “if / once …, then …”",
-      "pointTitleZh": "〜たら ——「如果／一旦……就……」",
-      "anchor": "ex-e16-e16-1-1",
-      "jp": "駅に着いたら、電話します"
-    },
-    {
-      "chapterId": "e17",
-      "chapterTitleEn": "Obligation",
-      "chapterTitleZh": "义务",
-      "pointTitleEn": "〜なければならない — “must / have to”",
-      "pointTitleZh": "〜なければならない ——「必须/不得不」",
-      "anchor": "ex-e17-e17-1-0",
-      "jp": "毎日勉強しなければなりません"
-    },
-    {
       "chapterId": "e18",
       "chapterTitleEn": "Potential form",
       "chapterTitleZh": "可能形",
@@ -1046,24 +1223,6 @@ export const REVERSE_INDEX: Record<string, ExampleRef[]> = {
       "pointTitleZh": "不规则:する → できる、来る → 来られる",
       "anchor": "ex-e18-e18-3-0",
       "jp": "私はピアノができる"
-    },
-    {
-      "chapterId": "e18",
-      "chapterTitleEn": "Potential form",
-      "chapterTitleZh": "可能形",
-      "pointTitleEn": "Marking the object with が",
-      "pointTitleZh": "用 が 提示宾语",
-      "anchor": "ex-e18-e18-4-1",
-      "jp": "私は車が運転できる"
-    },
-    {
-      "chapterId": "e19",
-      "chapterTitleEn": "Volitional, つもり, でしょう",
-      "chapterTitleZh": "意向形、つもり、でしょう",
-      "pointTitleEn": "〜つもり: “intend to / plan to”",
-      "pointTitleZh": "〜つもり:「打算 / 计划」",
-      "anchor": "ex-e19-e19-2-1",
-      "jp": "毎日勉強するつもりです"
     },
     {
       "chapterId": "i01",
@@ -1075,15 +1234,6 @@ export const REVERSE_INDEX: Record<string, ExampleRef[]> = {
       "jp": "される"
     },
     {
-      "chapterId": "i01",
-      "chapterTitleEn": "Passive 受身",
-      "chapterTitleZh": "被动态 受身",
-      "pointTitleEn": "A は B に 〜られる — “A is …-ed by B”",
-      "pointTitleZh": "A は B に 〜られる ——「A 被 B…」",
-      "anchor": "ex-i01-i01-2-1",
-      "jp": "私は友達に招待された"
-    },
-    {
       "chapterId": "i02",
       "chapterTitleEn": "Causative 使役",
       "chapterTitleZh": "使役态",
@@ -1093,31 +1243,22 @@ export const REVERSE_INDEX: Record<string, ExampleRef[]> = {
       "jp": "させる"
     },
     {
-      "chapterId": "i02",
-      "chapterTitleEn": "Causative 使役",
-      "chapterTitleZh": "使役态",
-      "pointTitleEn": "Polite causative: 〜せます / 〜させます",
-      "pointTitleZh": "礼貌体使役:〜せます / 〜させます",
-      "anchor": "ex-i02-i02-4-1",
-      "jp": "毎日子供に勉強させます"
+      "chapterId": "i05",
+      "chapterTitleEn": "Humble & polite 謙譲語・丁寧語",
+      "chapterTitleZh": "谦让语与郑重语",
+      "pointTitleEn": "お〜する — the humble pattern",
+      "pointTitleZh": "お〜する ——谦让句型",
+      "anchor": "ex-i05-i05-1-0",
+      "jp": "お持ちします"
     },
     {
-      "chapterId": "i03",
-      "chapterTitleEn": "Causative-passive 使役受身",
-      "chapterTitleZh": "使役被动",
-      "pointTitleEn": "Group II (ichidan) & Group III (irregular): 〜させられる",
-      "pointTitleZh": "二类(上下一段)与三类(不规则):〜させられる",
-      "anchor": "ex-i03-i03-2-1",
-      "jp": "私は部長に残業させられた"
-    },
-    {
-      "chapterId": "i03",
-      "chapterTitleEn": "Causative-passive 使役受身",
-      "chapterTitleZh": "使役被动",
-      "pointTitleEn": "Expressing reluctance & spontaneity",
-      "pointTitleZh": "表达无奈与情不自禁",
-      "anchor": "ex-i03-i03-4-0",
-      "jp": "子供は毎日勉強させられる"
+      "chapterId": "i05",
+      "chapterTitleEn": "Humble & polite 謙譲語・丁寧語",
+      "chapterTitleZh": "谦让语与郑重语",
+      "pointTitleEn": "お〜する — the humble pattern",
+      "pointTitleZh": "お〜する ——谦让句型",
+      "anchor": "ex-i05-i05-1-1",
+      "jp": "私がお送りします"
     },
     {
       "chapterId": "i05",
@@ -1127,51 +1268,6 @@ export const REVERSE_INDEX: Record<string, ExampleRef[]> = {
       "pointTitleZh": "お〜する ——谦让句型",
       "anchor": "ex-i05-i05-1-2",
       "jp": "ここでお待ちします"
-    },
-    {
-      "chapterId": "i06",
-      "chapterTitleEn": "The 〜ば conditional & 〜ば〜ほど",
-      "chapterTitleZh": "〜ば条件与〜ば〜ほど",
-      "pointTitleEn": "Negative conditional: 〜なければ",
-      "pointTitleZh": "否定条件:〜なければ",
-      "anchor": "ex-i06-i06-2-1",
-      "jp": "練習しなければ上手になりません"
-    },
-    {
-      "chapterId": "i07",
-      "chapterTitleEn": "〜ても / 〜のに",
-      "chapterTitleZh": "〜ても／〜のに",
-      "pointTitleEn": "〜のに — “although / even though (and yet)”",
-      "pointTitleZh": "〜のに ——「明明……却」",
-      "anchor": "ex-i07-i07-3-0",
-      "jp": "勉強したのに分かりません"
-    },
-    {
-      "chapterId": "i07",
-      "chapterTitleEn": "〜ても / 〜のに",
-      "chapterTitleZh": "〜ても／〜のに",
-      "pointTitleEn": "〜ても vs 〜のに — choosing the right one",
-      "pointTitleZh": "〜ても 与 〜のに 的区别",
-      "anchor": "ex-i07-i07-4-0",
-      "jp": "練習しても下手です"
-    },
-    {
-      "chapterId": "i07",
-      "chapterTitleEn": "〜ても / 〜のに",
-      "chapterTitleZh": "〜ても／〜のに",
-      "pointTitleEn": "〜ても vs 〜のに — choosing the right one",
-      "pointTitleZh": "〜ても 与 〜のに 的区别",
-      "anchor": "ex-i07-i07-4-1",
-      "jp": "練習したのに下手です"
-    },
-    {
-      "chapterId": "i08",
-      "chapterTitleEn": "〜ように / 〜ような",
-      "chapterTitleZh": "〜ように／〜ような",
-      "pointTitleEn": "〜ように — “so that / in order that”",
-      "pointTitleZh": "〜ように ——「为了……,以便……」",
-      "anchor": "ex-i08-i08-1-2",
-      "jp": "漢字が読めるように勉強します"
     },
     {
       "chapterId": "i08",
@@ -1199,15 +1295,6 @@ export const REVERSE_INDEX: Record<string, ExampleRef[]> = {
       "pointTitleZh": "〜ようにする ——「(尽量)做到……、努力养成……」",
       "anchor": "ex-i08-i08-3-2",
       "jp": "早く寝るようにしてください"
-    },
-    {
-      "chapterId": "i10",
-      "chapterTitleEn": "〜はず / 〜べき / 〜わけ",
-      "chapterTitleZh": "〜はず／〜べき／〜わけ",
-      "pointTitleEn": "〜わけだ — “that's why / no wonder”",
-      "pointTitleZh": "〜わけだ ——「难怪、原来如此」",
-      "anchor": "ex-i10-i10-3-1",
-      "jp": "毎日勉強したわけです"
     },
     {
       "chapterId": "i11",
@@ -1334,6 +1421,15 @@ export const REVERSE_INDEX: Record<string, ExampleRef[]> = {
   ],
   "なる": [
     {
+      "chapterId": "a01",
+      "chapterTitleEn": "Advanced & business keigo",
+      "chapterTitleZh": "高级与商务敬语",
+      "pointTitleEn": "二重敬語 — don't stack honorifics twice",
+      "pointTitleZh": "二重敬語 ——不要把敬语叠加两次",
+      "anchor": "ex-a01-a01-1-1",
+      "jp": "社長が本をお読みになります"
+    },
+    {
       "chapterId": "e16",
       "chapterTitleEn": "Conditionals: 〜たら / 〜と",
       "chapterTitleZh": "条件：〜たら／〜と",
@@ -1350,6 +1446,24 @@ export const REVERSE_INDEX: Record<string, ExampleRef[]> = {
       "pointTitleZh": "〜と —— 自然、必然的结果",
       "anchor": "ex-e16-e16-2-0",
       "jp": "春になると、桜が咲きます"
+    },
+    {
+      "chapterId": "i04",
+      "chapterTitleEn": "Respectful language 尊敬語",
+      "chapterTitleZh": "尊敬语",
+      "pointTitleEn": "お + ます-stem + になる",
+      "pointTitleZh": "お + ます形词干 + になる",
+      "anchor": "ex-i04-i04-1-0",
+      "jp": "先生は本をお読みになります"
+    },
+    {
+      "chapterId": "i04",
+      "chapterTitleEn": "Respectful language 尊敬語",
+      "chapterTitleZh": "尊敬语",
+      "pointTitleEn": "お + ます-stem + になる",
+      "pointTitleZh": "お + ます形词干 + になる",
+      "anchor": "ex-i04-i04-1-1",
+      "jp": "社長はもうお帰りになりました"
     },
     {
       "chapterId": "i08",
@@ -1432,6 +1546,26 @@ export const REVERSE_INDEX: Record<string, ExampleRef[]> = {
       "jp": "私はピアノができる"
     }
   ],
+  "ほしい": [
+    {
+      "chapterId": "e15",
+      "chapterTitleEn": "Desire: 〜たい / 〜がほしい",
+      "chapterTitleZh": "愿望：〜たい／〜がほしい",
+      "pointTitleEn": "〜がほしい — “want a thing”",
+      "pointTitleZh": "〜がほしい ——「想要某物」",
+      "anchor": "ex-e15-e15-2-0",
+      "jp": "私は車がほしい"
+    },
+    {
+      "chapterId": "e15",
+      "chapterTitleEn": "Desire: 〜たい / 〜がほしい",
+      "chapterTitleZh": "愿望：〜たい／〜がほしい",
+      "pointTitleEn": "〜がほしい — “want a thing”",
+      "pointTitleZh": "〜がほしい ——「想要某物」",
+      "anchor": "ex-e15-e15-2-1",
+      "jp": "新しいかばんがほしいです"
+    }
+  ],
   "ボタン": [
     {
       "chapterId": "e16",
@@ -1485,6 +1619,44 @@ export const REVERSE_INDEX: Record<string, ExampleRef[]> = {
       "pointTitleZh": "A は B に 〜られる ——「A 被 B…」",
       "anchor": "ex-i01-i01-2-2",
       "jp": "子供はみんなにほめられた"
+    }
+  ],
+  "もらう": [
+    {
+      "chapterId": "i13",
+      "chapterTitleEn": "Giving & receiving 授受",
+      "chapterTitleZh": "授受表达",
+      "pointTitleEn": "もらう — receiving",
+      "pointTitleZh": "もらう ——「得到 / 收到」",
+      "anchor": "ex-i13-i13-3-0",
+      "jp": "私は友達に本をもらう"
+    },
+    {
+      "chapterId": "i13",
+      "chapterTitleEn": "Giving & receiving 授受",
+      "chapterTitleZh": "授受表达",
+      "pointTitleEn": "もらう — receiving",
+      "pointTitleZh": "もらう ——「得到 / 收到」",
+      "anchor": "ex-i13-i13-3-1",
+      "jp": "私は母にお金をもらいました"
+    },
+    {
+      "chapterId": "i13",
+      "chapterTitleEn": "Giving & receiving 授受",
+      "chapterTitleZh": "授受表达",
+      "pointTitleEn": "〜てもらう — having someone do something for you",
+      "pointTitleZh": "〜てもらう ——「请 / 让某人为自己做某事」",
+      "anchor": "ex-i13-i13-5-0",
+      "jp": "私は友達に手伝ってもらう"
+    },
+    {
+      "chapterId": "i13",
+      "chapterTitleEn": "Giving & receiving 授受",
+      "chapterTitleZh": "授受表达",
+      "pointTitleEn": "〜てもらう — having someone do something for you",
+      "pointTitleZh": "〜てもらう ——「请 / 让某人为自己做某事」",
+      "anchor": "ex-i13-i13-5-1",
+      "jp": "私は先生に本を貸してもらいました"
     }
   ],
   "よく": [
@@ -2003,28 +2175,6 @@ export const REVERSE_INDEX: Record<string, ExampleRef[]> = {
       "pointTitleZh": "〜し ——而且、再加上",
       "anchor": "ex-i14-i14-3-1",
       "jp": "雨だし寒いです"
-    }
-  ],
-  "運転": [
-    {
-      "chapterId": "e18",
-      "chapterTitleEn": "Potential form",
-      "chapterTitleZh": "可能形",
-      "pointTitleEn": "Marking the object with が",
-      "pointTitleZh": "用 が 提示宾语",
-      "anchor": "ex-e18-e18-4-1",
-      "jp": "私は車が運転できる"
-    }
-  ],
-  "運動": [
-    {
-      "chapterId": "i08",
-      "chapterTitleEn": "〜ように / 〜ような",
-      "chapterTitleZh": "〜ように／〜ような",
-      "pointTitleEn": "〜ようにする — “make an effort to / try to (habitually)”",
-      "pointTitleZh": "〜ようにする ——「(尽量)做到……、努力养成……」",
-      "anchor": "ex-i08-i08-3-0",
-      "jp": "毎日運動するようにします"
     }
   ],
   "営業中": [
@@ -3196,17 +3346,6 @@ export const REVERSE_INDEX: Record<string, ExampleRef[]> = {
       "jp": "結果次第で決める"
     }
   ],
-  "結婚": [
-    {
-      "chapterId": "e11",
-      "chapterTitleEn": "〜ています",
-      "chapterTitleZh": "〜ています进行与状态",
-      "pointTitleEn": "Resultant state",
-      "pointTitleZh": "结果状态",
-      "anchor": "ex-e11-e11-2-0",
-      "jp": "姉は結婚しています"
-    }
-  ],
   "嫌い": [
     {
       "chapterId": "a03",
@@ -3425,7 +3564,7 @@ export const REVERSE_INDEX: Record<string, ExampleRef[]> = {
       "jp": "できる限り努力する"
     }
   ],
-  "午後3時": [
+  "午後": [
     {
       "chapterId": "e04",
       "chapterTitleEn": "Numbers, time & counters",
@@ -4171,17 +4310,6 @@ export const REVERSE_INDEX: Record<string, ExampleRef[]> = {
       "pointTitleZh": "连体形：修饰名词",
       "anchor": "ex-e08-e08-1-0",
       "jp": "高い山"
-    }
-  ],
-  "残業": [
-    {
-      "chapterId": "i03",
-      "chapterTitleEn": "Causative-passive 使役受身",
-      "chapterTitleZh": "使役被动",
-      "pointTitleEn": "Group II (ichidan) & Group III (irregular): 〜させられる",
-      "pointTitleZh": "二类(上下一段)与三类(不规则):〜させられる",
-      "anchor": "ex-i03-i03-2-1",
-      "jp": "私は部長に残業させられた"
     }
   ],
   "仕事": [
@@ -5327,17 +5455,6 @@ export const REVERSE_INDEX: Record<string, ExampleRef[]> = {
       "jp": "恐れ入りますが、少々お待ちください"
     }
   ],
-  "招待": [
-    {
-      "chapterId": "i01",
-      "chapterTitleEn": "Passive 受身",
-      "chapterTitleZh": "被动态 受身",
-      "pointTitleEn": "A は B に 〜られる — “A is …-ed by B”",
-      "pointTitleZh": "A は B に 〜られる ——「A 被 B…」",
-      "anchor": "ex-i01-i01-2-1",
-      "jp": "私は友達に招待された"
-    }
-  ],
   "消える": [
     {
       "chapterId": "i12",
@@ -5622,6 +5739,15 @@ export const REVERSE_INDEX: Record<string, ExampleRef[]> = {
       "pointTitleZh": "构成被动形 受身形",
       "anchor": "ex-i01-i01-1-1",
       "jp": "食べられる"
+    },
+    {
+      "chapterId": "i02",
+      "chapterTitleEn": "Causative 使役",
+      "chapterTitleZh": "使役态",
+      "pointTitleEn": "Polite causative: 〜せます / 〜させます",
+      "pointTitleZh": "礼貌体使役:〜せます / 〜させます",
+      "anchor": "ex-i02-i02-4-0",
+      "jp": "母は私に野菜を食べさせます"
     },
     {
       "chapterId": "i03",
@@ -6117,17 +6243,6 @@ export const REVERSE_INDEX: Record<string, ExampleRef[]> = {
   ],
   "早い": [
     {
-      "chapterId": "i08",
-      "chapterTitleEn": "〜ように / 〜ような",
-      "chapterTitleZh": "〜ように／〜ような",
-      "pointTitleEn": "〜ようにする — “make an effort to / try to (habitually)”",
-      "pointTitleZh": "〜ようにする ——「(尽量)做到……、努力养成……」",
-      "anchor": "ex-i08-i08-3-2",
-      "jp": "早く寝るようにしてください"
-    }
-  ],
-  "早く": [
-    {
       "chapterId": "a02",
       "chapterTitleEn": "〜ものだ / 〜ことだ",
       "chapterTitleZh": "〜ものだ／〜ことだ",
@@ -6153,6 +6268,15 @@ export const REVERSE_INDEX: Record<string, ExampleRef[]> = {
       "pointTitleZh": "〜なければならない ——「必须/不得不」",
       "anchor": "ex-e17-e17-1-1",
       "jp": "明日早く起きなければなりません"
+    },
+    {
+      "chapterId": "i08",
+      "chapterTitleEn": "〜ように / 〜ような",
+      "chapterTitleZh": "〜ように／〜ような",
+      "pointTitleEn": "〜ようにする — “make an effort to / try to (habitually)”",
+      "pointTitleZh": "〜ようにする ——「(尽量)做到……、努力养成……」",
+      "anchor": "ex-i08-i08-3-2",
+      "jp": "早く寝るようにしてください"
     }
   ],
   "窓": [
@@ -6550,17 +6674,6 @@ export const REVERSE_INDEX: Record<string, ExampleRef[]> = {
       "jp": "計画を中止せざるを得ない"
     }
   ],
-  "注文": [
-    {
-      "chapterId": "a08",
-      "chapterTitleEn": "〜ことなく / 〜抜きで — without doing; leaving out",
-      "chapterTitleZh": "〜ことなく／〜抜きで ——「不…而…」「省去…」",
-      "pointTitleEn": "〜抜きで — leaving out / excluding",
-      "pointTitleZh": "〜抜きで ——「省去…」「不要…」",
-      "anchor": "ex-a08-a08-3-0",
-      "jp": "わさび抜きで寿司を注文した"
-    }
-  ],
   "朝ご飯": [
     {
       "chapterId": "a08",
@@ -6721,6 +6834,15 @@ export const REVERSE_INDEX: Record<string, ExampleRef[]> = {
   ],
   "田中": [
     {
+      "chapterId": "e01",
+      "chapterTitleEn": "Noun sentences: です / だ",
+      "chapterTitleZh": "名词谓语句：です / だ",
+      "pointTitleEn": "A は B です — “A is B”",
+      "pointTitleZh": "A は B です ——「A 是 B」",
+      "anchor": "ex-e01-e01-1-1",
+      "jp": "田中さんは先生です"
+    },
+    {
       "chapterId": "i05",
       "chapterTitleEn": "Humble & polite 謙譲語・丁寧語",
       "chapterTitleZh": "谦让语与郑重语",
@@ -6731,15 +6853,6 @@ export const REVERSE_INDEX: Record<string, ExampleRef[]> = {
     }
   ],
   "田中さん": [
-    {
-      "chapterId": "e01",
-      "chapterTitleEn": "Noun sentences: です / だ",
-      "chapterTitleZh": "名词谓语句：です / だ",
-      "pointTitleEn": "A は B です — “A is B”",
-      "pointTitleZh": "A は B です ——「A 是 B」",
-      "anchor": "ex-e01-e01-1-1",
-      "jp": "田中さんは先生です"
-    },
     {
       "chapterId": "e02",
       "chapterTitleEn": "Demonstratives & の",
@@ -6898,15 +7011,6 @@ export const REVERSE_INDEX: Record<string, ExampleRef[]> = {
       "pointTitleZh": "问与答:许可与拒绝",
       "anchor": "ex-e14-e14-3-1",
       "jp": "いいえ、ここで電話を使ってはいけません"
-    },
-    {
-      "chapterId": "e16",
-      "chapterTitleEn": "Conditionals: 〜たら / 〜と",
-      "chapterTitleZh": "条件：〜たら／〜と",
-      "pointTitleEn": "〜たら — “if / once …, then …”",
-      "pointTitleZh": "〜たら ——「如果／一旦……就……」",
-      "anchor": "ex-e16-e16-1-1",
-      "jp": "駅に着いたら、電話します"
     }
   ],
   "努力": [
@@ -8102,96 +8206,6 @@ export const REVERSE_INDEX: Record<string, ExampleRef[]> = {
       "jp": "図書館で勉強します"
     },
     {
-      "chapterId": "e07",
-      "chapterTitleEn": "Past tense",
-      "chapterTitleZh": "过去时",
-      "pointTitleEn": "Verbs: 〜ませんでした (polite past negative)",
-      "pointTitleZh": "动词:〜ませんでした(礼貌体过去否定)",
-      "anchor": "ex-e07-e07-2-1",
-      "jp": "私は勉強しませんでした"
-    },
-    {
-      "chapterId": "e10",
-      "chapterTitleEn": "て-form & requests",
-      "chapterTitleZh": "て形与请求",
-      "pointTitleEn": "〜てから — “after doing …”",
-      "pointTitleZh": "〜てから ——「做完……之后」",
-      "anchor": "ex-e10-e10-3-0",
-      "jp": "ご飯を食べてから、勉強します"
-    },
-    {
-      "chapterId": "e11",
-      "chapterTitleEn": "〜ています",
-      "chapterTitleZh": "〜ています进行与状态",
-      "pointTitleEn": "Habitual / repeated action",
-      "pointTitleZh": "习惯 / 反复的动作",
-      "anchor": "ex-e11-e11-3-1",
-      "jp": "私は毎日日本語を勉強しています"
-    },
-    {
-      "chapterId": "e17",
-      "chapterTitleEn": "Obligation",
-      "chapterTitleZh": "义务",
-      "pointTitleEn": "〜なければならない — “must / have to”",
-      "pointTitleZh": "〜なければならない ——「必须/不得不」",
-      "anchor": "ex-e17-e17-1-0",
-      "jp": "毎日勉強しなければなりません"
-    },
-    {
-      "chapterId": "e19",
-      "chapterTitleEn": "Volitional, つもり, でしょう",
-      "chapterTitleZh": "意向形、つもり、でしょう",
-      "pointTitleEn": "〜つもり: “intend to / plan to”",
-      "pointTitleZh": "〜つもり:「打算 / 计划」",
-      "anchor": "ex-e19-e19-2-1",
-      "jp": "毎日勉強するつもりです"
-    },
-    {
-      "chapterId": "i02",
-      "chapterTitleEn": "Causative 使役",
-      "chapterTitleZh": "使役态",
-      "pointTitleEn": "Polite causative: 〜せます / 〜させます",
-      "pointTitleZh": "礼貌体使役:〜せます / 〜させます",
-      "anchor": "ex-i02-i02-4-1",
-      "jp": "毎日子供に勉強させます"
-    },
-    {
-      "chapterId": "i03",
-      "chapterTitleEn": "Causative-passive 使役受身",
-      "chapterTitleZh": "使役被动",
-      "pointTitleEn": "Expressing reluctance & spontaneity",
-      "pointTitleZh": "表达无奈与情不自禁",
-      "anchor": "ex-i03-i03-4-0",
-      "jp": "子供は毎日勉強させられる"
-    },
-    {
-      "chapterId": "i07",
-      "chapterTitleEn": "〜ても / 〜のに",
-      "chapterTitleZh": "〜ても／〜のに",
-      "pointTitleEn": "〜のに — “although / even though (and yet)”",
-      "pointTitleZh": "〜のに ——「明明……却」",
-      "anchor": "ex-i07-i07-3-0",
-      "jp": "勉強したのに分かりません"
-    },
-    {
-      "chapterId": "i08",
-      "chapterTitleEn": "〜ように / 〜ような",
-      "chapterTitleZh": "〜ように／〜ような",
-      "pointTitleEn": "〜ように — “so that / in order that”",
-      "pointTitleZh": "〜ように ——「为了……,以便……」",
-      "anchor": "ex-i08-i08-1-2",
-      "jp": "漢字が読めるように勉強します"
-    },
-    {
-      "chapterId": "i10",
-      "chapterTitleEn": "〜はず / 〜べき / 〜わけ",
-      "chapterTitleZh": "〜はず／〜べき／〜わけ",
-      "pointTitleEn": "〜わけだ — “that's why / no wonder”",
-      "pointTitleZh": "〜わけだ ——「难怪、原来如此」",
-      "anchor": "ex-i10-i10-3-1",
-      "jp": "毎日勉強したわけです"
-    },
-    {
       "chapterId": "i11",
       "chapterTitleEn": "〜ながら / 〜まま / 〜つつ",
       "chapterTitleZh": "〜ながら／〜まま／〜つつ",
@@ -8519,17 +8533,6 @@ export const REVERSE_INDEX: Record<string, ExampleRef[]> = {
   ],
   "本当": [
     {
-      "chapterId": "i10",
-      "chapterTitleEn": "〜はず / 〜べき / 〜わけ",
-      "chapterTitleZh": "〜はず／〜べき／〜わけ",
-      "pointTitleEn": "〜べきだ — “ought to / should”",
-      "pointTitleZh": "〜べきだ ——「应该、理应」",
-      "anchor": "ex-i10-i10-2-0",
-      "jp": "本当のことを言うべきだ"
-    }
-  ],
-  "本当に": [
-    {
       "chapterId": "a02",
       "chapterTitleEn": "〜ものだ / 〜ことだ",
       "chapterTitleZh": "〜ものだ／〜ことだ",
@@ -8537,6 +8540,15 @@ export const REVERSE_INDEX: Record<string, ExampleRef[]> = {
       "pointTitleZh": "〜ことだ ——形容词后的感叹",
       "anchor": "ex-a02-a02-4-1",
       "jp": "本当に幸せなことだ"
+    },
+    {
+      "chapterId": "i10",
+      "chapterTitleEn": "〜はず / 〜べき / 〜わけ",
+      "chapterTitleZh": "〜はず／〜べき／〜わけ",
+      "pointTitleEn": "〜べきだ — “ought to / should”",
+      "pointTitleZh": "〜べきだ ——「应该、理应」",
+      "anchor": "ex-i10-i10-2-0",
+      "jp": "本当のことを言うべきだ"
     }
   ],
   "毎日": [
@@ -9278,44 +9290,6 @@ export const REVERSE_INDEX: Record<string, ExampleRef[]> = {
       "pointTitleZh": "喜好:〜ことが好きだ",
       "anchor": "ex-e12-e12-4-1",
       "jp": "母は料理をすることが好きです"
-    }
-  ],
-  "練習": [
-    {
-      "chapterId": "a02",
-      "chapterTitleEn": "〜ものだ / 〜ことだ",
-      "chapterTitleZh": "〜ものだ／〜ことだ",
-      "pointTitleEn": "〜ことだ — advice (“the thing to do is…”)",
-      "pointTitleZh": "〜ことだ ——忠告(「该做的就是……」)",
-      "anchor": "ex-a02-a02-3-0",
-      "jp": "毎日練習することだ"
-    },
-    {
-      "chapterId": "i06",
-      "chapterTitleEn": "The 〜ば conditional & 〜ば〜ほど",
-      "chapterTitleZh": "〜ば条件与〜ば〜ほど",
-      "pointTitleEn": "Negative conditional: 〜なければ",
-      "pointTitleZh": "否定条件:〜なければ",
-      "anchor": "ex-i06-i06-2-1",
-      "jp": "練習しなければ上手になりません"
-    },
-    {
-      "chapterId": "i07",
-      "chapterTitleEn": "〜ても / 〜のに",
-      "chapterTitleZh": "〜ても／〜のに",
-      "pointTitleEn": "〜ても vs 〜のに — choosing the right one",
-      "pointTitleZh": "〜ても 与 〜のに 的区别",
-      "anchor": "ex-i07-i07-4-0",
-      "jp": "練習しても下手です"
-    },
-    {
-      "chapterId": "i07",
-      "chapterTitleEn": "〜ても / 〜のに",
-      "chapterTitleZh": "〜ても／〜のに",
-      "pointTitleEn": "〜ても vs 〜のに — choosing the right one",
-      "pointTitleZh": "〜ても 与 〜のに 的区别",
-      "anchor": "ex-i07-i07-4-1",
-      "jp": "練習したのに下手です"
     }
   ],
   "連絡": [

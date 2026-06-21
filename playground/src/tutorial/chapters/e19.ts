@@ -39,13 +39,13 @@ type 一緒に行きましょう = \`\${一緒に}\${ConjugateVerb<行く, "Masu
           reading: "コーヒーをのもう",
           en: "I think I'll have some coffee.",
           zh: "喝杯咖啡吧。",
-          code: `import type { CommonNoun, GodanVerb, ConjugateVerb } from "typed-japanese";
+          code: `import type { CommonNoun, GodanVerb, ConjugateVerb, PhraseWithParticle } from "typed-japanese";
 
 type コーヒー = CommonNoun<"コーヒー">;
 type 飲む = GodanVerb & { stem: "飲"; ending: "む" };
 
 // 意向形 of 飲む returns 飲も; append う → 飲もう
-type コーヒーを飲もう = \`\${コーヒー}を\${ConjugateVerb<飲む, "Volitional">}\`;
+type コーヒーを飲もう = \`\${PhraseWithParticle<コーヒー, "を">}\${ConjugateVerb<飲む, "Volitional">}\`;
 `,
         },
         {
@@ -93,14 +93,13 @@ type 日本へ行くつもりです = \`\${PhraseWithParticle<日本, "へ">}\${
           reading: "まいにちべんきょうするつもりです",
           en: "I intend to study every day.",
           zh: "我打算每天学习。",
-          code: `import type { Adverb, CommonNoun, IrregularVerb, ConjugateVerb } from "typed-japanese";
+          code: `import type { Adverb, SuruVerb, ConjugateVerb } from "typed-japanese";
 
 type 毎日 = Adverb<"毎日">;
-type 勉強 = CommonNoun<"勉強">;
-type する = IrregularVerb & { dictionary: "する" };
+type 勉強する = SuruVerb<"勉強">;
 
-// 辞書形 of する is する; add つもりです
-type 毎日勉強するつもりです = \`\${毎日}\${勉強}\${ConjugateVerb<する, "Dictionary">}つもりです\`;
+// 辞書形 of 勉強する is 勉強する; add つもりです
+type 毎日勉強するつもりです = \`\${毎日}\${ConjugateVerb<勉強する, "Dictionary">}つもりです\`;
 `,
         },
         {

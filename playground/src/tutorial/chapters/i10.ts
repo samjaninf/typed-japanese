@@ -148,14 +148,13 @@ type 寒いわけだ = \`\${ConjugateAdjective<寒い, "Basic">}わけだ\`;
           reading: "まいにちべんきょうしたわけです",
           en: "So that means you studied every day.",
           zh: "这么说,你是每天都学习了。",
-          code: `import type { Adverb, CommonNoun, IrregularVerb, ConjugateVerb } from "typed-japanese";
+          code: `import type { Adverb, SuruVerb, ConjugateVerb } from "typed-japanese";
 
 type 毎日 = Adverb<"毎日">;
-type 勉強 = CommonNoun<"勉強">;
-type する = IrregularVerb & { dictionary: "する" };
+type 勉強する = SuruVerb<"勉強">;
 
-// 毎日 + 勉強 + した (た形) + わけです
-type 毎日勉強したわけです = \`\${毎日}\${勉強}\${ConjugateVerb<する, "Ta">}わけです\`;
+// 毎日 + 勉強した (た形) + わけです
+type 毎日勉強したわけです = \`\${毎日}\${ConjugateVerb<勉強する, "Ta">}わけです\`;
 `,
         },
         {

@@ -88,7 +88,7 @@ type 本 = CommonNoun<"本">;
 type 読む = GodanVerb & { stem: "読"; ending: "む" };
 
 // 私 + の + 趣味 + は + 本 + を + 読む (辞書形) + こと + です
-type 私の趣味は本を読むことです = \`\${PhraseWithParticle<\`\${私}の\${趣味}\`, "は">}\${PhraseWithParticle<本, "を">}\${ConjugateVerb<読む, "Dictionary">}ことです\`;
+type 私の趣味は本を読むことです = \`\${PhraseWithParticle<\`\${PhraseWithParticle<私, "の">}\${趣味}\`, "は">}\${PhraseWithParticle<本, "を">}\${ConjugateVerb<読む, "Dictionary">}ことです\`;
 `,
         },
         {

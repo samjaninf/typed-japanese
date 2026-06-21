@@ -114,17 +114,16 @@ type ここで待ってください = \`\${PhraseWithParticle<ここ, "で">}\${
           reading: "ごはんをたべてから、べんきょうします",
           en: "After eating, I will study.",
           zh: "吃完饭之后,我学习。",
-          code: `import type { CommonNoun, IchidanVerb, IrregularVerb, ConjugateVerb, PhraseWithParticle, ConnectedPhrases } from "typed-japanese";
+          code: `import type { CommonNoun, IchidanVerb, SuruVerb, ConjugateVerb, PhraseWithParticle, ConnectedPhrases } from "typed-japanese";
 
 type ご飯 = CommonNoun<"ご飯">;
 type 食べる = IchidanVerb & { stem: "食べ"; ending: "る" };
-type 勉強 = CommonNoun<"勉強">;
-type する = IrregularVerb & { dictionary: "する" };
+type 勉強する = SuruVerb<"勉強">;
 
 // ご飯を + [食べる て形] + から
 type ご飯を食べてから = \`\${PhraseWithParticle<ご飯, "を">}\${ConjugateVerb<食べる, "Te">}から\`;
-// 勉強 + [する ます形] + ます
-type 勉強します = \`\${勉強}\${ConjugateVerb<する, "Masu">}\`;
+// 勉強する → ます形
+type 勉強します = \`\${ConjugateVerb<勉強する, "Masu">}\`;
 
 type ご飯を食べてから勉強します = ConnectedPhrases<ご飯を食べてから, 勉強します>;
 `,

@@ -25,10 +25,10 @@ const chapter: Chapter = {
           reading: "これはさんびゃくえんです",
           en: "This is 300 yen.",
           zh: "这个是 300 日元。",
-          code: `import type { CommonNoun, Pronoun, PhraseWithParticle, ConjugateCopula } from "typed-japanese";
+          code: `import type { Pronoun, CounterPart, PhraseWithParticle, ConjugateCopula } from "typed-japanese";
 
 type これ = Pronoun<"これ">;
-type 値段 = CommonNoun<"300円">;
+type 値段 = CounterPart<"300", "円">["value"];
 
 // これ + は (topic) + 300円 + です
 type これは300円です = \`\${PhraseWithParticle<これ, "は">}\${ConjugateCopula<値段, "Polite">}\`;
@@ -39,11 +39,11 @@ type これは300円です = \`\${PhraseWithParticle<これ, "は">}\${Conjugate
           reading: "このほんはせんごひゃくえんです",
           en: "This book is 1500 yen.",
           zh: "这本书是 1500 日元。",
-          code: `import type { CommonNoun, Adnominal, PhraseWithParticle, ConjugateCopula } from "typed-japanese";
+          code: `import type { CommonNoun, Adnominal, CounterPart, PhraseWithParticle, ConjugateCopula } from "typed-japanese";
 
 type この = Adnominal<"この">;
 type 本 = CommonNoun<"本">;
-type 値段 = CommonNoun<"1500円">;
+type 値段 = CounterPart<"1500", "円">["value"];
 
 // この + 本 (この本 is a phrase) + は + 1500円 + です
 type この本は1500円です = \`\${PhraseWithParticle<\`\${この}\${本}\`, "は">}\${ConjugateCopula<値段, "Polite">}\`;
@@ -65,10 +65,11 @@ type この本は1500円です = \`\${PhraseWithParticle<\`\${この}\${本}\`, 
           reading: "いましちじさんじゅっぷんです",
           en: "It is 7:30 now.",
           zh: "现在是 7 点 30 分。",
-          code: `import type { CommonNoun, ConjugateCopula } from "typed-japanese";
+          code: `import type { CommonNoun, CounterPart, ConjugateCopula } from "typed-japanese";
 
 type 今 = CommonNoun<"今">;
-type 時刻 = CommonNoun<"7時30分">;
+// 7時 (counter) + 30分 (counter)
+type 時刻 = \`\${CounterPart<"7", "時">["value"]}\${CounterPart<"30", "分">["value"]}\`;
 
 // 今 (now) + 7時30分 + です
 type 今7時30分です = \`\${今}\${ConjugateCopula<時刻, "Polite">}\`;
@@ -79,10 +80,11 @@ type 今7時30分です = \`\${今}\${ConjugateCopula<時刻, "Polite">}\`;
           reading: "かいぎはごごさんじからです",
           en: "The meeting is from 3 p.m.",
           zh: "会议从下午 3 点开始。",
-          code: `import type { CommonNoun, PhraseWithParticle, ConjugateCopula } from "typed-japanese";
+          code: `import type { CommonNoun, CounterPart, PhraseWithParticle, ConjugateCopula } from "typed-japanese";
 
 type 会議 = CommonNoun<"会議">;
-type 午後3時 = CommonNoun<"午後3時">;
+// 午後 (p.m.) + 3時 (counter)
+type 午後3時 = \`\${CommonNoun<"午後">}\${CounterPart<"3", "時">["value"]}\`;
 
 // 会議 + は + 午後3時 + から + です
 type 会議は午後3時からです = \`\${PhraseWithParticle<会議, "は">}\${ConjugateCopula<PhraseWithParticle<午後3時, "から">, "Polite">}\`;
@@ -104,10 +106,10 @@ type 会議は午後3時からです = \`\${PhraseWithParticle<会議, "は">}\$
           reading: "りんごをみっつください",
           en: "Three apples, please.",
           zh: "请给我三个苹果。",
-          code: `import type { CommonNoun, PhraseWithParticle } from "typed-japanese";
+          code: `import type { CommonNoun, CounterPart, PhraseWithParticle } from "typed-japanese";
 
 type りんご = CommonNoun<"りんご">;
-type 三つ = CommonNoun<"三つ">;
+type 三つ = CounterPart<"三", "つ">["value"];
 
 // りんご + を (object) + 三つ + ください
 type りんごを三つください = \`\${PhraseWithParticle<りんご, "を">}\${三つ}ください\`;
@@ -118,10 +120,10 @@ type りんごを三つください = \`\${PhraseWithParticle<りんご, "を">}
           reading: "がくせいはふたりです",
           en: "There are two students.",
           zh: "学生有两人。",
-          code: `import type { CommonNoun, PhraseWithParticle, ConjugateCopula } from "typed-japanese";
+          code: `import type { CommonNoun, CounterPart, PhraseWithParticle, ConjugateCopula } from "typed-japanese";
 
 type 学生 = CommonNoun<"学生">;
-type 二人 = CommonNoun<"二人">;
+type 二人 = CounterPart<"二", "人">["value"];
 
 type 学生は二人です = \`\${PhraseWithParticle<学生, "は">}\${ConjugateCopula<二人, "Polite">}\`;
 `,
@@ -131,10 +133,10 @@ type 学生は二人です = \`\${PhraseWithParticle<学生, "は">}\${Conjugate
           reading: "きっぷをにまいかいます",
           en: "I will buy two tickets.",
           zh: "我要买两张票。",
-          code: `import type { CommonNoun, GodanVerb, ConjugateVerb, PhraseWithParticle } from "typed-japanese";
+          code: `import type { CommonNoun, CounterPart, GodanVerb, ConjugateVerb, PhraseWithParticle } from "typed-japanese";
 
 type 切符 = CommonNoun<"切符">;
-type 二枚 = CommonNoun<"二枚">;
+type 二枚 = CounterPart<"二", "枚">["value"];
 type 買う = GodanVerb & { stem: "買"; ending: "う" };
 
 // 切符 + を + 二枚 + 買い (ます形) + ます
@@ -157,10 +159,10 @@ type 切符を二枚買います = \`\${PhraseWithParticle<切符, "を">}\${二
           reading: "とうきょうからおおさかまで",
           en: "From Tokyo to Osaka.",
           zh: "从东京到大阪。",
-          code: `import type { CommonNoun, ProperNoun, PhraseWithParticle } from "typed-japanese";
+          code: `import type { ProperNoun, PhraseWithParticle } from "typed-japanese";
 
 type 東京 = ProperNoun<"東京">;
-type 大阪 = CommonNoun<"大阪">;
+type 大阪 = ProperNoun<"大阪">;
 
 // 東京 + から + 大阪 + まで
 type 東京から大阪まで = \`\${PhraseWithParticle<東京, "から">}\${PhraseWithParticle<大阪, "まで">}\`;
@@ -171,11 +173,11 @@ type 東京から大阪まで = \`\${PhraseWithParticle<東京, "から">}\${Phr
           reading: "みせはくじからごじまでです",
           en: "The shop is open from 9 to 5.",
           zh: "店从 9 点开到 5 点。",
-          code: `import type { CommonNoun, PhraseWithParticle, ConjugateCopula } from "typed-japanese";
+          code: `import type { CommonNoun, CounterPart, PhraseWithParticle, ConjugateCopula } from "typed-japanese";
 
 type 店 = CommonNoun<"店">;
-type 九時 = CommonNoun<"9時">;
-type 五時 = CommonNoun<"5時">;
+type 九時 = CounterPart<"9", "時">["value"];
+type 五時 = CounterPart<"5", "時">["value"];
 
 // 店 + は + 9時 + から + 5時 + まで + です
 type 店は9時から5時までです = \`\${PhraseWithParticle<店, "は">}\${PhraseWithParticle<九時, "から">}\${ConjugateCopula<PhraseWithParticle<五時, "まで">, "Polite">}\`;

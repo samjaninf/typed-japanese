@@ -25,14 +25,13 @@ const chapter: Chapter = {
           reading: "まいにちべんきょうしなければなりません",
           en: "I have to study every day.",
           zh: "我必须每天学习。",
-          code: `import type { Adverb, CommonNoun, IrregularVerb, ConjugateVerb } from "typed-japanese";
+          code: `import type { Adverb, SuruVerb, ConjugateVerb } from "typed-japanese";
 
 type 毎日 = Adverb<"毎日">;
-type 勉強 = CommonNoun<"勉強">;
-// する → ない形 stem "し"; then + なければなりません
-type する = IrregularVerb & { dictionary: "する" };
+// 勉強する is a suru-verb; ない形 stem → "勉強し"; then + なければなりません
+type 勉強する = SuruVerb<"勉強">;
 
-type 毎日勉強しなければなりません = \`\${毎日}\${勉強}\${ConjugateVerb<する, "Nai">}なければなりません\`;
+type 毎日勉強しなければなりません = \`\${毎日}\${ConjugateVerb<勉強する, "Nai">}なければなりません\`;
 `,
         },
         {
@@ -40,14 +39,15 @@ type 毎日勉強しなければなりません = \`\${毎日}\${勉強}\${Conju
           reading: "あしたはやくおきなければなりません",
           en: "I have to get up early tomorrow.",
           zh: "明天我必须早起。",
-          code: `import type { Adverb, CommonNoun, IchidanVerb, ConjugateVerb } from "typed-japanese";
+          code: `import type { CommonNoun, IAdjective, IchidanVerb, ConjugateVerb, ConjugateAdjective } from "typed-japanese";
 
 type 明日 = CommonNoun<"明日">;
-type 早く = Adverb<"早く">;
+// 早い is an i-adjective; its 連用形 (Adverbial) is 早く
+type 早い = IAdjective & { stem: "早"; ending: "い" };
 // ichidan 起きる → ない形 stem "起き"
 type 起きる = IchidanVerb & { stem: "起き"; ending: "る" };
 
-type 明日早く起きなければなりません = \`\${明日}\${早く}\${ConjugateVerb<起きる, "Nai">}なければなりません\`;
+type 明日早く起きなければなりません = \`\${明日}\${ConjugateAdjective<早い, "Adverbial">}\${ConjugateVerb<起きる, "Nai">}なければなりません\`;
 `,
         },
         {

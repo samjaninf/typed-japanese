@@ -90,15 +90,14 @@ type 私は先生に叱られた = \`\${PhraseWithParticle<私, "は">}\${Phrase
           reading: "わたしはともだちにしょうたいされた",
           en: "I was invited by a friend.",
           zh: "我被朋友邀请了。",
-          code: `import type { CommonNoun, Pronoun, IrregularVerb, ConjugateVerb, PhraseWithParticle } from "typed-japanese";
+          code: `import type { CommonNoun, Pronoun, SuruVerb, ConjugateVerb, PhraseWithParticle } from "typed-japanese";
 
 type 私 = Pronoun<"私">;
 type 友達 = CommonNoun<"友達">;
-type 招待 = CommonNoun<"招待">;
-type する = IrregularVerb & { dictionary: "する" };
+type 招待する = SuruVerb<"招待">;
 
 // 招待する is a noun + する verb: 招待 + され(受身形) + た
-type 私は友達に招待された = \`\${PhraseWithParticle<私, "は">}\${PhraseWithParticle<友達, "に">}\${招待}\${ConjugateVerb<する, "Passive">}た\`;
+type 私は友達に招待された = \`\${PhraseWithParticle<私, "は">}\${PhraseWithParticle<友達, "に">}\${ConjugateVerb<招待する, "Passive">}た\`;
 `,
         },
         {

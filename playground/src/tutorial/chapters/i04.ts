@@ -30,9 +30,10 @@ const chapter: Chapter = {
 type 先生 = CommonNoun<"先生">;
 type 本 = CommonNoun<"本">;
 type 読む = GodanVerb & { stem: "読"; ending: "む" };
+type なる = GodanVerb & { stem: "な"; ending: "る" };
 
-// 読む ます形 → "読み";  お + 読み + になります
-type 先生は本をお読みになります = \`\${PhraseWithParticle<先生, "は">}\${PhraseWithParticle<本, "を">}お\${ConjugateVerb<読む, "MasuStem">}になります\`;
+// 読む ます形 → "読み";  お + 読み + に + なる(Masu → "なります")
+type 先生は本をお読みになります = \`\${PhraseWithParticle<先生, "は">}\${PhraseWithParticle<本, "を">}お\${ConjugateVerb<読む, "MasuStem">}に\${ConjugateVerb<なる, "Masu">}\`;
 `,
         },
         {
@@ -44,9 +45,10 @@ type 先生は本をお読みになります = \`\${PhraseWithParticle<先生, "
 
 type 社長 = CommonNoun<"社長">;
 type 帰る = GodanVerb & { stem: "帰"; ending: "る" };
+type なる = GodanVerb & { stem: "な"; ending: "る" };
 
-// 帰る ます形 → "帰り";  お + 帰り + になりました
-type 社長はもうお帰りになりました = \`\${PhraseWithParticle<社長, "は">}もうお\${ConjugateVerb<帰る, "MasuStem">}になりました\`;
+// 帰る ます形 → "帰り";  お + 帰り + に + なる(MasuPast → "なりました")
+type 社長はもうお帰りになりました = \`\${PhraseWithParticle<社長, "は">}もうお\${ConjugateVerb<帰る, "MasuStem">}に\${ConjugateVerb<なる, "MasuPast">}\`;
 `,
         },
       ],

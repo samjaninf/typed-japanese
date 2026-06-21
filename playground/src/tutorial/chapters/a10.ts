@@ -122,14 +122,14 @@ type 学生のみならず先生も来た = \`\${学生}のみならず\${Phrase
           reading: "こくないのみならずかいがいでもゆうめいだ",
           en: "It is famous not only domestically but also abroad.",
           zh: "它不仅在国内,在海外也很有名。",
-          code: `import type { CommonNoun, NaAdjective, ConjugateCopula } from "typed-japanese";
+          code: `import type { CommonNoun, NaAdjective, ConjugateCopula, PhraseWithParticle } from "typed-japanese";
 
 type 国内 = CommonNoun<"国内">;
 type 海外 = CommonNoun<"海外">;
 type 有名 = NaAdjective & { stem: "有名" };
 
-// 国内 + のみならず + 海外 + でも + 有名 (な形容詞) + だ
-type 国内のみならず海外でも有名だ = \`\${国内}のみならず\${海外}でも\${ConjugateCopula<有名["stem"], "Plain">}\`;
+// 国内 + のみならず + 海外 でも + 有名 (な形容詞) + だ
+type 国内のみならず海外でも有名だ = \`\${国内}のみならず\${PhraseWithParticle<海外, "でも">}\${ConjugateCopula<有名["stem"], "Plain">}\`;
 `,
         },
       ],

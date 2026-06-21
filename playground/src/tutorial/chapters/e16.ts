@@ -41,15 +41,14 @@ type 雨が降ったら家にいます = \`\${PhraseWithParticle<雨, "が">}\${
           reading: "えきについたら、でんわします",
           en: "Once I arrive at the station, I'll call you.",
           zh: "一到车站,我就给你打电话。",
-          code: `import type { CommonNoun, GodanVerb, IrregularVerb, ConjugateVerb, PhraseWithParticle } from "typed-japanese";
+          code: `import type { CommonNoun, GodanVerb, SuruVerb, ConjugateVerb, PhraseWithParticle } from "typed-japanese";
 
 type 駅 = CommonNoun<"駅">;
 type 着く = GodanVerb & { stem: "着"; ending: "く" };
-type 電話 = CommonNoun<"電話">;
-type する = IrregularVerb & { dictionary: "する" };
+type 電話する = SuruVerb<"電話">;
 
-// 駅 + に + 着いた(た形) + ら、電話 + し(ます形) + ます
-type 駅に着いたら電話します = \`\${PhraseWithParticle<駅, "に">}\${ConjugateVerb<着く, "Ta">}ら、\${電話}\${ConjugateVerb<する, "Masu">}\`;
+// 駅 + に + 着いた(た形) + ら、電話する(ます形) + ます
+type 駅に着いたら電話します = \`\${PhraseWithParticle<駅, "に">}\${ConjugateVerb<着く, "Ta">}ら、\${ConjugateVerb<電話する, "Masu">}\`;
 `,
         },
         {
@@ -57,15 +56,15 @@ type 駅に着いたら電話します = \`\${PhraseWithParticle<駅, "に">}\${
           reading: "くすりをのんだら、げんきになりました",
           en: "After I took the medicine, I felt better.",
           zh: "吃了药以后,(没想到)就好了。",
-          code: `import type { CommonNoun, NaAdjective, GodanVerb, ConjugateVerb, PhraseWithParticle } from "typed-japanese";
+          code: `import type { CommonNoun, NaAdjective, GodanVerb, ConjugateVerb, ConjugateAdjective, PhraseWithParticle } from "typed-japanese";
 
 type 薬 = CommonNoun<"薬">;
 type 飲む = GodanVerb & { stem: "飲"; ending: "む" };
 type 元気 = NaAdjective & { stem: "元気" };
 type なる = GodanVerb & { stem: "な"; ending: "る" };
 
-// 薬 + を + 飲んだ(た形) + ら、元気 + に + なり(ます形) + ました (past result)
-type 薬を飲んだら元気になりました = \`\${PhraseWithParticle<薬, "を">}\${ConjugateVerb<飲む, "Ta">}ら、\${PhraseWithParticle<元気["stem"], "に">}\${ConjugateVerb<なる, "MasuPast">}\`;
+// 薬 + を + 飲んだ(た形) + ら、元気に(連用形) + なり(ます形) + ました (past result)
+type 薬を飲んだら元気になりました = \`\${PhraseWithParticle<薬, "を">}\${ConjugateVerb<飲む, "Ta">}ら、\${ConjugateAdjective<元気, "Adverbial">}\${ConjugateVerb<なる, "MasuPast">}\`;
 `,
         },
       ],

@@ -275,8 +275,12 @@ export type ConjugateVerb<
     ? `${V["stem"]}た`
     : F extends "Nai"
     ? `${V["stem"]}`
-    : F extends "Potential" | "Passive" | "Causative" | "Hypothetical" | "Conditional"
+    : F extends "Potential" | "Passive"
     ? `${V["stem"]}られ`
+    : F extends "Causative"
+    ? `${V["stem"]}させ`
+    : F extends "Hypothetical" | "Conditional"
+    ? `${V["stem"]}れ`
     : F extends "Volitional"
     ? `${V["stem"]}よう`
     : F extends "Imperative"

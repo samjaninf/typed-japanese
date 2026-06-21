@@ -25,13 +25,13 @@ const chapter: Chapter = {
           reading: "どうりでねむいわけだ",
           en: "No wonder I'm sleepy.",
           zh: "难怪这么困。",
-          code: `import type { CommonNoun, IAdjective, ConjugateAdjective } from "typed-japanese";
+          code: `import type { CommonNoun, PhraseWithParticle, IAdjective, ConjugateAdjective } from "typed-japanese";
 
 type 道理 = CommonNoun<"道理">;
 type 眠い = IAdjective & { stem: "眠"; ending: "い" };
 
 // 道理 + で (particle) + 眠い (基本形) + わけだ
-type 道理で眠いわけだ = \`\${道理}で\${ConjugateAdjective<眠い, "Basic">}わけだ\`;
+type 道理で眠いわけだ = \`\${PhraseWithParticle<道理, "で">}\${ConjugateAdjective<眠い, "Basic">}わけだ\`;
 `,
         },
         {
@@ -146,12 +146,13 @@ type 今帰るわけにはいかない = \`\${今}\${ConjugateVerb<帰る, "Dict
           reading: "ここであきらめるわけにはいかない",
           en: "I can't afford to give up here.",
           zh: "不能在这里放弃。",
-          code: `import type { IchidanVerb, ConjugateVerb } from "typed-japanese";
+          code: `import type { Pronoun, PhraseWithParticle, IchidanVerb, ConjugateVerb } from "typed-japanese";
 
+type ここ = Pronoun<"ここ">;
 type 諦める = IchidanVerb & { stem: "諦め"; ending: "る" };
 
-// ここで + 諦める (辞書形) + わけにはいかない
-type ここで諦めるわけにはいかない = \`ここで\${ConjugateVerb<諦める, "Dictionary">}わけにはいかない\`;
+// ここ + で + 諦める (辞書形) + わけにはいかない
+type ここで諦めるわけにはいかない = \`\${PhraseWithParticle<ここ, "で">}\${ConjugateVerb<諦める, "Dictionary">}わけにはいかない\`;
 `,
         },
         {

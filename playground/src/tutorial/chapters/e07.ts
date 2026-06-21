@@ -32,7 +32,7 @@ type コーヒー = CommonNoun<"コーヒー">;
 type 飲む = GodanVerb & { stem: "飲"; ending: "む" };
 
 // 私 + は + コーヒー + を + 飲み(ます形) + ました
-type 私はコーヒーを飲みました = \`\${PhraseWithParticle<私, "は">}\${コーヒー}を\${ConjugateVerb<飲む, "MasuPast">}\`;
+type 私はコーヒーを飲みました = \`\${PhraseWithParticle<私, "は">}\${PhraseWithParticle<コーヒー, "を">}\${ConjugateVerb<飲む, "MasuPast">}\`;
 `,
         },
         {
@@ -46,7 +46,7 @@ type 私 = Pronoun<"私">;
 type パン = CommonNoun<"パン">;
 type 食べる = IchidanVerb & { stem: "食べ"; ending: "る" };
 
-type 私はパンを食べました = \`\${PhraseWithParticle<私, "は">}\${パン}を\${ConjugateVerb<食べる, "MasuPast">}\`;
+type 私はパンを食べました = \`\${PhraseWithParticle<私, "は">}\${PhraseWithParticle<パン, "を">}\${ConjugateVerb<食べる, "MasuPast">}\`;
 `,
         },
         {
@@ -54,9 +54,9 @@ type 私はパンを食べました = \`\${PhraseWithParticle<私, "は">}\${パ
           reading: "たなかさんはきました",
           en: "Mr. Tanaka came.",
           zh: "田中先生来了。",
-          code: `import type { CommonNoun, IrregularVerb, ConjugateVerb, PhraseWithParticle } from "typed-japanese";
+          code: `import type { ProperNoun, IrregularVerb, ConjugateVerb, PhraseWithParticle } from "typed-japanese";
 
-type 田中さん = CommonNoun<"田中さん">;
+type 田中さん = ProperNoun<"田中さん">;
 type 来る = IrregularVerb & { dictionary: "来る" };
 
 type 田中さんは来ました = \`\${PhraseWithParticle<田中さん, "は">}\${ConjugateVerb<来る, "MasuPast">}\`;
@@ -85,7 +85,7 @@ type お酒 = CommonNoun<"お酒">;
 type 飲む = GodanVerb & { stem: "飲"; ending: "む" };
 
 // ます形(飲み) + ませんでした
-type 私はお酒を飲みませんでした = \`\${PhraseWithParticle<私, "は">}\${お酒}を\${ConjugateVerb<飲む, "MasenDeshita">}\`;
+type 私はお酒を飲みませんでした = \`\${PhraseWithParticle<私, "は">}\${PhraseWithParticle<お酒, "を">}\${ConjugateVerb<飲む, "MasenDeshita">}\`;
 `,
         },
         {
@@ -93,14 +93,13 @@ type 私はお酒を飲みませんでした = \`\${PhraseWithParticle<私, "は
           reading: "わたしはべんきょうしませんでした",
           en: "I didn't study.",
           zh: "我没学习。",
-          code: `import type { CommonNoun, Pronoun, IrregularVerb, ConjugateVerb, PhraseWithParticle } from "typed-japanese";
+          code: `import type { Pronoun, SuruVerb, ConjugateVerb, PhraseWithParticle } from "typed-japanese";
 
 type 私 = Pronoun<"私">;
-type 勉強 = CommonNoun<"勉強">;
-type する = IrregularVerb & { dictionary: "する" };
+type 勉強する = SuruVerb<"勉強">;
 
-// 勉強 + し(ます形 of する) + ませんでした
-type 私は勉強しませんでした = \`\${PhraseWithParticle<私, "は">}\${勉強}\${ConjugateVerb<する, "MasenDeshita">}\`;
+// 勉強する の ませんでした形 → 勉強しませんでした
+type 私は勉強しませんでした = \`\${PhraseWithParticle<私, "は">}\${ConjugateVerb<勉強する, "MasenDeshita">}\`;
 `,
         },
       ],
@@ -119,9 +118,9 @@ type 私は勉強しませんでした = \`\${PhraseWithParticle<私, "は">}\${
           reading: "たなかさんはがくせいでした",
           en: "Mr. Tanaka was a student.",
           zh: "田中先生曾是学生。",
-          code: `import type { CommonNoun, PhraseWithParticle, ConjugateCopula } from "typed-japanese";
+          code: `import type { CommonNoun, ProperNoun, PhraseWithParticle, ConjugateCopula } from "typed-japanese";
 
-type 田中さん = CommonNoun<"田中さん">;
+type 田中さん = ProperNoun<"田中さん">;
 type 学生 = CommonNoun<"学生">;
 
 // です の過去形 → でした
